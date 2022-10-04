@@ -1,30 +1,23 @@
 //
-//  AppDelegate.swift
+//  SceneDelegate.swift
 //  FinalProject
 //
-//  Created by Bien Le Q. on 8/26/19.
-//  Copyright © 2019 Asiantech. All rights reserved.
+//  Created by Khuyen Dang T.T. VN.Danang on 04/10/2022.
+//  Copyright © 2022 Asiantech. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
 
-//typealias HUD = SVProgressHUD
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+typealias HUD = SVProgressHUD
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        configTabbar()
-        LocationManager.shared().request()
-        return true
-    }
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
 
-    // MARK: - Private func
-    func configTabbar() {
         let homeVC = HomeViewController()
         let homeViewModel = HomeViewModel()
         homeVC.viewModel = homeViewModel
@@ -38,16 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search"), selectedImage: #imageLiteral(resourceName: "search_fill"))
 
         let favoriteVC = FavoriteViewController()
-        let favoriteNavi = UINavigationController(rootViewController: favoriteVC)
-        favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: #imageLiteral(resourceName: "favorite"), selectedImage: #imageLiteral(resourceName: "favorite_fill"))
         let favoriteViewModel = FavoriteViewModel()
         favoriteVC.viewModel = favoriteViewModel
+        let favoriteNavi = UINavigationController(rootViewController: favoriteVC)
+        favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: #imageLiteral(resourceName: "favorite"), selectedImage: #imageLiteral(resourceName: "favorite_fill"))
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [homeNavi, searchNavi, favoriteNavi]
         tabBarController.tabBar.tintColor = .black
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
-        window?.backgroundColor = .white
+        window.rootViewController = tabBarController
+        self.window = window
+        window.makeKeyAndVisible()
+        window.backgroundColor = .white
+        LocationManager.shared().request()
     }
 }
