@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - GIFImageView (0.1.0)
   - GoogleMaps (4.1.0):
     - GoogleMaps/Maps (= 4.1.0)
   - GoogleMaps/Base (4.1.0)
@@ -9,7 +10,7 @@ PODS:
     - GoogleMaps/Base (= 4.1.0)
   - IQKeyboardManagerSwift (6.0.5)
   - MVVM-Swift (1.1.0)
-  - ObjectMapper (3.3.0)
+  - ObjectMapper (4.2.0)
   - Realm (3.17.3):
     - Realm/Headers (= 3.17.3)
   - Realm/Headers (3.17.3)
@@ -42,11 +43,12 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 4.8.2)
+  - GIFImageView
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift (~> 6.0.4)
   - MVVM-Swift (= 1.1.0)
-  - ObjectMapper (= 3.3.0)
+  - ObjectMapper
   - RealmSwift (= 3.17.3)
   - SVProgressHUD (= 2.2.5)
   - SwifterSwift (~> 5.0)
@@ -56,6 +58,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - GIFImageView
     - GoogleMaps
     - GooglePlaces
     - IQKeyboardManagerSwift
@@ -70,11 +73,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  GIFImageView: cd6a500b9bac1942cb66b73452b97baa6e75280d
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   MVVM-Swift: 54749cc12bb30af41632f30a2c576a18bf9e4bc8
-  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -82,6 +86,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftUtils: de77bcd1df216c9be6ec7011777302c60a2018a6
 
-PODFILE CHECKSUM: 012f3f53733517905bed64eda3e54341f2653394
+PODFILE CHECKSUM: beb521874035091b40f981ee1e8cefa41fc10bf2
 
 COCOAPODS: 1.11.3

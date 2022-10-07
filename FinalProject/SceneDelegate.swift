@@ -22,6 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tutorialViewModel = TutorialViewModel()
         tutorialVC.viewModel = tutorialViewModel
         
+        let loginVC = LoginViewController()
+        let loginNavi = UINavigationController(rootViewController: loginVC)
+        
         let homeVC = HomeViewController()
         let homeViewModel = HomeViewModel()
         homeVC.viewModel = homeViewModel
@@ -44,7 +47,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = [homeNavi, searchNavi, favoriteNavi]
         tabBarController.tabBar.tintColor = .black
 //        window.rootViewController = tabBarController
-        window.rootViewController = tutorialVC
+//        window.rootViewController = tutorialVC
+        window.rootViewController = LoginViewController()
         self.window = window
         window.makeKeyAndVisible()
         window.backgroundColor = .white
