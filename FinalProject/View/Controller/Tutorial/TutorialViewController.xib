@@ -29,22 +29,69 @@
                     <color key="pageIndicatorTintColor" red="0.96078431369999995" green="0.67843137249999996" blue="0.2784313725" alpha="0.40045529800000002" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.96078431369999995" green="0.67843137249999996" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prevention Tips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDh-J1-cJv">
+                    <rect key="frame" x="20" y="83" width="113" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.058823529411764705" green="0.047058823529411764" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Covid-19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOE-az-VHY">
+                    <rect key="frame" x="20" y="64" width="48" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.11372549019607843" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B89-3L-N1W">
+                    <rect key="frame" x="328" y="64" width="56" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="RUA-X3-hex"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Skip" titleAlignment="center">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                        <color key="baseForegroundColor" systemColor="labelColor"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="skipButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="ej5-0T-LSU"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="8vV-ch-RCg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="293-9o-1W1"/>
+                <constraint firstItem="DDh-J1-cJv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9Q4-gL-u8M"/>
+                <constraint firstItem="DDh-J1-cJv" firstAttribute="top" secondItem="UOE-az-VHY" secondAttribute="bottom" constant="5" id="IVQ-hf-Ki6"/>
                 <constraint firstAttribute="trailing" secondItem="8vV-ch-RCg" secondAttribute="trailing" id="P8c-ao-QqX"/>
                 <constraint firstItem="cXc-sP-BOv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="WDx-fT-5iK"/>
+                <constraint firstItem="UOE-az-VHY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Y5k-FP-TsU"/>
                 <constraint firstAttribute="trailing" secondItem="cXc-sP-BOv" secondAttribute="trailing" constant="20" id="ZSh-rd-TqF"/>
+                <constraint firstItem="UOE-az-VHY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="fW3-qw-hrD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cXc-sP-BOv" secondAttribute="bottom" constant="30" id="fsO-eH-il4"/>
                 <constraint firstAttribute="bottom" secondItem="8vV-ch-RCg" secondAttribute="bottom" id="gi9-w3-aO8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="B89-3L-N1W" secondAttribute="trailing" constant="30" id="hp4-Kz-fuq"/>
                 <constraint firstItem="8vV-ch-RCg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kiY-tI-5Ja"/>
+                <constraint firstItem="B89-3L-N1W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="pVt-GK-Ejq"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="61.607142857142854"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -26,6 +26,11 @@ final class LoginViewController: ViewController {
         configUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
     func setGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
@@ -81,6 +86,10 @@ final class LoginViewController: ViewController {
     @IBAction func handleLogin(_ sender: Any) {
         let detail = DetailViewController()
         navigationController?.pushViewController(detail, animated: true)
+    }
+
+    @IBAction func backToTutorialButtonTouchUpInside(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

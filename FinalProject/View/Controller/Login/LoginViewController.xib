@@ -31,6 +31,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvo-XY-Yxi">
+                    <rect key="frame" x="20" y="64" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="0OZ-hn-nsO"/>
+                        <constraint firstAttribute="height" constant="40" id="Nt9-5J-RWK"/>
+                    </constraints>
+                    <state key="normal" image="go_back">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="backToTutorialButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="qwN-bM-DGJ"/>
+                        <action selector="handleLogin:" destination="-1" eventType="touchUpInside" id="eXc-K1-qKr"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCo-zv-ERb" userLabel="Container View">
                     <rect key="frame" x="0.0" y="280" width="414" height="616"/>
                     <subviews>
@@ -166,12 +180,14 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Nvo-XY-Yxi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4mg-wd-ofJ"/>
                 <constraint firstItem="24U-91-sXd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.334821" id="B4o-fb-32j"/>
                 <constraint firstItem="24U-91-sXd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="H0T-OF-bAn"/>
                 <constraint firstAttribute="trailing" secondItem="qCo-zv-ERb" secondAttribute="trailing" id="Hwk-Zx-nr9"/>
                 <constraint firstAttribute="trailing" secondItem="24U-91-sXd" secondAttribute="trailing" id="X6Q-aR-U7w"/>
                 <constraint firstItem="qCo-zv-ERb" firstAttribute="top" secondItem="24U-91-sXd" secondAttribute="bottom" constant="-20" id="db0-HL-Rb6"/>
                 <constraint firstItem="24U-91-sXd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e4l-kI-uJa"/>
+                <constraint firstItem="Nvo-XY-Yxi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="kCt-mv-QFw"/>
                 <constraint firstAttribute="bottom" secondItem="qCo-zv-ERb" secondAttribute="bottom" id="oKJ-fa-tGo"/>
                 <constraint firstItem="qCo-zv-ERb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xUg-eA-YbX"/>
             </constraints>
@@ -180,6 +196,7 @@
     </objects>
     <resources>
         <image name="facebook" width="24" height="24"/>
+        <image name="go_back" width="64" height="64"/>
         <image name="google" width="24" height="24"/>
         <image name="hide-show-pass" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">

@@ -13,7 +13,6 @@ final class TutorialViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var gradientBackgroundView: UIView!
     var currentPage: Int = 0
     var scrollWidth: CGFloat = 0.0
     var scrollHeight: CGFloat = 0.0
@@ -76,9 +75,6 @@ final class TutorialViewController: UIViewController {
             slide.addSubview(title)
             slide.addSubview(desc)
             slide.addSubview(nextButton)
-//            var frame = slide.frame
-//            frame.size.height = 1200
-//            slide.frame = frame
             scrollView.addSubview(slide)
         }
         scrollView.contentSize = CGSize(width: scrollWidth * CGFloat(viewModel.numberOfPage()), height: 0)
@@ -95,7 +91,6 @@ final class TutorialViewController: UIViewController {
             pageControl.currentPage = currentPage
             scrollView.setContentOffset(CGPoint(x: scrollWidth * CGFloat(currentPage), y: 0), animated: true)
         default:
-            print("login")
             let loginVc = LoginViewController()
             let loginNaviC = UINavigationController(rootViewController: loginVc)
             loginNaviC.modalPresentationStyle = .fullScreen
@@ -125,6 +120,13 @@ final class TutorialViewController: UIViewController {
         currentPage = Int(page)
         scrollView.scrollRectToVisible(CGRect(x: page * scrollWidth, y: 0, width: scrollWidth, height: self.scrollView.frame.height), animated: true)
     }
+    @IBAction func skipButtonTouchUpInside(_ sender: UIButton) {
+        let loginVc = LoginViewController()
+        let loginNaviC = UINavigationController(rootViewController: loginVc)
+        loginNaviC.modalPresentationStyle = .fullScreen
+        present(loginNaviC, animated: true)
+    }
+    
 }
 
 extension TutorialViewController: UIScrollViewDelegate {
