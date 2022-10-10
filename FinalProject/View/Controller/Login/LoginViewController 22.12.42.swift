@@ -10,7 +10,7 @@ import UIKit
 import GIFImageView
 import SwiftUtils
 
-final class LoginViewController: ViewController {
+final class LoginViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -39,6 +39,7 @@ final class LoginViewController: ViewController {
         gradientLayer.colors = [colorTop, colorBottom]
         containerView.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -84,12 +85,17 @@ final class LoginViewController: ViewController {
     }
 
     @IBAction func handleLogin(_ sender: Any) {
-        let detail = DetailViewController()
-        navigationController?.pushViewController(detail, animated: true)
+//        let detail = DetailViewController()
+//        navigationController?.pushViewController(detail, animated: true)
     }
 
     @IBAction func backToTutorialButtonTouchUpInside(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func createAccountButtonTouchUpInside(_ sender: UIButton) {
+        let registerVC = RegisterViewController()
+        navigationController?.pushViewController(registerVC, animated: true)
     }
 }
 

@@ -72,7 +72,7 @@
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Login" titleAlignment="center">
+                            <buttonConfiguration key="configuration" style="plain" title="Sign in" titleAlignment="center">
                                 <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
                             </buttonConfiguration>
                             <connections>
@@ -108,7 +108,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOW-kW-jKZ">
-                            <rect key="frame" x="20" y="293" width="24.5" height="20.5"/>
+                            <rect key="frame" x="195" y="293" width="24.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -128,6 +128,9 @@
                                     <buttonConfiguration key="configuration" style="plain" title="Sign up">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="createAccountButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="zSq-tB-AQS"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -155,7 +158,6 @@
                     <constraints>
                         <constraint firstItem="7qn-CS-yeK" firstAttribute="leading" secondItem="Sec-gb-3NK" secondAttribute="leading" id="4Db-Qz-YlV"/>
                         <constraint firstItem="0jf-eh-4UT" firstAttribute="top" secondItem="Sec-gb-3NK" secondAttribute="bottom" constant="30" id="4TC-NA-brh"/>
-                        <constraint firstItem="zOW-kW-jKZ" firstAttribute="leading" secondItem="Sec-gb-3NK" secondAttribute="leading" id="Bjj-Fz-qge"/>
                         <constraint firstItem="7av-Cl-ymg" firstAttribute="centerX" secondItem="qCo-zv-ERb" secondAttribute="centerX" id="Bmm-Mt-oRg"/>
                         <constraint firstItem="ESL-G4-Bg4" firstAttribute="top" secondItem="7qn-CS-yeK" secondAttribute="top" constant="15" id="Gka-vX-eFp"/>
                         <constraint firstAttribute="trailing" secondItem="IXi-zD-ZkQ" secondAttribute="trailing" constant="60" id="J13-YP-wIt"/>
@@ -167,6 +169,7 @@
                         <constraint firstItem="IXi-zD-ZkQ" firstAttribute="leading" secondItem="qCo-zv-ERb" secondAttribute="leading" constant="60" id="Vhd-Kd-hbT"/>
                         <constraint firstItem="7qn-CS-yeK" firstAttribute="top" secondItem="0jf-eh-4UT" secondAttribute="bottom" constant="10" id="Xwv-vL-lnf"/>
                         <constraint firstItem="ESL-G4-Bg4" firstAttribute="leading" secondItem="7qn-CS-yeK" secondAttribute="leading" id="YFi-fe-gAH"/>
+                        <constraint firstItem="zOW-kW-jKZ" firstAttribute="centerX" secondItem="qCo-zv-ERb" secondAttribute="centerX" id="doz-SM-HHJ"/>
                         <constraint firstItem="Sec-gb-3NK" firstAttribute="top" secondItem="qCo-zv-ERb" secondAttribute="top" constant="20" id="eNt-Fs-WUV"/>
                         <constraint firstItem="0jf-eh-4UT" firstAttribute="leading" secondItem="Sec-gb-3NK" secondAttribute="leading" id="iiY-DY-XB6"/>
                         <constraint firstItem="IXi-zD-ZkQ" firstAttribute="top" secondItem="ESL-G4-Bg4" secondAttribute="bottom" constant="30" id="kJl-hH-Fli"/>
@@ -196,7 +199,7 @@
     </objects>
     <resources>
         <image name="facebook" width="24" height="24"/>
-        <image name="go_back" width="64" height="64"/>
+        <image name="go_back" width="32" height="32"/>
         <image name="google" width="24" height="24"/>
         <image name="hide-show-pass" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">

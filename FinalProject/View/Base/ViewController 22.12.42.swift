@@ -21,4 +21,13 @@ class ViewController: UIViewController, MVVM.View {
         view.accessibilityIdentifier = String(describing: type(of: self))
         view.removeMultiTouch()
     }
+
+    func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width, height: kScreenSize.height)
+        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
+        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
+        gradientLayer.colors = [colorTop, colorBottom]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
