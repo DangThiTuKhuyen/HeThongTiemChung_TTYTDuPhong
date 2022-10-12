@@ -47,8 +47,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = [homeNavi, searchNavi, favoriteNavi]
         tabBarController.tabBar.tintColor = .black
 //        window.rootViewController = tabBarController
-        window.rootViewController = tutorialVC
-//        window.rootViewController = RegisterViewController()
+//        window.rootViewController = tutorialVC
+        window.rootViewController = RegisterViewController()
         self.window = window
         window.makeKeyAndVisible()
         window.backgroundColor = .white

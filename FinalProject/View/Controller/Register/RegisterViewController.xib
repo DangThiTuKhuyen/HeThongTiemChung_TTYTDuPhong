@@ -11,8 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="tesst" destination="WNB-IU-icH" id="Gy2-Gc-Lbk"/>
+                <outlet property="addressTextField" destination="cd4-O7-yy6" id="l8C-zm-6g0"/>
+                <outlet property="birthdayTextField" destination="Hrh-Mu-mXv" id="kOk-WH-uLZ"/>
+                <outlet property="emailTextField" destination="u9V-S9-iqS" id="AHo-iq-IOC"/>
+                <outlet property="nameTextField" destination="WNB-IU-icH" id="EGC-Th-SHc"/>
+                <outlet property="passwordTextField" destination="SNj-dP-hhT" id="LYz-XC-FOC"/>
+                <outlet property="phoneNumberTextField" destination="1uK-hx-SuR" id="QOP-pg-BSl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="multiRadioButton" destination="due-Zz-Tkg" collectionClass="NSMutableArray" id="keC-qY-s2l"/>
+                <outletCollection property="multiRadioButton" destination="Zse-JB-Rjf" collectionClass="NSMutableArray" id="qlt-eC-luv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,9 +31,9 @@
                     <rect key="frame" x="30" y="166" width="354" height="32"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNB-IU-icH">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits" textContentType="name"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                     <size key="value" width="0.0" height="0.0"/>
@@ -34,7 +41,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbD-B6-OuU">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="13j-Kp-cwo"/>
@@ -49,11 +56,11 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name" translatesAutoresizingMaskIntoConstraints="NO" id="QeJ-fj-xuc">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="YRQ-gw-LO3"/>
-                                <constraint firstAttribute="height" constant="30" id="nqG-S7-t0J"/>
+                                <constraint firstAttribute="width" constant="25" id="YRQ-gw-LO3"/>
+                                <constraint firstAttribute="height" constant="25" id="nqG-S7-t0J"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -74,9 +81,9 @@
                     <rect key="frame" x="30" y="228" width="354" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Birthday" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hrh-Mu-mXv">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
@@ -85,15 +92,15 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="x0Q-Zb-SQp">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="VdW-Q2-Y0g"/>
-                                <constraint firstAttribute="height" constant="30" id="a1R-rv-fyD"/>
+                                <constraint firstAttribute="width" constant="25" id="VdW-Q2-Y0g"/>
+                                <constraint firstAttribute="height" constant="25" id="a1R-rv-fyD"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1P-6a-qm6">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="8F7-Df-GXj"/>
@@ -124,26 +131,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKI-Bq-COj" userLabel="Gender">
                     <rect key="frame" x="30" y="295" width="354" height="37"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Gender" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnN-qR-auR">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="0.0" height="0.0"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender" translatesAutoresizingMaskIntoConstraints="NO" id="hCy-dO-UlH">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="C1G-SV-c1Z"/>
-                                <constraint firstAttribute="width" constant="30" id="R9B-HD-Jqh"/>
+                                <constraint firstAttribute="height" constant="25" id="C1G-SV-c1Z"/>
+                                <constraint firstAttribute="width" constant="25" id="R9B-HD-Jqh"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifm-hO-fXU">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="cBn-hq-wOw"/>
@@ -157,17 +154,45 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qf0-a0-mvu">
+                            <rect key="frame" x="35" y="0.0" width="319" height="24"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="due-Zz-Tkg">
+                                    <rect key="frame" x="0.0" y="0.0" width="149.5" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <inset key="contentEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <state key="normal" title="MALE" image="circle_radio_selected">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="maleFemaleAction:" destination="-1" eventType="touchUpInside" id="fiO-ag-MHG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-JB-Rjf">
+                                    <rect key="frame" x="169.5" y="0.0" width="149.5" height="24"/>
+                                    <inset key="contentEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="FEMALE" image="circle_radio_selected">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="maleFemaleAction:" destination="-1" eventType="touchUpInside" id="A6p-7v-vzU"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="hCy-dO-UlH" firstAttribute="leading" secondItem="tKI-Bq-COj" secondAttribute="leading" id="1M7-sq-fhC"/>
-                        <constraint firstItem="hnN-qR-auR" firstAttribute="top" secondItem="tKI-Bq-COj" secondAttribute="top" id="3eO-in-MgW"/>
                         <constraint firstAttribute="trailing" secondItem="Ifm-hO-fXU" secondAttribute="trailing" id="3zO-GI-ca7"/>
+                        <constraint firstAttribute="trailing" secondItem="Qf0-a0-mvu" secondAttribute="trailing" id="AuP-h4-Yj1"/>
+                        <constraint firstItem="Qf0-a0-mvu" firstAttribute="top" secondItem="tKI-Bq-COj" secondAttribute="top" id="C2u-xd-4hx"/>
+                        <constraint firstItem="Qf0-a0-mvu" firstAttribute="leading" secondItem="hCy-dO-UlH" secondAttribute="trailing" constant="10" id="KAP-bQ-nvK"/>
                         <constraint firstItem="Ifm-hO-fXU" firstAttribute="top" secondItem="hCy-dO-UlH" secondAttribute="bottom" constant="5" id="LqT-RJ-TPj"/>
-                        <constraint firstAttribute="trailing" secondItem="hnN-qR-auR" secondAttribute="trailing" id="O0f-Vl-aKh"/>
                         <constraint firstItem="Ifm-hO-fXU" firstAttribute="leading" secondItem="tKI-Bq-COj" secondAttribute="leading" id="cMf-10-xQx"/>
                         <constraint firstAttribute="height" constant="37" id="euk-SF-rjn"/>
-                        <constraint firstItem="hnN-qR-auR" firstAttribute="leading" secondItem="hCy-dO-UlH" secondAttribute="trailing" constant="10" id="uBO-40-2es"/>
                         <constraint firstItem="hCy-dO-UlH" firstAttribute="top" secondItem="tKI-Bq-COj" secondAttribute="top" id="wZb-aF-Nb1"/>
                     </constraints>
                 </view>
@@ -175,10 +200,10 @@
                     <rect key="frame" x="30" y="362" width="354" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-O7-yy6">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits" textContentType="street-address"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                     <size key="value" width="0.0" height="0.0"/>
@@ -186,15 +211,15 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="address" translatesAutoresizingMaskIntoConstraints="NO" id="1C7-Y9-fp1">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="TmM-jw-Ja7"/>
-                                <constraint firstAttribute="width" constant="30" id="vWq-CD-HTP"/>
+                                <constraint firstAttribute="height" constant="25" id="TmM-jw-Ja7"/>
+                                <constraint firstAttribute="width" constant="25" id="vWq-CD-HTP"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="123-dt-5hs">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="QeG-O5-aMg"/>
@@ -226,10 +251,10 @@
                     <rect key="frame" x="30" y="429" width="354" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-S9-iqS">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits" textContentType="email"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                     <size key="value" width="0.0" height="0.0"/>
@@ -237,15 +262,15 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="rO5-Cc-SQv">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="aEq-P0-2nj"/>
-                                <constraint firstAttribute="width" constant="30" id="gCz-m4-Hh9"/>
+                                <constraint firstAttribute="height" constant="25" id="aEq-P0-2nj"/>
+                                <constraint firstAttribute="width" constant="25" id="gCz-m4-Hh9"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4O-m3-QrS">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="jBe-Cr-94h"/>
@@ -277,10 +302,10 @@
                     <rect key="frame" x="30" y="496" width="354" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-hx-SuR">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits" textContentType="tel"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                     <size key="value" width="0.0" height="0.0"/>
@@ -288,15 +313,15 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_number" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-Fh-sBT">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="VLi-di-xsc"/>
-                                <constraint firstAttribute="height" constant="30" id="zpt-3y-UaC"/>
+                                <constraint firstAttribute="width" constant="25" id="VLi-di-xsc"/>
+                                <constraint firstAttribute="height" constant="25" id="zpt-3y-UaC"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz3-IX-oRs">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="tN0-AA-KEp"/>
@@ -328,10 +353,10 @@
                     <rect key="frame" x="30" y="563" width="354" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNj-dP-hhT">
-                            <rect key="frame" x="40" y="0.0" width="314" height="28"/>
+                            <rect key="frame" x="35" y="0.0" width="319" height="25.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <textInputTraits key="textInputTraits" textContentType="password"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                     <size key="value" width="0.0" height="0.0"/>
@@ -339,15 +364,15 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="aF4-9n-VEJ">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="5f5-fy-eI4"/>
-                                <constraint firstAttribute="width" constant="30" id="Gco-m0-syG"/>
+                                <constraint firstAttribute="height" constant="25" id="5f5-fy-eI4"/>
+                                <constraint firstAttribute="width" constant="25" id="Gco-m0-syG"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-kM-Bxf">
-                            <rect key="frame" x="0.0" y="35" width="354" height="1"/>
+                            <rect key="frame" x="0.0" y="30" width="354" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="oIe-nZ-QdT"/>
@@ -454,6 +479,7 @@
     <resources>
         <image name="address" width="25" height="25"/>
         <image name="birthday" width="25" height="25"/>
+        <image name="circle_radio_selected" width="24" height="24"/>
         <image name="email" width="32" height="32"/>
         <image name="gender" width="25" height="25"/>
         <image name="go_back" width="32" height="32"/>
