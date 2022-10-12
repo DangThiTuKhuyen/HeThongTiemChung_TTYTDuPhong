@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class RegisterViewController: ViewController {
 
@@ -21,12 +22,13 @@ class RegisterViewController: ViewController {
     @IBOutlet private var multiRadioButton: [UIButton]! {
         didSet {
             multiRadioButton.forEach { (button) in
-                button.setImage(UIImage(named: "circle_radio_unselected"), for: .normal)
-                button.setImage(UIImage(named: "circle_radio_selected"), for: .selected)
+                button.setImage(#imageLiteral(resourceName: "circle_radio_unselected"), for: .normal)
+                button.setImage(#imageLiteral(resourceName: "circle_radio_selected"), for: .selected)
             }
         }
     }
     private let datePicker = UIDatePicker()
+    let dropDown = DropDown()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,23 +40,26 @@ class RegisterViewController: ViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            super.touchesBegan(touches, with: event)
+        super.touchesBegan(touches, with: event)
         view.endEditing(true)
 //            birthdayTextField.resignFirstResponder()
-        }
+    }
 
     private func configUI() {
         nameTextField.returnKeyType = .next
-        birthdayTextField.returnKeyType = .done
+        addressTextField.returnKeyType = .next
         emailTextField.returnKeyType = .next
         phoneNumberTextField.keyboardType = .asciiCapableNumberPad
+        passwordTextField.returnKeyType = .done
 
         nameTextField.delegate = self
         birthdayTextField.delegate = self
+        addressTextField.delegate = self
         emailTextField.delegate = self
         phoneNumberTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     private func showDatePicker() {
@@ -76,15 +81,28 @@ class RegisterViewController: ViewController {
             print(sender.titleLabel?.text ?? "")
             print(sender.isSelected)
         }
-
-        // NOTE:- here you can recognize with tag weather it is `Male` or `Female`.
         print(sender.tag)
+    }
+
+    @IBAction func testButton(_ sender: UIButton) {
+        dropDown.dataSource = ["Tomato soup", "Mini burgers", "Onion rings", "Baked potato", "Salad"]//4
+            dropDown.anchorView = sender //5
+            dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+            dropDown.show() //7
+            dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+              guard let _ = self else { return }
+              sender.setTitle(item, for: .normal) //9
+            }
     }
 
     func uncheck() {
         multiRadioButton.forEach { (button) in
             button.isSelected = false
         }
+    }
+
+    func register() {
+        print("fffff")
     }
 
     @IBAction func backToSignInButtonTouchUpInside(_ sender: UIButton) {
@@ -104,29 +122,25 @@ class RegisterViewController: ViewController {
     }
 }
 
-extension UITextField {
-
-    func underlined() {
-        self.layer.borderWidth = 0
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = width
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
-    }
-
-    func configTextField() {
-
-    }
-}
-
 // MARK: UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField {
             birthdayTextField.becomeFirstResponder()
+        }
+        switch textField {
+        case nameTextField:
+            birthdayTextField.becomeFirstResponder()
+        case birthdayTextField:
+            addressTextField.becomeFirstResponder()
+        case addressTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            phoneNumberTextField.becomeFirstResponder()
+        case passwordTextField:
+            register()
+        default:
+            break
         }
         return true
     }
@@ -148,11 +162,9 @@ extension UIButton {
 
         UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveLinear, animations: {
             image.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-
-        }) { (success) in
+        }) { _ in
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
                 self.isSelected = !self.isSelected
-                //to-do
                 closure()
                 image.transform = .identity
             }, completion: nil)
