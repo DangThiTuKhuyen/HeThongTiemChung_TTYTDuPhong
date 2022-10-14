@@ -30,6 +30,8 @@ target 'FinalProject' do
   pod 'GooglePlaces'
 
   pod 'GIFImageView'
+  pod 'DropDown'
+  pod 'TPKeyboardAvoiding', '1.3.2'
   # Tool to enforce Swift style and conventions
   pod 'SwiftLint', '0.27.0'
   target 'FinalProjectTests' do

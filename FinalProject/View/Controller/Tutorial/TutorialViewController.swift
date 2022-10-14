@@ -11,17 +11,17 @@ import SwiftUtils
 
 final class TutorialViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    // MARK: - IBOutlets
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var pageControl: UIPageControl!
+
+    // MARK: - Properties
     var currentPage: Int = 0
     var scrollWidth: CGFloat = 0.0
     var scrollHeight: CGFloat = 0.0
     var viewModel: TutorialViewModel?
 
-//    override open var shouldAutorotate: Bool {
-//        return false
-//    }
-
+    // MARK: - Life cycle
     override func viewDidLayoutSubviews() {
         scrollWidth = kScreenSize.width
         scrollHeight = kScreenSize.height
@@ -36,7 +36,8 @@ final class TutorialViewController: UIViewController {
         addItem()
     }
 
-    func addItem() {
+    // MARK: - Private func
+    private func addItem() {
         guard let viewModel = viewModel else { return }
         var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         for index in 0..<viewModel.numberOfPage() {
@@ -66,7 +67,7 @@ final class TutorialViewController: UIViewController {
             nextButton.setTitleColor(.white, for: .normal)
             nextButton.titleLabel?.font = UIFont(name: "Helvetica Neue, Medium", size: 24.0)
             nextButton.titleLabel?.textAlignment = .center
-            nextButton.backgroundColor = UIColor(red: 0.96, green: 0.68, blue: 0.28, alpha: 1.00)
+            nextButton.backgroundColor = #colorLiteral(red: 0.96, green: 0.68, blue: 0.28, alpha: 1.00)
             nextButton.layer.cornerRadius = 30
             nextButton.tag = index
 
@@ -82,6 +83,38 @@ final class TutorialViewController: UIViewController {
         pageControl.currentPage = 0
     }
 
+    func setGradientBackground() {
+        guard let viewModel = viewModel else { return }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width * CGFloat(viewModel.numberOfPage()), height: kScreenSize.height * CGFloat(viewModel.numberOfPage()))
+        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
+        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
+        gradientLayer.colors = [colorTop, colorBottom]
+        scrollView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    private func setIndiactorForCurrentPage() {
+        guard let scrollView = scrollView else { return }
+        let page = (scrollView.contentOffset.x) / scrollWidth
+        pageControl?.currentPage = Int(page)
+        currentPage = Int(page)
+        scrollView.scrollRectToVisible(CGRect(x: page * scrollWidth, y: 0, width: scrollWidth, height: self.scrollView.frame.height), animated: true)
+    }
+
+    // MARK: - IBActions
+    @IBAction func pageChanged(_ sender: Any) {
+        guard let scrollView = scrollView else { return }
+        scrollView.scrollRectToVisible(CGRect(x: scrollWidth * CGFloat ((pageControl?.currentPage ?? 0)), y: 0, width: scrollWidth, height: scrollHeight), animated: true)
+    }
+
+    @IBAction private func skipButtonTouchUpInside(_ sender: UIButton) {
+        let loginVc = LoginViewController()
+        let loginNaviC = UINavigationController(rootViewController: loginVc)
+        loginNaviC.modalPresentationStyle = .fullScreen
+        present(loginNaviC, animated: true)
+    }
+
+    // MARK: - Objc func
     @objc private func nextPageButton(_ sender: UIButton) {
         guard let viewModel = viewModel else { return }
         guard let scrollView = scrollView else { return }
@@ -97,36 +130,6 @@ final class TutorialViewController: UIViewController {
             present(loginNaviC, animated: true)
         }
     }
-
-    func setGradientBackground() {
-        guard let viewModel = viewModel else { return }
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width * CGFloat(viewModel.numberOfPage()), height: kScreenSize.height * CGFloat(viewModel.numberOfPage()))
-        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
-        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
-        gradientLayer.colors = [colorTop, colorBottom]
-        scrollView.layer.insertSublayer(gradientLayer, at: 0)
-    }
-
-    @IBAction func pageChanged(_ sender: Any) {
-        guard let scrollView = scrollView else { return }
-        scrollView.scrollRectToVisible(CGRect(x: scrollWidth * CGFloat ((pageControl?.currentPage ?? 0)), y: 0, width: scrollWidth, height: scrollHeight), animated: true)
-    }
-
-    func setIndiactorForCurrentPage() {
-        guard let scrollView = scrollView else { return }
-        let page = (scrollView.contentOffset.x) / scrollWidth
-        pageControl?.currentPage = Int(page)
-        currentPage = Int(page)
-        scrollView.scrollRectToVisible(CGRect(x: page * scrollWidth, y: 0, width: scrollWidth, height: self.scrollView.frame.height), animated: true)
-    }
-    @IBAction func skipButtonTouchUpInside(_ sender: UIButton) {
-        let loginVc = LoginViewController()
-        let loginNaviC = UINavigationController(rootViewController: loginVc)
-        loginNaviC.modalPresentationStyle = .fullScreen
-        present(loginNaviC, animated: true)
-    }
-    
 }
 
 extension TutorialViewController: UIScrollViewDelegate {

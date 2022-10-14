@@ -41,6 +41,18 @@
 		8A22FD6E288FE87B004A8E5B /* NearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A22FD6C288FE87B004A8E5B /* NearTableViewCell.xib */; };
 		8A22FD83288FF63D004A8E5B /* NearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A22FD81288FF63D004A8E5B /* NearCell.swift */; };
 		8A22FD84288FF63D004A8E5B /* NearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A22FD82288FF63D004A8E5B /* NearCell.xib */; };
+		8A2D999F28F6BEC3007BC3E7 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D999D28F6BEC3007BC3E7 /* AddressTableViewCell.swift */; };
+		8A2D99A028F6BEC3007BC3E7 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D999E28F6BEC3007BC3E7 /* AddressTableViewCell.xib */; };
+		8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99A228F6CD0F007BC3E7 /* CommonCell.swift */; };
+		8A2D99A528F6CD0F007BC3E7 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D99A328F6CD0F007BC3E7 /* CommonCell.xib */; };
+		8A2D99A828F6CD31007BC3E7 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99A628F6CD31007BC3E7 /* GenderCell.swift */; };
+		8A2D99A928F6CD31007BC3E7 /* GenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D99A728F6CD31007BC3E7 /* GenderCell.xib */; };
+		8A2D99AC28F6CD72007BC3E7 /* DistrictCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99AA28F6CD72007BC3E7 /* DistrictCell.swift */; };
+		8A2D99AD28F6CD72007BC3E7 /* DistrictCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D99AB28F6CD72007BC3E7 /* DistrictCell.xib */; };
+		8A2D99AF28F7A2AC007BC3E7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99AE28F7A2AC007BC3E7 /* RegisterViewModel.swift */; };
+		8A2D99B128F7B74B007BC3E7 /* CommonCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99B028F7B74B007BC3E7 /* CommonCellViewModel.swift */; };
+		8A2D99B328F7B762007BC3E7 /* GenderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99B228F7B762007BC3E7 /* GenderCellViewModel.swift */; };
+		8A2D99B528F7D14B007BC3E7 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99B428F7D14B007BC3E7 /* PaddingTextField.swift */; };
 		8A466F2428AB3DCC002F3038 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A466F2328AB3DCC002F3038 /* LocationManager.swift */; };
 		8A466F8E28AB75B7002F3038 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A466F8C28AB75B7002F3038 /* MapViewController.swift */; };
 		8A466F8F28AB75B7002F3038 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A466F8D28AB75B7002F3038 /* MapViewController.xib */; };
@@ -161,6 +173,18 @@
 		8A22FD6C288FE87B004A8E5B /* NearTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearTableViewCell.xib; sourceTree = "<group>"; };
 		8A22FD81288FF63D004A8E5B /* NearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCell.swift; sourceTree = "<group>"; };
 		8A22FD82288FF63D004A8E5B /* NearCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearCell.xib; sourceTree = "<group>"; };
+		8A2D999D28F6BEC3007BC3E7 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		8A2D999E28F6BEC3007BC3E7 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		8A2D99A228F6CD0F007BC3E7 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
+		8A2D99A328F6CD0F007BC3E7 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
+		8A2D99A628F6CD31007BC3E7 /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
+		8A2D99A728F6CD31007BC3E7 /* GenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderCell.xib; sourceTree = "<group>"; };
+		8A2D99AA28F6CD72007BC3E7 /* DistrictCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictCell.swift; sourceTree = "<group>"; };
+		8A2D99AB28F6CD72007BC3E7 /* DistrictCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistrictCell.xib; sourceTree = "<group>"; };
+		8A2D99AE28F7A2AC007BC3E7 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		8A2D99B028F7B74B007BC3E7 /* CommonCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellViewModel.swift; sourceTree = "<group>"; };
+		8A2D99B228F7B762007BC3E7 /* GenderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCellViewModel.swift; sourceTree = "<group>"; };
+		8A2D99B428F7D14B007BC3E7 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		8A466F2328AB3DCC002F3038 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8A466F8C28AB75B7002F3038 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8A466F8D28AB75B7002F3038 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -349,6 +373,7 @@
 				6AF611532313C13800F5CBA2 /* CollectionCell.swift */,
 				6AF611542313C13800F5CBA2 /* CollectionViewHeaderView.swift */,
 				6AF6116C2313C13800F5CBA2 /* ImageView.swift */,
+				8A2D99B428F7D14B007BC3E7 /* PaddingTextField.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -429,11 +454,38 @@
 			path = RecommendCell;
 			sourceTree = "<group>";
 		};
+		8A2D999A28F6BE69007BC3E7 /* AddressCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A2D999D28F6BEC3007BC3E7 /* AddressTableViewCell.swift */,
+				8A2D999E28F6BEC3007BC3E7 /* AddressTableViewCell.xib */,
+			);
+			path = AddressCell;
+			sourceTree = "<group>";
+		};
+		8A2D99A128F6CAE8007BC3E7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A2D99A228F6CD0F007BC3E7 /* CommonCell.swift */,
+				8A2D99A328F6CD0F007BC3E7 /* CommonCell.xib */,
+				8A2D99B028F7B74B007BC3E7 /* CommonCellViewModel.swift */,
+				8A2D99A628F6CD31007BC3E7 /* GenderCell.swift */,
+				8A2D99A728F6CD31007BC3E7 /* GenderCell.xib */,
+				8A2D99B228F7B762007BC3E7 /* GenderCellViewModel.swift */,
+				8A2D99AA28F6CD72007BC3E7 /* DistrictCell.swift */,
+				8A2D99AB28F6CD72007BC3E7 /* DistrictCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		8A32918528F00F1400B3639A /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				8A2D99A128F6CAE8007BC3E7 /* Cell */,
+				8A2D999A28F6BE69007BC3E7 /* AddressCell */,
 				8ADBF99528F484F300DF3F8F /* RegisterViewController.swift */,
 				8ADBF99428F484F300DF3F8F /* RegisterViewController.xib */,
+				8A2D99AE28F7A2AC007BC3E7 /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -791,6 +843,7 @@
 			files = (
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
 				6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */,
+				8A2D99AD28F6CD72007BC3E7 /* DistrictCell.xib in Resources */,
 				8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */,
 				8AA8613228A3BA9000618FD1 /* FavoriteViewController.xib in Resources */,
 				8A9FBAD728B86D5E003A94A1 /* CategoryCell.xib in Resources */,
@@ -798,9 +851,12 @@
 				8AA83D4128EF1992009A50CA /* LoginViewController.xib in Resources */,
 				8ADBF99628F484F400DF3F8F /* RegisterViewController.xib in Resources */,
 				8AA8614128A3BB1B00618FD1 /* FavoriteCell.xib in Resources */,
+				8A2D99A528F6CD0F007BC3E7 /* CommonCell.xib in Resources */,
 				8A9FBAD428B86D5E003A94A1 /* CategoryViewController.xib in Resources */,
+				8A2D99A028F6BEC3007BC3E7 /* AddressTableViewCell.xib in Resources */,
 				8A9FBAD128B86D5E003A94A1 /* SearchViewController.xib in Resources */,
 				8A22FD67288FDE6B004A8E5B /* OpeningTableViewCell.xib in Resources */,
+				8A2D99A928F6CD31007BC3E7 /* GenderCell.xib in Resources */,
 				8A466F8F28AB75B7002F3038 /* MapViewController.xib in Resources */,
 				8A9FBA5B28B75ABD003A94A1 /* SimilarCell.xib in Resources */,
 				8ADBF99D28F4853000DF3F8F /* TutorialViewController.xib in Resources */,
@@ -938,6 +994,7 @@
 				8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */,
 				6AF60E0A2313B9C000F5CBA2 /* UIViewExt.swift in Sources */,
 				6AF60DC42313B56B00F5CBA2 /* Error.swift in Sources */,
+				8A2D999F28F6BEC3007BC3E7 /* AddressTableViewCell.swift in Sources */,
 				8ADBF99F28F4853000DF3F8F /* TutorialViewModel.swift in Sources */,
 				8A9AC277289A26B000EFA680 /* DetailVenue.swift in Sources */,
 				8A22FCAE288F782F004A8E5B /* RecommendViewModel.swift in Sources */,
@@ -949,6 +1006,7 @@
 				8A9FBAD328B86D5E003A94A1 /* CategoryViewController.swift in Sources */,
 				8A9FBAD928B86D5E003A94A1 /* SearchCell.swift in Sources */,
 				8ADBF99728F484F400DF3F8F /* RegisterViewController.swift in Sources */,
+				8A2D99B528F7D14B007BC3E7 /* PaddingTextField.swift in Sources */,
 				8ADBF99128F484B900DF3F8F /* SearchVenue.swift in Sources */,
 				8A9FBAD028B86D5E003A94A1 /* SearchViewModel.swift in Sources */,
 				8ADBF9B628F4861800DF3F8F /* ScrollView.swift in Sources */,
@@ -975,8 +1033,11 @@
 				8ADBF98928F4847D00DF3F8F /* NSErrorExt.swift in Sources */,
 				8A9FBA5A28B75ABD003A94A1 /* SimilarCell.swift in Sources */,
 				8A4864FE28ED31A1007B7AB7 /* DetailCell.swift in Sources */,
+				8A2D99A828F6CD31007BC3E7 /* GenderCell.swift in Sources */,
+				8A2D99B128F7B74B007BC3E7 /* CommonCellViewModel.swift in Sources */,
 				8A9FBAD228B86D5E003A94A1 /* CategoryViewModel.swift in Sources */,
 				8A22FD66288FDE6B004A8E5B /* OpeningTableViewCell.swift in Sources */,
+				8A2D99AF28F7A2AC007BC3E7 /* RegisterViewModel.swift in Sources */,
 				8ADBF9B828F4861800DF3F8F /* ViewController.swift in Sources */,
 				8A4E5E95288AA80B0053FFC6 /* HomeService.swift in Sources */,
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
@@ -985,6 +1046,7 @@
 				8ADBF9B728F4861800DF3F8F /* TableView.swift in Sources */,
 				8A9FBAD528B86D5E003A94A1 /* CategoryCell.swift in Sources */,
 				8A9FBAE028B86D71003A94A1 /* SearchService.swift in Sources */,
+				8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */,
 				8A4864FF28ED31A1007B7AB7 /* DetailCellViewModel.swift in Sources */,
 				8A22FCC2288F7923004A8E5B /* RecommendTableViewViewModel.swift in Sources */,
 				8A91E01A28F472D200973339 /* SceneDelegate.swift in Sources */,
@@ -1000,7 +1062,9 @@
 				8A9FBA5928B75ABD003A94A1 /* SimilarCellViewModel.swift in Sources */,
 				8AA8613828A3BAC300618FD1 /* FavoriteViewModel.swift in Sources */,
 				8ADBF9A728F4859B00DF3F8F /* FavoriteViewController.swift in Sources */,
+				8A2D99B328F7B762007BC3E7 /* GenderCellViewModel.swift in Sources */,
 				8A9AC27D289A26EA00EFA680 /* DetailLocation.swift in Sources */,
+				8A2D99AC28F6CD72007BC3E7 /* DistrictCell.swift in Sources */,
 				6AF613C92313C13A00F5CBA2 /* ImageView.swift in Sources */,
 				6AF60E212313B9C000F5CBA2 /* CollectionExt.swift in Sources */,
 			);

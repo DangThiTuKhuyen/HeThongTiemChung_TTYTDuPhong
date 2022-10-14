@@ -12,8 +12,9 @@ import SwiftUtils
 
 final class LoginViewController: UIViewController {
 
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var iconImageView: UIImageView!
+    // MARK: - IBOutlets
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
@@ -21,30 +22,24 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var hidePassButton: UIButton!
     @IBOutlet private weak var heightErrorLabel: NSLayoutConstraint!
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
     }
 
+    // MARK: - Override func
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    func setGradientBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
-        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
-        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
-        gradientLayer.colors = [colorTop, colorBottom]
-        containerView.layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
 
+    // MARK: - Private func
     private func configUI() {
         setGradientBackground()
         iconImageView.image = UIImage.animatedImage(named: "vaccine")
@@ -54,21 +49,13 @@ final class LoginViewController: UIViewController {
         containerView.layer.masksToBounds = true
 
         phoneNumberTextField.delegate = self
-        phoneNumberTextField.layer.borderWidth = 1
-        phoneNumberTextField.borderStyle = .roundedRect
-        phoneNumberTextField.layer.cornerRadius = 10
-        phoneNumberTextField.layer.borderColor = UIColor.black.cgColor
+        phoneNumberTextField.configTextField()
         phoneNumberTextField.keyboardType = .asciiCapableNumberPad
-        phoneNumberTextField.addTarget(self, action: #selector(changeColorTextField), for: .touchUpInside)
         phoneNumberTextField.returnKeyType = .next
 
         passwordTextField.delegate = self
-        passwordTextField.layer.borderWidth = 1
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.layer.cornerRadius = 10
-        passwordTextField.layer.borderColor = UIColor.black.cgColor
+        passwordTextField.configTextField()
         passwordTextField.returnKeyType = .done
-        passwordTextField.addTarget(self, action: #selector(changeColorTextField), for: .touchUpInside)
 
         hidePassButton.setImage(#imageLiteral(resourceName: "hide-show-pass"), for: .normal)
         hidePassButton.setImage(#imageLiteral(resourceName: "open-eye"), for: .selected)
@@ -76,29 +63,37 @@ final class LoginViewController: UIViewController {
         heightErrorLabel.constant = 0
     }
 
-    @objc func changeColorTextField() {
+    private func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
+        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
+        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
+        gradientLayer.colors = [colorTop, colorBottom]
+        containerView.layer.insertSublayer(gradientLayer, at: 0)
     }
 
-    @IBAction func hidePassButtonTouchUpInside(_ sender: UIButton) {
+    // MARK: - IBActions
+    @IBAction private func hidePassButtonTouchUpInside(_ sender: UIButton) {
         hidePassButton.isSelected.toggle()
         passwordTextField.isSecureTextEntry.toggle()
     }
 
-    @IBAction func handleLogin(_ sender: Any) {
+    @IBAction private func handleLogin(_ sender: Any) {
 //        let detail = DetailViewController()
 //        navigationController?.pushViewController(detail, animated: true)
     }
 
-    @IBAction func backToTutorialButtonTouchUpInside(_ sender: UIButton) {
+    @IBAction private func backToTutorialButtonTouchUpInside(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func createAccountButtonTouchUpInside(_ sender: UIButton) {
+
+    @IBAction private func createAccountButtonTouchUpInside(_ sender: UIButton) {
         let registerVC = RegisterViewController()
         navigationController?.pushViewController(registerVC, animated: true)
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -108,5 +103,16 @@ extension LoginViewController: UITextFieldDelegate {
 //            handleLogin()
         }
         return true
+    }
+}
+
+// MARK: - UITextField
+extension UITextField {
+
+    func configTextField() {
+        self.layer.borderWidth = 1
+        self.borderStyle = .roundedRect
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.black.cgColor
     }
 }

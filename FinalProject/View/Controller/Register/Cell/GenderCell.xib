@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="KGk-i7-Jjw" customClass="GenderCell" customModule="FinalProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8E-ey-aGW" userLabel="Gender">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-nf-xip">
+                                <rect key="frame" x="0.0" y="20" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8pZ-nf-xip" secondAttribute="height" multiplier="1:1" id="PdS-4E-o5f"/>
+                                    <constraint firstAttribute="width" constant="25" id="kw7-ZI-4Kr"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWn-Z9-x3O">
+                                <rect key="frame" x="0.0" y="55" width="320" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="IzC-SD-HBx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-vS-jU4">
+                                <rect key="frame" x="45" y="20" width="255" height="25"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-1X-jz8">
+                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <inset key="contentEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="MALE" image="circle_radio_selected">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="maleFemaleAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MqI-P1-eX1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8f-Rk-4BY">
+                                        <rect key="frame" x="137.5" y="0.0" width="117.5" height="25"/>
+                                        <inset key="contentEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="FEMALE" image="circle_radio_selected">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="maleFemaleAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="v10-lf-ghd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="GUd-wa-L4o"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t9W-vS-jU4" firstAttribute="leading" secondItem="8pZ-nf-xip" secondAttribute="trailing" constant="20" id="4WX-gW-nwh"/>
+                            <constraint firstItem="dWn-Z9-x3O" firstAttribute="leading" secondItem="a8E-ey-aGW" secondAttribute="leading" id="TTM-Lk-rLv"/>
+                            <constraint firstAttribute="trailing" secondItem="t9W-vS-jU4" secondAttribute="trailing" constant="20" id="XGF-wS-PbP"/>
+                            <constraint firstItem="8pZ-nf-xip" firstAttribute="leading" secondItem="a8E-ey-aGW" secondAttribute="leading" id="Y5x-tq-GWj"/>
+                            <constraint firstItem="dWn-Z9-x3O" firstAttribute="top" secondItem="t9W-vS-jU4" secondAttribute="bottom" constant="10" id="YbG-Ph-G0S"/>
+                            <constraint firstAttribute="trailing" secondItem="dWn-Z9-x3O" secondAttribute="trailing" id="b37-Tb-TpB"/>
+                            <constraint firstItem="t9W-vS-jU4" firstAttribute="top" secondItem="a8E-ey-aGW" secondAttribute="top" constant="20" id="bo3-Dc-oXd"/>
+                            <constraint firstItem="dWn-Z9-x3O" firstAttribute="top" secondItem="8pZ-nf-xip" secondAttribute="bottom" constant="10" id="vPm-PB-Myj"/>
+                            <constraint firstAttribute="bottom" secondItem="dWn-Z9-x3O" secondAttribute="bottom" id="vha-Z7-kSM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="a8E-ey-aGW" secondAttribute="trailing" id="7OT-uH-Vjj"/>
+                    <constraint firstItem="a8E-ey-aGW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bIs-8c-Bkv"/>
+                    <constraint firstItem="a8E-ey-aGW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pBY-60-kCM"/>
+                    <constraint firstAttribute="bottom" secondItem="a8E-ey-aGW" secondAttribute="bottom" id="pVm-bs-aNp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outletCollection property="multiRadioButton" destination="y1y-1X-jz8" collectionClass="NSMutableArray" id="dEk-Mr-2lW"/>
+                <outletCollection property="multiRadioButton" destination="u8f-Rk-4BY" collectionClass="NSMutableArray" id="cSE-53-wEw"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle_radio_selected" width="24" height="24"/>
+        <image name="gender" width="25" height="25"/>
+    </resources>
+</document>
