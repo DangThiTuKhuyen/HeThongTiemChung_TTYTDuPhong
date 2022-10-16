@@ -12,10 +12,15 @@ final class CommonCellViewModel {
 
     private(set) var item: RegisterCellItem?
     private(set) var type: RegisterProfileType?
-    
+    let dummy = ["Đặng", "Thị", "Tú", "Khuyên"]
+
     // MARK: - Initial
     init(item: RegisterCellItem?, type: RegisterProfileType? ) {
         self.item = item
         self.type = type
     }
+
+//    func numberOfRowInSection() -> Int {
+//
+//    }
 }

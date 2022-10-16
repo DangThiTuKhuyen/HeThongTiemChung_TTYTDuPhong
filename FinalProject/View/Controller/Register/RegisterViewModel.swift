@@ -39,6 +39,8 @@ final class RegisterViewModel {
             }
         }
     }
+    
+    var province: String = ""
 
     func setupCell(kindOfCell: RegisterProfileType) -> RegisterCellItem? {
         switch kindOfCell {
@@ -47,7 +49,7 @@ final class RegisterViewModel {
         case .birthday:
             return RegisterCellItem(image: "birthday", value: "", placeholder: "Birthday")
         case .province:
-            return RegisterCellItem(image: "address", value: "", placeholder: "Province")
+            return RegisterCellItem(image: "address", value: province, placeholder: "Province")
         case .district:
             return RegisterCellItem(image: "", value: "", placeholder: "District")
         case .email:
