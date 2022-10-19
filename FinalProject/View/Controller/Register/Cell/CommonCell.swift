@@ -8,15 +8,28 @@
 
 import UIKit
 
+// MARK: - CommonCellDataSource
 protocol CommonCellDataSource: AnyObject {
-    func updateData(_ cell: CommonCell) -> String
+    func updateCellProvince(_ cell: CommonCell) -> String
+    func updateCellDistrict(_ cell: CommonCell) -> String
+}
+
+protocol CommonCellDelegate: AnyObject {
+    func cell(_ cell: CommonCell, needPerformAction action: CommonCell.Action)
 }
 
 final class CommonCell: UITableViewCell {
 
+    // MARK: - Enum
+    enum Action {
+        case done(value: String, type: RegisterProfileType)
+    }
+    // MARK: - IBOutlets
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var valueTextField: PaddingTextField!
     @IBOutlet private weak var leadingViewConstraint: NSLayoutConstraint!
+
+    // MARK: - Properties
     var tableView = UITableView()
     private let datePicker = UIDatePicker()
     var viewModel: CommonCellViewModel? {
@@ -24,34 +37,33 @@ final class CommonCell: UITableViewCell {
             updateCell()
         }
     }
-    
     weak var dataSource: CommonCellDataSource?
+    weak var delegate: CommonCellDelegate?
 
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isHidden = true
-//        valueTextField.isUserInteractionEnabled = false
         valueTextField.delegate = self
     }
 
+    // MARK: - Private func
     private func updateCell() {
-//        if let dataSource = dataSource {
-//            return dataSource.fxPickerView(self, titleForRow: row)
-//        } else {
-//            return ""
-//        }
-        guard let viewModel = viewModel, let type = viewModel.type, let dataSource = dataSource else { return }
+        guard let viewModel = viewModel, let type = viewModel.type else { return }
         switch type {
         case .province:
             valueTextField.isUserInteractionEnabled = false
-            valueTextField.addTarget(self, action: #selector(showDropDown), for: .touchUpInside)
-            valueTextField.text = dataSource.updateData(self)
+            iconImageView.isHidden = false
+            if let dataSource = dataSource {
+                valueTextField.text = dataSource.updateCellProvince(self)
+            }
+
         case .district:
             valueTextField.isUserInteractionEnabled = false
             leadingViewConstraint.constant = 45
             iconImageView.isHidden = true
+            if let dataSource = dataSource {
+                valueTextField.text = dataSource.updateCellDistrict(self)
+            }
         default:
             break
         }
@@ -64,18 +76,44 @@ final class CommonCell: UITableViewCell {
         datePicker.preferredDatePickerStyle = .wheels
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
-        toolbar.setItems([doneButton, spaceButton, cancelButton], animated: false)
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         valueTextField.inputAccessoryView = toolbar
         valueTextField.inputView = datePicker
     }
 
-    @objc private func donedatePicker() {
+
+    private func showKeyBoard(typeKeyBoard: UIKeyboardType, typeCell: RegisterProfileType) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        var doneButton = UIBarButtonItem()
+        switch typeCell {
+        case .name:
+            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneName))
+        case .email:
+            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEmail))
+        case .phoneNumber:
+            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneNumberPhone))
+        case .password:
+            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePassword))
+        default:
+            break
+        }
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        valueTextField.inputAccessoryView = toolbar
+        valueTextField.keyboardType = typeKeyBoard
+        valueTextField.autocorrectionType = .no
+    }
+
+    // MARK: - Objc func
+    @objc private func doneDatePicker() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         valueTextField.text = formatter.string(from: datePicker.date)
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .birthday))
         self.endEditing(true)
     }
 
@@ -83,44 +121,45 @@ final class CommonCell: UITableViewCell {
         self.endEditing(true)
     }
 
-    @objc private func showDropDown() {
-        print("ffff")
-    }
-}
-extension CommonCell: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    @objc private func doneNumberPhone() {
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .phoneNumber))
+        self.endEditing(true)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    @objc private func doneName() {
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .name))
+        print("name")
+        self.endEditing(true)
     }
 
+    @objc private func doneEmail() {
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .email))
+        print("name1")
+        self.endEditing(true)
+    }
 
+    @objc private func donePassword() {
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .password))
+        print("name2")
+        self.endEditing(true)
+    }
 }
-extension CommonCell: UITableViewDelegate {
 
-}
+// MARK: - UITextFieldDelegate
 extension CommonCell: UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let viewModel = viewModel, let type = viewModel.type else { return false }
         switch type {
-        case .name:
-            break
+        case .name, .email, .password:
+            showKeyBoard(typeKeyBoard: .alphabet, typeCell: type)
         case .birthday:
             showDatePicker()
-        case .province:
-            break
-        case .district:
-            break
-        case .email:
+        case .province, .district:
             break
         case .phoneNumber:
-            valueTextField.keyboardType = .asciiCapableNumberPad
+            showKeyBoard(typeKeyBoard: .asciiCapableNumberPad, typeCell: type)
         case .gender:
-            break
-        case .password:
             break
         }
         return true

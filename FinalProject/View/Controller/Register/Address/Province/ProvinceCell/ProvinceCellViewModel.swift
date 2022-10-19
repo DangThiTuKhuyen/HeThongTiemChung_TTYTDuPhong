@@ -11,8 +11,10 @@ import Foundation
 final class ProvinceCellViewModel {
 
     private(set) var address: Address
+    private(set) var selected: Bool = false
 
-    init(address: Address) {
+    init(address: Address, selected: Bool) {
         self.address = address
+        self.selected = selected
     }
 }

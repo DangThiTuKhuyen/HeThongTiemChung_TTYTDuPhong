@@ -8,27 +8,24 @@
 
 import UIKit
 
-class ProvinceCell: UITableViewCell {
+final class ProvinceCell: UITableViewCell {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var iconSelectedImage: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    // MARK: - Properties
     var viewModel: ProvinceCellViewModel? {
         didSet {
             updateCell()
         }
     }
 
-    func updateCell() {
-        label.text = viewModel?.address.province
+    // MARK: - Private func
+    private func updateCell() {
+        guard let viewModel = viewModel else { return }
+        label.text = viewModel.address.province
+        iconSelectedImage.isHidden = !viewModel.selected
     }
 }

@@ -10,36 +10,42 @@ import Foundation
 
 final class ProvinceViewModel {
 
-    var addresses: [Address] = []
-    var selectedIndexPath: Int = -1
+    private(set) var addresses: [Address] = []
+    var selectedIndexPath: IndexPath = IndexPath(row: -1, section: 0)
+    var chooseProvince: String
 
-    func getAddressSelected() -> Address {
-        return addresses[selectedIndexPath]
+    init(chooseProvince: String) {
+        self.chooseProvince = chooseProvince
     }
 
-    func getDistricts() -> [District] {
-        return addresses[selectedIndexPath].districts
+    func getAddressSelected() -> Address {
+        return addresses[selectedIndexPath.row]
     }
 
     func numberOfRowInSection() -> Int {
         return addresses.count
     }
 
-    func viewModelForItem(at indexPath: IndexPath) -> ProvinceCellViewModel {
-        return ProvinceCellViewModel(address: addresses[indexPath.row])
+    func setChooseProvince() {
+        var i: Int = -1
+        for address in addresses {
+            i += 1
+            print(i)
+            if address.province == chooseProvince {
+                selectedIndexPath.row = i
+                break
+            }
+        }
     }
-//    func numberOfRowInSectionForDistrict() -> Int {
-//        return addresses[selectedIndexPath].districts.count
-//    }
-//    
-//    func viewModelForItem(at indexPath: IndexPath) -> AddressCellViewModel {
-//        return AddressCellViewModel(address: addresses[selectedIndexPath].districts[indexPath])
-//    }
+
+    func viewModelForItem(at indexPath: IndexPath, selected: Bool = false) -> ProvinceCellViewModel {
+        return ProvinceCellViewModel(address: addresses[indexPath.row], selected: selected)
+    }
 }
 
 extension ProvinceViewModel {
     func getProvince(completion: @escaping APICompletion) {
-        AddressService.getProvince() { [weak self] result in
+        AddressService.getProvince { [weak self] result in
             guard let this = self else {
                 completion(.failure(Errors.initFailure))
                 return

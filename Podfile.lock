@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - DropDown (2.3.13)
   - GIFImageView (0.1.0)
   - GoogleMaps (4.1.0):
     - GoogleMaps/Maps (= 4.1.0)
@@ -40,9 +41,11 @@ PODS:
   - SwifterSwift/UIKit (5.1.0)
   - SwiftLint (0.27.0)
   - SwiftUtils (4.2)
+  - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
   - Alamofire (= 4.8.2)
+  - DropDown
   - GIFImageView
   - GoogleMaps
   - GooglePlaces
@@ -54,10 +57,12 @@ DEPENDENCIES:
   - SwifterSwift (~> 5.0)
   - SwiftLint (= 0.27.0)
   - SwiftUtils (= 4.2)
+  - TPKeyboardAvoiding (= 1.3.2)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
     - GIFImageView
     - GoogleMaps
     - GooglePlaces
@@ -70,9 +75,11 @@ SPEC REPOS:
     - SwifterSwift
     - SwiftLint
     - SwiftUtils
+    - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   GIFImageView: cd6a500b9bac1942cb66b73452b97baa6e75280d
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
@@ -85,7 +92,8 @@ SPEC CHECKSUMS:
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftUtils: de77bcd1df216c9be6ec7011777302c60a2018a6
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: beb521874035091b40f981ee1e8cefa41fc10bf2
+PODFILE CHECKSUM: 197fed6f966a2e90674610cd6d6a5eb0b5ec3735
 
 COCOAPODS: 1.11.3

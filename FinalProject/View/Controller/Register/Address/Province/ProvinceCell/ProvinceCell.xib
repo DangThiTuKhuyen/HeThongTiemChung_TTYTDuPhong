@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDC-gX-0Y4">
-                        <rect key="frame" x="20" y="0.0" width="300" height="50"/>
+                        <rect key="frame" x="20" y="0.0" width="262" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="1St-9U-DvB"/>
                         </constraints>
@@ -26,19 +26,33 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="WRI-SN-J4S">
+                        <rect key="frame" x="282" y="16" width="18" height="18"/>
+                        <accessibility key="accessibilityConfiguration" identifier="imgChecked"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="DSA-HN-eVM"/>
+                            <constraint firstAttribute="width" constant="18" id="UwB-93-QNH"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="WRI-SN-J4S" firstAttribute="leading" secondItem="GDC-gX-0Y4" secondAttribute="trailing" id="5YW-jr-62X"/>
                     <constraint firstItem="GDC-gX-0Y4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Af9-F6-WWV"/>
-                    <constraint firstAttribute="trailing" secondItem="GDC-gX-0Y4" secondAttribute="trailing" id="Svw-U3-8gA"/>
+                    <constraint firstAttribute="trailing" secondItem="WRI-SN-J4S" secondAttribute="trailing" constant="20" id="QLt-se-6r5"/>
+                    <constraint firstItem="WRI-SN-J4S" firstAttribute="centerY" secondItem="GDC-gX-0Y4" secondAttribute="centerY" id="ggT-Zn-m3F"/>
                     <constraint firstItem="GDC-gX-0Y4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pDo-LN-euX"/>
                     <constraint firstAttribute="bottom" secondItem="GDC-gX-0Y4" secondAttribute="bottom" id="wiX-bZ-OcW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="iconSelectedImage" destination="WRI-SN-J4S" id="IzN-ou-0Jc"/>
                 <outlet property="label" destination="GDC-gX-0Y4" id="YVC-vQ-Ofb"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="check" width="13.5" height="9.5"/>
+    </resources>
 </document>

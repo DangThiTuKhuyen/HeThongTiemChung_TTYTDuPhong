@@ -11,11 +11,11 @@ import ObjectMapper
 
 class District: Mappable {
 
-    var districts: String = ""
+    var name: String = ""
 
     required init?(map: Map) { }
 
     func mapping(map: Map) {
-        districts <- map["name"]
+        name <- map["name"]
     }
 }

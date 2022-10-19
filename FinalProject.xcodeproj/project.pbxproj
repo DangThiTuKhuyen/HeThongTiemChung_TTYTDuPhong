@@ -58,6 +58,12 @@
 		8A2D99CC28FBCDAF007BC3E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99CB28FBCDAF007BC3E7 /* Address.swift */; };
 		8A2D99CE28FBCEC7007BC3E7 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99CD28FBCEC7007BC3E7 /* AddressService.swift */; };
 		8A2D99D028FBE66A007BC3E7 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99CF28FBE66A007BC3E7 /* District.swift */; };
+		8A2D99E528FC32BE007BC3E7 /* DistrictCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99E328FC32BE007BC3E7 /* DistrictCell.swift */; };
+		8A2D99E628FC32BE007BC3E7 /* DistrictCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D99E428FC32BE007BC3E7 /* DistrictCell.xib */; };
+		8A2D99E828FC32D2007BC3E7 /* DistrictCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99E728FC32D2007BC3E7 /* DistrictCellViewModel.swift */; };
+		8A2D99ED28FC3337007BC3E7 /* DistrictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99EB28FC3337007BC3E7 /* DistrictViewController.swift */; };
+		8A2D99EE28FC3337007BC3E7 /* DistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2D99EC28FC3337007BC3E7 /* DistrictViewController.xib */; };
+		8A2D99F028FC3346007BC3E7 /* DistrictViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2D99EF28FC3346007BC3E7 /* DistrictViewModel.swift */; };
 		8A466F2428AB3DCC002F3038 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A466F2328AB3DCC002F3038 /* LocationManager.swift */; };
 		8A466F8E28AB75B7002F3038 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A466F8C28AB75B7002F3038 /* MapViewController.swift */; };
 		8A466F8F28AB75B7002F3038 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A466F8D28AB75B7002F3038 /* MapViewController.xib */; };
@@ -195,6 +201,12 @@
 		8A2D99CB28FBCDAF007BC3E7 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		8A2D99CD28FBCEC7007BC3E7 /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		8A2D99CF28FBE66A007BC3E7 /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
+		8A2D99E328FC32BE007BC3E7 /* DistrictCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictCell.swift; sourceTree = "<group>"; };
+		8A2D99E428FC32BE007BC3E7 /* DistrictCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistrictCell.xib; sourceTree = "<group>"; };
+		8A2D99E728FC32D2007BC3E7 /* DistrictCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictCellViewModel.swift; sourceTree = "<group>"; };
+		8A2D99EB28FC3337007BC3E7 /* DistrictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictViewController.swift; sourceTree = "<group>"; };
+		8A2D99EC28FC3337007BC3E7 /* DistrictViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistrictViewController.xib; sourceTree = "<group>"; };
+		8A2D99EF28FC3346007BC3E7 /* DistrictViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictViewModel.swift; sourceTree = "<group>"; };
 		8A466F2328AB3DCC002F3038 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8A466F8C28AB75B7002F3038 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8A466F8D28AB75B7002F3038 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -520,8 +532,22 @@
 		8A2D99D328FC22AD007BC3E7 /* District */ = {
 			isa = PBXGroup;
 			children = (
+				8A2D99DC28FC2CD7007BC3E7 /* DistrictCell */,
+				8A2D99EB28FC3337007BC3E7 /* DistrictViewController.swift */,
+				8A2D99EC28FC3337007BC3E7 /* DistrictViewController.xib */,
+				8A2D99EF28FC3346007BC3E7 /* DistrictViewModel.swift */,
 			);
 			path = District;
+			sourceTree = "<group>";
+		};
+		8A2D99DC28FC2CD7007BC3E7 /* DistrictCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A2D99E328FC32BE007BC3E7 /* DistrictCell.swift */,
+				8A2D99E428FC32BE007BC3E7 /* DistrictCell.xib */,
+				8A2D99E728FC32D2007BC3E7 /* DistrictCellViewModel.swift */,
+			);
+			path = DistrictCell;
 			sourceTree = "<group>";
 		};
 		8A32918528F00F1400B3639A /* Register */ = {
@@ -890,6 +916,7 @@
 			files = (
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
 				6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */,
+				8A2D99EE28FC3337007BC3E7 /* DistrictViewController.xib in Resources */,
 				8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */,
 				8AA8613228A3BA9000618FD1 /* FavoriteViewController.xib in Resources */,
 				8A2D99C128F95571007BC3E7 /* ProvinceViewController.xib in Resources */,
@@ -911,6 +938,7 @@
 				8A48650028ED31A1007B7AB7 /* DetailCell.xib in Resources */,
 				8A4864FA28ED3012007B7AB7 /* DetailCell in Resources */,
 				8A22FD6E288FE87B004A8E5B /* NearTableViewCell.xib in Resources */,
+				8A2D99E628FC32BE007BC3E7 /* DistrictCell.xib in Resources */,
 				8A9FBADA28B86D5E003A94A1 /* SearchCell.xib in Resources */,
 				8A22FD21288F9A52004A8E5B /* RecommendTableViewCell.xib in Resources */,
 				8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */,
@@ -1035,8 +1063,11 @@
 				8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */,
 				8A22FD50288FDD2C004A8E5B /* NearViewModel.swift in Sources */,
 				8ADBF99328F484D500DF3F8F /* ResponseSerializer.swift in Sources */,
+				8A2D99F028FC3346007BC3E7 /* DistrictViewModel.swift in Sources */,
 				8A2D99CE28FBCEC7007BC3E7 /* AddressService.swift in Sources */,
 				8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */,
+				8A2D99E828FC32D2007BC3E7 /* DistrictCellViewModel.swift in Sources */,
+				8A2D99E528FC32BE007BC3E7 /* DistrictCell.swift in Sources */,
 				8ADBF9B328F4861800DF3F8F /* Label.swift in Sources */,
 				8ADBF9B428F4861800DF3F8F /* TableCell.swift in Sources */,
 				8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */,
@@ -1100,6 +1131,7 @@
 				8A9FBAE028B86D71003A94A1 /* SearchService.swift in Sources */,
 				8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */,
 				8A4864FF28ED31A1007B7AB7 /* DetailCellViewModel.swift in Sources */,
+				8A2D99ED28FC3337007BC3E7 /* DistrictViewController.swift in Sources */,
 				8A22FCC2288F7923004A8E5B /* RecommendTableViewViewModel.swift in Sources */,
 				8A91E01A28F472D200973339 /* SceneDelegate.swift in Sources */,
 				6AF60D222313B35800F5CBA2 /* String.swift in Sources */,

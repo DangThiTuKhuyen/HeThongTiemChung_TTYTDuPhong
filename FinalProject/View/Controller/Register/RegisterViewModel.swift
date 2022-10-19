@@ -25,7 +25,20 @@ struct RegisterCellItem {
     let placeholder: String?
 }
 
+struct UserInfo {
+    var name: String = ""
+    var birthday: Date?
+    var province: String = ""
+    var district: String = ""
+    var email: String = ""
+    var phoneNumber: Int = 0
+    var gender: Int = -1
+    var password: String = ""
+}
+
 final class RegisterViewModel {
+
+    // MARK: - Enum
     enum CellType {
         case commonCell
         case genderCell
@@ -39,8 +52,14 @@ final class RegisterViewModel {
             }
         }
     }
-    
-    var province: String = ""
+
+    // MARK: - Properties
+    var address: Address? // ==> province = address.province
+    var userInfo = UserInfo()
+
+    func getDistrict() -> [District] {
+        return address?.districts ?? []
+    }
 
     func setupCell(kindOfCell: RegisterProfileType) -> RegisterCellItem? {
         switch kindOfCell {
@@ -49,9 +68,9 @@ final class RegisterViewModel {
         case .birthday:
             return RegisterCellItem(image: "birthday", value: "", placeholder: "Birthday")
         case .province:
-            return RegisterCellItem(image: "address", value: province, placeholder: "Province")
+            return RegisterCellItem(image: "address", value: address?.province, placeholder: "Province")
         case .district:
-            return RegisterCellItem(image: "", value: "", placeholder: "District")
+            return RegisterCellItem(image: "", value: userInfo.district, placeholder: "District")
         case .email:
             return RegisterCellItem(image: "email", value: "", placeholder: "Email")
         case .phoneNumber:
@@ -78,4 +97,33 @@ final class RegisterViewModel {
         }
     }
 
+    func setName(name: String) {
+        userInfo.name = name
+    }
+
+    func setBirthday(birthday: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        userInfo.birthday = formatter.date(from: birthday)
+    }
+
+    func setProvince() {
+        userInfo.province = address?.province ?? ""
+    }
+
+    func setDistrict(district: String) {
+        userInfo.district = district
+    }
+
+    func setEmail(email: String) {
+        userInfo.email = email
+    }
+
+    func setPhoneNumber(phoneNumber: String) {
+        userInfo.phoneNumber = Int(phoneNumber) ?? 0
+    }
+
+    func setPassword(password: String) {
+        userInfo.password = password
+    }
 }

@@ -8,21 +8,24 @@
 
 import UIKit
 
+// MARK: - ProvinceViewControllerDelegate
 protocol ProvinceViewControllerDelegate: AnyObject {
     func controller(_ controller: ProvinceViewController, neesPerformAction action: ProvinceViewController.Action)
 }
 
-class ProvinceViewController: UIViewController {
+final class ProvinceViewController: UIViewController {
 
+    // MARK: - Enum
     enum Action {
         case updateProvince(province: Address)
     }
 
-    @IBOutlet weak var tableView: UITableView!
-    var viewModel = ProvinceViewModel()
+    // MARK: - IBOutlets
+    @IBOutlet private weak var tableView: UITableView!
+    var viewModel: ProvinceViewModel?
     weak var delegate: ProvinceViewControllerDelegate?
-    var type: RegisterProfileType = .province
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -30,16 +33,10 @@ class ProvinceViewController: UIViewController {
         configTableView()
         setupNavi()
     }
-    
-    private func getData() {
-        if type == .province {
-            getProvince()
-        } else {
-            viewModel.getDistricts()
-        }
-    }
 
+    // MARK: - Private func
     private func getProvince() {
+        guard let viewModel = viewModel else { return }
         HUD.show()
         viewModel.getProvince { [weak self] result in
             HUD.dismiss()
@@ -48,6 +45,7 @@ class ProvinceViewController: UIViewController {
                 switch result {
                 case .success:
                     this.tableView.reloadData()
+                    viewModel.setChooseProvince()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
@@ -66,26 +64,37 @@ class ProvinceViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(chooseProvince))
     }
 
+    // MARK: - Objc func
     @objc private func chooseProvince() {
+        guard let viewModel = viewModel else { return }
         delegate?.controller(self, neesPerformAction: .updateProvince(province: viewModel.getAddressSelected()))
         navigationController?.popViewController(animated: true)
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ProvinceViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRowInSection()
+        guard let viewModel = viewModel else { return 0 }
+        return viewModel.numberOfRowInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = viewModel else { return UITableViewCell() }
         let cell = tableView.dequeue(ProvinceCell.self)
-        cell.viewModel = viewModel.viewModelForItem(at: indexPath)
+        cell.viewModel = viewModel.viewModelForItem(at: indexPath, selected: viewModel.selectedIndexPath == indexPath)
         return cell
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ProvinceViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectedIndexPath = indexPath.row
+        guard let viewModel = viewModel else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.selectedIndexPath = indexPath
+        tableView.reloadData()
     }
 }
