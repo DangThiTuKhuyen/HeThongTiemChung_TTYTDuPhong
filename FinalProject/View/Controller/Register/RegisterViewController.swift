@@ -16,6 +16,8 @@ final class RegisterViewController: UIViewController {
 
     // MARK: - Properties
     var viewModel = RegisterViewModel()
+    var color = UIColor(red: 0.53, green: 0.81, blue: 0.98, alpha: 1.00)
+    
 
     // MARK: - Life cycle
     override func viewDidLoad() {

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUtils
 
-final class TutorialViewController: UIViewController {
+final class TutorialViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -32,7 +32,7 @@ final class TutorialViewController: UIViewController {
         self.view.layoutIfNeeded()
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
-        setGradientBackground()
+//        setGradientBackground()
         addItem()
     }
 
@@ -82,16 +82,16 @@ final class TutorialViewController: UIViewController {
         pageControl.numberOfPages = viewModel.numberOfPage()
         pageControl.currentPage = 0
     }
-
-    func setGradientBackground() {
-        guard let viewModel = viewModel else { return }
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width * CGFloat(viewModel.numberOfPage()), height: kScreenSize.height * CGFloat(viewModel.numberOfPage()))
-        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
-        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
-        gradientLayer.colors = [colorTop, colorBottom]
-        scrollView.layer.insertSublayer(gradientLayer, at: 0)
-    }
+//
+//    func setGradientBackground() {
+//        guard let viewModel = viewModel else { return }
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width * CGFloat(viewModel.numberOfPage()), height: kScreenSize.height * CGFloat(viewModel.numberOfPage()))
+//        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
+//        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
+//        gradientLayer.colors = [colorTop, colorBottom]
+//        scrollView.layer.insertSublayer(gradientLayer, at: 0)
+//    }
 
     private func setIndiactorForCurrentPage() {
         guard let scrollView = scrollView else { return }

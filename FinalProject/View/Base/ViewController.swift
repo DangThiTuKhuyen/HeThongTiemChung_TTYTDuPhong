@@ -20,6 +20,7 @@ class ViewController: UIViewController, MVVM.View {
         view.backgroundColor = .white
         view.accessibilityIdentifier = String(describing: type(of: self))
         view.removeMultiTouch()
+        setGradientBackground()
     }
 
     func setGradientBackground() {

@@ -75,7 +75,25 @@
 		8A4E5E90288AA7830053FFC6 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5E8F288AA7830053FFC6 /* Venue.swift */; };
 		8A4E5E95288AA80B0053FFC6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5E94288AA80B0053FFC6 /* HomeService.swift */; };
 		8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FA049289775DF00090B44 /* DetailViewModel.swift */; };
+		8A880B4F2901066100FDECA5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B4D2901066100FDECA5 /* HistoryViewController.swift */; };
+		8A880B502901066100FDECA5 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B4E2901066100FDECA5 /* HistoryViewController.xib */; };
+		8A880B522901068B00FDECA5 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B512901068B00FDECA5 /* HistoryViewModel.swift */; };
+		8A880B5729012D1400FDECA5 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B5529012D1400FDECA5 /* HistoryCell.swift */; };
+		8A880B5829012D1400FDECA5 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B5629012D1400FDECA5 /* HistoryCell.xib */; };
+		8A880B5A29012D2400FDECA5 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B5929012D2400FDECA5 /* HistoryCellViewModel.swift */; };
+		8A880B5F2901343C00FDECA5 /* DetailHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B5D2901343C00FDECA5 /* DetailHistoryViewController.swift */; };
+		8A880B602901343C00FDECA5 /* DetailHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B5E2901343C00FDECA5 /* DetailHistoryViewController.xib */; };
+		8A880B622901345A00FDECA5 /* DetailHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B612901345A00FDECA5 /* DetailHistoryViewModel.swift */; };
+		8A880B66290136B100FDECA5 /* DetailHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B64290136B100FDECA5 /* DetailHistoryCell.swift */; };
+		8A880B67290136B100FDECA5 /* DetailHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B65290136B100FDECA5 /* DetailHistoryCell.xib */; };
+		8A880B6A290136D200FDECA5 /* DetailHistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B69290136D200FDECA5 /* DetailHistoryCellViewModel.swift */; };
+		8A880B962911FDAE00FDECA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B942911FDAE00FDECA5 /* ProfileViewController.swift */; };
+		8A880B972911FDAE00FDECA5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B952911FDAE00FDECA5 /* ProfileViewController.xib */; };
+		8A880B992911FDD700FDECA5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B982911FDD700FDECA5 /* ProfileViewModel.swift */; };
 		8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A90CD5C288E811300EDFB01 /* HomeViewController.xib */; };
+		8A91DFDB2915080D00FF8DD4 /* RegisterVaccinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFD92915080D00FF8DD4 /* RegisterVaccinationViewController.swift */; };
+		8A91DFDC2915080D00FF8DD4 /* RegisterVaccinationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91DFDA2915080D00FF8DD4 /* RegisterVaccinationViewController.xib */; };
+		8A91DFDE2915082100FF8DD4 /* RegisterVaccinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFDD2915082100FF8DD4 /* RegisterVaccinationViewModel.swift */; };
 		8A91E01928F472D200973339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E01728F472D200973339 /* AppDelegate.swift */; };
 		8A91E01A28F472D200973339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E01828F472D200973339 /* SceneDelegate.swift */; };
 		8A9AC277289A26B000EFA680 /* DetailVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9AC276289A26B000EFA680 /* DetailVenue.swift */; };
@@ -218,7 +236,25 @@
 		8A4E5E8F288AA7830053FFC6 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		8A4E5E94288AA80B0053FFC6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		8A4FA049289775DF00090B44 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		8A880B4D2901066100FDECA5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		8A880B4E2901066100FDECA5 /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		8A880B512901068B00FDECA5 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		8A880B5529012D1400FDECA5 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		8A880B5629012D1400FDECA5 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		8A880B5929012D2400FDECA5 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
+		8A880B5D2901343C00FDECA5 /* DetailHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryViewController.swift; sourceTree = "<group>"; };
+		8A880B5E2901343C00FDECA5 /* DetailHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryViewController.xib; sourceTree = "<group>"; };
+		8A880B612901345A00FDECA5 /* DetailHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryViewModel.swift; sourceTree = "<group>"; };
+		8A880B64290136B100FDECA5 /* DetailHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryCell.swift; sourceTree = "<group>"; };
+		8A880B65290136B100FDECA5 /* DetailHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHistoryCell.xib; sourceTree = "<group>"; };
+		8A880B69290136D200FDECA5 /* DetailHistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryCellViewModel.swift; sourceTree = "<group>"; };
+		8A880B942911FDAE00FDECA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8A880B952911FDAE00FDECA5 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		8A880B982911FDD700FDECA5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		8A90CD5C288E811300EDFB01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		8A91DFD92915080D00FF8DD4 /* RegisterVaccinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVaccinationViewController.swift; sourceTree = "<group>"; };
+		8A91DFDA2915080D00FF8DD4 /* RegisterVaccinationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterVaccinationViewController.xib; sourceTree = "<group>"; };
+		8A91DFDD2915082100FF8DD4 /* RegisterVaccinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVaccinationViewModel.swift; sourceTree = "<group>"; };
 		8A91E01728F472D200973339 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A91E01828F472D200973339 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8A9AC276289A26B000EFA680 /* DetailVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVenue.swift; sourceTree = "<group>"; };
@@ -583,6 +619,9 @@
 		8A4E5E7B288A90130053FFC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8A91DFD8291507CB00FF8DD4 /* Register Vaccination */,
+				8A880B932911FD7F00FDECA5 /* Profile */,
+				8A880B4C2901063E00FDECA5 /* History */,
 				8A32918528F00F1400B3639A /* Register */,
 				8AA83D3D28EF1939009A50CA /* Login */,
 				8A6C8FFE28ED381600DBF7B5 /* Tutorial */,
@@ -636,6 +675,59 @@
 				8ADBF99C28F4853000DF3F8F /* TutorialViewModel.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		8A880B4C2901063E00FDECA5 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8A880B5B290133F100FDECA5 /* Detail */,
+				8A880B5329012C8E00FDECA5 /* Cell */,
+				8A880B4D2901066100FDECA5 /* HistoryViewController.swift */,
+				8A880B4E2901066100FDECA5 /* HistoryViewController.xib */,
+				8A880B512901068B00FDECA5 /* HistoryViewModel.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		8A880B5329012C8E00FDECA5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A880B5529012D1400FDECA5 /* HistoryCell.swift */,
+				8A880B5629012D1400FDECA5 /* HistoryCell.xib */,
+				8A880B5929012D2400FDECA5 /* HistoryCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8A880B5B290133F100FDECA5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8A880B632901369000FDECA5 /* Cell */,
+				8A880B5D2901343C00FDECA5 /* DetailHistoryViewController.swift */,
+				8A880B5E2901343C00FDECA5 /* DetailHistoryViewController.xib */,
+				8A880B612901345A00FDECA5 /* DetailHistoryViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8A880B632901369000FDECA5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A880B64290136B100FDECA5 /* DetailHistoryCell.swift */,
+				8A880B65290136B100FDECA5 /* DetailHistoryCell.xib */,
+				8A880B69290136D200FDECA5 /* DetailHistoryCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8A880B932911FD7F00FDECA5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8A880B942911FDAE00FDECA5 /* ProfileViewController.swift */,
+				8A880B952911FDAE00FDECA5 /* ProfileViewController.xib */,
+				8A880B982911FDD700FDECA5 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8A90CD5A288E74D000EDFB01 /* Home */ = {
@@ -696,6 +788,24 @@
 				8A22FD82288FF63D004A8E5B /* NearCell.xib */,
 			);
 			path = RecommendCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		8A91DFD8291507CB00FF8DD4 /* Register Vaccination */ = {
+			isa = PBXGroup;
+			children = (
+				8A91DFDF29150AC700FF8DD4 /* Cell */,
+				8A91DFD92915080D00FF8DD4 /* RegisterVaccinationViewController.swift */,
+				8A91DFDA2915080D00FF8DD4 /* RegisterVaccinationViewController.xib */,
+				8A91DFDD2915082100FF8DD4 /* RegisterVaccinationViewModel.swift */,
+			);
+			path = "Register Vaccination";
+			sourceTree = "<group>";
+		};
+		8A91DFDF29150AC700FF8DD4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8A9AC274289A254E00EFA680 /* HomeModel */ = {
@@ -914,12 +1024,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A880B67290136B100FDECA5 /* DetailHistoryCell.xib in Resources */,
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
 				6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */,
 				8A2D99EE28FC3337007BC3E7 /* DistrictViewController.xib in Resources */,
 				8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */,
 				8AA8613228A3BA9000618FD1 /* FavoriteViewController.xib in Resources */,
 				8A2D99C128F95571007BC3E7 /* ProvinceViewController.xib in Resources */,
+				8A880B5829012D1400FDECA5 /* HistoryCell.xib in Resources */,
 				8A9FBAD728B86D5E003A94A1 /* CategoryCell.xib in Resources */,
 				8A22FD37288F9BE7004A8E5B /* RecommendCell.xib in Resources */,
 				8AA83D4128EF1992009A50CA /* LoginViewController.xib in Resources */,
@@ -933,15 +1045,19 @@
 				8A2D99A928F6CD31007BC3E7 /* GenderCell.xib in Resources */,
 				8A466F8F28AB75B7002F3038 /* MapViewController.xib in Resources */,
 				8A9FBA5B28B75ABD003A94A1 /* SimilarCell.xib in Resources */,
+				8A880B602901343C00FDECA5 /* DetailHistoryViewController.xib in Resources */,
 				8ADBF99D28F4853000DF3F8F /* TutorialViewController.xib in Resources */,
 				8A22FD84288FF63D004A8E5B /* NearCell.xib in Resources */,
 				8A48650028ED31A1007B7AB7 /* DetailCell.xib in Resources */,
 				8A4864FA28ED3012007B7AB7 /* DetailCell in Resources */,
+				8A880B502901066100FDECA5 /* HistoryViewController.xib in Resources */,
 				8A22FD6E288FE87B004A8E5B /* NearTableViewCell.xib in Resources */,
 				8A2D99E628FC32BE007BC3E7 /* DistrictCell.xib in Resources */,
 				8A9FBADA28B86D5E003A94A1 /* SearchCell.xib in Resources */,
 				8A22FD21288F9A52004A8E5B /* RecommendTableViewCell.xib in Resources */,
 				8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */,
+				8A880B972911FDAE00FDECA5 /* ProfileViewController.xib in Resources */,
+				8A91DFDC2915080D00FF8DD4 /* RegisterVaccinationViewController.xib in Resources */,
 				8ADBF9A428F4857A00DF3F8F /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,6 +1184,7 @@
 				8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */,
 				8A2D99E828FC32D2007BC3E7 /* DistrictCellViewModel.swift in Sources */,
 				8A2D99E528FC32BE007BC3E7 /* DistrictCell.swift in Sources */,
+				8A880B522901068B00FDECA5 /* HistoryViewModel.swift in Sources */,
 				8ADBF9B328F4861800DF3F8F /* Label.swift in Sources */,
 				8ADBF9B428F4861800DF3F8F /* TableCell.swift in Sources */,
 				8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */,
@@ -1088,6 +1205,7 @@
 				8A2D99B528F7D14B007BC3E7 /* PaddingTextField.swift in Sources */,
 				8ADBF99128F484B900DF3F8F /* SearchVenue.swift in Sources */,
 				8A9FBAD028B86D5E003A94A1 /* SearchViewModel.swift in Sources */,
+				8A880B992911FDD700FDECA5 /* ProfileViewModel.swift in Sources */,
 				8ADBF9B628F4861800DF3F8F /* ScrollView.swift in Sources */,
 				8A2D99CC28FBCDAF007BC3E7 /* Address.swift in Sources */,
 				8ADBF9B528F4861800DF3F8F /* Button.swift in Sources */,
@@ -1100,28 +1218,36 @@
 				6AF613B02313C13A00F5CBA2 /* CollectionCell.swift in Sources */,
 				8ADBF99028F484B900DF3F8F /* Category.swift in Sources */,
 				6AF60DC52313B56B00F5CBA2 /* ApiManager.swift in Sources */,
+				8A91DFDB2915080D00FF8DD4 /* RegisterVaccinationViewController.swift in Sources */,
 				6AF60DC72313B56B00F5CBA2 /* Api.swift in Sources */,
 				8A2D99C928F9566D007BC3E7 /* ProvinceCellViewModel.swift in Sources */,
 				8A9AC281289A27AD00EFA680 /* Price.swift in Sources */,
 				8ADBF9A528F4857A00DF3F8F /* DetailViewController.swift in Sources */,
 				6AF613B12313C13A00F5CBA2 /* CollectionViewHeaderView.swift in Sources */,
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
+				8A880B622901345A00FDECA5 /* DetailHistoryViewModel.swift in Sources */,
 				8A22FD36288F9BE7004A8E5B /* RecommendCell.swift in Sources */,
+				8A880B5729012D1400FDECA5 /* HistoryCell.swift in Sources */,
 				8ADBF99928F4851500DF3F8F /* LoginViewController.swift in Sources */,
 				6AF60D082313B31200F5CBA2 /* App.swift in Sources */,
 				8A22FCB2288F7840004A8E5B /* HomeViewModel.swift in Sources */,
 				8A9AC33F289A731900EFA680 /* Photo.swift in Sources */,
+				8A880B5F2901343C00FDECA5 /* DetailHistoryViewController.swift in Sources */,
+				8A880B6A290136D200FDECA5 /* DetailHistoryCellViewModel.swift in Sources */,
 				8ADBF98928F4847D00DF3F8F /* NSErrorExt.swift in Sources */,
 				8A2D99C328F955A0007BC3E7 /* ProvinceViewModel.swift in Sources */,
 				8A9FBA5A28B75ABD003A94A1 /* SimilarCell.swift in Sources */,
 				8A4864FE28ED31A1007B7AB7 /* DetailCell.swift in Sources */,
 				8A2D99A828F6CD31007BC3E7 /* GenderCell.swift in Sources */,
+				8A880B962911FDAE00FDECA5 /* ProfileViewController.swift in Sources */,
+				8A91DFDE2915082100FF8DD4 /* RegisterVaccinationViewModel.swift in Sources */,
 				8A2D99B128F7B74B007BC3E7 /* CommonCellViewModel.swift in Sources */,
 				8A9FBAD228B86D5E003A94A1 /* CategoryViewModel.swift in Sources */,
 				8A22FD66288FDE6B004A8E5B /* OpeningTableViewCell.swift in Sources */,
 				8A2D99AF28F7A2AC007BC3E7 /* RegisterViewModel.swift in Sources */,
 				8ADBF9B828F4861800DF3F8F /* ViewController.swift in Sources */,
 				8A4E5E95288AA80B0053FFC6 /* HomeService.swift in Sources */,
+				8A880B4F2901066100FDECA5 /* HistoryViewController.swift in Sources */,
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
 				8ADBF9A128F4855900DF3F8F /* MapViewModel.swift in Sources */,
 				6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */,
@@ -1130,6 +1256,7 @@
 				8A9FBAD528B86D5E003A94A1 /* CategoryCell.swift in Sources */,
 				8A9FBAE028B86D71003A94A1 /* SearchService.swift in Sources */,
 				8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */,
+				8A880B66290136B100FDECA5 /* DetailHistoryCell.swift in Sources */,
 				8A4864FF28ED31A1007B7AB7 /* DetailCellViewModel.swift in Sources */,
 				8A2D99ED28FC3337007BC3E7 /* DistrictViewController.swift in Sources */,
 				8A22FCC2288F7923004A8E5B /* RecommendTableViewViewModel.swift in Sources */,
@@ -1139,6 +1266,7 @@
 				8ADBF99E28F4853000DF3F8F /* TutorialViewController.swift in Sources */,
 				8A22FD83288FF63D004A8E5B /* NearCell.swift in Sources */,
 				8A4E5E90288AA7830053FFC6 /* Venue.swift in Sources */,
+				8A880B5A29012D2400FDECA5 /* HistoryCellViewModel.swift in Sources */,
 				8A9FBAD828B86D5E003A94A1 /* SearchCellViewModel.swift in Sources */,
 				8ADBF9AB28F485C300DF3F8F /* HomeViewController.swift in Sources */,
 				6AF60DC22313B56B00F5CBA2 /* RequestSerializer.swift in Sources */,

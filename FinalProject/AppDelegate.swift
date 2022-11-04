@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private func
     func configTabbar() {
-        let homeVC = HomeViewController()
-        let homeViewModel = HomeViewModel()
-        homeVC.viewModel = homeViewModel
-        let homeNavi = UINavigationController(rootViewController: homeVC)
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "home_fill"))
+//        let homeVC = HomeViewController()
+//        let homeViewModel = HomeViewModel()
+//        homeVC.viewModel = homeViewModel
+//        let homeNavi = UINavigationController(rootViewController: homeVC)
+//        homeVC.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "home_fill"))
 
         let searchVC = SearchViewController()
         let searchViewModel = SearchViewModel()
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         favoriteVC.viewModel = favoriteViewModel
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeNavi, searchNavi, favoriteNavi]
+        tabBarController.viewControllers = [searchNavi, favoriteNavi]
         tabBarController.tabBar.tintColor = .black
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
