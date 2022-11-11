@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CommonTableCell" customModule="FinalProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fd-ZD-d1O">
+                        <rect key="frame" x="10" y="11.5" width="45" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.96078431372549022" green="0.67843137254901964" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tú Khuyên" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAQ-jM-0Q1">
+                        <rect key="frame" x="187" y="5" width="108" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="ktH-q0-gpx">
+                        <rect key="frame" x="300" y="14.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ktH-q0-gpx" secondAttribute="height" multiplier="1:1" id="6WN-3I-zaG"/>
+                            <constraint firstAttribute="width" constant="15" id="suq-DA-q7Y"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PAQ-jM-0Q1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5fd-ZD-d1O" secondAttribute="trailing" constant="10" id="0yf-W1-BkE"/>
+                    <constraint firstAttribute="trailing" secondItem="ktH-q0-gpx" secondAttribute="trailing" constant="5" id="2mY-pf-fDD"/>
+                    <constraint firstItem="5fd-ZD-d1O" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3KR-dn-qND"/>
+                    <constraint firstItem="ktH-q0-gpx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cTs-0r-Ayq"/>
+                    <constraint firstItem="ktH-q0-gpx" firstAttribute="leading" secondItem="PAQ-jM-0Q1" secondAttribute="trailing" constant="5" id="g09-Pj-g5u"/>
+                    <constraint firstItem="PAQ-jM-0Q1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tky-3l-M6E"/>
+                    <constraint firstItem="5fd-ZD-d1O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vHQ-o7-cLT"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                        <real key="value" value="1"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                        <color key="value" systemColor="systemGray5Color"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="titleLabel" destination="5fd-ZD-d1O" id="Zhy-tw-jo6"/>
+                <outlet property="valueTextField" destination="PAQ-jM-0Q1" id="Vrl-0x-p8N"/>
+            </connections>
+            <point key="canvasLocation" x="-120" y="113"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="forward" width="25" height="25"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

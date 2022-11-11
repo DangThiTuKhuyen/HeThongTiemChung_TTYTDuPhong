@@ -30,6 +30,30 @@ enum TypeRow: Int, CaseIterable {
 
 final class HomeViewModel {
 
+    func getCurrentDate() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .medium
+        let dateString = dateFormatter.string(from: currentDate)
+        return dateString
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // MARK: - Properties
     private var recommendVenues: [Venue] = []
     private var nearVenues: [Venue] = []

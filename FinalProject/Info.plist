@@ -45,6 +45,8 @@
 	<string>Cần lấy vị trí người dùng để sử dụng cho các tính năng của ứng dụng.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Cần lấy vị trí người dùng để sử dụng cho các tính năng của ứng dụng.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

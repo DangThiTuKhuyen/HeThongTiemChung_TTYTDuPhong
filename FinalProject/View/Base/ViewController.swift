@@ -31,4 +31,11 @@ class ViewController: UIViewController, MVVM.View {
         gradientLayer.colors = [colorTop, colorBottom]
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
+
+    func changeRoot(type: SceneDelegate.TypeScreen) {
+        let scene = UIApplication.shared.connectedScenes.first
+        if let sceneDelegate: SceneDelegate = (scene?.delegate as? SceneDelegate) {
+            sceneDelegate.changeScreen(type: type)
+        }
+    }
 }

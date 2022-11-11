@@ -15,11 +15,16 @@ final class HistoryViewController: UIViewController {
     var viewModel: HistoryViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         configTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configUI()
     }
 
     private func configUI() {
+        tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         title = "History"
     }

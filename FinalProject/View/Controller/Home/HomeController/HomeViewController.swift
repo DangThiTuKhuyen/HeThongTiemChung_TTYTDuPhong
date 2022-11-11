@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import EventKit
 import CoreImage
+import SceneKit
 
 // MARK: - Protocol
 protocol HomeViewControllerDelegate: AnyObject {
@@ -30,6 +31,7 @@ final class HomeViewController: ViewController {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var realTime: UILabel!
     @IBOutlet private weak var QRImageView: UIImageView!
+    @IBOutlet private weak var registerVaccineButton: UIButton!
 
     // MARK: - Properties
     var viewModel: HomeViewModel?
@@ -37,6 +39,8 @@ final class HomeViewController: ViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tabBarController?.tabBar.items?[1].badgeValue = "1900"
+//        self.tabBar.items![1].badgealue = "7"
         configUI()
     }
 
@@ -49,11 +53,16 @@ final class HomeViewController: ViewController {
     // MARK: - Private func
     private func configUI() {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToProfile))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapGestureRecognizer)
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         containerView.layer.cornerRadius = 20
         subView.layer.cornerRadius = 20
-        guard let qrURLImage = URL(string: "https://i.imgur.com/UfUDMq8.png")?.qrImage(using: #colorLiteral(red: 0.3490196078, green: 0.768627451, blue: 0.6823529412, alpha: 1), logo: #imageLiteral(resourceName: "star_fill")) else { return }
-
+        registerVaccineButton.layer.cornerRadius = 25
+        guard let viewModel = viewModel else { return }
+        realTime.text = viewModel.getCurrentDate()
+        guard let qrURLImage = URL(string: "https://i.imgur.com/UfUDMq8.png")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 
@@ -75,6 +84,29 @@ final class HomeViewController: ViewController {
         }
     }
 
+    @IBAction func registerVaccineButton(_ sender: UIButton) {
+        let registerDisaeseVC = RegisterDisaeseViewController()
+        navigationController?.pushViewController(registerDisaeseVC, animated: true)
+    }
+
+    @IBAction func viewVaccineHistory(_ sender: UIButton) {
+        let historyVC = HistoryViewController()
+        navigationController?.pushViewController(historyVC, animated: true)
+    }
+
+    @IBAction func viewApplicationRegister(_ sender: UIButton) {
+
+    }
+
+    @IBAction func viewApointment(_ sender: Any) {
+        let minute: Float = 7.0
+        let a = minute - Float(Int(minute)) == 0 ? "\(Int(minute))" : "\(minute)"
+        print(a)
+    }
+
+    @objc private func goToProfile() {
+        tabBarController?.selectedIndex = 2
+    }
 }
 
 extension URL {

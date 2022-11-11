@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterDisaeseViewController" customModule="FinalProject" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="RRk-yE-T6Z" id="xKg-Wh-N9N"/>
+                <outlet property="tableView" destination="AnN-74-fct" id="jkp-Qm-DVh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AnN-74-fct">
+                    <rect key="frame" x="0.0" y="120" width="414" height="642"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef1-Jh-Wgc">
+                    <rect key="frame" x="20" y="782" width="374" height="50"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.67843137249999996" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="NLd-Xy-Z5e"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Next" titleAlignment="center">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="nextToVaccinButton:" destination="-1" eventType="touchUpInside" id="RkL-ha-nfo"/>
+                    </connections>
+                </button>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RRk-yE-T6Z">
+                    <rect key="frame" x="0.0" y="54" width="338" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7p-24-eQA">
+                    <rect key="frame" x="338" y="60.5" width="71" height="38"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Done">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="doneSearchButton:" destination="-1" eventType="touchUpInside" id="hda-aJ-lEe"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="f7p-24-eQA" secondAttribute="trailing" constant="5" id="3o6-Gs-3et"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AnN-74-fct" secondAttribute="trailing" id="7YR-GD-CTg"/>
+                <constraint firstItem="ef1-Jh-Wgc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="93s-Mj-KN0"/>
+                <constraint firstItem="AnN-74-fct" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Aw1-ts-c7Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ef1-Jh-Wgc" secondAttribute="trailing" constant="20" id="EPh-py-baw"/>
+                <constraint firstItem="RRk-yE-T6Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HVW-UV-oWH"/>
+                <constraint firstItem="AnN-74-fct" firstAttribute="top" secondItem="RRk-yE-T6Z" secondAttribute="bottom" constant="15" id="Hb8-yQ-jsE"/>
+                <constraint firstItem="f7p-24-eQA" firstAttribute="centerY" secondItem="RRk-yE-T6Z" secondAttribute="centerY" id="OAh-dT-YsV"/>
+                <constraint firstItem="RRk-yE-T6Z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="U9m-j2-Whp"/>
+                <constraint firstItem="f7p-24-eQA" firstAttribute="leading" secondItem="RRk-yE-T6Z" secondAttribute="trailing" id="kIw-xp-CYs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AnN-74-fct" secondAttribute="bottom" constant="100" id="krt-f1-qrc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ef1-Jh-Wgc" secondAttribute="bottom" constant="30" id="o3u-mP-Iff"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

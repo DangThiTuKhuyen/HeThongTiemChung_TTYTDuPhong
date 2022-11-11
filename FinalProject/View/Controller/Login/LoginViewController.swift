@@ -10,7 +10,7 @@ import UIKit
 import GIFImageView
 import SwiftUtils
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
@@ -60,16 +60,30 @@ final class LoginViewController: UIViewController {
         hidePassButton.setImage(#imageLiteral(resourceName: "hide-show-pass"), for: .normal)
         hidePassButton.setImage(#imageLiteral(resourceName: "open-eye"), for: .selected)
         loginButton.layer.cornerRadius = 20
-        heightErrorLabel.constant = 0
+        showHideError()
     }
 
-    private func setGradientBackground() {
+    override func setGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
         let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
         let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
         gradientLayer.colors = [colorTop, colorBottom]
         containerView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    private func showHideError(error: String = "", isShow: Bool = false) {
+        errorLabel.text = error
+        heightErrorLabel.constant = isShow ? 18 : 0
+    }
+
+    private func handleLogin() {
+        guard let numberPhone = phoneNumberTextField.text, let password = passwordTextField.text else { return }
+        if numberPhone.isEmpty || password.isEmpty {
+            showHideError(error: "Please enter full information", isShow: true)
+        } else {
+            changeRoot(type: .tabbar)
+        }
     }
 
     // MARK: - IBActions
@@ -79,8 +93,7 @@ final class LoginViewController: UIViewController {
     }
 
     @IBAction private func handleLogin(_ sender: Any) {
-//        let detail = DetailViewController()
-//        navigationController?.pushViewController(detail, animated: true)
+        handleLogin()
     }
 
     @IBAction private func backToTutorialButtonTouchUpInside(_ sender: UIButton) {
@@ -100,7 +113,7 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == phoneNumberTextField {
             passwordTextField.becomeFirstResponder()
         } else {
-//            handleLogin()
+            handleLogin()
         }
         return true
     }

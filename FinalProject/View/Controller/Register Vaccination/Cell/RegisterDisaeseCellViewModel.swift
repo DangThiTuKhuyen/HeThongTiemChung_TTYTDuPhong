@@ -1,5 +1,5 @@
 //
-//  RegisterVaccinationViewModel.swift
+//  RegisterDisaeseCellViewModel.swift
 //  FinalProject
 //
 //  Created by Khuyen Dang T.T. VN.Danang on 04/11/2022.
