@@ -18,11 +18,11 @@ class ProfileViewController: UIViewController {
     var image: UIImage = UIImage()
 
     private(set) var selectedIndexPath: IndexPath? {
-        willSet {
-            updateCellStatusForName(at: newValue, isSelected: true)
-        }
+//        willSet {
+//            updateCellStatusForName(at: newValue, isSelected: true)
+//        }
         didSet {
-            updateCellStatusForName(at: oldValue, isSelected: false)
+            updateCellStatusForName(at: oldValue, isSelected: true )
         }
     }
 
@@ -55,9 +55,15 @@ class ProfileViewController: UIViewController {
     }
 
     private func updateCellStatusForName(at index: IndexPath?, isSelected: Bool) {
-        guard let index = index, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
+        guard let index = index,
+            let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
         let viewModel = cell.viewModel
-        viewModel?.updateCellStatus(isSlelected: isSelected)
+        switch viewModel?.type {
+        case .name:
+            viewModel?.updateCellStatus(isSlelected: isSelected)
+        default:
+            break
+        }
         cell.updateUI()
     }
 

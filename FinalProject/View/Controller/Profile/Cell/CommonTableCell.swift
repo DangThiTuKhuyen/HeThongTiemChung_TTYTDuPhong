@@ -54,13 +54,30 @@ final class CommonTableCell: UITableViewCell {
 
     private func checkToUpdateKeyboardStatus() {
         guard let viewModel = viewModel else { return }
-        valueTextField.isUserInteractionEnabled = viewModel.isSlelected
-        if viewModel.isSlelected {
-            valueTextField.becomeFirstResponder()
-        } else {
-            valueTextField.resignFirstResponder()
+        switch viewModel.type {
+        case .name:
+            valueTextField.isUserInteractionEnabled = viewModel.isSlelected
+            if viewModel.isSlelected {
+                valueTextField.becomeFirstResponder()
+            } else {
+                valueTextField.resignFirstResponder()
+            }
+        default:
+            break
         }
     }
+    
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        if viewModel?.type == .name {
+//            valueTextField.isUserInteractionEnabled = selected
+//            if selected {
+//                valueTextField.becomeFirstResponder()
+//            } else {
+//                valueTextField.resignFirstResponder()
+//            }
+//        }
+//    }
 
     func updateValueTextField() {
         valueTextField.resignFirstResponder()
