@@ -12,8 +12,10 @@ import SwiftUtils
 final class RegisterVaccineViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nameDiseaseLabel: UILabel!
+    var viewModel: RegisterVaccineViewModel?
 
-    var viewModel = RegisterVaccineViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         configCollectionView()
@@ -24,40 +26,48 @@ final class RegisterVaccineViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
     }
-    
+
     private func configUI() {
         title = "Choose the vaccine"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        nextButton.isUserInteractionEnabled = false
+        nextButton.alpha = 0.5
+        guard let viewModel = viewModel else { return }
+        nameDiseaseLabel.text = viewModel.disease.diseaseName
     }
 
     private func configCollectionView() {
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView.register(RegisterVaccineCollectionCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
-    
-    
+
     @IBAction func nextButton(_ sender: UIButton) {
-        
+        guard let viewModel = viewModel else { return }
+        let vc = RegisterInfoViewController()
+        vc.viewModel = RegisterInfoViewModel(registerInfo: viewModel.getDisaeseVaccine())
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension RegisterVaccineViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel?.numberOfRowInSection() ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let viewModel = viewModel else { return UICollectionViewCell() }
         let cell = collectionView.dequeue(RegisterVaccineCollectionCell.self, forIndexPath: indexPath)
         cell.viewModel = viewModel.viewModelForItem(at: indexPath, selected: viewModel.selectedIndexPath == indexPath)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RegisterVaccineCollectionCell else { return }
+        nextButton.isUserInteractionEnabled = true
+        nextButton.alpha = 1
+        guard let viewModel = viewModel else { return }
         viewModel.selectedIndexPath = indexPath
         collectionView.reloadData()
     }
@@ -66,8 +76,8 @@ extension RegisterVaccineViewController: UICollectionViewDataSource {
 extension RegisterVaccineViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = ((kScreenSize.width - CGFloat(60)) / 2)
-        return CGSize(width: width, height: width)
+        let width = ((kScreenSize.width - CGFloat(40)) / 2)
+        return CGSize(width: width, height: 149)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

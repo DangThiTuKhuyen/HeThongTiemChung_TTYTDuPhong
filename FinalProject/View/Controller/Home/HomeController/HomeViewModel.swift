@@ -61,6 +61,8 @@ final class HomeViewModel {
     private var limit: Int = 10
     private var radius: Int = 1_000
     private(set) var isFull: Bool = false
+    
+//    private(set) var profile: Profile?
 
     // MARK: - Public func
     func numberOfRowInSection() -> Int {
@@ -105,6 +107,20 @@ final class HomeViewModel {
 
 // MARK: - API
 extension HomeViewModel {
+
+    func getProfile(completion: @escaping Completion<Profile>) {
+        ProfileService.getProfile { [weak self] result in
+            guard let this = self else { return completion(.failure(Api.Error.json)) }
+            switch result {
+            case .success(let profile):
+//                this.profile = profile
+                Api.Profile.name = profile.name ?? ""
+                completion(.success(profile))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     func getNearVenues(completion: @escaping APICompletion) {
         guard let cordinate = LocationManager.shared().currentLocation?.coordinate else {

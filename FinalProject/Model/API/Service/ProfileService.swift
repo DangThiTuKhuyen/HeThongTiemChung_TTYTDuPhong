@@ -17,12 +17,10 @@ class ProfileService {
             case .success(let data):
                 if let data = data as? JSObject {
                     guard let profile = Mapper<Profile>().map(JSONObject: data) else {
-                        return completion(.failure(Api.Error.json))
+                        completion(.failure(Api.Error.json))
+                        return
                     }
                     completion(.success(profile))
-//                    var venue: [SimilarVenue] = []
-//                    venue = Mapper<SimilarVenue>().mapArray(JSONArray: items)
-//                    completion(.success(venue))
                 } else {
                     completion(.failure(Api.Error.json))
                 }

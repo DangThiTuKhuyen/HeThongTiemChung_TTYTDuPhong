@@ -49,10 +49,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let notifyVC = NotifyViewController()
         let notifyNavi = UINavigationController(rootViewController: notifyVC)
-        notifyVC.tabBarItem = UITabBarItem(title: "Thông báo", image: #imageLiteral(resourceName: "notification"), selectedImage: #imageLiteral(resourceName: "notification_fill"))
+        notifyVC.tabBarItem = UITabBarItem(title: "Notification", image: #imageLiteral(resourceName: "notification"), selectedImage: #imageLiteral(resourceName: "notification_fill"))
 
         let profileVC = ProfileViewController()
         let profileViewModel = ProfileViewModel()
+        profileVC.viewModel = profileViewModel
         let profileNavi = UINavigationController(rootViewController: profileVC)
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
         
@@ -82,7 +83,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.tabBar.addSubview(tabbarView)
 //        tabBarController.tabBar.addSubview(scanQrButton)
         tabBarController.tabBar.sendSubviewToBack(tabbarView)
-        tabBarController.tabBar.items?[1].badgeValue = "1900"
+        tabBarController.tabBar.items?[1].badgeValue = "19"
         window?.rootViewController = tabBarController
     }
 

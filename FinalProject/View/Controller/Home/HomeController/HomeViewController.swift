@@ -42,6 +42,7 @@ final class HomeViewController: ViewController {
 //        self.tabBarController?.tabBar.items?[1].badgeValue = "1900"
 //        self.tabBar.items![1].badgealue = "7"
         configUI()
+        getProfile()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,10 +63,27 @@ final class HomeViewController: ViewController {
         registerVaccineButton.layer.cornerRadius = 25
         guard let viewModel = viewModel else { return }
         realTime.text = viewModel.getCurrentDate()
-        guard let qrURLImage = URL(string: "https://i.imgur.com/UfUDMq8.png")?.qrImage(using: .black) else { return }
+        guard let qrURLImage = URL(string: "http://3.92.194.85:8080/")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 
+    private func getProfile() {
+        guard let viewModel = viewModel else { return }
+        HUD.show()
+        viewModel.getProfile { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let profile):
+                    this.nameLabel.text = profile.name
+                    this.avatarImageView.setImage(with: profile.image ?? "", placeholder: "user.pdf")
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+            }
+        }
+    }
     private func setupDataRecommend() {
         guard let viewModel = viewModel else { return }
         HUD.show()

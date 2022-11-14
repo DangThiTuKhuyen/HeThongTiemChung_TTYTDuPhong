@@ -19,18 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nav-22-Ajc" customClass="TPKeyboardAvoidingTableView">
-                    <rect key="frame" x="0.0" y="54" width="414" height="808"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nav-22-Ajc" customClass="TPKeyboardAvoidingTableView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="803"/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <constraints>
-                <constraint firstItem="nav-22-Ajc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="bd8-lx-rXw"/>
+                <constraint firstItem="nav-22-Ajc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bd8-lx-rXw"/>
                 <constraint firstItem="nav-22-Ajc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mXV-p7-gc2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nav-22-Ajc" secondAttribute="trailing" id="sCy-9e-ebs"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nav-22-Ajc" secondAttribute="bottom" id="v5c-wW-NC2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nav-22-Ajc" secondAttribute="bottom" constant="15" id="v5c-wW-NC2"/>
             </constraints>
             <point key="canvasLocation" x="139" y="64"/>
         </view>

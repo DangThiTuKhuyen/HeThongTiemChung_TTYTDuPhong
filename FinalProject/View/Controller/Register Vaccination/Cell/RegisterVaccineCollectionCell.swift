@@ -11,6 +11,12 @@ import UIKit
 final class RegisterVaccineCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var checkedImage: UIImageView!
+    @IBOutlet weak var vaccine: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +37,11 @@ final class RegisterVaccineCollectionCell: UICollectionViewCell {
 
     private func updateUI() {
         guard let viewModel = viewModel else { return }
-
+        vaccine.text = viewModel.vaccine.vaccineName
         checkedImage.isHidden = !viewModel.selected
+        countryLabel.text = viewModel.vaccine.country
+        amountLabel.text = viewModel.vaccine.amount?.toString()
+        timeLabel.text = viewModel.vaccine.effect?.toString()
+        priceLabel.text = viewModel.vaccine.price?.toString()
     }
 }

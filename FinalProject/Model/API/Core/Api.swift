@@ -11,6 +11,10 @@ import Alamofire
 
 final class Api {
 
+    struct Profile {
+        static var name: String = ""
+    }
+
     struct Path {
         static let baseURL = "https://api.foursquare.com/v2/venues/explore"
         static let detailURL = "https://api.foursquare.com/v2/venues/"

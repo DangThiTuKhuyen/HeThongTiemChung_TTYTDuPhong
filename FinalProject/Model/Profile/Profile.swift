@@ -19,7 +19,7 @@ final class Profile: Mappable {
     var email: String?
     var phone: Int?
     var identityCard: Int?
-    
+
     required init?(map: Map) { }
 
     func mapping(map: Map) {

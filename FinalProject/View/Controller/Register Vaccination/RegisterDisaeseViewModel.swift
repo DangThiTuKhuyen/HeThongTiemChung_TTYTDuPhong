@@ -10,16 +10,16 @@ import Foundation
 
 final class RegisterDisaeseViewModel {
 
-    let disaeses: [String] = ["Covid", "Sởi", "HPV"]
-    var currentDisaeses: [String] = []
+    var disaeses: [Disease] = []
+    var currentDisaeses: [Disease] = []
 
-    private func getDisaeses(keyWord: String) -> [String] {
+    private func getDisaeses(keyWord: String) -> [Disease] {
         if keyWord.isEmpty {
-            return []
+            return disaeses
         } else {
-            var data: [String] = []
+            var data: [Disease] = []
             for disaese in disaeses {
-                if let _ = disaese.range(of: keyWord) {
+                if let _ = disaese.diseaseName?.range(of: keyWord) {
                     data.append(disaese)
                 }
             }
@@ -29,5 +29,41 @@ final class RegisterDisaeseViewModel {
 
     func search(keyWord: String) {
         currentDisaeses = getDisaeses(keyWord: keyWord)
+    }
+
+    func isShowTableView() -> Bool {
+        return currentDisaeses.isNotEmpty
+    }
+
+    func numberOfRowInSection() -> Int {
+        return currentDisaeses.count
+    }
+
+    func viewModelForItem(at indexPath: IndexPath) -> RegisterDiseaseCellViewModel {
+        return RegisterDiseaseCellViewModel(disease: currentDisaeses[indexPath.row])
+    }
+
+    func getDisaeseSelected(at indexPath: IndexPath) -> Disease {
+        return currentDisaeses[indexPath.row]
+    }
+}
+
+extension RegisterDisaeseViewModel {
+
+    func getDisease(completion: @escaping APICompletion) {
+        RegistrationVaccineService.getDisease { [weak self] result in
+            guard let this = self else {
+                completion(.failure(Api.Error.json))
+                return
+            }
+            switch result {
+            case .success(let diseases):
+                this.disaeses = diseases
+                this.currentDisaeses = diseases
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

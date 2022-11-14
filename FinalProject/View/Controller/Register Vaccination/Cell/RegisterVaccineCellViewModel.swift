@@ -10,9 +10,11 @@ import Foundation
 
 final class RegisterVaccineCellViewModel {
     
-    private(set) var selected: Bool = false
+    private(set) var vaccine: Vaccine
+    private(set) var selected: Bool
     
-    init(selected: Bool) {
+    init(vaccine: Vaccine, selected: Bool) {
+        self.vaccine = vaccine
         self.selected = selected
     }
 }

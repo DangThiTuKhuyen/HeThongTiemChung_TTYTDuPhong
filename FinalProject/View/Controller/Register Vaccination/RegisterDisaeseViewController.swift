@@ -11,11 +11,13 @@ import UIKit
 class RegisterDisaeseViewController: UIViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var noResultLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
 
     var viewModel = RegisterDisaeseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDisease()
         configTableView()
         configUI()
         configSearchBar()
@@ -32,16 +34,42 @@ class RegisterDisaeseViewController: UIViewController {
         searchBar.resignFirstResponder()
     }
 
+    private func getDisease() {
+        HUD.show()
+        viewModel.getDisease { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+//                    this.configTableView()
+                    this.tableView.reloadData()
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+            }
+        }
+    }
+
+
+    private func updateUI() {
+        let isShowTable = viewModel.isShowTableView()
+        tableView.isHidden = !isShowTable
+        noResultLabel.isHidden = isShowTable
+        tableView.reloadData()
+    }
 
     private func configUI() {
+        ////////////////
+        noResultLabel.isHidden = true
         searchBar.layer.borderWidth = 0
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderColor = UIColor.clear.cgColor
-        title = "Choose the disaese"
+        title = "Choose the disease"
     }
 
     private func configTableView() {
-        tableView.register(RegisterDisaeseCell.self)
+        tableView.register(RegisterDiseaseCell.self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
@@ -54,14 +82,10 @@ class RegisterDisaeseViewController: UIViewController {
 
     private func search(keyWord: String) {
         viewModel.search(keyWord: keyWord)
-        tableView.reloadData()
+        updateUI()
 
     }
 
-    @IBAction func doneSearchButton(_ sender: UIButton) {
-        search(keyWord: searchBar.text ?? "")
-            searchBar.resignFirstResponder()
-    }
     @IBAction func nextToVaccinButton(_ sender: UIButton) {
         let registerVaccineVC = RegisterVaccineViewController()
         navigationController?.pushViewController(registerVaccineVC, animated: true)
@@ -72,13 +96,12 @@ class RegisterDisaeseViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension RegisterDisaeseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return viewModel?.numberOfRowInSection() ?? 0
-        return 5
+        return viewModel.numberOfRowInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(RegisterDisaeseCell.self)
-        //        cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
+        let cell = tableView.dequeue(RegisterDiseaseCell.self)
+        cell.viewModel = viewModel.viewModelForItem(at: indexPath)
         return cell
     }
 }
@@ -87,6 +110,7 @@ extension RegisterDisaeseViewController: UITableViewDataSource {
 extension RegisterDisaeseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = RegisterVaccineViewController()
+        vc.viewModel = RegisterVaccineViewModel(disease: viewModel.getDisaeseSelected(at: indexPath))
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -96,9 +120,9 @@ extension RegisterDisaeseViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         search(keyWord: searchText)
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search(keyWord: searchBar.text ?? "")
-            searchBar.resignFirstResponder()
-        }
+        searchBar.resignFirstResponder()
+    }
 }

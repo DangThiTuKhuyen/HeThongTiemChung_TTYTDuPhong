@@ -25,6 +25,7 @@ final class CommonTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         valueTextField.borderStyle = .none
+        valueTextField.isUserInteractionEnabled = false
     }
 
     var viewModel: CommonTableCellViewModel? {
@@ -38,11 +39,14 @@ final class CommonTableCell: UITableViewCell {
         switch type {
         case .avatar:
             break
-        case .name, .email, .numberPhone, .gender, .birthday, .province, .district:
+        case .name, .identityCard, .email, .numberPhone, .gender, .birthday, .province, .district:
             titleLabel.text = viewModel.item?.title
             valueTextField.text = viewModel.item?.value
         case .province, .district:
             valueTextField.isUserInteractionEnabled = false
+        case .changePass, .logout:
+            titleLabel.text = viewModel.item?.title
+            valueTextField.isHidden = true
         }
     }
 

@@ -8,21 +8,22 @@
 
 import UIKit
 import DropDown
+import SwiftUtils
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
     let dropDown = DropDown()
-    var viewModel = ProfileViewModel()
+    var viewModel: ProfileViewModel?
     var image: UIImage = UIImage()
 
     private(set) var selectedIndexPath: IndexPath? {
-//        willSet {
-//            updateCellStatusForName(at: newValue, isSelected: true)
-//        }
+        willSet {
+            updateCellStatusForName(at: newValue, isSelected: true)
+        }
         didSet {
-            updateCellStatusForName(at: oldValue, isSelected: true )
+            updateCellStatusForName(at: oldValue, isSelected: false )
         }
     }
 
@@ -30,15 +31,14 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTableView()
         configNavi()
         getProfile()
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
 
     private func getProfile() {
+        guard let viewModel = viewModel else { return }
         HUD.show()
         viewModel.getProfile { [weak self] result in
             HUD.dismiss()
@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
+                    this.configTableView()
                     this.tableView.reloadData()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
@@ -59,12 +60,12 @@ class ProfileViewController: UIViewController {
             let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
         let viewModel = cell.viewModel
         switch viewModel?.type {
-        case .name:
-            viewModel?.updateCellStatus(isSlelected: isSelected)
-        default:
+        case .avatar :
             break
+        default:
+            viewModel?.updateCellStatus(isSlelected: isSelected)
+            cell.updateUI()
         }
-        cell.updateUI()
     }
 
     private func configNavi() {
@@ -80,6 +81,10 @@ class ProfileViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.keyboardDismissMode = .onDrag
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        tableView.sectionFooterHeight = 0
     }
 
     @objc func keyboardDidHide(_ sender: Any?) {
@@ -99,18 +104,24 @@ class ProfileViewController: UIViewController {
     }
 
     private func updateNameCellWithoutDoneButton() {
-        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
-        cell.updateValueTextField()
+//        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
+//        cell.updateValueTextField()
     }
 }
 
 extension ProfileViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel?.numberOfSection() ?? 0
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowInSection()
+        return viewModel?.numberOfRowInSection(inSection: section) ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let type = ProfileType(rawValue: indexPath.row) else { return UITableViewCell() }
+        guard let viewModel = viewModel else { return UITableViewCell() }
+        guard let sectionType = ProfileViewModel.SectionType(rawValue: indexPath.section) else { return UITableViewCell() }
+        let type = sectionType.rows[indexPath.row]
         switch type {
         case .avatar:
             let cell = tableView.dequeue(NewAvatarTableCell.self)
@@ -130,57 +141,89 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionType = ProfileViewModel.SectionType(rawValue: section) else { return nil }
+                switch sectionType {
+                case .identity:
+                    return nil
+                default:
+                    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenSize.width, height: 40))
+                    let label = UILabel()
+                    label.frame = CGRect(x: 10, y: 10, width: headerView.frame.width - 10, height: headerView.frame.height - 20)
+                    label.text = sectionType == .infomation ? "Information" : "Security"
+                    label.font = .systemFont(ofSize: 17)
+                    label.textColor = .black
+                    headerView.addSubview(label)
+                    return headerView
+                }
+        }
 }
 
 extension ProfileViewController: UITableViewDelegate {
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let viewModel = viewModel else { return }
+//        guard !isAppearKeyboard else {
+//            view.endEditing(true)
+//            return
+//        }
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        viewModel.getIndex(indexPath)
+//        guard let sectionType = ProfileViewModel.SectionType(rawValue: indexPath.section) else { return }
+//        let type = sectionType.rows[indexPath.row]
+//        switch type {
+//        case .avatar:
+//            break
+//        case .name:
+//            print("Name")
+//        case .email:
+//            print("email")
+//        case .identityCard:
+//            print("identityCard")
+//        case .numberPhone:
+//            print("phone")
+//        case .gender:
+//            if let cell = tableView.cellForRow(at: indexPath) {
+//                dropDown.dataSource = ["Male", "Female"]
+//                dropDown.anchorView = cell
+//                dropDown.bottomOffset = CGPoint(x: 0, y: cell.frame.size.height)
+//                dropDown.backgroundColor = .orange
+//                dropDown.show()
+//                dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+//                    guard let _ = self else { return }
+//                    print(index)
+//                    print(item)
+//                }
+//            }
+//
+//        case .birthday:
+//            break
+//        case .province:
+//            let vc = ProvinceViewController()
+//            vc.viewModel = ProvinceViewModel(chooseProvince: "Tỉnh Quảng Ngãi")
+////            vc.delegate = self
+//            navigationController?.pushViewController(vc, animated: true)
+//        case .district:
+//            let vc = DistrictViewController()
+////            vc.viewModel = DistrictViewModel(districts: viewModel.getDistrict(), chooseDistrict: viewModel.userInfo.district)
+////            vc.delegate = self
+//            navigationController?.pushViewController(vc, animated: true)
+//        case .changePass:
+//            print("changepasss")
+//        case .logout:
+//            print("logout")
+//        }
+//        selectedIndexPath = indexPath
+//    }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        guard !isAppearKeyboard else {
-            view.endEditing(true)
-            return
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let sectionType = ProfileViewModel.SectionType(rawValue: section) else { return 0 }
+        switch sectionType {
+        case .identity:
+            return 0
+        default:
+            return 40
         }
-        tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.getIndex(indexPath)
-//        let cell = tableView.cellForRow(at: indexPath) as? CommonTableCell
-        guard let type = ProfileType(rawValue: indexPath.row) else { return }
-        switch type {
-        case .avatar:
-            break
-        case .name:
-            print("Name")
-        case .email:
-            print("email")
-        case .numberPhone:
-            print("phone")
-        case .gender:
-            if let cell = tableView.cellForRow(at: indexPath) {
-                dropDown.dataSource = ["Male", "Female"]
-                dropDown.anchorView = cell
-                dropDown.bottomOffset = CGPoint(x: 0, y: cell.frame.size.height + 100)
-                dropDown.backgroundColor = .orange
-                dropDown.show()
-                dropDown.selectionAction = { [weak self] (index: Int, item: String) in
-                    guard let _ = self else { return }
-                    print(index)
-                    print(item)
-                }
-            }
-
-        case .birthday:
-            break
-        case .province:
-            let vc = ProvinceViewController()
-            vc.viewModel = ProvinceViewModel(chooseProvince: "Tỉnh Quảng Ngãi")
-//            vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
-        case .district:
-            let vc = DistrictViewController()
-//            vc.viewModel = DistrictViewModel(districts: viewModel.getDistrict(), chooseDistrict: viewModel.userInfo.district)
-//            vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        selectedIndexPath = indexPath
     }
 }
 

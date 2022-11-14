@@ -37,4 +37,14 @@ extension UIImageView {
         }
         task.resume()
     }
+    
+    func setImage(with urlString: String, placeholder: String) {
+        self.downloadImage(with: urlString) { image in
+                if image != nil {
+                    self.image = image
+                } else {
+                    self.image = UIImage(named: placeholder)
+                }
+        }
+    }
 }

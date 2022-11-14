@@ -7,12 +7,29 @@
 //
 
 import Foundation
+import DropDown
 
 final class RegisterVaccineViewModel {
     
+    var disease: Disease
+
+    init(disease: Disease) {
+        self.disease = disease
+    }
+
     var selectedIndexPath: IndexPath = IndexPath(row: -1, section: 0)
-    
-    func viewModelForItem(at indexPath: IndexPath, selected: Bool = false) -> RegisterVaccineCellViewModel {
-        return RegisterVaccineCellViewModel(selected: selected)
+
+    func getDisaeseVaccine() -> RegisterInfo {
+        let vaccine = disease.vaccines?[selectedIndexPath.row]
+        return RegisterInfo(disaese: disease.diseaseName ?? "", vaccine: vaccine)
+    }
+
+    func numberOfRowInSection() -> Int {
+        return disease.vaccines?.count ?? 0
+    }
+
+    func viewModelForItem(at indexPath: IndexPath, selected: Bool = false) -> RegisterVaccineCellViewModel? {
+        guard let vaccine = disease.vaccines?[indexPath.row] else { return nil }
+        return RegisterVaccineCellViewModel(vaccine: vaccine, selected: selected)
     }
 }

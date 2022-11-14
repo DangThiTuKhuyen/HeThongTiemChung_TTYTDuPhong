@@ -13,11 +13,14 @@ enum ProfileType: Int, CaseIterable {
     case avatar = 0
     case name
     case email
+    case identityCard
     case numberPhone
     case gender
     case birthday
     case province
     case district
+    case changePass
+    case logout
 }
 
 struct ProfileCellItem {
@@ -31,17 +34,36 @@ final class ProfileViewModel {
         case avatarCell
         case commonCell
 
-        init(from index: Int) {
-            switch index {
-            case 1:
-                self = .avatarCell
-            default:
-                self = .commonCell
+//        init(from index: Int) {
+//            switch index {
+//            case 1:
+//                self = .avatarCell
+//            default:
+//                self = .commonCell
+//            }
+//        }
+    }
+
+    enum SectionType: Int, CaseIterable {
+        case identity = 0
+        case infomation
+        case security
+
+        var rows: [ProfileType] {
+            switch self {
+            case .identity:
+                return [.avatar, .name, .email, .identityCard]
+            case .infomation:
+                return [.numberPhone, .gender, .birthday, .province, .district]
+            case .security:
+                return [.changePass, .logout]
             }
         }
     }
 
+
     private(set) var profile: Profile?
+//    let userInfo
     private(set) var index: IndexPath = IndexPath(row: 0, section: 0)
 
     func setupCell(kindOfCell: ProfileType) -> ProfileCellItem? {
@@ -62,6 +84,12 @@ final class ProfileViewModel {
             return ProfileCellItem(title: "Province", value: profile?.province)
         case .district:
             return ProfileCellItem(title: "District", value: profile?.district)
+        case .changePass:
+            return ProfileCellItem(title: "Change password", value: "")
+        case .logout:
+            return ProfileCellItem(title: "Log out", value: "")
+        case .identityCard:
+            return ProfileCellItem(title: "Identity card", value: profile?.identityCard?.toString())
         }
     }
 
@@ -70,38 +98,27 @@ final class ProfileViewModel {
         index = IndexPath(row: type.rawValue, section: indexPath.section)
     }
 
-    func numberOfRowInSection() -> Int {
-        return ProfileType.allCases.count
+    func numberOfRowInSection(inSection section: Int) -> Int {
+        let sectionType = SectionType(rawValue: section)
+        guard let numberRows = sectionType?.rows.count else { return 0 }
+        return numberRows
+    }
+
+    func numberOfSection() -> Int {
+        return SectionType.allCases.count
     }
 
     func viewModelForItem(at indexPath: IndexPath) -> Any? {
-        guard let type = ProfileType(rawValue: indexPath.row) else { return nil }
-        switch type {
-        case .avatar:
+        let sectionType = SectionType(rawValue: indexPath.section)
+        guard let numberRows = sectionType?.rows.count, indexPath.row < numberRows else { return nil }
+        guard let type = sectionType?.rows[indexPath.row] else { return nil }
+        if type == .avatar {
             let cell = setupCell(kindOfCell: type)
             return NewAvatarCellViewModel(urlString: cell?.value, type: type)
-        case .name:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .email:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .numberPhone:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .gender:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .birthday:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .province:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
-        case .district:
-            let cell = setupCell(kindOfCell: type)
-            return CommonTableCellViewModel(item: cell, type: type)
         }
+        let cell = setupCell(kindOfCell: type)
+        return CommonTableCellViewModel(item: cell, type: type)
+
     }
 }
 
@@ -109,7 +126,10 @@ final class ProfileViewModel {
 extension ProfileViewModel {
     func getProfile(completion: @escaping APICompletion) {
         ProfileService.getProfile { [weak self] result in
-            guard let this = self else { return completion(.failure(Api.Error.json)) }
+            guard let this = self else {
+                completion(.failure(Api.Error.json))
+                return
+            }
             switch result {
             case .success(let profile):
                 this.profile = profile
@@ -124,6 +144,16 @@ extension ProfileViewModel {
 extension Int {
     func phoneString() -> String {
         return "0" + String(self)
+    }
+
+    func toString() -> String {
+        return String(self)
+    }
+}
+
+extension Float {
+    func toString() -> String {
+        return String(self)
     }
 }
 

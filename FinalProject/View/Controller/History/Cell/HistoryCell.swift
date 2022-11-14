@@ -25,12 +25,25 @@ final class HistoryCell: UITableViewCell {
     weak var delegate: HistoryCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
+        configUI()
         iconImageView.layer.cornerRadius = 5
         containerView.layer.cornerRadius = 10
     }
 
     private func configUI() {
-        
+        // line dash
+        let lineLayer = CAShapeLayer()
+        lineLayer.strokeColor = UIColor.gray.cgColor
+        lineLayer.lineWidth = 2
+        lineLayer.lineDashPattern = [6, 4]
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 15, y: 0),
+                                CGPoint(x: 15, y: self.frame.height)])
+        path.addLines(between: [CGPoint(x: 15, y: self.frame.height / 2),
+                                CGPoint(x: 30, y: self.frame.height / 2)])
+        lineLayer.path = path
+        self.layer.addSublayer(lineLayer)
+//        detailView.layer.addSublayer(lineLayer)
     }
     
     @objc private func goToDetail() {

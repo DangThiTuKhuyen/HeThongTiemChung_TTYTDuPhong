@@ -31,6 +31,12 @@
 		8A12F1E9291A66F400797CF6 /* CommonTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F1E8291A66F400797CF6 /* CommonTableCellViewModel.swift */; };
 		8A12F1F0291DE82400797CF6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F1EF291DE82400797CF6 /* Profile.swift */; };
 		8A12F1F2291DEF1B00797CF6 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F1F1291DEF1B00797CF6 /* ProfileService.swift */; };
+		8A12F1FC291FF59600797CF6 /* RegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F1FA291FF59600797CF6 /* RegisterInfoViewController.swift */; };
+		8A12F1FD291FF59600797CF6 /* RegisterInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A12F1FB291FF59600797CF6 /* RegisterInfoViewController.xib */; };
+		8A12F1FF291FF5AF00797CF6 /* RegisterInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F1FE291FF5AF00797CF6 /* RegisterInfoViewModel.swift */; };
+		8A12F2032920044100797CF6 /* RegisterInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F2012920044100797CF6 /* RegisterInfoCell.swift */; };
+		8A12F2042920044100797CF6 /* RegisterInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A12F2022920044100797CF6 /* RegisterInfoCell.xib */; };
+		8A12F2062920045000797CF6 /* RegisterInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12F2052920045000797CF6 /* RegisterInfoCellViewModel.swift */; };
 		8A22FCAE288F782F004A8E5B /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A22FCAD288F782F004A8E5B /* RecommendViewModel.swift */; };
 		8A22FCB2288F7840004A8E5B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A22FCB1288F7840004A8E5B /* HomeViewModel.swift */; };
 		8A22FCC2288F7923004A8E5B /* RecommendTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A22FCC1288F7923004A8E5B /* RecommendTableViewViewModel.swift */; };
@@ -96,8 +102,8 @@
 		8A880B972911FDAE00FDECA5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B952911FDAE00FDECA5 /* ProfileViewController.xib */; };
 		8A880B992911FDD700FDECA5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B982911FDD700FDECA5 /* ProfileViewModel.swift */; };
 		8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A90CD5C288E811300EDFB01 /* HomeViewController.xib */; };
-		8A91DFE729150BBF00FF8DD4 /* RegisterDisaeseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFE529150BBF00FF8DD4 /* RegisterDisaeseCell.swift */; };
-		8A91DFE829150BBF00FF8DD4 /* RegisterDisaeseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91DFE629150BBF00FF8DD4 /* RegisterDisaeseCell.xib */; };
+		8A91DFE729150BBF00FF8DD4 /* RegisterDiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFE529150BBF00FF8DD4 /* RegisterDiseaseCell.swift */; };
+		8A91DFE829150BBF00FF8DD4 /* RegisterDiseaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91DFE629150BBF00FF8DD4 /* RegisterDiseaseCell.xib */; };
 		8A91DFEE29150C0E00FF8DD4 /* RegisterVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFEC29150C0E00FF8DD4 /* RegisterVaccineViewController.swift */; };
 		8A91DFEF29150C0E00FF8DD4 /* RegisterVaccineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91DFED29150C0E00FF8DD4 /* RegisterVaccineViewController.xib */; };
 		8A91DFF429150C4D00FF8DD4 /* RegisterDisaeseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFF229150C4D00FF8DD4 /* RegisterDisaeseViewController.swift */; };
@@ -106,7 +112,7 @@
 		8A91DFFB29150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91DFF929150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib */; };
 		8A91DFFD29150CFE00FF8DD4 /* RegisterDisaeseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFFC29150CFE00FF8DD4 /* RegisterDisaeseViewModel.swift */; };
 		8A91DFFF29150D2D00FF8DD4 /* RegisterVaccineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91DFFE29150D2D00FF8DD4 /* RegisterVaccineViewModel.swift */; };
-		8A91E00129150D4F00FF8DD4 /* RegisterDisaeseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E00029150D4F00FF8DD4 /* RegisterDisaeseCellViewModel.swift */; };
+		8A91E00129150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E00029150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift */; };
 		8A91E00329150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E00229150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift */; };
 		8A91E0082917A86100FF8DD4 /* NotifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E0062917A86100FF8DD4 /* NotifyViewController.swift */; };
 		8A91E0092917A86100FF8DD4 /* NotifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91E0072917A86100FF8DD4 /* NotifyViewController.xib */; };
@@ -146,6 +152,8 @@
 		8AA8613D28A3BB1500618FD1 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8613C28A3BB1400618FD1 /* FavoriteCell.swift */; };
 		8AA8614128A3BB1B00618FD1 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA8614028A3BB1B00618FD1 /* FavoriteCell.xib */; };
 		8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */; };
+		8AC030792921D91D0089802A /* RegistrationVaccineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC030782921D91D0089802A /* RegistrationVaccineService.swift */; };
+		8AC0307C2921D9AF0089802A /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0307B2921D9AF0089802A /* Disease.swift */; };
 		8ADBF98928F4847D00DF3F8F /* NSErrorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF98828F4847D00DF3F8F /* NSErrorExt.swift */; };
 		8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8ADBF98A28F4848D00DF3F8F /* vaccine.gif */; };
 		8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF98C28F484A400DF3F8F /* Like.swift */; };
@@ -174,6 +182,9 @@
 		8ADD2989291A401F00A72D1B /* NewAvatarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD2987291A401F00A72D1B /* NewAvatarTableCell.swift */; };
 		8ADD298A291A401F00A72D1B /* NewAvatarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADD2988291A401F00A72D1B /* NewAvatarTableCell.xib */; };
 		8ADD298C291A4F7F00A72D1B /* NewAvatarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD298B291A4F7F00A72D1B /* NewAvatarCellViewModel.swift */; };
+		8AF4A443292103C6008A7968 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4A441292103C6008A7968 /* DatePickerCell.swift */; };
+		8AF4A444292103C6008A7968 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF4A442292103C6008A7968 /* DatePickerCell.xib */; };
+		8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +228,12 @@
 		8A12F1E8291A66F400797CF6 /* CommonTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableCellViewModel.swift; sourceTree = "<group>"; };
 		8A12F1EF291DE82400797CF6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8A12F1F1291DEF1B00797CF6 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		8A12F1FA291FF59600797CF6 /* RegisterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoViewController.swift; sourceTree = "<group>"; };
+		8A12F1FB291FF59600797CF6 /* RegisterInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterInfoViewController.xib; sourceTree = "<group>"; };
+		8A12F1FE291FF5AF00797CF6 /* RegisterInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoViewModel.swift; sourceTree = "<group>"; };
+		8A12F2012920044100797CF6 /* RegisterInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoCell.swift; sourceTree = "<group>"; };
+		8A12F2022920044100797CF6 /* RegisterInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterInfoCell.xib; sourceTree = "<group>"; };
+		8A12F2052920045000797CF6 /* RegisterInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoCellViewModel.swift; sourceTree = "<group>"; };
 		8A22FCAD288F782F004A8E5B /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		8A22FCB1288F7840004A8E5B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8A22FCC1288F7923004A8E5B /* RecommendTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewViewModel.swift; sourceTree = "<group>"; };
@@ -282,8 +299,8 @@
 		8A880B952911FDAE00FDECA5 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8A880B982911FDD700FDECA5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		8A90CD5C288E811300EDFB01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		8A91DFE529150BBF00FF8DD4 /* RegisterDisaeseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisaeseCell.swift; sourceTree = "<group>"; };
-		8A91DFE629150BBF00FF8DD4 /* RegisterDisaeseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterDisaeseCell.xib; sourceTree = "<group>"; };
+		8A91DFE529150BBF00FF8DD4 /* RegisterDiseaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDiseaseCell.swift; sourceTree = "<group>"; };
+		8A91DFE629150BBF00FF8DD4 /* RegisterDiseaseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterDiseaseCell.xib; sourceTree = "<group>"; };
 		8A91DFEC29150C0E00FF8DD4 /* RegisterVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVaccineViewController.swift; sourceTree = "<group>"; };
 		8A91DFED29150C0E00FF8DD4 /* RegisterVaccineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterVaccineViewController.xib; sourceTree = "<group>"; };
 		8A91DFF229150C4D00FF8DD4 /* RegisterDisaeseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisaeseViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +309,7 @@
 		8A91DFF929150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterVaccineCollectionCell.xib; sourceTree = "<group>"; };
 		8A91DFFC29150CFE00FF8DD4 /* RegisterDisaeseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisaeseViewModel.swift; sourceTree = "<group>"; };
 		8A91DFFE29150D2D00FF8DD4 /* RegisterVaccineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVaccineViewModel.swift; sourceTree = "<group>"; };
-		8A91E00029150D4F00FF8DD4 /* RegisterDisaeseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisaeseCellViewModel.swift; sourceTree = "<group>"; };
+		8A91E00029150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDiseaseCellViewModel.swift; sourceTree = "<group>"; };
 		8A91E00229150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVaccineCellViewModel.swift; sourceTree = "<group>"; };
 		8A91E0062917A86100FF8DD4 /* NotifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyViewController.swift; sourceTree = "<group>"; };
 		8A91E0072917A86100FF8DD4 /* NotifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyViewController.xib; sourceTree = "<group>"; };
@@ -332,6 +349,8 @@
 		8AA8613C28A3BB1400618FD1 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		8AA8614028A3BB1B00618FD1 /* FavoriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
+		8AC030782921D91D0089802A /* RegistrationVaccineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVaccineService.swift; sourceTree = "<group>"; };
+		8AC0307B2921D9AF0089802A /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		8ADBF98828F4847D00DF3F8F /* NSErrorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExt.swift; sourceTree = "<group>"; };
 		8ADBF98A28F4848D00DF3F8F /* vaccine.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vaccine.gif; sourceTree = "<group>"; };
 		8ADBF98C28F484A400DF3F8F /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
@@ -360,6 +379,9 @@
 		8ADD2987291A401F00A72D1B /* NewAvatarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAvatarTableCell.swift; sourceTree = "<group>"; };
 		8ADD2988291A401F00A72D1B /* NewAvatarTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewAvatarTableCell.xib; sourceTree = "<group>"; };
 		8ADD298B291A4F7F00A72D1B /* NewAvatarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAvatarCellViewModel.swift; sourceTree = "<group>"; };
+		8AF4A441292103C6008A7968 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		8AF4A442292103C6008A7968 /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
+		8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCellViewModel.swift; sourceTree = "<group>"; };
 		D72EC1050944689B4414E5C7 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DD4A2FBD85737A9282EA2264 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -408,6 +430,7 @@
 		6AF60D232313B56B00F5CBA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8AC0307A2921D9980089802A /* Disease */,
 				8A12F1EE291DE75300797CF6 /* Profile */,
 				8A2D99CA28FBCD67007BC3E7 /* Address */,
 				8A9FBAE328B86DC9003A94A1 /* SearchModel */,
@@ -540,6 +563,30 @@
 				8A12F1EF291DE82400797CF6 /* Profile.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		8A12F1F9291FF53400797CF6 /* RegisterInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8A12F2002920041F00797CF6 /* Cell */,
+				8A12F1FA291FF59600797CF6 /* RegisterInfoViewController.swift */,
+				8A12F1FB291FF59600797CF6 /* RegisterInfoViewController.xib */,
+				8A12F1FE291FF5AF00797CF6 /* RegisterInfoViewModel.swift */,
+			);
+			path = RegisterInfo;
+			sourceTree = "<group>";
+		};
+		8A12F2002920041F00797CF6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A12F2012920044100797CF6 /* RegisterInfoCell.swift */,
+				8A12F2022920044100797CF6 /* RegisterInfoCell.xib */,
+				8A12F2052920045000797CF6 /* RegisterInfoCellViewModel.swift */,
+				8AF4A441292103C6008A7968 /* DatePickerCell.swift */,
+				8AF4A442292103C6008A7968 /* DatePickerCell.xib */,
+				8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8A22FD46288FDCEF004A8E5B /* NearCell */ = {
@@ -709,6 +756,7 @@
 				8A9AC290289A2B8200EFA680 /* DetailService.swift */,
 				8A2D99CD28FBCEC7007BC3E7 /* AddressService.swift */,
 				8A12F1F1291DEF1B00797CF6 /* ProfileService.swift */,
+				8AC030782921D91D0089802A /* RegistrationVaccineService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -855,6 +903,7 @@
 		8A91DFD8291507CB00FF8DD4 /* Register Vaccination */ = {
 			isa = PBXGroup;
 			children = (
+				8A12F1F9291FF53400797CF6 /* RegisterInfo */,
 				8A91DFEB29150BE000FF8DD4 /* RegisterVaccine */,
 				8A91DFDF29150AC700FF8DD4 /* Cell */,
 				8A91DFF229150C4D00FF8DD4 /* RegisterDisaeseViewController.swift */,
@@ -867,9 +916,9 @@
 		8A91DFDF29150AC700FF8DD4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				8A91DFE529150BBF00FF8DD4 /* RegisterDisaeseCell.swift */,
-				8A91DFE629150BBF00FF8DD4 /* RegisterDisaeseCell.xib */,
-				8A91E00029150D4F00FF8DD4 /* RegisterDisaeseCellViewModel.swift */,
+				8A91DFE529150BBF00FF8DD4 /* RegisterDiseaseCell.swift */,
+				8A91DFE629150BBF00FF8DD4 /* RegisterDiseaseCell.xib */,
+				8A91E00029150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift */,
 				8A91DFF829150CC900FF8DD4 /* RegisterVaccineCollectionCell.swift */,
 				8A91DFF929150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib */,
 				8A91E00229150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift */,
@@ -1031,6 +1080,14 @@
 			path = FavoriteCell;
 			sourceTree = "<group>";
 		};
+		8AC0307A2921D9980089802A /* Disease */ = {
+			isa = PBXGroup;
+			children = (
+				8AC0307B2921D9AF0089802A /* Disease.swift */,
+			);
+			path = Disease;
+			sourceTree = "<group>";
+		};
 		8ADD2986291A3FF100A72D1B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,12 +1209,15 @@
 				8A2D99C128F95571007BC3E7 /* ProvinceViewController.xib in Resources */,
 				8A880B5829012D1400FDECA5 /* HistoryCell.xib in Resources */,
 				8A9FBAD728B86D5E003A94A1 /* CategoryCell.xib in Resources */,
+				8AF4A444292103C6008A7968 /* DatePickerCell.xib in Resources */,
 				8A22FD37288F9BE7004A8E5B /* RecommendCell.xib in Resources */,
+				8A12F2042920044100797CF6 /* RegisterInfoCell.xib in Resources */,
 				8A91DFEF29150C0E00FF8DD4 /* RegisterVaccineViewController.xib in Resources */,
 				8AA83D4128EF1992009A50CA /* LoginViewController.xib in Resources */,
 				8ADBF99628F484F400DF3F8F /* RegisterViewController.xib in Resources */,
 				8A91E0152917ACAD00FF8DD4 /* notification.gif in Resources */,
 				8AA8614128A3BB1B00618FD1 /* FavoriteCell.xib in Resources */,
+				8A12F1FD291FF59600797CF6 /* RegisterInfoViewController.xib in Resources */,
 				8A2D99C728F9565B007BC3E7 /* ProvinceCell.xib in Resources */,
 				8A9FBAD428B86D5E003A94A1 /* CategoryViewController.xib in Resources */,
 				8A9FBAD128B86D5E003A94A1 /* SearchViewController.xib in Resources */,
@@ -1175,7 +1235,7 @@
 				8A4864FA28ED3012007B7AB7 /* DetailCell in Resources */,
 				8A880B502901066100FDECA5 /* HistoryViewController.xib in Resources */,
 				8A91E0132917ACA000FF8DD4 /* notification_full.gif in Resources */,
-				8A91DFE829150BBF00FF8DD4 /* RegisterDisaeseCell.xib in Resources */,
+				8A91DFE829150BBF00FF8DD4 /* RegisterDiseaseCell.xib in Resources */,
 				8A22FD6E288FE87B004A8E5B /* NearTableViewCell.xib in Resources */,
 				8A2D99E628FC32BE007BC3E7 /* DistrictCell.xib in Resources */,
 				8A9FBADA28B86D5E003A94A1 /* SearchCell.xib in Resources */,
@@ -1299,6 +1359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC030792921D91D0089802A /* RegistrationVaccineService.swift in Sources */,
 				8ADBF9A928F485B200DF3F8F /* SearchViewController.swift in Sources */,
 				8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */,
 				8A22FD50288FDD2C004A8E5B /* NearViewModel.swift in Sources */,
@@ -1330,14 +1391,17 @@
 				8ADBF99728F484F400DF3F8F /* RegisterViewController.swift in Sources */,
 				8A2D99B528F7D14B007BC3E7 /* PaddingTextField.swift in Sources */,
 				8ADBF99128F484B900DF3F8F /* SearchVenue.swift in Sources */,
+				8A12F2062920045000797CF6 /* RegisterInfoCellViewModel.swift in Sources */,
 				8A9FBAD028B86D5E003A94A1 /* SearchViewModel.swift in Sources */,
 				8ADD2989291A401F00A72D1B /* NewAvatarTableCell.swift in Sources */,
 				8A880B992911FDD700FDECA5 /* ProfileViewModel.swift in Sources */,
 				8ADBF9B628F4861800DF3F8F /* ScrollView.swift in Sources */,
 				8A2D99CC28FBCDAF007BC3E7 /* Address.swift in Sources */,
+				8AC0307C2921D9AF0089802A /* Disease.swift in Sources */,
 				8A91DFF429150C4D00FF8DD4 /* RegisterDisaeseViewController.swift in Sources */,
 				8A91E0082917A86100FF8DD4 /* NotifyViewController.swift in Sources */,
 				8ADBF9B528F4861800DF3F8F /* Button.swift in Sources */,
+				8A12F1FF291FF5AF00797CF6 /* RegisterInfoViewModel.swift in Sources */,
 				8A91E01928F472D200973339 /* AppDelegate.swift in Sources */,
 				8A22FD20288F9A52004A8E5B /* RecommendTableViewCell.swift in Sources */,
 				8ADBF9B928F4861800DF3F8F /* CollectionView.swift in Sources */,
@@ -1351,12 +1415,14 @@
 				6AF60DC72313B56B00F5CBA2 /* Api.swift in Sources */,
 				8A2D99C928F9566D007BC3E7 /* ProvinceCellViewModel.swift in Sources */,
 				8A9AC281289A27AD00EFA680 /* Price.swift in Sources */,
+				8AF4A443292103C6008A7968 /* DatePickerCell.swift in Sources */,
 				8ADBF9A528F4857A00DF3F8F /* DetailViewController.swift in Sources */,
 				6AF613B12313C13A00F5CBA2 /* CollectionViewHeaderView.swift in Sources */,
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
 				8A12F1E6291A66E500797CF6 /* CommonTableCell.swift in Sources */,
 				8A880B622901345A00FDECA5 /* DetailHistoryViewModel.swift in Sources */,
 				8A22FD36288F9BE7004A8E5B /* RecommendCell.swift in Sources */,
+				8A12F1FC291FF59600797CF6 /* RegisterInfoViewController.swift in Sources */,
 				8A880B5729012D1400FDECA5 /* HistoryCell.swift in Sources */,
 				8ADBF99928F4851500DF3F8F /* LoginViewController.swift in Sources */,
 				8A91E0112917AA9900FF8DD4 /* NotifyCellViewModel.swift in Sources */,
@@ -1365,7 +1431,7 @@
 				8A9AC33F289A731900EFA680 /* Photo.swift in Sources */,
 				8A880B5F2901343C00FDECA5 /* DetailHistoryViewController.swift in Sources */,
 				8A880B6A290136D200FDECA5 /* DetailHistoryCellViewModel.swift in Sources */,
-				8A91E00129150D4F00FF8DD4 /* RegisterDisaeseCellViewModel.swift in Sources */,
+				8A91E00129150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift in Sources */,
 				8ADBF98928F4847D00DF3F8F /* NSErrorExt.swift in Sources */,
 				8A2D99C328F955A0007BC3E7 /* ProvinceViewModel.swift in Sources */,
 				8A9FBA5A28B75ABD003A94A1 /* SimilarCell.swift in Sources */,
@@ -1385,6 +1451,7 @@
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
 				8ADBF9A128F4855900DF3F8F /* MapViewModel.swift in Sources */,
 				6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */,
+				8A12F2032920044100797CF6 /* RegisterInfoCell.swift in Sources */,
 				8A2D99D028FBE66A007BC3E7 /* District.swift in Sources */,
 				8ADBF9B728F4861800DF3F8F /* TableView.swift in Sources */,
 				8A9FBAD528B86D5E003A94A1 /* CategoryCell.swift in Sources */,
@@ -1398,6 +1465,7 @@
 				8A91E01A28F472D200973339 /* SceneDelegate.swift in Sources */,
 				6AF60D222313B35800F5CBA2 /* String.swift in Sources */,
 				8A22FD6D288FE87B004A8E5B /* NearTableViewCell.swift in Sources */,
+				8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */,
 				8A91DFFA29150CC900FF8DD4 /* RegisterVaccineCollectionCell.swift in Sources */,
 				8ADBF99E28F4853000DF3F8F /* TutorialViewController.swift in Sources */,
 				8A22FD83288FF63D004A8E5B /* NearCell.swift in Sources */,
@@ -1410,7 +1478,7 @@
 				8A2D99C028F95571007BC3E7 /* ProvinceViewController.swift in Sources */,
 				8A9AC355289A76CC00EFA680 /* PhotoItem.swift in Sources */,
 				8A91E00329150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift in Sources */,
-				8A91DFE729150BBF00FF8DD4 /* RegisterDisaeseCell.swift in Sources */,
+				8A91DFE729150BBF00FF8DD4 /* RegisterDiseaseCell.swift in Sources */,
 				8A9FBA5928B75ABD003A94A1 /* SimilarCellViewModel.swift in Sources */,
 				8AA8613828A3BAC300618FD1 /* FavoriteViewModel.swift in Sources */,
 				8ADBF9A728F4859B00DF3F8F /* FavoriteViewController.swift in Sources */,
