@@ -25,7 +25,12 @@ final class CommonTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         valueTextField.borderStyle = .none
-        valueTextField.isUserInteractionEnabled = false
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+//        contentView.backgroundColor = .clear
+        valueTextField.isHidden = false
     }
 
     var viewModel: CommonTableCellViewModel? {
@@ -42,8 +47,7 @@ final class CommonTableCell: UITableViewCell {
         case .name, .identityCard, .email, .numberPhone, .gender, .birthday, .province, .district:
             titleLabel.text = viewModel.item?.title
             valueTextField.text = viewModel.item?.value
-        case .province, .district:
-            valueTextField.isUserInteractionEnabled = false
+//            valueTextField.isHidden = false
         case .changePass, .logout:
             titleLabel.text = viewModel.item?.title
             valueTextField.isHidden = true
@@ -51,7 +55,7 @@ final class CommonTableCell: UITableViewCell {
     }
 
     func updateUI() {
-        guard let viewModel = viewModel else { return }
+//        guard let viewModel = viewModel else { return }
 //        nameContainerView.backgroundColor = viewModel.isSlelected ? Color.selectCellColor : .clear
         checkToUpdateKeyboardStatus()
     }
@@ -70,18 +74,6 @@ final class CommonTableCell: UITableViewCell {
             break
         }
     }
-    
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        if viewModel?.type == .name {
-//            valueTextField.isUserInteractionEnabled = selected
-//            if selected {
-//                valueTextField.becomeFirstResponder()
-//            } else {
-//                valueTextField.resignFirstResponder()
-//            }
-//        }
-//    }
 
     func updateValueTextField() {
         valueTextField.resignFirstResponder()

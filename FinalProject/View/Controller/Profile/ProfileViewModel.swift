@@ -30,10 +30,10 @@ struct ProfileCellItem {
 
 final class ProfileViewModel {
 
-    enum ProfileCellType {
-        case avatarCell
-        case commonCell
-
+//    enum ProfileCellType {
+//        case avatarCell
+//        case commonCell
+//
 //        init(from index: Int) {
 //            switch index {
 //            case 1:
@@ -42,7 +42,7 @@ final class ProfileViewModel {
 //                self = .commonCell
 //            }
 //        }
-    }
+//    }
 
     enum SectionType: Int, CaseIterable {
         case identity = 0
@@ -94,7 +94,10 @@ final class ProfileViewModel {
     }
 
     func getIndex(_ indexPath: IndexPath) {
-        guard let type = ProfileType(rawValue: indexPath.row) else { return }
+//        guard let type = ProfileType(rawValue: indexPath.row) else { return }
+//        index = IndexPath(row: type.rawValue, section: indexPath.section)
+        let sectionType = SectionType(rawValue: indexPath.section)
+        guard let type = sectionType?.rows[indexPath.row] else { return }
         index = IndexPath(row: type.rawValue, section: indexPath.section)
     }
 
@@ -112,13 +115,14 @@ final class ProfileViewModel {
         let sectionType = SectionType(rawValue: indexPath.section)
         guard let numberRows = sectionType?.rows.count, indexPath.row < numberRows else { return nil }
         guard let type = sectionType?.rows[indexPath.row] else { return nil }
-        if type == .avatar {
+        switch type {
+        case .avatar:
             let cell = setupCell(kindOfCell: type)
             return NewAvatarCellViewModel(urlString: cell?.value, type: type)
+        default:
+            let cell = setupCell(kindOfCell: type)
+            return CommonTableCellViewModel(item: cell, type: type)
         }
-        let cell = setupCell(kindOfCell: type)
-        return CommonTableCellViewModel(item: cell, type: type)
-
     }
 }
 
