@@ -113,7 +113,6 @@ extension HomeViewModel {
             guard let this = self else { return completion(.failure(Api.Error.json)) }
             switch result {
             case .success(let profile):
-//                this.profile = profile
                 Api.Profile.name = profile.name ?? ""
                 completion(.success(profile))
             case .failure(let error):

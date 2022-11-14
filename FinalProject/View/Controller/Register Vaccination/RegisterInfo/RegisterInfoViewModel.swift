@@ -17,6 +17,9 @@ enum RegistionType: Int, CaseIterable {
     case name = 0
     case disaese
     case vaccine
+    case country
+    case distanceTime
+    case totalDose
     case dose
     case time
     case price
@@ -52,6 +55,12 @@ final class RegisterInfoViewModel {
             return RegistionCellItem(title: "Date", value: "20/10/2022")
         case .price:
             return RegistionCellItem(title: "Price", value: registerInfo.vaccine?.price?.toString() ?? "")
+        case .country:
+            return RegistionCellItem(title: "Country", value: registerInfo.vaccine?.country ?? "")
+        case .totalDose:
+            return RegistionCellItem(title: "Total dose", value: (registerInfo.vaccine?.amount ?? 0).toString())
+        case .distanceTime:
+            return RegistionCellItem(title: "Distance time", value: (registerInfo.vaccine?.effect ?? 0).toString() + " days" )
         }
     }
 

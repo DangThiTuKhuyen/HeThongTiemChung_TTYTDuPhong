@@ -21,9 +21,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-Uy-I2w">
-                    <rect key="frame" x="20" y="104.5" width="374" height="292"/>
+                    <rect key="frame" x="20" y="104.5" width="374" height="438"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="292" id="03Q-OK-a23"/>
+                        <constraint firstAttribute="height" constant="438" id="03Q-OK-a23"/>
                     </constraints>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <userDefinedRuntimeAttributes>
@@ -96,7 +96,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-jf-3jV">
-                    <rect key="frame" x="20" y="426.5" width="8" height="20.5"/>
+                    <rect key="frame" x="20" y="572.5" width="8" height="20.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="8" id="mFf-7D-aq4"/>
                     </constraints>
@@ -105,7 +105,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check carefully. When click Confirm, you can't edit it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfU-h9-EVC">
-                    <rect key="frame" x="33" y="426.5" width="361" height="41"/>
+                    <rect key="frame" x="33" y="572.5" width="361" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
