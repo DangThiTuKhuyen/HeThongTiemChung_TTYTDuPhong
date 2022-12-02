@@ -12,10 +12,12 @@ import Alamofire
 extension ApiManager {
 
     @discardableResult
+    
+    
     func request(method: HTTPMethod,
                  urlString: URLStringConvertible,
                  parameters: [String: Any]? = nil,
-                 encoding: ParameterEncoding = URLEncoding.default,
+                 encoding: ParameterEncoding = JSONEncoding.default,
                  headers: [String: String]? = nil,
                  completion: Completion<Any>?) -> Request? {
         guard Network.shared.isReachable else {
@@ -49,4 +51,6 @@ extension ApiManager {
         }
         return request
     }
+    
+    
 }

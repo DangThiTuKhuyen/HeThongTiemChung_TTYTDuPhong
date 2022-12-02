@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="MedicalCenterCell" customModule="FinalProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKl-IN-bEf">
+                        <rect key="frame" x="20" y="0.0" width="262" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="bee-Iy-4Fz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="bMG-HY-Arg">
+                        <rect key="frame" x="282" y="16" width="18" height="18"/>
+                        <accessibility key="accessibilityConfiguration" identifier="imgChecked"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="2qH-8I-6fJ"/>
+                            <constraint firstAttribute="width" constant="18" id="eJL-or-KgE"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fKl-IN-bEf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DKO-gr-tD8"/>
+                    <constraint firstAttribute="bottom" secondItem="fKl-IN-bEf" secondAttribute="bottom" id="G0W-Pe-KfW"/>
+                    <constraint firstItem="bMG-HY-Arg" firstAttribute="centerY" secondItem="fKl-IN-bEf" secondAttribute="centerY" id="OBq-Pd-Ogf"/>
+                    <constraint firstItem="bMG-HY-Arg" firstAttribute="leading" secondItem="fKl-IN-bEf" secondAttribute="trailing" id="PXV-9V-6dU"/>
+                    <constraint firstAttribute="trailing" secondItem="bMG-HY-Arg" secondAttribute="trailing" constant="20" id="g4z-iB-LZp"/>
+                    <constraint firstItem="fKl-IN-bEf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="j41-Rf-lce"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="iconSelectedImage" destination="bMG-HY-Arg" id="UGh-xU-J31"/>
+                <outlet property="label" destination="fKl-IN-bEf" id="Zlp-GG-c9b"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="61.607142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="check" width="13.5" height="9.5"/>
+    </resources>
+</document>

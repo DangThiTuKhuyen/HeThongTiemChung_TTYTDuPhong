@@ -44,8 +44,8 @@ final class MapViewController: UIViewController {
     }
     func draw() {
         guard let viewModel = viewModel else { return }
-        let source = CLLocationCoordinate2D(latitude: viewModel.latCurrent, longitude: viewModel.longCurrent)
-        let destination = CLLocationCoordinate2D(latitude: viewModel.venue.location?.lat ?? 0.0, longitude: viewModel.venue.location?.long ?? 0.0)
+        let source = CLLocationCoordinate2D(latitude: 16.0330343, longitude: 108.2469277)
+        let destination = CLLocationCoordinate2D(latitude: 16.047413, longitude: 108.238697)
         addPin(coordinate: destination, title: viewModel.venue.name ?? "", subTitle: viewModel.titleForVenue())
         routing(source: source, destination: destination)
     }

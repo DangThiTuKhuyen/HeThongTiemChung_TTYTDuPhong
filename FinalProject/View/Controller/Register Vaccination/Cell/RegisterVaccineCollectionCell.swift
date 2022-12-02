@@ -37,11 +37,12 @@ final class RegisterVaccineCollectionCell: UICollectionViewCell {
 
     private func updateUI() {
         guard let viewModel = viewModel else { return }
-        vaccine.text = viewModel.vaccine.vaccineName
+        let treatment = viewModel.treatment
+        vaccine.text = treatment.vaccine?.vaccineName
         checkedImage.isHidden = !viewModel.selected
-        countryLabel.text = viewModel.vaccine.country
-        amountLabel.text = viewModel.vaccine.amount?.toString()
-        timeLabel.text = viewModel.vaccine.effect?.toString()
-        priceLabel.text = viewModel.vaccine.price?.toString()
+        countryLabel.text = treatment.vaccine?.country
+        amountLabel.text = treatment.amount?.toString()
+        timeLabel.text = treatment.effect?.toString()
+        priceLabel.text = treatment.vaccine?.vaccinePrice?.toString()
     }
 }

@@ -12,7 +12,7 @@ class DetailHistoryViewController: UIViewController {
 
 //    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    var viewModel = DetailHistoryViewModel()
+    var viewModel: DetailHistoryViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -20,6 +20,7 @@ class DetailHistoryViewController: UIViewController {
     }
 
     private func configUI() {
+        title = "History details"
         
 //        containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 //        containerView.layer.cornerRadius = 20
@@ -35,9 +36,10 @@ class DetailHistoryViewController: UIViewController {
 
 extension DetailHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel?.numberOfRowInSection() ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = viewModel else { return UITableViewCell() }
         let cell = tableView.dequeue(DetailHistoryCell.self)
         cell.delegate = self
         cell.viewModel = viewModel.viewModelForItem(at: indexPath)
@@ -56,10 +58,11 @@ extension DetailHistoryViewController: DetailHistoryCellDelegate {
         switch action {
         case .updateCell:
             guard let indexPath = tableView.indexPath(for: cell) else { return }
-            viewModel.isShows[indexPath.row] = !viewModel.isShows[indexPath.row] 
+            viewModel?.updateStatus(at: indexPath)
+//            cell.viewModel?.updateCellStatus(isShow: isShow)
+//            cell.viewModel?.updateCellStatus()
+//            viewModel.isShows[indexPath.row] = !viewModel.isShows[indexPath.row]
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    
 }

@@ -13,16 +13,16 @@ final class CommonTableCellViewModel {
     // MARK: - Properties
     private(set) var item: ProfileCellItem?
     private(set) var type: ProfileType?
-    private(set) var isSlelected: Bool = false
+    private(set) var isSelected: Bool = false
 
     // MARK: - Initial
     init(item: ProfileCellItem?, type: ProfileType?, isSlelected: Bool = false) {
         self.item = item
         self.type = type
-        self.isSlelected = isSlelected
+        self.isSelected = isSlelected
     }
 
     func updateCellStatus(isSlelected: Bool) {
-        self.isSlelected = isSlelected
+        self.isSelected = isSlelected
     }
 }

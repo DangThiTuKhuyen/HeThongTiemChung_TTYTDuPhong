@@ -22,9 +22,7 @@ class RegisterDiseaseCell: UITableViewCell {
     }
     
     private func updateUI() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.disease?.diseaseName
     }
 

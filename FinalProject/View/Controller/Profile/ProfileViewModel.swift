@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum ProfileType: Int, CaseIterable {
     case avatar = 0
@@ -30,20 +29,6 @@ struct ProfileCellItem {
 
 final class ProfileViewModel {
 
-//    enum ProfileCellType {
-//        case avatarCell
-//        case commonCell
-//
-//        init(from index: Int) {
-//            switch index {
-//            case 1:
-//                self = .avatarCell
-//            default:
-//                self = .commonCell
-//            }
-//        }
-//    }
-
     enum SectionType: Int, CaseIterable {
         case identity = 0
         case infomation
@@ -61,29 +46,29 @@ final class ProfileViewModel {
         }
     }
 
-
     private(set) var profile: Profile?
-//    let userInfo
+    private(set) var info: Profile?
+    private(set) var address: Address?
     private(set) var index: IndexPath = IndexPath(row: 0, section: 0)
 
     func setupCell(kindOfCell: ProfileType) -> ProfileCellItem? {
         switch kindOfCell {
         case .avatar:
-            return ProfileCellItem(title: "", value: profile?.image)
+            return ProfileCellItem(title: "", value: info?.image)
         case .name:
-            return ProfileCellItem(title: "Name", value: profile?.name)
+            return ProfileCellItem(title: "Name", value: info?.name)
         case .email:
-            return ProfileCellItem(title: "Email", value: profile?.email)
+            return ProfileCellItem(title: "Email", value: info?.email)
         case .numberPhone:
-            return ProfileCellItem(title: "Phone", value: profile?.phone?.phoneString())
+            return ProfileCellItem(title: "Phone", value: info?.phone?.phoneString())
         case .gender:
-            return ProfileCellItem(title: "Gender", value: profile?.gender)
+            return ProfileCellItem(title: "Gender", value: info?.gender)
         case .birthday:
-            return ProfileCellItem(title: "Birthday", value: profile?.birthday)
+            return ProfileCellItem(title: "Birthday", value: info?.birthday)
         case .province:
-            return ProfileCellItem(title: "Province", value: profile?.province)
+            return ProfileCellItem(title: "Province", value: info?.province)
         case .district:
-            return ProfileCellItem(title: "District", value: profile?.district)
+            return ProfileCellItem(title: "District", value: info?.district)
         case .changePass:
             return ProfileCellItem(title: "Change password", value: "")
         case .logout:
@@ -94,8 +79,6 @@ final class ProfileViewModel {
     }
 
     func getIndex(_ indexPath: IndexPath) {
-//        guard let type = ProfileType(rawValue: indexPath.row) else { return }
-//        index = IndexPath(row: type.rawValue, section: indexPath.section)
         let sectionType = SectionType(rawValue: indexPath.section)
         guard let type = sectionType?.rows[indexPath.row] else { return }
         index = IndexPath(row: type.rawValue, section: indexPath.section)
@@ -124,6 +107,41 @@ final class ProfileViewModel {
             return CommonTableCellViewModel(item: cell, type: type)
         }
     }
+
+    // MARK: - Update profile
+    func setPhone(value: String) {
+        info?.phone = Int(value) ?? 0
+    }
+
+    func setGender(value: String) {
+        info?.gender = value
+    }
+
+    func setBirthday(value: Date) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        info?.birthday = dateFormatter.string(from: date)
+    }
+
+    func stringBirthday() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: "2000-11-11")
+        print(date)
+        return "\(String(describing: date))"
+    }
+    func setProvince(value: Address) {
+        address = value
+        info?.province = value.province
+    }
+
+    func getDistrictForProvince() -> [District] {
+        return address?.districts ?? []
+    }
+
+    func setDistrict(value: String) {
+        info?.district = value
+    }
 }
 
 // MARK: - APIs
@@ -137,6 +155,7 @@ extension ProfileViewModel {
             switch result {
             case .success(let profile):
                 this.profile = profile
+                this.info = profile
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
@@ -145,6 +164,7 @@ extension ProfileViewModel {
     }
 }
 
+// MARK: - Extension
 extension Int {
     func phoneString() -> String {
         return "0" + String(self)
@@ -158,33 +178,5 @@ extension Int {
 extension Float {
     func toString() -> String {
         return String(self)
-    }
-}
-
-extension UIButton {
-    func downloadImage(with urlString: String, completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: urlString) else {
-            completion(nil)
-            return
-        }
-        let config = URLSessionConfiguration.default
-        config.waitsForConnectivity = true
-
-        let session = URLSession(configuration: config)
-        let task = session.dataTask(with: url) { (data, response, error) in
-            DispatchQueue.main.async {
-                if let _ = error {
-                    completion(nil)
-                } else {
-                    if let data = data {
-                        let image = UIImage(data: data)
-                        completion(image)
-                    } else {
-                        completion(nil)
-                    }
-                }
-            }
-        }
-        task.resume()
     }
 }

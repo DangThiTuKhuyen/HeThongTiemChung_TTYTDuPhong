@@ -16,7 +16,6 @@ enum RegisterProfileType: Int, CaseIterable {
     case email
     case phoneNumber
     case gender
-    case password
 }
 
 struct RegisterCellItem {
@@ -32,8 +31,7 @@ struct UserInfo {
     var district: String = ""
     var email: String = ""
     var phoneNumber: Int = 0
-    var gender: Int = -1
-    var password: String = ""
+    var gender: String = ""
 }
 
 final class RegisterViewModel {
@@ -77,8 +75,6 @@ final class RegisterViewModel {
             return RegisterCellItem(image: "phone_number", value: "", placeholder: "Phone Number")
         case .gender:
             return RegisterCellItem(image: "gender", value: "", placeholder: "Phone Number")
-        case .password:
-            return RegisterCellItem(image: "password", value: "", placeholder: "Password")
         }
     }
 
@@ -89,7 +85,7 @@ final class RegisterViewModel {
     func viewModelForItem(at indexPath: IndexPath) -> Any? {
         guard let type = RegisterProfileType(rawValue: indexPath.row) else { return nil }
         switch type {
-        case .name, .birthday, .province, .district, .email, .phoneNumber, .password:
+        case .name, .birthday, .province, .district, .email, .phoneNumber:
             let cell = setupCell(kindOfCell: type)
             return CommonCellViewModel(item: cell, type: type)
         case .gender:
@@ -123,7 +119,26 @@ final class RegisterViewModel {
         userInfo.phoneNumber = Int(phoneNumber) ?? 0
     }
 
-    func setPassword(password: String) {
-        userInfo.password = password
+    func setGender(gender: String) {
+        userInfo.gender = gender
+    }
+}
+
+extension RegisterViewModel {
+    
+    func registerAccount(completion: @escaping CompletionAPI) {
+        let params = AuthService.Account(email: userInfo.email, name: userInfo.name, identityCard: 1234, birthday: "userInfo.birthday", province: userInfo.province, district: userInfo.district, phone: userInfo.phoneNumber, gender: userInfo.gender)
+        AuthService.registerAccount(params: params) { [weak self] result in
+            guard self != nil else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            switch result {
+            case .success:
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

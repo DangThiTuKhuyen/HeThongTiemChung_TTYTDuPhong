@@ -10,10 +10,12 @@ import UIKit
 import DropDown
 import SwiftUtils
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - IBOutlets
+    @IBOutlet private weak var tableView: UITableView!
 
+    // MARK: - Properties
     let dropDown = DropDown()
     var viewModel: ProfileViewModel?
     var image: UIImage = UIImage()
@@ -23,12 +25,13 @@ class ProfileViewController: UIViewController {
             updateCellStatusForName(at: newValue, isSelected: true)
         }
         didSet {
-            updateCellStatusForName(at: oldValue, isSelected: false )
+            updateCellStatusForName(at: oldValue, isSelected: false)
         }
     }
 
     private(set) var isAppearKeyboard: Bool = false
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configNavi()
@@ -37,7 +40,16 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getProfile()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(viewModel?.info)
+    }
 
+    // MARK: - Private func
     private func getProfile() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -47,7 +59,6 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-//                    this.configTableView()
                     this.tableView.reloadData()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
@@ -61,7 +72,7 @@ class ProfileViewController: UIViewController {
             let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
         let viewModel = cell.viewModel
         switch viewModel?.type {
-        case .avatar :
+        case .avatar:
             break
         default:
             viewModel?.updateCellStatus(isSlelected: isSelected)
@@ -88,7 +99,13 @@ class ProfileViewController: UIViewController {
         tableView.sectionFooterHeight = 0
     }
 
-    @objc func keyboardDidHide(_ sender: Any?) {
+    private func updateNameCellWithoutDoneButton() {
+        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
+        cell.updateValueTextField()
+    }
+
+    // MARK: - Objc func
+    @objc private func keyboardDidHide(_ sender: Any?) {
         DispatchQueue.main.async {
             self.isAppearKeyboard = false
             self.updateCellStatusForName(at: self.selectedIndexPath, isSelected: false)
@@ -100,16 +117,12 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillShow(_ sender: Any?) {
+    @objc private func keyboardWillShow(_ sender: Any?) {
         isAppearKeyboard = true
-    }
-
-    private func updateNameCellWithoutDoneButton() {
-        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
-        cell.updateValueTextField()
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel?.numberOfSection() ?? 0
@@ -136,6 +149,7 @@ extension ProfileViewController: UITableViewDataSource {
         default:
             let cell = tableView.dequeue(CommonTableCell.self)
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonTableCellViewModel
+            cell.delegate = self
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.clear
             cell.selectedBackgroundView = bgColorView
@@ -144,22 +158,23 @@ extension ProfileViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionType = ProfileViewModel.SectionType(rawValue: section) else { return nil }
-                switch sectionType {
-                case .identity:
-                    return nil
-                default:
-                    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenSize.width, height: 40))
-                    let label = UILabel()
-                    label.frame = CGRect(x: 10, y: 10, width: headerView.frame.width - 10, height: headerView.frame.height - 20)
-                    label.text = sectionType == .infomation ? "Information" : "Security"
-                    label.font = .systemFont(ofSize: 17)
-                    label.textColor = .black
-                    headerView.addSubview(label)
-                    return headerView
-                }
+        switch sectionType {
+        case .identity:
+            return nil
+        default:
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenSize.width, height: 40))
+            let label = UILabel()
+            label.frame = CGRect(x: 10, y: 10, width: headerView.frame.width - 10, height: headerView.frame.height - 20)
+            label.text = sectionType == .infomation ? "Information" : "Security"
+            label.font = .systemFont(ofSize: 17)
+            label.textColor = .black
+            headerView.addSubview(label)
+            return headerView
         }
+    }
 }
 
+// MARK: - UITableViewDelegate
 extension ProfileViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,16 +188,11 @@ extension ProfileViewController: UITableViewDelegate {
         guard let sectionType = ProfileViewModel.SectionType(rawValue: indexPath.section) else { return }
         let type = sectionType.rows[indexPath.row]
         switch type {
-        case .avatar:
+        case .avatar, .name, .email, .identityCard:
             break
-        case .name:
-            print("Name")
-        case .email:
-            print("email")
-        case .identityCard:
-            print("identityCard")
-        case .numberPhone:
-            print("phone")
+        case .numberPhone, .birthday:
+//            selectedIndexPath = indexPath
+            break
         case .gender:
             if let cell = tableView.cellForRow(at: indexPath) {
                 dropDown.dataSource = ["Male", "Female"]
@@ -191,30 +201,27 @@ extension ProfileViewController: UITableViewDelegate {
                 dropDown.backgroundColor = .orange
                 dropDown.show()
                 dropDown.selectionAction = { [weak self] (index: Int, item: String) in
-                    guard let _ = self else { return }
-                    print(index)
-                    print(item)
+                    guard self != nil else { return }
+                    viewModel.setGender(value: item)
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
 
-        case .birthday:
-            break
         case .province:
             let vc = ProvinceViewController()
-            vc.viewModel = ProvinceViewModel(chooseProvince: "Tỉnh Quảng Ngãi")
-//            vc.delegate = self
+            vc.viewModel = ProvinceViewModel(chooseProvince: viewModel.info?.province ?? "")
+            vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .district:
             let vc = DistrictViewController()
-//            vc.viewModel = DistrictViewModel(districts: viewModel.getDistrict(), chooseDistrict: viewModel.userInfo.district)
-//            vc.delegate = self
+            vc.viewModel = DistrictViewModel(districts: viewModel.getDistrictForProvince(), chooseDistrict: viewModel.info?.district ?? "")
+            vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .changePass:
             print("changepasss")
         case .logout:
             print("logout")
         }
-        selectedIndexPath = indexPath
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -228,6 +235,7 @@ extension ProfileViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - NewAvatarTableCellDelegate
 extension ProfileViewController: NewAvatarTableCellDelegate {
     func cell(_ view: NewAvatarTableCell, needsPerformAction action: NewAvatarTableCell.Action) {
         switch action {
@@ -250,7 +258,7 @@ extension ProfileViewController: NewAvatarTableCellDataSource {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            self.image = image
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -259,12 +267,49 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+// MARK: - CommonTableCellDelegate
 extension ProfileViewController: CommonTableCellDelegate {
     func cell(_ cell: CommonTableCell, needsPerformAction action: CommonTableCell.Action) {
         switch action {
         case .valueChanged(valueString: let valueString):
-            print("aaaaaaa\(valueString)")
+            viewModel?.setPhone(value: valueString)
         }
         selectedIndexPath = nil
+    }
+}
+
+extension RegisterViewController: CommonTableCellDataSource {
+    func updateCellProvince(_ cell: CommonTableCell) -> String {
+        return viewModel.userInfo.province
+    }
+
+    func updateCellDistrict(_ cell: CommonTableCell) -> String {
+        return viewModel.userInfo.district
+    }
+}
+
+// MARK: -
+
+extension ProfileViewController: ProvinceViewControllerDelegate {
+    func controller(_ controller: ProvinceViewController, neesPerformAction action: ProvinceViewController.Action) {
+        switch action {
+        case .updateProvince(let address):
+            if viewModel?.info?.province != address.province {
+                viewModel?.setProvince(value: address)
+                viewModel?.setDistrict(value: "")
+                tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .automatic)
+                tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .automatic)
+            }
+        }
+    }
+}
+
+extension ProfileViewController: DistrictViewControllerDelegate {
+    func controller(_ controller: DistrictViewController, needPerformAction action: DistrictViewController.Action) {
+        switch action {
+        case .updateDistrict(district: let district):
+            viewModel?.setDistrict(value: district)
+            tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .automatic)
+        }
     }
 }

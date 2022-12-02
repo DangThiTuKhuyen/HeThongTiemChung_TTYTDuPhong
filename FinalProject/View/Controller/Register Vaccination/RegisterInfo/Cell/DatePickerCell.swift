@@ -8,11 +8,20 @@
 
 import UIKit
 
-class DatePickerCell: UITableViewCell {
+protocol DatePickerCellDelegate: AnyObject {
+    func cell(_ cell: DatePickerCell, needPerformAction action: DatePickerCell.Action)
+}
+                                    
+final class DatePickerCell: UITableViewCell {
+    
+    enum Action {
+        case done(value: String)
+    }
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateTextField: UITextField!
     private let datePicker = UIDatePicker()
+    weak var delegate: DatePickerCellDelegate?
 
     var viewModel: DatePickerCellViewModel? {
         didSet {
@@ -31,11 +40,12 @@ class DatePickerCell: UITableViewCell {
 
     private func updateUI() {
         titleLabel.text = viewModel?.item?.title ?? ""
+        dateTextField.text = viewModel?.item?.value
     }
 
     private func showDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = .inline
         let endDate: TimeInterval = 60 * 60 * 24 * 90
         let startDate: TimeInterval = 60 * 60 * 24 * 7
         datePicker.minimumDate = Date().addingTimeInterval(startDate)
@@ -47,6 +57,8 @@ class DatePickerCell: UITableViewCell {
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
         toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         dateTextField.inputAccessoryView = toolbar
+        let loc = Locale(identifier: "usa")
+                self.datePicker.locale = loc
         dateTextField.inputView = datePicker
     }
 
@@ -57,11 +69,11 @@ class DatePickerCell: UITableViewCell {
     @objc private func doneDatePicker() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
+        let time: String = formatter.string(from: datePicker.date)
         dateTextField.text = formatter.string(from: datePicker.date)
-//        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .birthday))
+        delegate?.cell(self, needPerformAction: .done(value: time))
         self.endEditing(true)
     }
-
 }
 
 extension DatePickerCell: UITextFieldDelegate {

@@ -15,7 +15,7 @@ final class LoginViewController: ViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var loginButton: UIButton!
@@ -48,10 +48,10 @@ final class LoginViewController: ViewController {
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         containerView.layer.masksToBounds = true
 
-        phoneNumberTextField.delegate = self
-        phoneNumberTextField.configTextField()
-        phoneNumberTextField.keyboardType = .asciiCapableNumberPad
-        phoneNumberTextField.returnKeyType = .next
+        emailTextField.delegate = self
+        emailTextField.configTextField()
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.returnKeyType = .next
 
         passwordTextField.delegate = self
         passwordTextField.configTextField()
@@ -78,7 +78,7 @@ final class LoginViewController: ViewController {
     }
 
     private func handleLogin() {
-        guard let numberPhone = phoneNumberTextField.text, let password = passwordTextField.text else { return }
+        guard let numberPhone = emailTextField.text, let password = passwordTextField.text else { return }
         if numberPhone.isEmpty || password.isEmpty {
             showHideError(error: "Please enter full information", isShow: true)
         } else {
@@ -101,6 +101,7 @@ final class LoginViewController: ViewController {
     }
 
     @IBAction private func createAccountButtonTouchUpInside(_ sender: UIButton) {
+//        let registerVC = RegisterWithEmailViewController()
         let registerVC = RegisterViewController()
         navigationController?.pushViewController(registerVC, animated: true)
     }
@@ -110,7 +111,7 @@ final class LoginViewController: ViewController {
 extension LoginViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == phoneNumberTextField {
+        if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else {
             handleLogin()

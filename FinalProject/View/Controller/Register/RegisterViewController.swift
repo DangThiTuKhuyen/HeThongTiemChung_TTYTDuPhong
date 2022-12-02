@@ -17,7 +17,6 @@ final class RegisterViewController: UIViewController {
     // MARK: - Properties
     var viewModel = RegisterViewModel()
     var color = UIColor(red: 0.53, green: 0.81, blue: 0.98, alpha: 1.00)
-    
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -27,7 +26,8 @@ final class RegisterViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.isNavigationBarHidden = false
+
     }
 
     // MARK: - Override func
@@ -46,13 +46,30 @@ final class RegisterViewController: UIViewController {
         tableView.keyboardDismissMode = .onDrag
     }
 
-    // MARK: IBActions
-    @IBAction private func backToPreviousButtonTouchUpInside(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+    private func pushToEnterPassCode() {
+        let vc = EnterPassCodeViewController()
+        vc.viewModel = EnterPassCodeViewModel(email: viewModel.userInfo.email)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
+    // MARK: IBActions
+
     @IBAction private func signUpButtonTouchUpInside(_ sender: UIButton) {
-        print(viewModel.userInfo)
+        HUD.show()
+        viewModel.registerAccount { [weak self] result in
+            HUD.dismiss()
+
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.pushToEnterPassCode()
+                case .failure(let error):
+                    this.alert(msg: error, handler: nil)
+                }
+            }
+
+        }
     }
 }
 
@@ -70,6 +87,7 @@ extension RegisterViewController: UITableViewDataSource {
         switch type {
         case .gender:
             let cell = tableView.dequeue(GenderCell.self)
+            cell.delegate = self
             return cell
         case .province, .district:
             let cell = tableView.dequeue(CommonCell.self)
@@ -131,7 +149,6 @@ extension RegisterViewController: DistrictViewControllerDelegate {
     func controller(_ controller: DistrictViewController, needPerformAction action: DistrictViewController.Action) {
         switch action {
         case .updateDistrict(district: let district):
-//            viewModel.district = district
             viewModel.setDistrict(district: district)
             tableView.reloadRows(at: [IndexPath(row: RegisterProfileType.district.rawValue, section: 0)], with: .automatic)
         }
@@ -149,6 +166,7 @@ extension RegisterViewController: CommonCellDataSource {
     }
 }
 
+// MARK: - CommonCellDelegate
 extension RegisterViewController: CommonCellDelegate {
     func cell(_ cell: CommonCell, needPerformAction action: CommonCell.Action) {
         switch action {
@@ -158,19 +176,24 @@ extension RegisterViewController: CommonCellDelegate {
                 viewModel.setName(name: value)
             case .birthday:
                 viewModel.setBirthday(birthday: value)
-            case .province:
-                break
-            case .district:
-                break
             case .email:
                 viewModel.setEmail(email: value)
             case .phoneNumber:
                 viewModel.setPhoneNumber(phoneNumber: value)
-            case .gender:
+//            case .password:
+//                viewModel.setPassword(password: value)
+            default:
                 break
-            case .password:
-                viewModel.setPassword(password: value)
             }
+        }
+    }
+}
+
+extension RegisterViewController: GenderCellDelegate {
+    func cell(_ cell: GenderCell, needPerformAction action: GenderCell.Action) {
+        switch action {
+        case.done(let value):
+            viewModel.setGender(gender: value)
         }
     }
 }

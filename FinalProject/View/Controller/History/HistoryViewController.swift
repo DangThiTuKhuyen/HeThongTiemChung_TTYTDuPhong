@@ -11,16 +11,35 @@ import UIKit
 final class HistoryViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    
+
     var viewModel: HistoryViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+//        test()
+        getHistory()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configUI()
+    }
+
+    private func getHistory() {
+        guard let viewModel = viewModel else { return }
+        HUD.show()
+        viewModel.getHistory { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.tableView.reloadData()
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+            }
+        }
     }
 
     private func configUI() {
@@ -28,7 +47,7 @@ final class HistoryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
         title = "History"
     }
-    
+
     private func configTableView() {
         tableView.register(HistoryCell.self)
         tableView.delegate = self
@@ -36,22 +55,28 @@ final class HistoryViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension HistoryViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel?.numberOfRowInSection() ?? 0
-        return 5
+        return viewModel?.numberOfRowInSection() ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = viewModel else { return UITableViewCell() }
         let cell = tableView.dequeue(HistoryCell.self)
         cell.delegate = self
-//        cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
+        cell.viewModel = viewModel.viewModelForItem(at: indexPath)
         return cell
     }
 }
+// MARK: - UITableViewDelegate
 extension HistoryViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
         let vc = DetailHistoryViewController()
+        vc.viewModel = DetailHistoryViewModel(history: viewModel.getHistorySelected(at: indexPath))
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -60,10 +85,10 @@ extension HistoryViewController: HistoryCellDelegate {
     func cell(_ cell: HistoryCell, needPerform action: HistoryCell.Action) {
         switch action {
         case .goToDetail:
+            guard let viewModel = viewModel, let indexPath = tableView.indexPath(for: cell) else { return }
             let vc = DetailHistoryViewController()
+            vc.viewModel = DetailHistoryViewModel(history: viewModel.getHistorySelected(at: indexPath))
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
 }

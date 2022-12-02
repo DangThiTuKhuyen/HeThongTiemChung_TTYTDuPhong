@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -61,8 +62,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="forwardImageView" destination="ktH-q0-gpx" id="h3z-HP-lGp"/>
                 <outlet property="titleLabel" destination="5fd-ZD-d1O" id="Zhy-tw-jo6"/>
                 <outlet property="valueTextField" destination="PAQ-jM-0Q1" id="Vrl-0x-p8N"/>
+                <outlet property="widthForwardImage" destination="suq-DA-q7Y" id="vpP-4V-Oxi"/>
             </connections>
             <point key="canvasLocation" x="-120" y="113"/>
         </tableViewCell>

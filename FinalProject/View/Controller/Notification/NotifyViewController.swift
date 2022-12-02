@@ -14,8 +14,13 @@ final class NotifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        configUI()
     }
     
+    private func configUI() {
+        title = "Notifications"
+    }
+
     private func configTableView() {
         tableView.register(NotifyCell.self)
         tableView.dataSource = self
@@ -27,12 +32,13 @@ extension NotifyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NotifyCell.self)
+        cell.delegate = self
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 //        let loginVc = LoginViewController()
@@ -43,4 +49,16 @@ extension NotifyViewController: UITableViewDataSource {
 }
 
 extension NotifyViewController: UITableViewDelegate {
+}
+
+extension NotifyViewController: NotifyCellDelegate {
+    func cell(_ cell: NotifyCell, needPerform action: NotifyCell.Action) {
+        switch action {
+        case .goToDetail:
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+//            let viewModel = cell.viewM
+        }
+    }
+    
+    
 }

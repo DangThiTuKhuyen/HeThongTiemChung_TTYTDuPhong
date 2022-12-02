@@ -9,5 +9,11 @@
 import Foundation
 
 final class HistoryCellViewModel {
-    
+
+    var histories: [History]
+
+    init(histories: [History]) {
+        self.histories = histories
+    }
+
 }

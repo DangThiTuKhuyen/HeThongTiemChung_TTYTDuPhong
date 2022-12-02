@@ -38,32 +38,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Astrazenca" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-3T-MJx">
-                                <rect key="frame" x="85" y="50" width="270" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gha-IX-KEm">
+                                <rect key="frame" x="85" y="51" width="37.5" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37.5" id="gtn-y6-Fq2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-3T-MJx" userLabel="Amount">
+                                <rect key="frame" x="127.5" y="50" width="227.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="nLM-pM-nOw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="m2c-GQ-Or0" firstAttribute="leading" secondItem="5Hd-6g-hDX" secondAttribute="leading" constant="15" id="1I1-xl-g7r"/>
                             <constraint firstItem="C4R-3T-MJx" firstAttribute="top" secondItem="IRE-Yi-mRM" secondAttribute="bottom" constant="5" id="1kp-LX-rKq"/>
                             <constraint firstItem="IRE-Yi-mRM" firstAttribute="leading" secondItem="m2c-GQ-Or0" secondAttribute="trailing" constant="20" id="7fA-iQ-PLk"/>
+                            <constraint firstItem="C4R-3T-MJx" firstAttribute="leading" secondItem="gha-IX-KEm" secondAttribute="trailing" constant="5" id="Bcr-Vt-yb7"/>
                             <constraint firstItem="IRE-Yi-mRM" firstAttribute="top" secondItem="m2c-GQ-Or0" secondAttribute="top" id="SQg-nm-uaF"/>
                             <constraint firstItem="C4R-3T-MJx" firstAttribute="trailing" secondItem="IRE-Yi-mRM" secondAttribute="trailing" id="TfO-y0-x3Q"/>
                             <constraint firstAttribute="bottom" secondItem="m2c-GQ-Or0" secondAttribute="bottom" constant="20" id="Y6t-sQ-Ql7"/>
                             <constraint firstItem="m2c-GQ-Or0" firstAttribute="top" secondItem="5Hd-6g-hDX" secondAttribute="top" constant="20" id="ZcU-SR-4Dn"/>
+                            <constraint firstItem="gha-IX-KEm" firstAttribute="leading" secondItem="IRE-Yi-mRM" secondAttribute="leading" id="kic-ij-bmO"/>
                             <constraint firstAttribute="trailing" secondItem="IRE-Yi-mRM" secondAttribute="trailing" constant="5" id="mHy-zG-WRE"/>
-                            <constraint firstItem="C4R-3T-MJx" firstAttribute="leading" secondItem="IRE-Yi-mRM" secondAttribute="leading" id="mXG-6Z-gQQ"/>
+                            <constraint firstItem="gha-IX-KEm" firstAttribute="centerY" secondItem="C4R-3T-MJx" secondAttribute="centerY" id="ts5-tV-XRg"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8e-Bd-tCv">
                         <rect key="frame" x="30" y="15" width="360" height="90"/>
-                        <buttonConfiguration key="configuration" style="plain" subtitle=""/>
+                        <buttonConfiguration key="configuration" style="plain" title="" subtitle=""/>
                         <connections>
                             <action selector="goToDetailButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lFs-2T-XRi"/>
                         </connections>
@@ -82,9 +93,9 @@
                     <constraint firstAttribute="bottom" secondItem="5Hd-6g-hDX" secondAttribute="bottom" constant="15" id="K3K-SC-Rwv"/>
                     <constraint firstItem="5Hd-6g-hDX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="TGj-wu-GKD"/>
                     <constraint firstAttribute="trailing" secondItem="5Hd-6g-hDX" secondAttribute="trailing" constant="30" id="VRF-tq-t1O"/>
+                    <constraint firstItem="L1l-HK-Phi" firstAttribute="trailing" secondItem="5Hd-6g-hDX" secondAttribute="trailing" constant="-10" id="XTU-5x-VYb"/>
                     <constraint firstItem="h8e-Bd-tCv" firstAttribute="top" secondItem="5Hd-6g-hDX" secondAttribute="top" id="co6-R0-oGm"/>
                     <constraint firstItem="h8e-Bd-tCv" firstAttribute="leading" secondItem="5Hd-6g-hDX" secondAttribute="leading" id="dy9-h3-9m2"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="L1l-HK-Phi" secondAttribute="trailing" constant="20" id="nR6-Bs-6ma"/>
                     <constraint firstItem="5Hd-6g-hDX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="rTN-4b-9x1"/>
                     <constraint firstItem="L1l-HK-Phi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y9a-Xu-NfJ"/>
                 </constraints>
@@ -95,7 +106,7 @@
                 <outlet property="containerView" destination="5Hd-6g-hDX" id="bfK-hG-Itt"/>
                 <outlet property="iconImageView" destination="m2c-GQ-Or0" id="hZG-Mq-j41"/>
                 <outlet property="nameDisease" destination="IRE-Yi-mRM" id="8fc-O8-m1O"/>
-                <outlet property="nameVaccine" destination="C4R-3T-MJx" id="Zg9-yC-vKb"/>
+                <outlet property="totalAmountLabel" destination="C4R-3T-MJx" id="8wC-EF-z5J"/>
             </connections>
             <point key="canvasLocation" x="202.89855072463769" y="103.125"/>
         </tableViewCell>

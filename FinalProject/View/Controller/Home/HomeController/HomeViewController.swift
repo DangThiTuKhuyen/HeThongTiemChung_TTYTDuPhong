@@ -63,7 +63,7 @@ final class HomeViewController: ViewController {
         registerVaccineButton.layer.cornerRadius = 25
         guard let viewModel = viewModel else { return }
         realTime.text = viewModel.getCurrentDate()
-        guard let qrURLImage = URL(string: "http://3.92.194.85:8080/")?.qrImage(using: .black) else { return }
+        guard let qrURLImage = URL(string: "http://3.92.194.85:3210/medical-center")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 
@@ -84,6 +84,7 @@ final class HomeViewController: ViewController {
             }
         }
     }
+
     private func setupDataRecommend() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -109,11 +110,16 @@ final class HomeViewController: ViewController {
 
     @IBAction func viewVaccineHistory(_ sender: UIButton) {
         let historyVC = HistoryViewController()
+        historyVC.viewModel = HistoryViewModel()
         navigationController?.pushViewController(historyVC, animated: true)
     }
 
     @IBAction func viewApplicationRegister(_ sender: UIButton) {
-
+        let vc = RegistrationViewController()
+        vc.viewModel = RegistrationViewModel()
+        navigationController?.pushViewController(vc, animated: true)
+//        let vc = RegisterInfoViewController()
+//        vc.viewModel = RegisterInfoViewModel(
     }
 
     @IBAction func viewApointment(_ sender: Any) {

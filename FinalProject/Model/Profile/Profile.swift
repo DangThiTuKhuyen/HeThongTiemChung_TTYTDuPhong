@@ -24,7 +24,7 @@ final class Profile: Mappable {
 
     func mapping(map: Map) {
         image <- map["image"]
-        name <- map["name"]
+        name <- map["userName"]
         birthday <- map["birthday"]
         gender <- map["gender"]
         province <- map["province"]

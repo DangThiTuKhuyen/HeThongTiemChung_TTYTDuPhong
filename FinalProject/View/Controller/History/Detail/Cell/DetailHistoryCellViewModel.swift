@@ -9,9 +9,16 @@
 import Foundation
 
 class DetailHistoryCellViewModel {
-    var isShow: Bool
-    
-    init(isShow: Bool = false) {
+
+    private(set) var history: History
+    private(set) var isShow: Bool
+
+    init(history: History, isShow: Bool) {
+        self.history = history
         self.isShow = isShow
     }
+
+//    func updateCellStatus(isShow: Bool) {
+//        self.isShow = isShow
+//    }
 }

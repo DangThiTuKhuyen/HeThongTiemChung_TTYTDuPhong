@@ -11,10 +11,10 @@ final class DatePickerCellViewModel {
     
     // MARK: - Properties
     private(set) var item: RegistionCellItem?
-    private(set) var type: RegistionType?
+    private(set) var type: RegistrationType?
 
     // MARK: - Initial
-    init(item: RegistionCellItem?, type: RegistionType?) {
+    init(item: RegistionCellItem?, type: RegistrationType?) {
         self.item = item
         self.type = type
     }

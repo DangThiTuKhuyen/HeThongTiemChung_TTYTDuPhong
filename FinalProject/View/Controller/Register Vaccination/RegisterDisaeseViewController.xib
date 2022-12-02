@@ -23,30 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AnN-74-fct">
-                    <rect key="frame" x="0.0" y="105" width="414" height="657"/>
+                    <rect key="frame" x="0.0" y="105" width="414" height="757"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef1-Jh-Wgc">
-                    <rect key="frame" x="20" y="782" width="374" height="50"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.67843137249999996" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="NLd-Xy-Z5e"/>
-                    </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Next" titleAlignment="center">
-                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                    </buttonConfiguration>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="25"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="nextToVaccinButton:" destination="-1" eventType="touchUpInside" id="RkL-ha-nfo"/>
-                    </connections>
-                </button>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RRk-yE-T6Z">
                     <rect key="frame" x="0.0" y="54" width="414" height="51"/>
                     <textInputTraits key="textInputTraits"/>
@@ -62,17 +42,14 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AnN-74-fct" secondAttribute="trailing" id="7YR-GD-CTg"/>
-                <constraint firstItem="ef1-Jh-Wgc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="93s-Mj-KN0"/>
                 <constraint firstItem="AnN-74-fct" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Aw1-ts-c7Q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ef1-Jh-Wgc" secondAttribute="trailing" constant="20" id="EPh-py-baw"/>
                 <constraint firstItem="RRk-yE-T6Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HVW-UV-oWH"/>
                 <constraint firstItem="AnN-74-fct" firstAttribute="top" secondItem="RRk-yE-T6Z" secondAttribute="bottom" id="Hb8-yQ-jsE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RRk-yE-T6Z" secondAttribute="trailing" id="Jv9-ov-ug5"/>
                 <constraint firstItem="hg6-Ap-G90" firstAttribute="top" secondItem="RRk-yE-T6Z" secondAttribute="bottom" constant="120" id="PwW-c1-Cof"/>
                 <constraint firstItem="RRk-yE-T6Z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="U9m-j2-Whp"/>
                 <constraint firstItem="hg6-Ap-G90" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YGA-0B-td0"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AnN-74-fct" secondAttribute="bottom" constant="100" id="krt-f1-qrc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ef1-Jh-Wgc" secondAttribute="bottom" constant="30" id="o3u-mP-Iff"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AnN-74-fct" secondAttribute="bottom" id="krt-f1-qrc"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
         </view>

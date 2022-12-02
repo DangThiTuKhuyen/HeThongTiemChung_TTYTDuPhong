@@ -11,8 +11,9 @@ import UIKit
 protocol HistoryCellDelegate: AnyObject {
     func cell(_ cell: HistoryCell, needPerform action: HistoryCell.Action)
 }
+
 final class HistoryCell: UITableViewCell {
-    
+
     enum Action {
         case goToDetail
     }
@@ -20,14 +21,27 @@ final class HistoryCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var nameDisease: UILabel!
-    @IBOutlet private weak var nameVaccine: UILabel!
-    
+    @IBOutlet private weak var totalAmountLabel: UILabel!
+
+    var viewModel: HistoryCellViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
     weak var delegate: HistoryCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         configUI()
         iconImageView.layer.cornerRadius = 5
         containerView.layer.cornerRadius = 10
+        containerView.layer.borderWidth = 0.3
+        containerView.layer.borderColor = UIColor.black.cgColor
+
+        // shadow
+        containerView.layer.shadowColor = UIColor.darkGray.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        containerView.layer.shadowOpacity = 0.7
+        containerView.layer.shadowRadius = 4.0
     }
 
     private func configUI() {
@@ -38,19 +52,24 @@ final class HistoryCell: UITableViewCell {
         lineLayer.lineDashPattern = [6, 4]
         let path = CGMutablePath()
         path.addLines(between: [CGPoint(x: 15, y: 0),
-                                CGPoint(x: 15, y: self.frame.height)])
+            CGPoint(x: 15, y: self.frame.height)])
         path.addLines(between: [CGPoint(x: 15, y: self.frame.height / 2),
-                                CGPoint(x: 30, y: self.frame.height / 2)])
+            CGPoint(x: 30, y: self.frame.height / 2)])
         lineLayer.path = path
-        self.layer.addSublayer(lineLayer)
+//        self.layer.addSublayer(lineLayer)
 //        detailView.layer.addSublayer(lineLayer)
     }
-    
+
+    private func updateUI() {
+        guard let viewModel = viewModel else { return }
+        nameDisease.text = viewModel.histories.first?.disease?.diseaseName
+        totalAmountLabel.text = "\(viewModel.histories.count)"
+    }
+
     @objc private func goToDetail() {
         delegate?.cell(self, needPerform: .goToDetail)
     }
-    
-   
+
     @IBAction func goToDetailButton(_ sender: Any) {
         print("clicked")
         delegate?.cell(self, needPerform: .goToDetail)

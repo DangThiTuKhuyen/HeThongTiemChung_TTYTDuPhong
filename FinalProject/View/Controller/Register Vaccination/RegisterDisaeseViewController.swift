@@ -85,12 +85,6 @@ class RegisterDisaeseViewController: UIViewController {
         updateUI()
 
     }
-
-    @IBAction func nextToVaccinButton(_ sender: UIButton) {
-        let registerVaccineVC = RegisterVaccineViewController()
-        navigationController?.pushViewController(registerVaccineVC, animated: true)
-    }
-
 }
 
 // MARK: - UITableViewDataSource
@@ -110,7 +104,7 @@ extension RegisterDisaeseViewController: UITableViewDataSource {
 extension RegisterDisaeseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = RegisterVaccineViewController()
-        vc.viewModel = RegisterVaccineViewModel(disease: viewModel.getDisaeseSelected(at: indexPath))
+        vc.viewModel = RegisterVaccineViewModel(treatments: viewModel.getDisaeseSelected(at: indexPath), diseaseName: viewModel.getNameSelected(at: indexPath))
         navigationController?.pushViewController(vc, animated: true)
     }
 }

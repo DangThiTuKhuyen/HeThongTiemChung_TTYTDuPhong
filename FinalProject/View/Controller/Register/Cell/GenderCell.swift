@@ -8,7 +8,16 @@
 
 import UIKit
 
-class GenderCell: UITableViewCell {
+protocol GenderCellDelegate: AnyObject {
+    func cell(_ cell: GenderCell, needPerformAction action: GenderCell.Action)
+}
+
+final class GenderCell: UITableViewCell {
+    
+    // MARK: - Enum
+    enum Action {
+        case done(value: String)
+    }
 
     @IBOutlet private var multiRadioButton: [UIButton]! {
         didSet {
@@ -18,30 +27,23 @@ class GenderCell: UITableViewCell {
             }
         }
     }
+    
+    weak var delegate: GenderCellDelegate?
+    
     @IBAction private func maleFemaleAction(_ sender: UIButton) {
         uncheck()
-        sender.checkboxAnimation {
+        sender.checkboxAnimation { [self] in
             print(sender.titleLabel?.text ?? "")
             print(sender.isSelected)
+            self.delegate?.cell(self, needPerformAction: .done(value: sender.titleLabel?.text ?? ""))
         }
-        print(sender.tag)
     }
+
     func uncheck() {
         multiRadioButton.forEach { (button) in
             button.isSelected = false
         }
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 extension UIButton {
@@ -50,7 +52,6 @@ extension UIButton {
         guard let image = self.imageView else { return }
         self.adjustsImageWhenHighlighted = false
         self.isHighlighted = false
-
         UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveLinear, animations: {
             image.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { _ in

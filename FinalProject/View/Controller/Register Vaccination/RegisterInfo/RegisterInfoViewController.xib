@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterInfoViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="confirmButton" destination="KTs-sq-nxZ" id="y1m-0Q-0Yx"/>
+                <outlet property="deleteButton" destination="rbx-4f-cKq" id="Epg-6M-vKc"/>
                 <outlet property="tableView" destination="kpS-Uy-I2w" id="55i-i9-API"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,11 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-Uy-I2w">
-                    <rect key="frame" x="20" y="104.5" width="374" height="438"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="438" id="03Q-OK-a23"/>
-                    </constraints>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-Uy-I2w" customClass="TPKeyboardAvoidingTableView">
+                    <rect key="frame" x="20" y="104.5" width="374" height="601.5"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -38,14 +37,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Rvt-1n-gV1">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Rvt-1n-gV1">
                     <rect key="frame" x="30" y="807" width="354" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-4f-cKq">
-                            <rect key="frame" x="0.0" y="0.0" width="98" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="157" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Cancel">
+                            <state key="normal" title="Delete">
                                 <color key="titleColor" systemColor="systemRedColor"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -55,24 +54,16 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                     <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMK-Uz-Z8g">
-                            <rect key="frame" x="128" y="0.0" width="98" height="40"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Save"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" systemColor="tintColor"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="1"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="deleteRegistration:" destination="-1" eventType="touchUpInside" id="eDd-wJ-zaE"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-sq-nxZ">
-                            <rect key="frame" x="256" y="0.0" width="98" height="40"/>
+                            <rect key="frame" x="197" y="0.0" width="157" height="40"/>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.67843137249999996" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -84,6 +75,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="confirmRegister:" destination="-1" eventType="touchUpInside" id="GKn-JV-nwz"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -96,7 +90,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-jf-3jV">
-                    <rect key="frame" x="20" y="572.5" width="8" height="20.5"/>
+                    <rect key="frame" x="20" y="736" width="8" height="20.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="8" id="mFf-7D-aq4"/>
                     </constraints>
@@ -104,8 +98,8 @@
                     <color key="textColor" systemColor="systemRedColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check carefully. When click Confirm, you can't edit it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfU-h9-EVC">
-                    <rect key="frame" x="33" y="572.5" width="361" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Date and Medical Center to complete your registration" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfU-h9-EVC">
+                    <rect key="frame" x="33" y="736" width="361" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -119,14 +113,15 @@
                 <constraint firstItem="vgf-B3-M7V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UaF-r4-ccj"/>
                 <constraint firstItem="kpS-Uy-I2w" firstAttribute="top" secondItem="vgf-B3-M7V" secondAttribute="bottom" constant="20" id="XaR-D7-en5"/>
                 <constraint firstItem="mfU-h9-EVC" firstAttribute="leading" secondItem="G6d-jf-3jV" secondAttribute="trailing" constant="5" id="YOr-FM-DYf"/>
-                <constraint firstItem="mfU-h9-EVC" firstAttribute="top" secondItem="kpS-Uy-I2w" secondAttribute="bottom" constant="30" id="dww-5J-Chg"/>
+                <constraint firstItem="Rvt-1n-gV1" firstAttribute="top" secondItem="mfU-h9-EVC" secondAttribute="bottom" constant="30" id="bga-GA-vRg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rvt-1n-gV1" secondAttribute="trailing" constant="30" id="e9q-OX-bPm"/>
                 <constraint firstItem="G6d-jf-3jV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="fdI-K7-vcI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mfU-h9-EVC" secondAttribute="trailing" constant="20" id="fdo-qs-PDR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Rvt-1n-gV1" secondAttribute="bottom" constant="15" id="gzU-YD-Oi3"/>
                 <constraint firstItem="vgf-B3-M7V" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="hQ9-fW-LPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kpS-Uy-I2w" secondAttribute="trailing" constant="20" id="lLC-IH-ZkA"/>
-                <constraint firstItem="G6d-jf-3jV" firstAttribute="top" secondItem="kpS-Uy-I2w" secondAttribute="bottom" constant="30" id="xCl-td-IY9"/>
+                <constraint firstItem="G6d-jf-3jV" firstAttribute="top" secondItem="kpS-Uy-I2w" secondAttribute="bottom" constant="30" id="nck-4Z-Ks8"/>
+                <constraint firstItem="mfU-h9-EVC" firstAttribute="top" secondItem="kpS-Uy-I2w" secondAttribute="bottom" constant="30" id="pFP-q7-iRp"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
         </view>
@@ -137,9 +132,6 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

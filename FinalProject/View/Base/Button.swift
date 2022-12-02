@@ -63,3 +63,32 @@ extension Button {
         static let contextRect = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
 }
+
+extension UIButton {
+    func downloadImage(with urlString: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                if let _ = error {
+                    completion(nil)
+                } else {
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        completion(image)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+}
+

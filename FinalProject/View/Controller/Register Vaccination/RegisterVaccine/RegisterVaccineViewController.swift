@@ -33,7 +33,7 @@ final class RegisterVaccineViewController: UIViewController {
         nextButton.isUserInteractionEnabled = false
         nextButton.alpha = 0.5
         guard let viewModel = viewModel else { return }
-        nameDiseaseLabel.text = viewModel.disease.diseaseName
+        nameDiseaseLabel.text = viewModel.diseaseName
     }
 
     private func configCollectionView() {
@@ -46,7 +46,7 @@ final class RegisterVaccineViewController: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
         guard let viewModel = viewModel else { return }
         let vc = RegisterInfoViewController()
-        vc.viewModel = RegisterInfoViewModel(registerInfo: viewModel.getDisaeseVaccine())
+        vc.viewModel = RegisterInfoViewModel(registerInfo: viewModel.getTreatmentSelected(), diseaseName: viewModel.diseaseName, type: .new)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

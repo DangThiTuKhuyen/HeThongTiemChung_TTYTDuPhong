@@ -22,15 +22,22 @@ class RegisterInfoCell: UITableViewCell {
             updateUI()
         }
     }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        valueLabel.attributedText = NSAttributedString(
+            string: "",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 174, green: 174, blue: 178, alpha: 1.0)])
+    }
+
     private func updateUI() {
-        guard let item = viewModel?.item else { return }
+        guard let viewModel = viewModel, let item = viewModel.item, let type = viewModel.type else { return }
+        switch type {
+        case .medicalCenter:
+            valueLabel.textColor = UIColor.black
+        default:
+            break
+        }
         titleLabel.text = item.title
         valueLabel.text = item.value
     }

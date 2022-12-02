@@ -12,13 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="qCo-zv-ERb" id="TYT-to-G3g"/>
+                <outlet property="emailTextField" destination="Sec-gb-3NK" id="taL-xw-MpR"/>
                 <outlet property="errorLabel" destination="7qn-CS-yeK" id="7Jr-Ct-UaA"/>
                 <outlet property="heightErrorLabel" destination="r4K-x3-4gR" id="6f6-PL-zBV"/>
                 <outlet property="hidePassButton" destination="gr7-65-xL3" id="UhD-M4-Roq"/>
                 <outlet property="iconImageView" destination="24U-91-sXd" id="B1G-ma-5YS"/>
                 <outlet property="loginButton" destination="IXi-zD-ZkQ" id="BVM-rA-XWz"/>
                 <outlet property="passwordTextField" destination="0jf-eh-4UT" id="PiV-rl-cxS"/>
-                <outlet property="phoneNumberTextField" destination="Sec-gb-3NK" id="taL-xw-MpR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,7 +48,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCo-zv-ERb" userLabel="Container View">
                     <rect key="frame" x="0.0" y="280" width="414" height="616"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sec-gb-3NK">
+                        <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sec-gb-3NK">
                             <rect key="frame" x="20" y="20" width="374" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Afx-rh-GfQ"/>

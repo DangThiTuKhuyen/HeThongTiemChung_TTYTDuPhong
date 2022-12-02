@@ -14,10 +14,16 @@ typealias JSArray = [JSObject]
 
 typealias Completion<Value> = (Result<Value>) -> Void
 typealias APICompletion = (APIResult) -> Void
+typealias CompletionAPI = (ResultAPI) -> Void
 
 enum APIResult {
     case success
     case failure(Error)
+}
+
+enum ResultAPI {
+    case success
+    case failure(String)
 }
 
 // MARK: - Equatable

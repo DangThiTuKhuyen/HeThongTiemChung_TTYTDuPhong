@@ -120,6 +120,10 @@ extension HomeViewModel {
             }
         }
     }
+    
+    func getRegistration(completion: @escaping Completion<Profile>) {
+        
+    }
 
     func getNearVenues(completion: @escaping APICompletion) {
         guard let cordinate = LocationManager.shared().currentLocation?.coordinate else {

@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
         window.backgroundColor = .white
-        changeScreen(type: .tabbar)
+        checkTime()
         LocationManager.shared().request()
     }
 
@@ -37,6 +37,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             createTutorial()
         case .tabbar:
             createTabbar()
+        }
+    }
+    
+    func checkTime() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            changeScreen(type: .tabbar)
+        } else {
+            changeScreen(type: .tutorial)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
     }
 

@@ -43,8 +43,12 @@ final class RegisterDisaeseViewModel {
         return RegisterDiseaseCellViewModel(disease: currentDisaeses[indexPath.row])
     }
 
-    func getDisaeseSelected(at indexPath: IndexPath) -> Disease {
-        return currentDisaeses[indexPath.row]
+    func getDisaeseSelected(at indexPath: IndexPath) -> [Treatment] {
+        return currentDisaeses[indexPath.row].treatments ?? []
+    }
+    
+    func getNameSelected(at indexPath: IndexPath) -> String {
+        return currentDisaeses[indexPath.row].diseaseName ?? ""
     }
 }
 

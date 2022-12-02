@@ -14,6 +14,7 @@ protocol CommonCellDataSource: AnyObject {
     func updateCellDistrict(_ cell: CommonCell) -> String
 }
 
+// MARK: - CommonCellDelegate
 protocol CommonCellDelegate: AnyObject {
     func cell(_ cell: CommonCell, needPerformAction action: CommonCell.Action)
 }
@@ -90,14 +91,8 @@ final class CommonCell: UITableViewCell {
         toolbar.sizeToFit()
         var doneButton = UIBarButtonItem()
         switch typeCell {
-        case .name:
-            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneName))
-        case .email:
-            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEmail))
-        case .phoneNumber:
-            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneNumberPhone))
-        case .password:
-            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePassword))
+        case .name, .email, .phoneNumber:
+            doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done))
         default:
             break
         }
@@ -121,26 +116,9 @@ final class CommonCell: UITableViewCell {
         self.endEditing(true)
     }
 
-    @objc private func doneNumberPhone() {
-        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .phoneNumber))
-        self.endEditing(true)
-    }
-
-    @objc private func doneName() {
-        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .name))
-        print("name")
-        self.endEditing(true)
-    }
-
-    @objc private func doneEmail() {
-        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .email))
-        print("name1")
-        self.endEditing(true)
-    }
-
-    @objc private func donePassword() {
-        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .password))
-        print("name2")
+    @objc private func done() {
+        guard let viewModel = viewModel, let type = viewModel.type else { return }
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: type))
         self.endEditing(true)
     }
 }
@@ -151,7 +129,7 @@ extension CommonCell: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let viewModel = viewModel, let type = viewModel.type else { return false }
         switch type {
-        case .name, .email, .password:
+        case .name, .email:
             showKeyBoard(typeKeyBoard: .alphabet, typeCell: type)
         case .birthday:
             showDatePicker()

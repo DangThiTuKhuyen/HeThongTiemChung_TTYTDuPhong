@@ -41,7 +41,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jd-ce-ATL">
-                    <rect key="frame" x="80" y="84" width="254" height="42"/>
+                    <rect key="frame" x="80" y="44" width="254" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="3Iy-G2-qVy"/>
                     </constraints>
@@ -49,21 +49,8 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDH-6b-ebj">
-                    <rect key="frame" x="20" y="54" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="aXi-4O-5a6"/>
-                        <constraint firstAttribute="width" constant="40" id="iZA-0x-rUB"/>
-                    </constraints>
-                    <state key="normal" image="go_back">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="backToPreviousButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="1x6-WX-qIb"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jii-P1-beS" customClass="TPKeyboardAvoidingTableView">
-                    <rect key="frame" x="20" y="146" width="374" height="616"/>
+                    <rect key="frame" x="20" y="106" width="374" height="656"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -76,9 +63,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jii-P1-beS" secondAttribute="trailing" constant="20" id="XMs-Tl-FqP"/>
                 <constraint firstItem="7jd-ce-ATL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="b5W-kh-ezl"/>
                 <constraint firstItem="Jii-P1-beS" firstAttribute="top" secondItem="7jd-ce-ATL" secondAttribute="bottom" constant="20" id="eLE-NC-fAh"/>
-                <constraint firstItem="TDH-6b-ebj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ffT-Wx-eus"/>
-                <constraint firstItem="TDH-6b-ebj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="gfy-7t-yKg"/>
-                <constraint firstItem="7jd-ce-ATL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="j3L-tc-sNn"/>
+                <constraint firstItem="7jd-ce-ATL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="j3L-tc-sNn"/>
                 <constraint firstItem="Jii-P1-beS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ju2-UC-X7C"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mnF-s6-yzQ" secondAttribute="bottom" constant="30" id="x40-1O-eLk"/>
             </constraints>
@@ -86,7 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="go_back" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

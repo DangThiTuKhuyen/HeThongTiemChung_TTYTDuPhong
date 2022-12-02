@@ -86,6 +86,11 @@
 		8A4E5E90288AA7830053FFC6 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5E8F288AA7830053FFC6 /* Venue.swift */; };
 		8A4E5E95288AA80B0053FFC6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5E94288AA80B0053FFC6 /* HomeService.swift */; };
 		8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FA049289775DF00090B44 /* DetailViewModel.swift */; };
+		8A866D41292329F300E960B3 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D40292329F300E960B3 /* HistoryService.swift */; };
+		8A866D4529239D2800E960B3 /* RegisterWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */; };
+		8A866D4629239D2800E960B3 /* RegisterWithEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */; };
+		8A866D492923A24B00E960B3 /* EnterPassCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */; };
+		8A866D4A2923A24B00E960B3 /* EnterPassCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */; };
 		8A880B4F2901066100FDECA5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B4D2901066100FDECA5 /* HistoryViewController.swift */; };
 		8A880B502901066100FDECA5 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A880B4E2901066100FDECA5 /* HistoryViewController.xib */; };
 		8A880B522901068B00FDECA5 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B512901068B00FDECA5 /* HistoryViewModel.swift */; };
@@ -152,8 +157,31 @@
 		8AA8613D28A3BB1500618FD1 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8613C28A3BB1400618FD1 /* FavoriteCell.swift */; };
 		8AA8614128A3BB1B00618FD1 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA8614028A3BB1B00618FD1 /* FavoriteCell.xib */; };
 		8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */; };
+		8AA8C7C729312CCF003FEA21 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7C629312CCE003FEA21 /* History.swift */; };
+		8AA8C7D32935EF51003FEA21 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7D22935EF50003FEA21 /* AuthService.swift */; };
+		8AA8C7D52935EFD5003FEA21 /* RegisterWithEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */; };
+		8ABE9D282924D5BF00ED3970 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D262924D5BF00ED3970 /* ChangePasswordViewController.swift */; };
+		8ABE9D292924D5BF00ED3970 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABE9D272924D5BF00ED3970 /* ChangePasswordViewController.xib */; };
+		8ABE9D2D2924D5F400ED3970 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D2C2924D5F400ED3970 /* ChangePasswordViewModel.swift */; };
+		8ABE9D302925D75E00ED3970 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D2F2925D75E00ED3970 /* Registration.swift */; };
+		8ABE9D332925DDF900ED3970 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D322925DDF900ED3970 /* User.swift */; };
+		8ABE9D362925E84E00ED3970 /* DetailNotifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D342925E84E00ED3970 /* DetailNotifyViewController.swift */; };
+		8ABE9D372925E84E00ED3970 /* DetailNotifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABE9D352925E84E00ED3970 /* DetailNotifyViewController.xib */; };
+		8ABE9D392925E85F00ED3970 /* DetailNotifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D382925E85F00ED3970 /* DetailNotifyViewModel.swift */; };
 		8AC030792921D91D0089802A /* RegistrationVaccineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC030782921D91D0089802A /* RegistrationVaccineService.swift */; };
 		8AC0307C2921D9AF0089802A /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0307B2921D9AF0089802A /* Disease.swift */; };
+		8AC9F27F292C69E4006D53EE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F27D292C69E4006D53EE /* RegistrationViewController.swift */; };
+		8AC9F280292C69E4006D53EE /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC9F27E292C69E4006D53EE /* RegistrationViewController.xib */; };
+		8AC9F282292C6A05006D53EE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F281292C6A05006D53EE /* RegistrationViewModel.swift */; };
+		8AC9F286292C6B42006D53EE /* RegistrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F284292C6B42006D53EE /* RegistrationCell.swift */; };
+		8AC9F287292C6B42006D53EE /* RegistrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC9F285292C6B42006D53EE /* RegistrationCell.xib */; };
+		8AC9F289292C6B55006D53EE /* RegistrationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F288292C6B55006D53EE /* RegistrationCellViewModel.swift */; };
+		8AC9F290292DAE4C006D53EE /* MedicalCenterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F28F292DAE4C006D53EE /* MedicalCenterViewModel.swift */; };
+		8AC9F297292DB0D7006D53EE /* MedicalCenterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F296292DB0D7006D53EE /* MedicalCenterCellViewModel.swift */; };
+		8AC9F29E292DB4F9006D53EE /* MedicalCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F29C292DB4F9006D53EE /* MedicalCenterCell.swift */; };
+		8AC9F29F292DB4F9006D53EE /* MedicalCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC9F29D292DB4F9006D53EE /* MedicalCenterCell.xib */; };
+		8AC9F2A2292DC45E006D53EE /* MedicalCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9F2A0292DC45E006D53EE /* MedicalCenterViewController.swift */; };
+		8AC9F2A3292DC45E006D53EE /* MedicalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC9F2A1292DC45E006D53EE /* MedicalCenterViewController.xib */; };
 		8ADBF98928F4847D00DF3F8F /* NSErrorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF98828F4847D00DF3F8F /* NSErrorExt.swift */; };
 		8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8ADBF98A28F4848D00DF3F8F /* vaccine.gif */; };
 		8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF98C28F484A400DF3F8F /* Like.swift */; };
@@ -185,6 +213,8 @@
 		8AF4A443292103C6008A7968 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4A441292103C6008A7968 /* DatePickerCell.swift */; };
 		8AF4A444292103C6008A7968 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF4A442292103C6008A7968 /* DatePickerCell.xib */; };
 		8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */; };
+		8AFB0B6F2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */; };
+		8AFB0B732938866C00EFFEC7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B722938866C00EFFEC7 /* Auth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +313,11 @@
 		8A4E5E8F288AA7830053FFC6 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		8A4E5E94288AA80B0053FFC6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		8A4FA049289775DF00090B44 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		8A866D40292329F300E960B3 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithEmailViewController.swift; sourceTree = "<group>"; };
+		8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterWithEmailViewController.xib; sourceTree = "<group>"; };
+		8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPassCodeViewController.swift; sourceTree = "<group>"; };
+		8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterPassCodeViewController.xib; sourceTree = "<group>"; };
 		8A880B4D2901066100FDECA5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		8A880B4E2901066100FDECA5 /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		8A880B512901068B00FDECA5 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
@@ -349,8 +384,31 @@
 		8AA8613C28A3BB1400618FD1 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		8AA8614028A3BB1B00618FD1 /* FavoriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
+		8AA8C7C629312CCE003FEA21 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		8AA8C7D22935EF50003FEA21 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithEmailViewModel.swift; sourceTree = "<group>"; };
+		8ABE9D262924D5BF00ED3970 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		8ABE9D272924D5BF00ED3970 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		8ABE9D2C2924D5F400ED3970 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		8ABE9D2F2925D75E00ED3970 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		8ABE9D322925DDF900ED3970 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8ABE9D342925E84E00ED3970 /* DetailNotifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNotifyViewController.swift; sourceTree = "<group>"; };
+		8ABE9D352925E84E00ED3970 /* DetailNotifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailNotifyViewController.xib; sourceTree = "<group>"; };
+		8ABE9D382925E85F00ED3970 /* DetailNotifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNotifyViewModel.swift; sourceTree = "<group>"; };
 		8AC030782921D91D0089802A /* RegistrationVaccineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVaccineService.swift; sourceTree = "<group>"; };
 		8AC0307B2921D9AF0089802A /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
+		8AC9F27D292C69E4006D53EE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		8AC9F27E292C69E4006D53EE /* RegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		8AC9F281292C6A05006D53EE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		8AC9F284292C6B42006D53EE /* RegistrationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCell.swift; sourceTree = "<group>"; };
+		8AC9F285292C6B42006D53EE /* RegistrationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationCell.xib; sourceTree = "<group>"; };
+		8AC9F288292C6B55006D53EE /* RegistrationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCellViewModel.swift; sourceTree = "<group>"; };
+		8AC9F28F292DAE4C006D53EE /* MedicalCenterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCenterViewModel.swift; sourceTree = "<group>"; };
+		8AC9F296292DB0D7006D53EE /* MedicalCenterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCenterCellViewModel.swift; sourceTree = "<group>"; };
+		8AC9F29C292DB4F9006D53EE /* MedicalCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCenterCell.swift; sourceTree = "<group>"; };
+		8AC9F29D292DB4F9006D53EE /* MedicalCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedicalCenterCell.xib; sourceTree = "<group>"; };
+		8AC9F2A0292DC45E006D53EE /* MedicalCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCenterViewController.swift; sourceTree = "<group>"; };
+		8AC9F2A1292DC45E006D53EE /* MedicalCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedicalCenterViewController.xib; sourceTree = "<group>"; };
 		8ADBF98828F4847D00DF3F8F /* NSErrorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExt.swift; sourceTree = "<group>"; };
 		8ADBF98A28F4848D00DF3F8F /* vaccine.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vaccine.gif; sourceTree = "<group>"; };
 		8ADBF98C28F484A400DF3F8F /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
@@ -382,6 +440,8 @@
 		8AF4A441292103C6008A7968 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		8AF4A442292103C6008A7968 /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCellViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPassCodeViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B722938866C00EFFEC7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		D72EC1050944689B4414E5C7 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DD4A2FBD85737A9282EA2264 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -430,6 +490,9 @@
 		6AF60D232313B56B00F5CBA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8AFB0B712938865B00EFFEC7 /* Auth */,
+				8AA8C7C529312CA4003FEA21 /* History */,
+				8ABE9D2E2925D74A00ED3970 /* Registration */,
 				8AC0307A2921D9980089802A /* Disease */,
 				8A12F1EE291DE75300797CF6 /* Profile */,
 				8A2D99CA28FBCD67007BC3E7 /* Address */,
@@ -446,6 +509,7 @@
 		6AF60D672313B56B00F5CBA2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8ABE9D312925DDE000ED3970 /* ManagerUser */,
 				8A4E5E93288AA7F90053FFC6 /* Service */,
 				6AF60D692313B56B00F5CBA2 /* Core */,
 			);
@@ -695,6 +759,7 @@
 		8A32918528F00F1400B3639A /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				8A866D4229239CDF00E960B3 /* RegisterAuthen */,
 				8A2D99A128F6CAE8007BC3E7 /* Cell */,
 				8A2D999A28F6BE69007BC3E7 /* Address */,
 				8ADBF99528F484F300DF3F8F /* RegisterViewController.swift */,
@@ -725,6 +790,8 @@
 		8A4E5E7B288A90130053FFC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8AC9F27C292C69C3006D53EE /* Registrations */,
+				8ABE9D252924D59200ED3970 /* Change Password */,
 				8A91E0042917A68B00FF8DD4 /* Notification */,
 				8A91DFD8291507CB00FF8DD4 /* Register Vaccination */,
 				8A880B932911FD7F00FDECA5 /* Profile */,
@@ -757,6 +824,8 @@
 				8A2D99CD28FBCEC7007BC3E7 /* AddressService.swift */,
 				8A12F1F1291DEF1B00797CF6 /* ProfileService.swift */,
 				8AC030782921D91D0089802A /* RegistrationVaccineService.swift */,
+				8A866D40292329F300E960B3 /* HistoryService.swift */,
+				8AA8C7D22935EF50003FEA21 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -784,6 +853,19 @@
 				8ADBF99C28F4853000DF3F8F /* TutorialViewModel.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		8A866D4229239CDF00E960B3 /* RegisterAuthen */ = {
+			isa = PBXGroup;
+			children = (
+				8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */,
+				8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */,
+				8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */,
+				8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */,
+				8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */,
+				8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */,
+			);
+			path = RegisterAuthen;
 			sourceTree = "<group>";
 		};
 		8A880B4C2901063E00FDECA5 /* History */ = {
@@ -903,6 +985,7 @@
 		8A91DFD8291507CB00FF8DD4 /* Register Vaccination */ = {
 			isa = PBXGroup;
 			children = (
+				8AC9F28A292DAC97006D53EE /* Medical Center */,
 				8A12F1F9291FF53400797CF6 /* RegisterInfo */,
 				8A91DFEB29150BE000FF8DD4 /* RegisterVaccine */,
 				8A91DFDF29150AC700FF8DD4 /* Cell */,
@@ -918,10 +1001,10 @@
 			children = (
 				8A91DFE529150BBF00FF8DD4 /* RegisterDiseaseCell.swift */,
 				8A91DFE629150BBF00FF8DD4 /* RegisterDiseaseCell.xib */,
-				8A91E00029150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift */,
 				8A91DFF829150CC900FF8DD4 /* RegisterVaccineCollectionCell.swift */,
 				8A91DFF929150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib */,
 				8A91E00229150D7300FF8DD4 /* RegisterVaccineCellViewModel.swift */,
+				8A91E00029150D4F00FF8DD4 /* RegisterDiseaseCellViewModel.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -943,6 +1026,9 @@
 				8A91E0062917A86100FF8DD4 /* NotifyViewController.swift */,
 				8A91E0072917A86100FF8DD4 /* NotifyViewController.xib */,
 				8A91E00A2917A87800FF8DD4 /* NotifyViewModel.swift */,
+				8ABE9D342925E84E00ED3970 /* DetailNotifyViewController.swift */,
+				8ABE9D352925E84E00ED3970 /* DetailNotifyViewController.xib */,
+				8ABE9D382925E85F00ED3970 /* DetailNotifyViewModel.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1080,12 +1166,88 @@
 			path = FavoriteCell;
 			sourceTree = "<group>";
 		};
+		8AA8C7C529312CA4003FEA21 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8AA8C7C629312CCE003FEA21 /* History.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		8ABE9D252924D59200ED3970 /* Change Password */ = {
+			isa = PBXGroup;
+			children = (
+				8ABE9D262924D5BF00ED3970 /* ChangePasswordViewController.swift */,
+				8ABE9D272924D5BF00ED3970 /* ChangePasswordViewController.xib */,
+				8ABE9D2C2924D5F400ED3970 /* ChangePasswordViewModel.swift */,
+			);
+			path = "Change Password";
+			sourceTree = "<group>";
+		};
+		8ABE9D2E2925D74A00ED3970 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				8ABE9D2F2925D75E00ED3970 /* Registration.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		8ABE9D312925DDE000ED3970 /* ManagerUser */ = {
+			isa = PBXGroup;
+			children = (
+				8ABE9D322925DDF900ED3970 /* User.swift */,
+			);
+			path = ManagerUser;
+			sourceTree = "<group>";
+		};
 		8AC0307A2921D9980089802A /* Disease */ = {
 			isa = PBXGroup;
 			children = (
 				8AC0307B2921D9AF0089802A /* Disease.swift */,
 			);
 			path = Disease;
+			sourceTree = "<group>";
+		};
+		8AC9F27C292C69C3006D53EE /* Registrations */ = {
+			isa = PBXGroup;
+			children = (
+				8AC9F283292C6B00006D53EE /* Cell */,
+				8AC9F27D292C69E4006D53EE /* RegistrationViewController.swift */,
+				8AC9F27E292C69E4006D53EE /* RegistrationViewController.xib */,
+				8AC9F281292C6A05006D53EE /* RegistrationViewModel.swift */,
+			);
+			path = Registrations;
+			sourceTree = "<group>";
+		};
+		8AC9F283292C6B00006D53EE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8AC9F284292C6B42006D53EE /* RegistrationCell.swift */,
+				8AC9F285292C6B42006D53EE /* RegistrationCell.xib */,
+				8AC9F288292C6B55006D53EE /* RegistrationCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8AC9F28A292DAC97006D53EE /* Medical Center */ = {
+			isa = PBXGroup;
+			children = (
+				8AC9F291292DB0A3006D53EE /* Cell */,
+				8AC9F2A0292DC45E006D53EE /* MedicalCenterViewController.swift */,
+				8AC9F2A1292DC45E006D53EE /* MedicalCenterViewController.xib */,
+				8AC9F28F292DAE4C006D53EE /* MedicalCenterViewModel.swift */,
+			);
+			path = "Medical Center";
+			sourceTree = "<group>";
+		};
+		8AC9F291292DB0A3006D53EE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8AC9F29C292DB4F9006D53EE /* MedicalCenterCell.swift */,
+				8AC9F29D292DB4F9006D53EE /* MedicalCenterCell.xib */,
+				8AC9F296292DB0D7006D53EE /* MedicalCenterCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8ADD2986291A3FF100A72D1B /* Cell */ = {
@@ -1099,6 +1261,14 @@
 				8A12F1E8291A66F400797CF6 /* CommonTableCellViewModel.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8AFB0B712938865B00EFFEC7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8AFB0B722938866C00EFFEC7 /* Auth.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		EDAB884D0E9858125EA92DBE /* Frameworks */ = {
@@ -1199,6 +1369,7 @@
 				8A91E00F2917AA8600FF8DD4 /* NotifyCell.xib in Resources */,
 				8A880B67290136B100FDECA5 /* DetailHistoryCell.xib in Resources */,
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
+				8ABE9D372925E84E00ED3970 /* DetailNotifyViewController.xib in Resources */,
 				6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */,
 				8A2D99EE28FC3337007BC3E7 /* DistrictViewController.xib in Resources */,
 				8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */,
@@ -1207,6 +1378,7 @@
 				8A91DFFB29150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib in Resources */,
 				8A12F1E7291A66E500797CF6 /* CommonTableCell.xib in Resources */,
 				8A2D99C128F95571007BC3E7 /* ProvinceViewController.xib in Resources */,
+				8A866D4A2923A24B00E960B3 /* EnterPassCodeViewController.xib in Resources */,
 				8A880B5829012D1400FDECA5 /* HistoryCell.xib in Resources */,
 				8A9FBAD728B86D5E003A94A1 /* CategoryCell.xib in Resources */,
 				8AF4A444292103C6008A7968 /* DatePickerCell.xib in Resources */,
@@ -1217,9 +1389,12 @@
 				8ADBF99628F484F400DF3F8F /* RegisterViewController.xib in Resources */,
 				8A91E0152917ACAD00FF8DD4 /* notification.gif in Resources */,
 				8AA8614128A3BB1B00618FD1 /* FavoriteCell.xib in Resources */,
+				8AC9F2A3292DC45E006D53EE /* MedicalCenterViewController.xib in Resources */,
+				8ABE9D292924D5BF00ED3970 /* ChangePasswordViewController.xib in Resources */,
 				8A12F1FD291FF59600797CF6 /* RegisterInfoViewController.xib in Resources */,
 				8A2D99C728F9565B007BC3E7 /* ProvinceCell.xib in Resources */,
 				8A9FBAD428B86D5E003A94A1 /* CategoryViewController.xib in Resources */,
+				8AC9F29F292DB4F9006D53EE /* MedicalCenterCell.xib in Resources */,
 				8A9FBAD128B86D5E003A94A1 /* SearchViewController.xib in Resources */,
 				8A91E0092917A86100FF8DD4 /* NotifyViewController.xib in Resources */,
 				8A2D99BC28F93D37007BC3E7 /* CommonCell.xib in Resources */,
@@ -1239,8 +1414,11 @@
 				8A22FD6E288FE87B004A8E5B /* NearTableViewCell.xib in Resources */,
 				8A2D99E628FC32BE007BC3E7 /* DistrictCell.xib in Resources */,
 				8A9FBADA28B86D5E003A94A1 /* SearchCell.xib in Resources */,
+				8AC9F287292C6B42006D53EE /* RegistrationCell.xib in Resources */,
 				8A22FD21288F9A52004A8E5B /* RecommendTableViewCell.xib in Resources */,
+				8A866D4629239D2800E960B3 /* RegisterWithEmailViewController.xib in Resources */,
 				8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */,
+				8AC9F280292C69E4006D53EE /* RegistrationViewController.xib in Resources */,
 				8A880B972911FDAE00FDECA5 /* ProfileViewController.xib in Resources */,
 				8ADBF9A428F4857A00DF3F8F /* DetailViewController.xib in Resources */,
 			);
@@ -1364,11 +1542,13 @@
 				8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */,
 				8A22FD50288FDD2C004A8E5B /* NearViewModel.swift in Sources */,
 				8A91E00E2917AA8600FF8DD4 /* NotifyCell.swift in Sources */,
+				8AFB0B732938866C00EFFEC7 /* Auth.swift in Sources */,
 				8ADBF99328F484D500DF3F8F /* ResponseSerializer.swift in Sources */,
 				8A2D99F028FC3346007BC3E7 /* DistrictViewModel.swift in Sources */,
 				8A2D99CE28FBCEC7007BC3E7 /* AddressService.swift in Sources */,
 				8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */,
 				8A2D99E828FC32D2007BC3E7 /* DistrictCellViewModel.swift in Sources */,
+				8AFB0B6F2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift in Sources */,
 				8A2D99E528FC32BE007BC3E7 /* DistrictCell.swift in Sources */,
 				8A880B522901068B00FDECA5 /* HistoryViewModel.swift in Sources */,
 				8ADBF9B328F4861800DF3F8F /* Label.swift in Sources */,
@@ -1384,6 +1564,8 @@
 				8A9AC291289A2B8200EFA680 /* DetailService.swift in Sources */,
 				8A2D99C628F9565B007BC3E7 /* ProvinceCell.swift in Sources */,
 				8A22FD5B288FDD8D004A8E5B /* OpenningViewModel.swift in Sources */,
+				8ABE9D2D2924D5F400ED3970 /* ChangePasswordViewModel.swift in Sources */,
+				8ABE9D302925D75E00ED3970 /* Registration.swift in Sources */,
 				8A466F2428AB3DCC002F3038 /* LocationManager.swift in Sources */,
 				8A9FBA4F28B75A7F003A94A1 /* SimilarVenue.swift in Sources */,
 				8A9FBAD328B86D5E003A94A1 /* CategoryViewController.swift in Sources */,
@@ -1392,6 +1574,7 @@
 				8A2D99B528F7D14B007BC3E7 /* PaddingTextField.swift in Sources */,
 				8ADBF99128F484B900DF3F8F /* SearchVenue.swift in Sources */,
 				8A12F2062920045000797CF6 /* RegisterInfoCellViewModel.swift in Sources */,
+				8ABE9D282924D5BF00ED3970 /* ChangePasswordViewController.swift in Sources */,
 				8A9FBAD028B86D5E003A94A1 /* SearchViewModel.swift in Sources */,
 				8ADD2989291A401F00A72D1B /* NewAvatarTableCell.swift in Sources */,
 				8A880B992911FDD700FDECA5 /* ProfileViewModel.swift in Sources */,
@@ -1400,8 +1583,12 @@
 				8AC0307C2921D9AF0089802A /* Disease.swift in Sources */,
 				8A91DFF429150C4D00FF8DD4 /* RegisterDisaeseViewController.swift in Sources */,
 				8A91E0082917A86100FF8DD4 /* NotifyViewController.swift in Sources */,
+				8AA8C7C729312CCF003FEA21 /* History.swift in Sources */,
+				8AC9F286292C6B42006D53EE /* RegistrationCell.swift in Sources */,
 				8ADBF9B528F4861800DF3F8F /* Button.swift in Sources */,
 				8A12F1FF291FF5AF00797CF6 /* RegisterInfoViewModel.swift in Sources */,
+				8AA8C7D32935EF51003FEA21 /* AuthService.swift in Sources */,
+				8AC9F290292DAE4C006D53EE /* MedicalCenterViewModel.swift in Sources */,
 				8A91E01928F472D200973339 /* AppDelegate.swift in Sources */,
 				8A22FD20288F9A52004A8E5B /* RecommendTableViewCell.swift in Sources */,
 				8ADBF9B928F4861800DF3F8F /* CollectionView.swift in Sources */,
@@ -1415,12 +1602,16 @@
 				6AF60DC72313B56B00F5CBA2 /* Api.swift in Sources */,
 				8A2D99C928F9566D007BC3E7 /* ProvinceCellViewModel.swift in Sources */,
 				8A9AC281289A27AD00EFA680 /* Price.swift in Sources */,
+				8A866D4529239D2800E960B3 /* RegisterWithEmailViewController.swift in Sources */,
+				8ABE9D362925E84E00ED3970 /* DetailNotifyViewController.swift in Sources */,
 				8AF4A443292103C6008A7968 /* DatePickerCell.swift in Sources */,
 				8ADBF9A528F4857A00DF3F8F /* DetailViewController.swift in Sources */,
 				6AF613B12313C13A00F5CBA2 /* CollectionViewHeaderView.swift in Sources */,
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
 				8A12F1E6291A66E500797CF6 /* CommonTableCell.swift in Sources */,
 				8A880B622901345A00FDECA5 /* DetailHistoryViewModel.swift in Sources */,
+				8AC9F297292DB0D7006D53EE /* MedicalCenterCellViewModel.swift in Sources */,
+				8AA8C7D52935EFD5003FEA21 /* RegisterWithEmailViewModel.swift in Sources */,
 				8A22FD36288F9BE7004A8E5B /* RecommendCell.swift in Sources */,
 				8A12F1FC291FF59600797CF6 /* RegisterInfoViewController.swift in Sources */,
 				8A880B5729012D1400FDECA5 /* HistoryCell.swift in Sources */,
@@ -1438,10 +1629,12 @@
 				8A4864FE28ED31A1007B7AB7 /* DetailCell.swift in Sources */,
 				8A91DFFD29150CFE00FF8DD4 /* RegisterDisaeseViewModel.swift in Sources */,
 				8A2D99A828F6CD31007BC3E7 /* GenderCell.swift in Sources */,
+				8AC9F289292C6B55006D53EE /* RegistrationCellViewModel.swift in Sources */,
 				8A880B962911FDAE00FDECA5 /* ProfileViewController.swift in Sources */,
 				8A12F1E9291A66F400797CF6 /* CommonTableCellViewModel.swift in Sources */,
 				8A91E00B2917A87800FF8DD4 /* NotifyViewModel.swift in Sources */,
 				8A2D99B128F7B74B007BC3E7 /* CommonCellViewModel.swift in Sources */,
+				8AC9F29E292DB4F9006D53EE /* MedicalCenterCell.swift in Sources */,
 				8A9FBAD228B86D5E003A94A1 /* CategoryViewModel.swift in Sources */,
 				8A22FD66288FDE6B004A8E5B /* OpeningTableViewCell.swift in Sources */,
 				8A2D99AF28F7A2AC007BC3E7 /* RegisterViewModel.swift in Sources */,
@@ -1450,6 +1643,7 @@
 				8A880B4F2901066100FDECA5 /* HistoryViewController.swift in Sources */,
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
 				8ADBF9A128F4855900DF3F8F /* MapViewModel.swift in Sources */,
+				8AC9F27F292C69E4006D53EE /* RegistrationViewController.swift in Sources */,
 				6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */,
 				8A12F2032920044100797CF6 /* RegisterInfoCell.swift in Sources */,
 				8A2D99D028FBE66A007BC3E7 /* District.swift in Sources */,
@@ -1457,7 +1651,9 @@
 				8A9FBAD528B86D5E003A94A1 /* CategoryCell.swift in Sources */,
 				8A12F1F2291DEF1B00797CF6 /* ProfileService.swift in Sources */,
 				8A9FBAE028B86D71003A94A1 /* SearchService.swift in Sources */,
+				8A866D492923A24B00E960B3 /* EnterPassCodeViewController.swift in Sources */,
 				8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */,
+				8AC9F282292C6A05006D53EE /* RegistrationViewModel.swift in Sources */,
 				8A880B66290136B100FDECA5 /* DetailHistoryCell.swift in Sources */,
 				8A4864FF28ED31A1007B7AB7 /* DetailCellViewModel.swift in Sources */,
 				8A2D99ED28FC3337007BC3E7 /* DistrictViewController.swift in Sources */,
@@ -1467,12 +1663,16 @@
 				8A22FD6D288FE87B004A8E5B /* NearTableViewCell.swift in Sources */,
 				8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */,
 				8A91DFFA29150CC900FF8DD4 /* RegisterVaccineCollectionCell.swift in Sources */,
+				8AC9F2A2292DC45E006D53EE /* MedicalCenterViewController.swift in Sources */,
+				8ABE9D332925DDF900ED3970 /* User.swift in Sources */,
 				8ADBF99E28F4853000DF3F8F /* TutorialViewController.swift in Sources */,
 				8A22FD83288FF63D004A8E5B /* NearCell.swift in Sources */,
 				8A4E5E90288AA7830053FFC6 /* Venue.swift in Sources */,
 				8A880B5A29012D2400FDECA5 /* HistoryCellViewModel.swift in Sources */,
+				8A866D41292329F300E960B3 /* HistoryService.swift in Sources */,
 				8A9FBAD828B86D5E003A94A1 /* SearchCellViewModel.swift in Sources */,
 				8ADBF9AB28F485C300DF3F8F /* HomeViewController.swift in Sources */,
+				8ABE9D392925E85F00ED3970 /* DetailNotifyViewModel.swift in Sources */,
 				8A91DFFF29150D2D00FF8DD4 /* RegisterVaccineViewModel.swift in Sources */,
 				6AF60DC22313B56B00F5CBA2 /* RequestSerializer.swift in Sources */,
 				8A2D99C028F95571007BC3E7 /* ProvinceViewController.swift in Sources */,
@@ -1633,7 +1833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = FinalProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1652,7 +1852,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FinalProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
