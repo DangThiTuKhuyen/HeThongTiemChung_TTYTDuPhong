@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterInfoViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="confirmButton" destination="KTs-sq-nxZ" id="y1m-0Q-0Yx"/>
+                <outlet property="confirmButton" destination="KTs-sq-nxZ" id="zwu-B6-mTh"/>
                 <outlet property="deleteButton" destination="rbx-4f-cKq" id="Epg-6M-vKc"/>
                 <outlet property="tableView" destination="kpS-Uy-I2w" id="55i-i9-API"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

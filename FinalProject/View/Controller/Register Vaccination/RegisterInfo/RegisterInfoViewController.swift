@@ -11,9 +11,9 @@ import SwiftUtils
 
 class RegisterInfoViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
     var viewModel: RegisterInfoViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +34,16 @@ class RegisterInfoViewController: UIViewController {
         cancelItem.tintColor = .red
         navigationItem.rightBarButtonItem = cancelItem
 
-        guard let viewModel = viewModel, let status = viewModel.registerInfo.status, status == true else { return }
+        guard let viewModel = viewModel else { return }
+        confirmButton.setTitle(viewModel.type == .new ? "Confirm" : "Update", for: .normal)
+        deleteButton.isHidden = viewModel.type == .new
+        guard let status = viewModel.registerInfo.status else { return }
         deleteButton.isUserInteractionEnabled = !status
         confirmButton.isUserInteractionEnabled = !status
-        deleteButton.alpha = 0.5
-        confirmButton.alpha = 0.5
+        if status {
+            deleteButton.alpha = 0.5
+            confirmButton.alpha = 0.5
+        }
     }
 
     private func configTableView() {
@@ -59,7 +64,11 @@ class RegisterInfoViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    this.alert(msg: viewModel.type == .new ? "Register succesfully" : "Update successfully", handler: nil)
+                    let alert = UIAlertController(title: viewModel.type == .new ? "Register succesfully" : "Update successfully", message: "", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+                        this.popToHome()
+                    }))
+                    this.present(alert, animated: true, completion: nil)
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }

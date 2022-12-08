@@ -120,7 +120,6 @@ extension RegisterInfoViewModel {
                 }
                 switch result {
                 case .success:
-                    this.type = .update
                     completion(.success)
                 case .failure(let error):
                     completion(.failure(error))

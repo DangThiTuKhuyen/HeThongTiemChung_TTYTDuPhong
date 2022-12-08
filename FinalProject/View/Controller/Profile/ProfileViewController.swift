@@ -140,7 +140,7 @@ extension ProfileViewController: UITableViewDataSource {
         case .avatar:
             let cell = tableView.dequeue(NewAvatarTableCell.self)
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? NewAvatarCellViewModel
-            cell.delegate = self
+//            cell.delegate = self
             cell.dataSource = self
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.clear
@@ -191,7 +191,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .avatar, .name, .email, .identityCard:
             break
         case .numberPhone, .birthday:
-            selectedIndexPath = indexPath
+//            selectedIndexPath = indexPath
             break
         case .gender:
             if let cell = tableView.cellForRow(at: indexPath) {
