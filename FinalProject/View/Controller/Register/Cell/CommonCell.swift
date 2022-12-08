@@ -46,8 +46,51 @@ final class CommonCell: UITableViewCell {
         super.awakeFromNib()
         valueTextField.delegate = self
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = UIImage(named: "")
+        iconImageView.isHidden = false
+        valueTextField.isUserInteractionEnabled = false
+    }
 
     // MARK: - Private func
+
+    func updateUI() {
+        checkToUpdateKeyboardStatus()
+    }
+
+    private func checkToUpdateKeyboardStatus() {
+        guard let viewModel = viewModel, let type = viewModel.type else { return }
+        switch type {
+        case .name, .email:
+            valueTextField.isUserInteractionEnabled = viewModel.isSelected
+            if viewModel.isSelected {
+                valueTextField.becomeFirstResponder()
+                showKeyBoard(typeKeyBoard: .alphabet, typeCell: type)
+            } else {
+                valueTextField.resignFirstResponder()
+            }
+        case .phoneNumber, .identityCard:
+            valueTextField.isUserInteractionEnabled = viewModel.isSelected
+            if viewModel.isSelected {
+                showKeyBoard(typeKeyBoard: .numberPad, typeCell: type)
+                valueTextField.becomeFirstResponder()
+            } else {
+                valueTextField.resignFirstResponder()
+            }
+        default:
+            break
+        }
+    }
+
+    func updateValueTextField() {
+        valueTextField.resignFirstResponder()
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: viewModel.type ?? .gender))
+    }
+
     private func updateCell() {
         guard let viewModel = viewModel, let type = viewModel.type else { return }
         switch type {
@@ -65,6 +108,8 @@ final class CommonCell: UITableViewCell {
             if let dataSource = dataSource {
                 valueTextField.text = dataSource.updateCellDistrict(self)
             }
+        case .name, .email, .phoneNumber, .birthday, .identityCard:
+            valueTextField.text = viewModel.item?.value
         default:
             break
         }
@@ -91,7 +136,7 @@ final class CommonCell: UITableViewCell {
         toolbar.sizeToFit()
         var doneButton = UIBarButtonItem()
         switch typeCell {
-        case .name, .email, .phoneNumber:
+        case .name, .email, .phoneNumber, .identityCard:
             doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done))
         default:
             break
@@ -135,8 +180,9 @@ extension CommonCell: UITextFieldDelegate {
             showDatePicker()
         case .province, .district:
             break
-        case .phoneNumber:
+        case .phoneNumber, .identityCard:
             showKeyBoard(typeKeyBoard: .asciiCapableNumberPad, typeCell: type)
+            
         case .gender:
             break
         }

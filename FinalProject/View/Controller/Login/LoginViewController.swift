@@ -22,6 +22,8 @@ final class LoginViewController: ViewController {
     @IBOutlet private weak var hidePassButton: UIButton!
     @IBOutlet private weak var heightErrorLabel: NSLayoutConstraint!
 
+    var viewModel = LoginViewModel()
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ final class LoginViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        tabBarController?.tabBar.isHidden = true
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,12 +80,51 @@ final class LoginViewController: ViewController {
         heightErrorLabel.constant = isShow ? 18 : 0
     }
 
+    private func login() {
+        HUD.show()
+        viewModel.login { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.changeRoot(type: .tabbar)
+                case .failure(let error):
+                    if error.contains("confirmed") {
+                        let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { action in
+                            let vc = EnterPassCodeViewController()
+                            vc.viewModel = EnterPassCodeViewModel(email: this.emailTextField.text ?? "")
+                            this.navigationController?.pushViewController(vc, animated: true)
+                        }))
+                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                        this.present(alert, animated: true, completion: nil)
+
+                    } else {
+                        this.alert(msg: error, handler: nil)
+                    }
+                }
+            }
+        }
+    }
+
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+
     private func handleLogin() {
-        guard let numberPhone = emailTextField.text, let password = passwordTextField.text else { return }
-        if numberPhone.isEmpty || password.isEmpty {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        if email.isEmpty || password.isEmpty {
             showHideError(error: "Please enter full information", isShow: true)
         } else {
-            changeRoot(type: .tabbar)
+            if isValidEmail(email) {
+                login()
+                showHideError()
+            } else {
+                showHideError(error: "Please enter correct email format", isShow: true)
+            }
         }
     }
 
@@ -93,6 +135,8 @@ final class LoginViewController: ViewController {
     }
 
     @IBAction private func handleLogin(_ sender: Any) {
+        viewModel.setPassWord(value: passwordTextField.text ?? "")
+        viewModel.setEmai(value: emailTextField.text ?? "")
         handleLogin()
     }
 
@@ -104,6 +148,12 @@ final class LoginViewController: ViewController {
 //        let registerVC = RegisterWithEmailViewController()
         let registerVC = RegisterViewController()
         navigationController?.pushViewController(registerVC, animated: true)
+    }
+    
+    @IBAction private func forgotButtonTouchUpInside(_ sender: UIButton) {
+        let vc = ForgotPasswordViewController()
+        vc.viewModel = ForgotPasswordViewModel()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

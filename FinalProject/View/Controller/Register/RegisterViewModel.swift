@@ -11,6 +11,7 @@ import Foundation
 enum RegisterProfileType: Int, CaseIterable {
     case name = 0
     case birthday
+    case identityCard
     case province
     case district
     case email
@@ -26,7 +27,8 @@ struct RegisterCellItem {
 
 struct UserInfo {
     var name: String = ""
-    var birthday: Date?
+    var birthday: String?
+    var identityCard: Int?
     var province: String = ""
     var district: String = ""
     var email: String = ""
@@ -62,19 +64,21 @@ final class RegisterViewModel {
     func setupCell(kindOfCell: RegisterProfileType) -> RegisterCellItem? {
         switch kindOfCell {
         case .name:
-            return RegisterCellItem(image: "name", value: "", placeholder: "Name")
+            return RegisterCellItem(image: "name", value: userInfo.name, placeholder: "Name")
         case .birthday:
-            return RegisterCellItem(image: "birthday", value: "", placeholder: "Birthday")
+            return RegisterCellItem(image: "birthday", value: userInfo.birthday, placeholder: "Birthday")
         case .province:
             return RegisterCellItem(image: "address", value: address?.province, placeholder: "Province")
         case .district:
             return RegisterCellItem(image: "", value: userInfo.district, placeholder: "District")
         case .email:
-            return RegisterCellItem(image: "email", value: "", placeholder: "Email")
+            return RegisterCellItem(image: "email", value: userInfo.email, placeholder: "Email")
         case .phoneNumber:
-            return RegisterCellItem(image: "phone_number", value: "", placeholder: "Phone Number")
+            return RegisterCellItem(image: "phone_number", value: userInfo.phoneNumber.toString(), placeholder: "Phone Number")
         case .gender:
-            return RegisterCellItem(image: "gender", value: "", placeholder: "Phone Number")
+            return RegisterCellItem(image: "gender", value: userInfo.gender, placeholder: "Phone Number")
+        case .identityCard:
+            return RegisterCellItem(image: "identification", value: userInfo.identityCard?.toString(), placeholder: "identity card")
         }
     }
 
@@ -85,9 +89,12 @@ final class RegisterViewModel {
     func viewModelForItem(at indexPath: IndexPath) -> Any? {
         guard let type = RegisterProfileType(rawValue: indexPath.row) else { return nil }
         switch type {
-        case .name, .birthday, .province, .district, .email, .phoneNumber:
+        case .name, .province, .district, .email, .phoneNumber, .identityCard:
             let cell = setupCell(kindOfCell: type)
             return CommonCellViewModel(item: cell, type: type)
+        case .birthday:
+            let cell = setupCell(kindOfCell: type)
+            return BirthdayCellViewModel(item: cell, type: type)
         case .gender:
             return nil
         }
@@ -98,9 +105,10 @@ final class RegisterViewModel {
     }
 
     func setBirthday(birthday: String) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        userInfo.birthday = formatter.date(from: birthday)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd/MM/yyyy"
+//        userInfo.birthday = formatter.date(from: birthday)
+        userInfo.birthday = birthday
     }
 
     func setProvince() {
@@ -122,12 +130,16 @@ final class RegisterViewModel {
     func setGender(gender: String) {
         userInfo.gender = gender
     }
+
+    func setIdentityCard(id: String) {
+        userInfo.identityCard = Int(id) ?? 0
+    }
 }
 
 extension RegisterViewModel {
-    
+
     func registerAccount(completion: @escaping CompletionAPI) {
-        let params = AuthService.Account(email: userInfo.email, name: userInfo.name, identityCard: 1234, birthday: "userInfo.birthday", province: userInfo.province, district: userInfo.district, phone: userInfo.phoneNumber, gender: userInfo.gender)
+        let params = AuthService.Account(email: userInfo.email, name: userInfo.name, identityCard: userInfo.identityCard, birthday: userInfo.birthday, province: userInfo.province, district: userInfo.district, phone: userInfo.phoneNumber, gender: userInfo.gender)
         AuthService.registerAccount(params: params) { [weak self] result in
             guard self != nil else {
                 completion(.failure(Api.Error.json.localizedDescription))

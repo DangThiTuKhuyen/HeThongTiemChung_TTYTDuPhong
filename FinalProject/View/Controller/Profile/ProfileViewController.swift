@@ -42,7 +42,7 @@ final class ProfileViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getProfile()
+//        getProfile()
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -191,7 +191,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .avatar, .name, .email, .identityCard:
             break
         case .numberPhone, .birthday:
-//            selectedIndexPath = indexPath
+            selectedIndexPath = indexPath
             break
         case .gender:
             if let cell = tableView.cellForRow(at: indexPath) {
@@ -218,9 +218,13 @@ extension ProfileViewController: UITableViewDelegate {
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .changePass:
-            print("changepasss")
+            let vc = ChangePasswordViewController()
+            vc.viewModel = ChangePasswordViewModel()
+            navigationController?.pushViewController(vc, animated: true)
         case .logout:
-            print("logout")
+            UserDefaults.standard.reset()
+            let vc = LoginViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -297,8 +301,8 @@ extension ProfileViewController: ProvinceViewControllerDelegate {
             if viewModel?.info?.province != address.province {
                 viewModel?.setProvince(value: address)
                 viewModel?.setDistrict(value: "")
-                tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .automatic)
-                tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .automatic)
+                tableView.reloadRows(at: [IndexPath(row: 3, section: SectionType.infomation.rawValue)], with: .automatic)
+                tableView.reloadRows(at: [IndexPath(row: 4, section: SectionType.infomation.rawValue)], with: .automatic)
             }
         }
     }
@@ -308,8 +312,24 @@ extension ProfileViewController: DistrictViewControllerDelegate {
     func controller(_ controller: DistrictViewController, needPerformAction action: DistrictViewController.Action) {
         switch action {
         case .updateDistrict(district: let district):
-            viewModel?.setDistrict(value: district)
-            tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .automatic)
+            guard let viewModel = viewModel else { return }
+            viewModel.setDistrict(value: district)
+            tableView.reloadRows(at: [IndexPath(row: 4, section: SectionType.infomation.rawValue)], with: .automatic)
         }
+    }
+}
+
+extension UserDefaults {
+
+    enum Keys: String, CaseIterable {
+
+        case accessToken
+        case refreshToken
+        case userId
+
+    }
+
+    func reset() {
+        Keys.allCases.forEach { removeObject(forKey: $0.rawValue) }
     }
 }

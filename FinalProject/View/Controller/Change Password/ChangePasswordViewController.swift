@@ -8,23 +8,42 @@
 
 import UIKit
 
-class ChangePasswordViewController: ViewController {
+final class ChangePasswordViewController: ViewController {
 
+    @IBOutlet private weak var newPasswordTextField: UITextField!
+    @IBOutlet private weak var oldPasswordTextField: UITextField!
+
+    var viewModel: ChangePasswordViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func changePass() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        HUD.show()
+        viewModel.changePass { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.alert(msg: "Change your password succesfully", handler: nil)
+                case .failure(let error):
+                    this.alert(msg: error, handler: nil)
+                }
+            }
+        }
     }
-    */
 
+    @IBAction private func changePass(_ sender: Any) {
+        guard let viewModel = viewModel, let oldPass = oldPasswordTextField.text, let newPass = newPasswordTextField.text, oldPass.isNotEmpty, newPass.isNotEmpty else { return }
+        viewModel.setNewPass(value: newPass)
+        viewModel.setOldPass(value: oldPass)
+        changePass()
+
+    }
 }

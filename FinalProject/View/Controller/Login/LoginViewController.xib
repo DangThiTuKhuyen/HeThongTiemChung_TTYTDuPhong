@@ -42,7 +42,6 @@
                     </state>
                     <connections>
                         <action selector="backToTutorialButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="qwN-bM-DGJ"/>
-                        <action selector="handleLogin:" destination="-1" eventType="touchUpInside" id="eXc-K1-qKr"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCo-zv-ERb" userLabel="Container View">
@@ -87,6 +86,9 @@
                                 <fontDescription key="titleFontDescription" type="italicSystem" pointSize="15"/>
                                 <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="forgotButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="zu0-T3-JaG"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gr7-65-xL3">
                             <rect key="frame" x="362" y="114" width="22" height="22"/>

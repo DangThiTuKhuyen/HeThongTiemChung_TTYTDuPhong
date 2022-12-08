@@ -9,25 +9,72 @@
 import UIKit
 import DropDown
 
-final class RegisterViewController: UIViewController {
+final class RegisterViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Properties
     var viewModel = RegisterViewModel()
-    var color = UIColor(red: 0.53, green: 0.81, blue: 0.98, alpha: 1.00)
+
+
+    private(set) var selectedIndexPath: IndexPath? {
+        willSet {
+            updateCellStatusForName(at: newValue, isSelected: true)
+        }
+        didSet {
+            updateCellStatusForName(at: oldValue, isSelected: false)
+        }
+    }
+
+    private func updateCellStatusForName(at index: IndexPath?, isSelected: Bool) {
+        guard let index = index,
+            let cell = tableView.cellForRow(at: index) as? CommonCell else { return }
+        let viewModel = cell.viewModel
+        switch viewModel?.type {
+        case .district, .province, .gender:
+            break
+        default:
+            viewModel?.updateCellStatus(isSlelected: isSelected)
+            cell.updateUI()
+        }
+    }
+
+    private(set) var isAppearKeyboard: Bool = false
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
 
+    }
+
+    private func updateNameCellWithoutDoneButton() {
+        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonCell else { return }
+        cell.updateValueTextField()
+    }
+
+    @objc private func keyboardDidHide(_ sender: Any?) {
+        DispatchQueue.main.async {
+            self.isAppearKeyboard = false
+            self.updateCellStatusForName(at: self.selectedIndexPath, isSelected: false)
+            self.updateNameCellWithoutDoneButton()
+            self.selectedIndexPath = nil
+            UIView.setAnimationsEnabled(false)
+//            self.tableView.reloadData()
+            UIView.setAnimationsEnabled(true)
+        }
+    }
+
+    @objc private func keyboardWillShow(_ sender: Any?) {
+        isAppearKeyboard = true
     }
 
     // MARK: - Override func
@@ -40,6 +87,7 @@ final class RegisterViewController: UIViewController {
     private func configTableView() {
         tableView.register(CommonCell.self)
         tableView.register(GenderCell.self)
+        tableView.register(BirthdayCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
@@ -94,6 +142,11 @@ extension RegisterViewController: UITableViewDataSource {
             cell.dataSource = self
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
             return cell
+        case .birthday:
+            let cell = tableView.dequeue(BirthdayCell.self)
+            cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? BirthdayCellViewModel
+            cell.delegate = self
+            return cell
         default:
             let cell = tableView.dequeue(CommonCell.self)
             cell.delegate = self
@@ -106,9 +159,15 @@ extension RegisterViewController: UITableViewDataSource {
 extension RegisterViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !isAppearKeyboard else {
+            view.endEditing(true)
+            return
+        }
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundConfiguration = .clear()
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.clear
+        cell?.selectedBackgroundView = bgColorView
         guard let type = RegisterProfileType(rawValue: indexPath.row) else { return }
         switch type {
         case .province:
@@ -121,8 +180,15 @@ extension RegisterViewController: UITableViewDelegate {
             vc.viewModel = DistrictViewModel(districts: viewModel.getDistrict(), chooseDistrict: viewModel.userInfo.district)
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
-        default:
+        case .gender:
             break
+//        case .birthday:
+//            guard let cell = cell as? BirthdayCell else {
+//                return
+//            }
+//            cell.chexckStatus = !cell.chexckStatus
+        default:
+            selectedIndexPath = indexPath
         }
     }
 }
@@ -180,11 +246,12 @@ extension RegisterViewController: CommonCellDelegate {
                 viewModel.setEmail(email: value)
             case .phoneNumber:
                 viewModel.setPhoneNumber(phoneNumber: value)
-//            case .password:
-//                viewModel.setPassword(password: value)
+            case .identityCard:
+                viewModel.setIdentityCard(id: value)
             default:
                 break
             }
+            tableView.reloadRows(at: [IndexPath(row: type.rawValue, section: 0)], with: .automatic)
         }
     }
 }
@@ -194,6 +261,16 @@ extension RegisterViewController: GenderCellDelegate {
         switch action {
         case.done(let value):
             viewModel.setGender(gender: value)
+        }
+    }
+}
+
+extension RegisterViewController: BirthdayCellDelegate {
+    func cell(_ cell: BirthdayCell, needPerformAction action: BirthdayCell.Action) {
+        switch action {
+        case .done(let value, let type):
+            viewModel.setBirthday(birthday: value)
+            tableView.reloadRows(at: [IndexPath(row: type.rawValue, section: 0)], with: .automatic)
         }
     }
 }

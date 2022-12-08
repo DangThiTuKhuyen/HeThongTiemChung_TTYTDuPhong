@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIF-So-k1c" userLabel="Name">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmZ-Eg-NEA" customClass="PaddingTextField" customModule="FinalProject" customModuleProvider="target">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmZ-Eg-NEA" customClass="PaddingTextField" customModule="FinalProject" customModuleProvider="target">
                                 <rect key="frame" x="45" y="10" width="275" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="bRf-0k-TRd"/>

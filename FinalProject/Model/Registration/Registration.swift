@@ -14,6 +14,7 @@ final class Registration: Mappable {
     var registrationId: Int?
     var status: Bool?
     var registrationTime: String?
+    var registrationDose: Int?
     var medicalCenter: MedicalCenter?
     var vaccine: Vaccine?
     var disease: Disease?
@@ -24,6 +25,7 @@ final class Registration: Mappable {
         registrationId <- map["registrationId"]
         status <- map["status"]
         registrationTime <- map["registrationTime"]
+        registrationDose <- map["registrationDose"]
         medicalCenter <- map["medicalCenter"]
         vaccine <- map["vaccine"]
         disease <- map["disease"]
@@ -41,4 +43,3 @@ final class MedicalCenter: Mappable {
         name <- map["name"]
     }
 }
-

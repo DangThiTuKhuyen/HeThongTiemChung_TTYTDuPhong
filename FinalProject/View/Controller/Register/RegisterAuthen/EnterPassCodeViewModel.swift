@@ -28,24 +28,17 @@ final class EnterPassCodeViewModel {
         password = value
     }
 
-    func addToken(completion: APICompletion) {
+    func addToken() {
         guard let auth = auth else { return }
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.create(Auth.self, value: auth, update: .all)
-            }
-            completion(.success)
-        } catch {
-            completion(.failure(error))
-        }
+        UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
+        UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
     }
 }
 
 extension EnterPassCodeViewModel {
 
     func createAccount(completion: @escaping APICompletion) {
-        let params = AuthService.ConfirmAccount(email: email, passCode: passCode, password: password)
+        let params = AuthService.Account(email: email, passCode: passCode, newPassword: password)
         AuthService.confirmAccount(params: params) { [weak self] result in
             guard let this = self else {
                 completion(.failure(Api.Error.json))
@@ -54,17 +47,8 @@ extension EnterPassCodeViewModel {
             switch result {
             case .success(let auth):
                 this.auth = auth
-                this.addToken() { [weak self] result in
-                    guard self != nil else {
-                        completion(.failure(Realm.Error.self as! Error))
-                        return }
-                    switch result {
-                    case .success:
-                        completion(.success)
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                }
+                this.addToken()
+                completion(.success)
             case .failure(let error):
                 completion(.failure(error))
             }

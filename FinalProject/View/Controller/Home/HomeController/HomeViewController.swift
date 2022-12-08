@@ -118,14 +118,12 @@ final class HomeViewController: ViewController {
         let vc = RegistrationViewController()
         vc.viewModel = RegistrationViewModel()
         navigationController?.pushViewController(vc, animated: true)
-//        let vc = RegisterInfoViewController()
-//        vc.viewModel = RegisterInfoViewModel(
     }
 
     @IBAction func viewApointment(_ sender: Any) {
-        let minute: Float = 7.0
-        let a = minute - Float(Int(minute)) == 0 ? "\(Int(minute))" : "\(minute)"
-        print(a)
+        let vc = AppointmentViewController()
+        vc.viewModel = AppointmentViewModel()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc private func goToProfile() {

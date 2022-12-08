@@ -87,8 +87,6 @@
 		8A4E5E95288AA80B0053FFC6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5E94288AA80B0053FFC6 /* HomeService.swift */; };
 		8A4FA04A289775DF00090B44 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FA049289775DF00090B44 /* DetailViewModel.swift */; };
 		8A866D41292329F300E960B3 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D40292329F300E960B3 /* HistoryService.swift */; };
-		8A866D4529239D2800E960B3 /* RegisterWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */; };
-		8A866D4629239D2800E960B3 /* RegisterWithEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */; };
 		8A866D492923A24B00E960B3 /* EnterPassCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */; };
 		8A866D4A2923A24B00E960B3 /* EnterPassCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */; };
 		8A880B4F2901066100FDECA5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A880B4D2901066100FDECA5 /* HistoryViewController.swift */; };
@@ -159,7 +157,6 @@
 		8AA8614528A3BB2200618FD1 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */; };
 		8AA8C7C729312CCF003FEA21 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7C629312CCE003FEA21 /* History.swift */; };
 		8AA8C7D32935EF51003FEA21 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7D22935EF50003FEA21 /* AuthService.swift */; };
-		8AA8C7D52935EFD5003FEA21 /* RegisterWithEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */; };
 		8ABE9D282924D5BF00ED3970 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D262924D5BF00ED3970 /* ChangePasswordViewController.swift */; };
 		8ABE9D292924D5BF00ED3970 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABE9D272924D5BF00ED3970 /* ChangePasswordViewController.xib */; };
 		8ABE9D2D2924D5F400ED3970 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE9D2C2924D5F400ED3970 /* ChangePasswordViewModel.swift */; };
@@ -215,6 +212,23 @@
 		8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */; };
 		8AFB0B6F2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */; };
 		8AFB0B732938866C00EFFEC7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B722938866C00EFFEC7 /* Auth.swift */; };
+		8AFB0B75293A51BB00EFFEC7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B74293A51BB00EFFEC7 /* LoginViewModel.swift */; };
+		8AFB0B7E293ED75D00EFFEC7 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B7C293ED75D00EFFEC7 /* BirthdayCell.swift */; };
+		8AFB0B7F293ED75D00EFFEC7 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB0B7D293ED75D00EFFEC7 /* BirthdayCell.xib */; };
+		8AFB0B81293ED76C00EFFEC7 /* BirthdayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B80293ED76C00EFFEC7 /* BirthdayCellViewModel.swift */; };
+		8AFB0B9129408BB300EFFEC7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B8F29408BB300EFFEC7 /* ForgotPasswordViewController.swift */; };
+		8AFB0B9229408BB300EFFEC7 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB0B9029408BB300EFFEC7 /* ForgotPasswordViewController.xib */; };
+		8AFB0B9429408BE100EFFEC7 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B9329408BE100EFFEC7 /* ForgotPasswordViewModel.swift */; };
+		8AFB0B972940915200EFFEC7 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B952940915200EFFEC7 /* ConfirmCodeViewController.swift */; };
+		8AFB0B982940915200EFFEC7 /* ConfirmCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB0B962940915200EFFEC7 /* ConfirmCodeViewController.xib */; };
+		8AFB0B9A2940916300EFFEC7 /* ConfirmCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B992940916300EFFEC7 /* ConfirmCodeViewModel.swift */; };
+		8AFB0B9C29418F1200EFFEC7 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B9B29418F1200EFFEC7 /* AppointmentService.swift */; };
+		8AFB0BA0294191EB00EFFEC7 /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0B9E294191EB00EFFEC7 /* AppointmentViewController.swift */; };
+		8AFB0BA1294191EB00EFFEC7 /* AppointmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB0B9F294191EB00EFFEC7 /* AppointmentViewController.xib */; };
+		8AFB0BA3294191F900EFFEC7 /* AppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0BA2294191F900EFFEC7 /* AppointmentViewModel.swift */; };
+		8AFB0BA62941928A00EFFEC7 /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0BA42941928A00EFFEC7 /* AppointmentCell.swift */; };
+		8AFB0BA72941928A00EFFEC7 /* AppointmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB0BA52941928A00EFFEC7 /* AppointmentCell.xib */; };
+		8AFB0BA92941929D00EFFEC7 /* AppointmentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB0BA82941929D00EFFEC7 /* AppointmentCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,8 +328,6 @@
 		8A4E5E94288AA80B0053FFC6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		8A4FA049289775DF00090B44 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8A866D40292329F300E960B3 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
-		8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithEmailViewController.swift; sourceTree = "<group>"; };
-		8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterWithEmailViewController.xib; sourceTree = "<group>"; };
 		8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPassCodeViewController.swift; sourceTree = "<group>"; };
 		8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterPassCodeViewController.xib; sourceTree = "<group>"; };
 		8A880B4D2901066100FDECA5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -386,7 +398,6 @@
 		8AA8614428A3BB2200618FD1 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
 		8AA8C7C629312CCE003FEA21 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		8AA8C7D22935EF50003FEA21 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithEmailViewModel.swift; sourceTree = "<group>"; };
 		8ABE9D262924D5BF00ED3970 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		8ABE9D272924D5BF00ED3970 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		8ABE9D2C2924D5F400ED3970 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -442,6 +453,23 @@
 		8AF4A445292103EE008A7968 /* DatePickerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCellViewModel.swift; sourceTree = "<group>"; };
 		8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPassCodeViewModel.swift; sourceTree = "<group>"; };
 		8AFB0B722938866C00EFFEC7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		8AFB0B74293A51BB00EFFEC7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B7C293ED75D00EFFEC7 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
+		8AFB0B7D293ED75D00EFFEC7 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
+		8AFB0B80293ED76C00EFFEC7 /* BirthdayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCellViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B8F29408BB300EFFEC7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		8AFB0B9029408BB300EFFEC7 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		8AFB0B9329408BE100EFFEC7 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B952940915200EFFEC7 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
+		8AFB0B962940915200EFFEC7 /* ConfirmCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmCodeViewController.xib; sourceTree = "<group>"; };
+		8AFB0B992940916300EFFEC7 /* ConfirmCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewModel.swift; sourceTree = "<group>"; };
+		8AFB0B9B29418F1200EFFEC7 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		8AFB0B9E294191EB00EFFEC7 /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
+		8AFB0B9F294191EB00EFFEC7 /* AppointmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentViewController.xib; sourceTree = "<group>"; };
+		8AFB0BA2294191F900EFFEC7 /* AppointmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewModel.swift; sourceTree = "<group>"; };
+		8AFB0BA42941928A00EFFEC7 /* AppointmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
+		8AFB0BA52941928A00EFFEC7 /* AppointmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentCell.xib; sourceTree = "<group>"; };
+		8AFB0BA82941929D00EFFEC7 /* AppointmentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCellViewModel.swift; sourceTree = "<group>"; };
 		D72EC1050944689B4414E5C7 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DD4A2FBD85737A9282EA2264 /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -701,6 +729,9 @@
 				8A2D99A628F6CD31007BC3E7 /* GenderCell.swift */,
 				8A2D99A728F6CD31007BC3E7 /* GenderCell.xib */,
 				8A2D99B228F7B762007BC3E7 /* GenderCellViewModel.swift */,
+				8AFB0B7C293ED75D00EFFEC7 /* BirthdayCell.swift */,
+				8AFB0B7D293ED75D00EFFEC7 /* BirthdayCell.xib */,
+				8AFB0B80293ED76C00EFFEC7 /* BirthdayCellViewModel.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -790,6 +821,8 @@
 		8A4E5E7B288A90130053FFC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8AFB0B9D294191B800EFFEC7 /* Appointment */,
+				8AFB0B8E29408B2F00EFFEC7 /* Forgot Password */,
 				8AC9F27C292C69C3006D53EE /* Registrations */,
 				8ABE9D252924D59200ED3970 /* Change Password */,
 				8A91E0042917A68B00FF8DD4 /* Notification */,
@@ -826,6 +859,7 @@
 				8AC030782921D91D0089802A /* RegistrationVaccineService.swift */,
 				8A866D40292329F300E960B3 /* HistoryService.swift */,
 				8AA8C7D22935EF50003FEA21 /* AuthService.swift */,
+				8AFB0B9B29418F1200EFFEC7 /* AppointmentService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -858,9 +892,6 @@
 		8A866D4229239CDF00E960B3 /* RegisterAuthen */ = {
 			isa = PBXGroup;
 			children = (
-				8A866D4329239D2800E960B3 /* RegisterWithEmailViewController.swift */,
-				8A866D4429239D2800E960B3 /* RegisterWithEmailViewController.xib */,
-				8AA8C7D42935EFD5003FEA21 /* RegisterWithEmailViewModel.swift */,
 				8A866D472923A24B00E960B3 /* EnterPassCodeViewController.swift */,
 				8A866D482923A24B00E960B3 /* EnterPassCodeViewController.xib */,
 				8AFB0B6E2937B4D600EFFEC7 /* EnterPassCodeViewModel.swift */,
@@ -1131,6 +1162,7 @@
 			children = (
 				8ADBF99828F4851500DF3F8F /* LoginViewController.swift */,
 				8AA83D3F28EF1992009A50CA /* LoginViewController.xib */,
+				8AFB0B74293A51BB00EFFEC7 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1271,6 +1303,32 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		8AFB0B8E29408B2F00EFFEC7 /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				8AFB0B8F29408BB300EFFEC7 /* ForgotPasswordViewController.swift */,
+				8AFB0B9029408BB300EFFEC7 /* ForgotPasswordViewController.xib */,
+				8AFB0B9329408BE100EFFEC7 /* ForgotPasswordViewModel.swift */,
+				8AFB0B952940915200EFFEC7 /* ConfirmCodeViewController.swift */,
+				8AFB0B962940915200EFFEC7 /* ConfirmCodeViewController.xib */,
+				8AFB0B992940916300EFFEC7 /* ConfirmCodeViewModel.swift */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		8AFB0B9D294191B800EFFEC7 /* Appointment */ = {
+			isa = PBXGroup;
+			children = (
+				8AFB0B9E294191EB00EFFEC7 /* AppointmentViewController.swift */,
+				8AFB0B9F294191EB00EFFEC7 /* AppointmentViewController.xib */,
+				8AFB0BA2294191F900EFFEC7 /* AppointmentViewModel.swift */,
+				8AFB0BA42941928A00EFFEC7 /* AppointmentCell.swift */,
+				8AFB0BA52941928A00EFFEC7 /* AppointmentCell.xib */,
+				8AFB0BA82941929D00EFFEC7 /* AppointmentCellViewModel.swift */,
+			);
+			path = Appointment;
+			sourceTree = "<group>";
+		};
 		EDAB884D0E9858125EA92DBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1432,7 @@
 				8A2D99EE28FC3337007BC3E7 /* DistrictViewController.xib in Resources */,
 				8ADBF98B28F4848D00DF3F8F /* vaccine.gif in Resources */,
 				8AA8613228A3BA9000618FD1 /* FavoriteViewController.xib in Resources */,
+				8AFB0B982940915200EFFEC7 /* ConfirmCodeViewController.xib in Resources */,
 				8ADD298A291A401F00A72D1B /* NewAvatarTableCell.xib in Resources */,
 				8A91DFFB29150CC900FF8DD4 /* RegisterVaccineCollectionCell.xib in Resources */,
 				8A12F1E7291A66E500797CF6 /* CommonTableCell.xib in Resources */,
@@ -1382,9 +1441,12 @@
 				8A880B5829012D1400FDECA5 /* HistoryCell.xib in Resources */,
 				8A9FBAD728B86D5E003A94A1 /* CategoryCell.xib in Resources */,
 				8AF4A444292103C6008A7968 /* DatePickerCell.xib in Resources */,
+				8AFB0B9229408BB300EFFEC7 /* ForgotPasswordViewController.xib in Resources */,
+				8AFB0BA1294191EB00EFFEC7 /* AppointmentViewController.xib in Resources */,
 				8A22FD37288F9BE7004A8E5B /* RecommendCell.xib in Resources */,
 				8A12F2042920044100797CF6 /* RegisterInfoCell.xib in Resources */,
 				8A91DFEF29150C0E00FF8DD4 /* RegisterVaccineViewController.xib in Resources */,
+				8AFB0BA72941928A00EFFEC7 /* AppointmentCell.xib in Resources */,
 				8AA83D4128EF1992009A50CA /* LoginViewController.xib in Resources */,
 				8ADBF99628F484F400DF3F8F /* RegisterViewController.xib in Resources */,
 				8A91E0152917ACAD00FF8DD4 /* notification.gif in Resources */,
@@ -1398,6 +1460,7 @@
 				8A9FBAD128B86D5E003A94A1 /* SearchViewController.xib in Resources */,
 				8A91E0092917A86100FF8DD4 /* NotifyViewController.xib in Resources */,
 				8A2D99BC28F93D37007BC3E7 /* CommonCell.xib in Resources */,
+				8AFB0B7F293ED75D00EFFEC7 /* BirthdayCell.xib in Resources */,
 				8A91DFF529150C4D00FF8DD4 /* RegisterDisaeseViewController.xib in Resources */,
 				8A22FD67288FDE6B004A8E5B /* OpeningTableViewCell.xib in Resources */,
 				8A2D99A928F6CD31007BC3E7 /* GenderCell.xib in Resources */,
@@ -1416,7 +1479,6 @@
 				8A9FBADA28B86D5E003A94A1 /* SearchCell.xib in Resources */,
 				8AC9F287292C6B42006D53EE /* RegistrationCell.xib in Resources */,
 				8A22FD21288F9A52004A8E5B /* RecommendTableViewCell.xib in Resources */,
-				8A866D4629239D2800E960B3 /* RegisterWithEmailViewController.xib in Resources */,
 				8A90CD5E288E811300EDFB01 /* HomeViewController.xib in Resources */,
 				8AC9F280292C69E4006D53EE /* RegistrationViewController.xib in Resources */,
 				8A880B972911FDAE00FDECA5 /* ProfileViewController.xib in Resources */,
@@ -1541,6 +1603,7 @@
 				8ADBF9A928F485B200DF3F8F /* SearchViewController.swift in Sources */,
 				8ADBF98D28F484A400DF3F8F /* Like.swift in Sources */,
 				8A22FD50288FDD2C004A8E5B /* NearViewModel.swift in Sources */,
+				8AFB0B9A2940916300EFFEC7 /* ConfirmCodeViewModel.swift in Sources */,
 				8A91E00E2917AA8600FF8DD4 /* NotifyCell.swift in Sources */,
 				8AFB0B732938866C00EFFEC7 /* Auth.swift in Sources */,
 				8ADBF99328F484D500DF3F8F /* ResponseSerializer.swift in Sources */,
@@ -1601,8 +1664,8 @@
 				6AF60DC52313B56B00F5CBA2 /* ApiManager.swift in Sources */,
 				6AF60DC72313B56B00F5CBA2 /* Api.swift in Sources */,
 				8A2D99C928F9566D007BC3E7 /* ProvinceCellViewModel.swift in Sources */,
+				8AFB0B9129408BB300EFFEC7 /* ForgotPasswordViewController.swift in Sources */,
 				8A9AC281289A27AD00EFA680 /* Price.swift in Sources */,
-				8A866D4529239D2800E960B3 /* RegisterWithEmailViewController.swift in Sources */,
 				8ABE9D362925E84E00ED3970 /* DetailNotifyViewController.swift in Sources */,
 				8AF4A443292103C6008A7968 /* DatePickerCell.swift in Sources */,
 				8ADBF9A528F4857A00DF3F8F /* DetailViewController.swift in Sources */,
@@ -1610,8 +1673,8 @@
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
 				8A12F1E6291A66E500797CF6 /* CommonTableCell.swift in Sources */,
 				8A880B622901345A00FDECA5 /* DetailHistoryViewModel.swift in Sources */,
+				8AFB0BA0294191EB00EFFEC7 /* AppointmentViewController.swift in Sources */,
 				8AC9F297292DB0D7006D53EE /* MedicalCenterCellViewModel.swift in Sources */,
-				8AA8C7D52935EFD5003FEA21 /* RegisterWithEmailViewModel.swift in Sources */,
 				8A22FD36288F9BE7004A8E5B /* RecommendCell.swift in Sources */,
 				8A12F1FC291FF59600797CF6 /* RegisterInfoViewController.swift in Sources */,
 				8A880B5729012D1400FDECA5 /* HistoryCell.swift in Sources */,
@@ -1652,13 +1715,18 @@
 				8A12F1F2291DEF1B00797CF6 /* ProfileService.swift in Sources */,
 				8A9FBAE028B86D71003A94A1 /* SearchService.swift in Sources */,
 				8A866D492923A24B00E960B3 /* EnterPassCodeViewController.swift in Sources */,
+				8AFB0BA92941929D00EFFEC7 /* AppointmentCellViewModel.swift in Sources */,
+				8AFB0B9429408BE100EFFEC7 /* ForgotPasswordViewModel.swift in Sources */,
 				8A2D99A428F6CD0F007BC3E7 /* CommonCell.swift in Sources */,
 				8AC9F282292C6A05006D53EE /* RegistrationViewModel.swift in Sources */,
 				8A880B66290136B100FDECA5 /* DetailHistoryCell.swift in Sources */,
 				8A4864FF28ED31A1007B7AB7 /* DetailCellViewModel.swift in Sources */,
 				8A2D99ED28FC3337007BC3E7 /* DistrictViewController.swift in Sources */,
+				8AFB0B972940915200EFFEC7 /* ConfirmCodeViewController.swift in Sources */,
 				8A22FCC2288F7923004A8E5B /* RecommendTableViewViewModel.swift in Sources */,
 				8A91E01A28F472D200973339 /* SceneDelegate.swift in Sources */,
+				8AFB0B75293A51BB00EFFEC7 /* LoginViewModel.swift in Sources */,
+				8AFB0BA3294191F900EFFEC7 /* AppointmentViewModel.swift in Sources */,
 				6AF60D222313B35800F5CBA2 /* String.swift in Sources */,
 				8A22FD6D288FE87B004A8E5B /* NearTableViewCell.swift in Sources */,
 				8AF4A446292103EE008A7968 /* DatePickerCellViewModel.swift in Sources */,
@@ -1668,10 +1736,13 @@
 				8ADBF99E28F4853000DF3F8F /* TutorialViewController.swift in Sources */,
 				8A22FD83288FF63D004A8E5B /* NearCell.swift in Sources */,
 				8A4E5E90288AA7830053FFC6 /* Venue.swift in Sources */,
+				8AFB0B7E293ED75D00EFFEC7 /* BirthdayCell.swift in Sources */,
 				8A880B5A29012D2400FDECA5 /* HistoryCellViewModel.swift in Sources */,
 				8A866D41292329F300E960B3 /* HistoryService.swift in Sources */,
 				8A9FBAD828B86D5E003A94A1 /* SearchCellViewModel.swift in Sources */,
+				8AFB0B9C29418F1200EFFEC7 /* AppointmentService.swift in Sources */,
 				8ADBF9AB28F485C300DF3F8F /* HomeViewController.swift in Sources */,
+				8AFB0BA62941928A00EFFEC7 /* AppointmentCell.swift in Sources */,
 				8ABE9D392925E85F00ED3970 /* DetailNotifyViewModel.swift in Sources */,
 				8A91DFFF29150D2D00FF8DD4 /* RegisterVaccineViewModel.swift in Sources */,
 				6AF60DC22313B56B00F5CBA2 /* RequestSerializer.swift in Sources */,
@@ -1684,6 +1755,7 @@
 				8ADBF9A728F4859B00DF3F8F /* FavoriteViewController.swift in Sources */,
 				8A2D99B328F7B762007BC3E7 /* GenderCellViewModel.swift in Sources */,
 				8ADD298C291A4F7F00A72D1B /* NewAvatarCellViewModel.swift in Sources */,
+				8AFB0B81293ED76C00EFFEC7 /* BirthdayCellViewModel.swift in Sources */,
 				8A9AC27D289A26EA00EFA680 /* DetailLocation.swift in Sources */,
 				6AF613C92313C13A00F5CBA2 /* ImageView.swift in Sources */,
 				6AF60E212313B9C000F5CBA2 /* CollectionExt.swift in Sources */,

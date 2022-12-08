@@ -8,14 +8,13 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-final class Auth: Object, Mappable {
+final class Auth: Mappable {
 
-    @objc dynamic var refreshToken: String?
-    @objc dynamic var idToken: String?
-    @objc dynamic var accessToken: String?
-    
+    var refreshToken: String?
+    var idToken: String?
+    var accessToken: String?
+
     convenience required init?(map: Map) {
         self.init()
     }

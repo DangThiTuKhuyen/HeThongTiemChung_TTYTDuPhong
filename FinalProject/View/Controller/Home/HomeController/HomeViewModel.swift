@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import SwiftUtils
+import RealmSwift
 
 // MARK: - Enum
 enum TypeRow: Int, CaseIterable {
@@ -33,8 +34,7 @@ final class HomeViewModel {
     func getCurrentDate() -> String {
         let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .medium
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let dateString = dateFormatter.string(from: currentDate)
         return dateString
     }
@@ -61,7 +61,7 @@ final class HomeViewModel {
     private var limit: Int = 10
     private var radius: Int = 1_000
     private(set) var isFull: Bool = false
-    
+
 //    private(set) var profile: Profile?
 
     // MARK: - Public func
@@ -119,10 +119,6 @@ extension HomeViewModel {
                 completion(.failure(error))
             }
         }
-    }
-    
-    func getRegistration(completion: @escaping Completion<Profile>) {
-        
     }
 
     func getNearVenues(completion: @escaping APICompletion) {

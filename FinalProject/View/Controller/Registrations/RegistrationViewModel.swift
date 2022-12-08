@@ -15,7 +15,7 @@ final class RegistrationViewModel {
     func getRegistrationSelected(at indexPath: IndexPath) -> RegisterInfo {
         let treatment = registrations[indexPath.row].disease?.treatments?.first
         let medicalCenter = registrations[indexPath.row].medicalCenter
-        let time = registrations[indexPath.row].registrationTime
+        let time = registrations[indexPath.row].registrationTime ?? ""
         let status = registrations[indexPath.row].status
         return RegisterInfo(treatment: treatment, medicalCenter: medicalCenter, time: time, status: status)
     }

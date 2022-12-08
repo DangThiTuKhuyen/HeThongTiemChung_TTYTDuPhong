@@ -53,7 +53,6 @@ class RegistrationCell: UITableViewCell {
     }
 
     @IBAction private func goToDetailButton(_ sender: Any) {
-        print("clicked")
         delegate?.cell(self, needPerform: .goToDetail)
     }
 }

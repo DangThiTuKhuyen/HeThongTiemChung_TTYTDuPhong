@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
@@ -62,6 +63,18 @@ final class ApiManager {
     var defaultHTTPHeaders: [String: String] {
         var headers: [String: String] = [:]
         headers["Content-Type"] = "application/json"
+        return headers
+    }
+
+    var authorizationAccessHTTPHeaders: [String: String] {
+        var headers: [String: String] = defaultHTTPHeaders
+        headers["Authorization"] = "Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? "")
+        return headers
+    }
+
+    var authorizationRefreshHTTPHeaders: [String: String] {
+        var headers: [String: String] = defaultHTTPHeaders
+        headers["Authorization"] = "Bearer " + (UserDefaults.standard.string(forKey: "refreshToken") ?? "")
         return headers
     }
 }

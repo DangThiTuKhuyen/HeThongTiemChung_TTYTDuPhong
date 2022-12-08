@@ -12,28 +12,8 @@ import ObjectMapper
 
 class AuthService {
 
-    struct ConfirmAccount {
-        var email: String
-        var passCode: String
-        var password: String
-
-        init(email: String, passCode: String, password: String) {
-            self.email = email
-            self.passCode = passCode
-            self.password = password
-        }
-
-        func toJSON() -> [String: Any] {
-            var json: [String: Any] = [:]
-            json["email"] = email
-            json["tempPassword"] = passCode
-            json["newPassword"] = password
-            return json
-        }
-    }
-    
     struct Account {
-        var email: String
+        var email: String?
         var name: String?
         var identityCard: Int?
         var birthday: String?
@@ -41,9 +21,14 @@ class AuthService {
         var district: String?
         var phone: Int?
         var gender: String?
-        
+        var passCode: String?
+        var newPassword: String?
+        var password: String?
+        var oldPassword: String?
+        var accessToken: String?
+        var confirmationCode: String?
 
-        init(email: String, name: String? = nil, identityCard: Int? = nil, birthday: String? = nil, province: String? = nil, district: String? = nil, phone: Int? = nil, gender: String? = nil) {
+        init(email: String? = nil, name: String? = nil, identityCard: Int? = nil, birthday: String? = nil, province: String? = nil, district: String? = nil, phone: Int? = nil, gender: String? = nil, passCode: String? = nil, newPassword: String? = nil, password: String? = nil, oldPassword: String? = nil, accessToken: String? = nil, confirmationCode: String? = nil) {
             self.email = email
             self.name = name
             self.identityCard = identityCard
@@ -52,6 +37,12 @@ class AuthService {
             self.district = district
             self.phone = phone
             self.gender = gender
+            self.newPassword = newPassword // register
+            self.passCode = passCode
+            self.password = password // login
+            self.oldPassword = oldPassword // changePass
+            self.accessToken = accessToken
+            self.confirmationCode = confirmationCode
         }
 
         func toJSON() -> [String: Any] {
@@ -78,6 +69,25 @@ class AuthService {
             if let gender = gender {
                 json["gender"] = gender
             }
+            if let newPassword = newPassword {
+                json["newPassword"] = newPassword
+            }
+            if let passCode = passCode {
+                json["tempPassword"] = passCode
+            }
+            if let password = password {
+                json["password"] = password
+            }
+            if let oldPassword = oldPassword {
+                json["oldPassword"] = oldPassword
+            }
+            if let accessToken = accessToken {
+                json["accessToken"] = accessToken
+            }
+
+            if let confirmationCode = confirmationCode {
+                json["confirmationCode"] = confirmationCode
+            }
             return json
         }
     }
@@ -85,26 +95,50 @@ class AuthService {
     static func registerAccount(params: Account, completion: @escaping CompletionAPI) {
         let urlString = "http://3.92.194.85:3210/auth/registerAccount"
 //        if let json = response.result.value as? JSObject
-        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
-            switch result {
-            case .success(let data):
-                guard let data = data as? JSObject else { return }
-                if let status = data["registerAccountStatus"] as? Bool, status == true {
-                    completion(.success)
-                    return
-                } else {
-                    completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
-                }
-            case .failure(let error):
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
                 completion(.failure(Api.Error.json.localizedDescription))
                 return
             }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let responseJSON = responseJSON as? JSObject else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            if let status = responseJSON["registerAccountStatus"] as? Bool, status == true {
+                completion(.success)
+            } else {
+                completion(.failure(responseJSON["message"] as? String ?? Api.Error.json.localizedDescription))
+            }
         }
+        task.resume()
+//        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
+//            switch result {
+//            case .success(let data):
+//                guard let data = data as? JSObject else { return }
+//                if let status = data["registerAccountStatus"] as? Bool, status == true {
+//                    completion(.success)
+//                    return
+//                } else {
+//
+//                }
+//            case .failure(let error):
+//                completion(.failure(error.localizedDescription))
+//                return
+//            }
+//        }
     }
 
-    static func confirmAccount(params: ConfirmAccount, completion: @escaping Completion<Auth>) {
+    static func confirmAccount(params: Account, completion: @escaping Completion<Auth>) {
         let urlString = "http://3.92.194.85:3210/auth/confirmRegisterAccount"
-        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) {  result in
+        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
             switch result {
             case .success(let data):
                 guard let data = data as? JSObject else {
@@ -121,29 +155,138 @@ class AuthService {
                 return
             }
         }
-//
-//        guard let url = URL(string: "http://3.92.194.85:3210/auth/confirmRegisterAccount") else { return }
-//        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.httpBody = jsonData
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data, error == nil else {
-//                completion(.failure(Api.Error.json.localizedDescription))
-//                return
-//            }
-//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-//            guard let responseJSON = responseJSON as? JSObject else { return }
-//            if let status = responseJSON["registerAccountStatus"] as? Bool, status == true {
-//                completion(.success)
-//                return
-//            } else {
-//                completion(.failure(responseJSON["message"] as? String ?? Api.Error.json.localizedDescription))
-//            }
-//        }
-//        task.resume()
+    }
+
+    static func refreshToken(completion: @escaping (Bool) -> Void) {
+        let urlString = "http://3.92.194.85:3210/auth/refreshToken"
+        api.request(method: .post, urlString: urlString, parameters: ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject, let auth = Mapper<Auth>().map(JSON: data) else {
+                    completion(false)
+                    return
+                }
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
+                    UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
+                }
+//                completion(.success(true))
+                completion(true)
+            case .failure(let error):
+                completion(false)
+                return
+            }
+        }
+    }
+
+    static func login(params: Account, completion: @escaping (_ data: Auth?, _ error: String?) -> Void) {
+        let urlString = "http://3.92.194.85:3210/auth/loginUsers"
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil, Api.Error.json.localizedDescription)
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String else {
+                completion(nil, Api.Error.json.localizedDescription)
+                return
+            }
+            if message == "success" {
+                guard let auth = Mapper<Auth>().map(JSON: responseJSON) else {
+                    completion(nil, Api.Error.json.localizedDescription)
+                    return
+                }
+                completion(auth, nil)
+            } else {
+                completion(nil, message)
+            }
+        }
+        task.resume()
+    }
+
+    static func changePass(params: Account, completion: @escaping CompletionAPI) {
+        let urlString = "http://3.92.194.85:3210/auth/changePassword"
+        api.request(method: .put, urlString: urlString, parameters: params.toJSON()) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject else {
+                    completion(.failure(Api.Error.json.localizedDescription))
+                    return
+                }
+                guard let message = data["changePasswordMessage"] as? String, message == "Success" else {
+                    completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
+                    return
+                }
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error.localizedDescription))
+                return
+            }
+        }
+    }
+
+    static func forgotPassword(params: Account, completion: @escaping CompletionAPI) {
+        let urlString = "http://3.92.194.85:3210/auth/forgotPassword"
+//        if let json = response.result.value as? JSObject
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let responseJSON = responseJSON as? JSObject else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            if let message = responseJSON["forgotPasswordMessage"] as? String, message == "Success" {
+                completion(.success)
+            } else {
+                completion(.failure(responseJSON["message"] as? String ?? Api.Error.json.localizedDescription))
+            }
+        }
+        task.resume()
+    }
+
+    static func resetPassword(params: Account, completion: @escaping CompletionAPI) {
+        let urlString = "http://3.92.194.85:3210/auth/resetPassword"
+//        if let json = response.result.value as? JSObject
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let responseJSON = responseJSON as? JSObject else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            if let message = responseJSON["passwordResetMessage"] as? String, message == "Success" {
+                completion(.success)
+            } else {
+                completion(.failure(responseJSON["message"] as? String ?? Api.Error.json.localizedDescription))
+            }
+        }
+        task.resume()
     }
 }

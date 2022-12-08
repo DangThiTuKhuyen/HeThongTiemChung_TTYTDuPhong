@@ -11,7 +11,7 @@ import ObjectMapper
 class ProfileService {
 
     static func getProfile(completion: @escaping Completion<Profile>) {
-        let urlString = Api.Path.baseURL + "users/0879a9a2-5f65-4476-b107-fea78da2fd69"
+        let urlString = Api.Path.userIdURL
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):

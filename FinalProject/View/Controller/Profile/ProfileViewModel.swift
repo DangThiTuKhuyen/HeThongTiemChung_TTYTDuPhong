@@ -27,6 +27,23 @@ struct ProfileCellItem {
     let value: String?
 }
 
+enum SectionType: Int, CaseIterable {
+    case identity = 0
+    case infomation
+    case security
+
+    var rows: [ProfileType] {
+        switch self {
+        case .identity:
+            return [.avatar, .name, .email, .identityCard]
+        case .infomation:
+            return [.numberPhone, .gender, .birthday, .province, .district]
+        case .security:
+            return [.changePass, .logout]
+        }
+    }
+}
+
 final class ProfileViewModel {
 
     enum SectionType: Int, CaseIterable {

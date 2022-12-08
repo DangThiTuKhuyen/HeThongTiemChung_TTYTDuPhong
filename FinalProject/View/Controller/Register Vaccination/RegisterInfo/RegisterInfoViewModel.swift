@@ -11,7 +11,7 @@ import Foundation
 struct RegisterInfo {
     var treatment: Treatment?
     var medicalCenter: MedicalCenter?
-    var time: String?
+    var time: String = ""
     var status: Bool?
 }
 
@@ -66,7 +66,7 @@ final class RegisterInfoViewModel {
         case .dose:
             return RegistionCellItem(title: "Dose", value: "Dose 1st")
         case .time:
-            return RegistionCellItem(title: "Date", value: registerInfo.time ?? "")
+            return RegistionCellItem(title: "Date", value: registerInfo.time)
         case .price:
             return RegistionCellItem(title: "Price", value: registerInfo.treatment?.vaccine?.vaccinePrice?.toString() ?? "")
         case .country:
@@ -99,23 +99,28 @@ final class RegisterInfoViewModel {
     func setMedicalCenter(value: MedicalCenter) {
         registerInfo.medicalCenter = value
     }
+    
+    func checkEmpty() -> Bool {
+        return registerInfo.time.isEmpty || registerInfo.medicalCenter?.medicalCenterId == 0
+    }
 }
 
 extension RegisterInfoViewModel {
 
     // push
     func registerVaccine(completion: @escaping APICompletion) {
-        let params = RegistrationVaccineService.Params(diseaseId: registerInfo.treatment?.diseaseId ?? 0, vaccineId: registerInfo.treatment?.vaccineId ?? 0, medicalCenterId: registerInfo.medicalCenter?.medicalCenterId ?? 0, dose: 1, time: registerInfo.time ?? "")
-        
+        let params = RegistrationVaccineService.Params(diseaseId: registerInfo.treatment?.diseaseId ?? 0, vaccineId: registerInfo.treatment?.vaccineId ?? 0, medicalCenterId: registerInfo.medicalCenter?.medicalCenterId ?? 0, dose: 1, time: registerInfo.time)
+
         switch type {
         case .new:
             RegistrationVaccineService.registerVaccine(params: params) { [weak self] result in
-                guard self != nil else {
+                guard let this = self else {
                     completion(.failure(Api.Error.json))
                     return
                 }
                 switch result {
                 case .success:
+                    this.type = .update
                     completion(.success)
                 case .failure(let error):
                     completion(.failure(error))

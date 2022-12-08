@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterPassCodeViewController: ViewController {
+final class EnterPassCodeViewController: ViewController {
 
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var tempPasscodeTextField: UITextField!
@@ -19,7 +19,6 @@ class EnterPassCodeViewController: ViewController {
         navigationController?.isNavigationBarHidden = false
         emailTextField.text = viewModel?.email
     }
-
 
     private func createAccount() {
         guard let viewModel = viewModel else {
@@ -32,19 +31,17 @@ class EnterPassCodeViewController: ViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    let vc = HomeViewController()
-                    this.navigationController?.pushViewController(vc, animated: true)
-                    break
+                    this.changeRoot(type: .tabbar)
                 case .failure(let error):
-                    break
-                    print("fail")
-//                    this.alert(msg: error, handler: nil)
+                    this.alert(msg: error.localizedDescription, handler: nil)
                 }
             }
         }
     }
 
     @IBAction func nextButton(_ sender: UIButton) {
+        viewModel?.setPassCode(value: tempPasscodeTextField.text ?? "")
+        viewModel?.setPassWord(value: newPasswordTextField.text ?? "")
         createAccount()
     }
 

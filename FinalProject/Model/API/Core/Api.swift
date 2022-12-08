@@ -17,6 +17,8 @@ final class Api {
 
     struct Path {
         static let baseURL = "http://3.92.194.85:3210/"
+        static let userIdURL = baseURL + "users/" + "0879a9a2-5f65-4476-b107-fea78da2fd69"
+//        (UserDefaults.standard.string(forKey: "userId") ?? "")
         static let detailURL = "https://api.foursquare.com/v2/venues/"
         static let searchURL = "https://api.foursquare.com/v2/venues/search"
         static let categoryURL = "https://api.foursquare.com/v2/venues/categories"

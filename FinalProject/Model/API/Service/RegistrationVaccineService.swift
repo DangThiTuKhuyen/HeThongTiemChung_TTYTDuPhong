@@ -75,29 +75,19 @@ class RegistrationVaccineService {
     }
 
     static func registerVaccine(params: Params, completion: @escaping APICompletion) {
-
-        guard let url = URL(string: "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations") else { return }
-        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(.failure(Api.Error.json))
-//                print(error?.localizedDescription ?? "No data")
-                return
+        let url = "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations"
+        api.request(method: .post, urlString: url, parameters: params.toJSON()) { result in
+            switch result {
+            case .success(let data):
+                if let data = data as? JSObject, let message = data["message"] as? String, message == "OK" {
+                    completion(.success)
+                } else {
+                    completion(.failure(Api.Error.json))
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String, message == "OK" else {
-                completion(.failure(Api.Error.json))
-                return
-            }
-            completion(.success)
         }
-        task.resume()
     }
 
     static func getRegistration(completion: @escaping Completion<[Registration]>) {

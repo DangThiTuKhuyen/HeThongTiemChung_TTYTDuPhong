@@ -16,7 +16,7 @@ final class DetailHistoryViewModel {
         self.history = history
     }
 
-    var isShows = [Bool](repeating: false, count: 3)
+    var isShows = [Bool](repeating: false, count: 10)
     
     func updateStatus(at indexPath: IndexPath) {
         isShows[indexPath.row] = !isShows[indexPath.row]

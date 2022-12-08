@@ -92,7 +92,14 @@ class RegisterInfoViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction private func confirmRegister(_ sender: Any) {
-        registerVaccine()
+        guard let viewModel = viewModel else {
+            return
+        }
+        if viewModel.checkEmpty() {
+            alert(msg: "Please enter full infomation", handler: nil)
+        } else {
+            registerVaccine()
+        }
     }
 
     @IBAction func deleteRegistration(_ sender: UIButton) {
