@@ -57,6 +57,7 @@ final class ConfirmCodeViewController: ViewController {
         if newPass.isEmpty || confirmCode.isEmpty {
             showHideError(error: "Please enter full information", isShow: true)
         } else {
+            showHideError()
             viewModel.setNewPassWord(value: newPass)
             viewModel.setConfirmationCode(value: confirmCode)
             resetPassword()

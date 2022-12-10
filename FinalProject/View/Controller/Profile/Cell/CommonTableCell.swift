@@ -22,12 +22,13 @@ protocol CommonTableCellDelegate: AnyObject {
 final class CommonTableCell: UITableViewCell {
 
     enum Action {
-        case valueChanged(valueString: String)
+        case valueChanged(valueString: String, type: ProfileType)
     }
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
-    @IBOutlet weak var forwardImageView: UIImageView!
-    @IBOutlet weak var widthForwardImage: NSLayoutConstraint!
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var valueTextField: UITextField!
+    @IBOutlet private weak var forwardImageView: UIImageView!
+    @IBOutlet private weak var widthForwardImage: NSLayoutConstraint!
 
     private let datePicker = UIDatePicker()
     weak var delegate: CommonTableCellDelegate?
@@ -35,15 +36,13 @@ final class CommonTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         valueTextField.borderStyle = .none
-        showDatePicker()
+        valueTextField.delegate = self
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-//        contentView.backgroundColor = .clear
         valueTextField.isHidden = false
         widthForwardImage.constant = 15
-//        titleLabel.textColor = UIColor(red: 0.96, green: 0.68, blue: 0.28, alpha: 1.00)
         titleLabel.textColor = .black
         valueTextField.inputView = .none
         valueTextField.inputAccessoryView = nil
@@ -65,10 +64,11 @@ final class CommonTableCell: UITableViewCell {
             titleLabel.text = viewModel.item?.title
             valueTextField.text = viewModel.item?.value
             widthForwardImage.constant = 0
+            valueTextField.isUserInteractionEnabled = false
         case .numberPhone, .birthday:
             titleLabel.text = viewModel.item?.title
             valueTextField.text = viewModel.item?.value
-//            valueTextField.isUserInteractionEnabled = false
+            valueTextField.isUserInteractionEnabled = true
         case .gender, .province, .district:
             titleLabel.text = viewModel.item?.title
             valueTextField.text = viewModel.item?.value
@@ -84,43 +84,18 @@ final class CommonTableCell: UITableViewCell {
         }
     }
 
-    func updateUI() {
-//        guard let viewModel = viewModel else { return }
-//        nameContainerView.backgroundColor = viewModel.isSlelected ? Color.selectCellColor : .clear
-        checkToUpdateKeyboardStatus()
-    }
-
-    private func checkToUpdateKeyboardStatus() {
-        guard let viewModel = viewModel else { return }
-        switch viewModel.type {
-        case .numberPhone:
-            valueTextField.keyboardType = .numberPad
-            showKeyBoard()
-        case .birthday:
-            showKeyBoard()
-//            if viewModel.isSelected {
-//                showDatePicker()
-////                valueTextField.inputView = datePicker
-////                valueTextField.keyboardType = datePicker
-//            } else {
-//                valueTextField.resignFirstResponder()
-////                self.inputViewController?.dismiss(animated: true)
-//                self.endEditing(true)
-//            }
-        default:
-            break
-        }
-    }
-
     private func showKeyBoard() {
-        guard let viewModel = viewModel else { return }
-        valueTextField.isUserInteractionEnabled = viewModel.isSelected
-        if viewModel.isSelected {
-            valueTextField.becomeFirstResponder()
-        } else {
-            valueTextField.resignFirstResponder()
-        }
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        var doneButton = UIBarButtonItem()
+        doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        valueTextField.inputAccessoryView = toolbar
+        valueTextField.keyboardType = .numberPad
+        valueTextField.autocorrectionType = .no
     }
+    
 
     private func showDatePicker() {
         datePicker.datePickerMode = .date
@@ -143,13 +118,31 @@ final class CommonTableCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         valueTextField.text = formatter.string(from: datePicker.date)
-//        delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: .birthday))
+        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.text ?? "", type: .birthday))
+        self.endEditing(true)
+    }
+    
+    @objc private func done() {
+        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.text ?? "", type: .numberPhone))
         self.endEditing(true)
     }
 
     func updateValueTextField() {
         valueTextField.resignFirstResponder()
-        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.text ?? ""))
+//        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.te÷xt ?? ""))
     }
 
+}
+
+extension CommonTableCell: UITextFieldDelegate {
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard let viewModel = viewModel else { return false }
+        if viewModel.type == .birthday {
+            showDatePicker()
+        } else {
+            showKeyBoard()
+        }
+        return true
+    }
 }

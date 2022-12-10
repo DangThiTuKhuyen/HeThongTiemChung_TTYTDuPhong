@@ -17,7 +17,7 @@ final class AppointmentCell: UITableViewCell {
     enum Action {
         case goToDetail
     }
-    
+
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var diseaseLabel: UILabel!
     @IBOutlet private weak var containerView: UIView!
@@ -28,7 +28,7 @@ final class AppointmentCell: UITableViewCell {
         }
     }
     weak var delegate: AppointmentCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 10

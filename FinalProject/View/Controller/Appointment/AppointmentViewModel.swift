@@ -9,7 +9,7 @@
 import Foundation
 final class AppointmentViewModel {
     
-    var appointments: [Registration] = []
+    private(set) var appointments: [Registration] = []
     
     func numberOfRowInSection() -> Int {
         return appointments.count

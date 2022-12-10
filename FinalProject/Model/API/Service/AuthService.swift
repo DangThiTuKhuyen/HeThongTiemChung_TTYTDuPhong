@@ -136,25 +136,36 @@ class AuthService {
 //        }
     }
 
-    static func confirmAccount(params: Account, completion: @escaping Completion<Auth>) {
+    static func confirmAccount(params: Account, completion: @escaping (_ data: Auth?, _ error: String?) -> Void) {
         let urlString = "http://3.92.194.85:3210/auth/confirmRegisterAccount"
-        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
-            switch result {
-            case .success(let data):
-                guard let data = data as? JSObject else {
-                    completion(.failure(Api.Error.json))
-                    return
-                }
-                guard let auth = Mapper<Auth>().map(JSON: data) else {
-                    completion(.failure(Api.Error.json))
-                    return
-                }
-                completion(.success(auth))
-            case .failure(let error):
-                completion(.failure(error))
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil, Api.Error.json.localizedDescription)
                 return
             }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String else {
+                completion(nil, Api.Error.json.localizedDescription)
+                return
+            }
+            if message == "success" {
+                guard let auth = Mapper<Auth>().map(JSON: responseJSON) else {
+                    completion(nil, Api.Error.json.localizedDescription)
+                    return
+                }
+                completion(auth, nil)
+            } else {
+                completion(nil, message)
+            }
         }
+        task.resume()
     }
 
     static func refreshToken(completion: @escaping (Bool) -> Void) {
@@ -171,6 +182,23 @@ class AuthService {
                     UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
                 }
 //                completion(.success(true))
+                completion(true)
+            case .failure(let error):
+                completion(false)
+                return
+            }
+        }
+    }
+    
+    static func updateProfile(params: Account, completion: @escaping (Bool) -> Void) {
+        let urlString = Api.Path.userIdURL
+        api.request(method: .put, urlString: urlString, parameters: params.toJSON()) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject, let message = data["message"] as? String, message == "Update Success" else {
+                    completion(false)
+                    return
+                }
                 completion(true)
             case .failure(let error):
                 completion(false)
@@ -288,5 +316,26 @@ class AuthService {
             }
         }
         task.resume()
+    }
+    
+    static func logout(params: Account, completion: @escaping CompletionAPI) {
+        let urlString = "http://3.92.194.85:3210/auth/logoutUser"
+        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
+            switch result {
+            case .success(let data):
+//                guard let data = data as? JSObject else {
+//                    completion(.failure(Api.Error.json.localizedDescription))
+//                    return
+//                }
+//                guard let message = data["changePasswordMessage"] as? String, message == "Success" else {
+//                    completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
+//                    return
+//                }
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error.localizedDescription))
+                return
+            }
+        }
     }
 }

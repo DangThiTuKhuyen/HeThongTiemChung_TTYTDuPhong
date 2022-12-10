@@ -23,7 +23,7 @@ final class AppointmentViewController: UIViewController {
         configUI()
 //        getAppointment()
     }
-    
+
     // MARK: - Private func
 
     private func getAppointment() {
@@ -78,11 +78,15 @@ extension AppointmentViewController: AppointmentCellDelegate {
         switch action {
         case .goToDetail:
             guard let viewModel = viewModel, let indexPath = tableView.indexPath(for: cell) else { return }
-//            let vc = RegisterInfoViewController()
-            print("fdfdfdfre")
-//            vc.viewModel = RegisterInfoViewModel(registerInfo: viewModel.getRegistrationSelected(at: indexPath), diseaseName: viewModel.getNameDisease(at: indexPath), type: .update)
-//            vc.viewModel?.registrationId = viewModel.getRegistrationId(at: indexath)
-//            navigationController?.pushViewController(vc, animated: true)
+            
+            //        let loginNaviC = UINavigationController(rootViewController: loginVc)
+            //        loginNaviC.modalPresentationStyle = .fullScreen
+            //        present(loginNaviC, animated: true)
+            let vc = DetailAppointmentViewController()
+            vc.viewModel = DetailAppointmentViewModel(appointment: viewModel.appointments[indexPath.row])
+            let vcNavi = UINavigationController(rootViewController: vc)
+            vcNavi.modalPresentationStyle = .formSheet
+            present(vcNavi, animated: true)
         }
     }
 

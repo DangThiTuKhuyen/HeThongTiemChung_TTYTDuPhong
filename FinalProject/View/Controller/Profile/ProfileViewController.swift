@@ -20,30 +20,18 @@ final class ProfileViewController: UIViewController {
     var viewModel: ProfileViewModel?
     var image: UIImage = UIImage()
 
-    private(set) var selectedIndexPath: IndexPath? {
-        willSet {
-            updateCellStatusForName(at: newValue, isSelected: true)
-        }
-        didSet {
-            updateCellStatusForName(at: oldValue, isSelected: false)
-        }
-    }
-
-    private(set) var isAppearKeyboard: Bool = false
-
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configNavi()
         configTableView()
         getProfile()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        getProfile()
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print(viewModel?.info)
@@ -67,19 +55,6 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    private func updateCellStatusForName(at index: IndexPath?, isSelected: Bool) {
-        guard let index = index,
-            let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
-        let viewModel = cell.viewModel
-        switch viewModel?.type {
-        case .avatar:
-            break
-        default:
-            viewModel?.updateCellStatus(isSlelected: isSelected)
-            cell.updateUI()
-        }
-    }
-
     private func configNavi() {
         title = "My profile"
         navigationController?.navigationBar.barTintColor = .white
@@ -97,28 +72,6 @@ final class ProfileViewController: UIViewController {
             tableView.sectionHeaderTopPadding = 0
         }
         tableView.sectionFooterHeight = 0
-    }
-
-    private func updateNameCellWithoutDoneButton() {
-        guard let index = selectedIndexPath, let cell = tableView.cellForRow(at: index) as? CommonTableCell else { return }
-        cell.updateValueTextField()
-    }
-
-    // MARK: - Objc func
-    @objc private func keyboardDidHide(_ sender: Any?) {
-        DispatchQueue.main.async {
-            self.isAppearKeyboard = false
-            self.updateCellStatusForName(at: self.selectedIndexPath, isSelected: false)
-            self.updateNameCellWithoutDoneButton()
-            self.selectedIndexPath = nil
-            UIView.setAnimationsEnabled(false)
-            self.tableView.reloadData()
-            UIView.setAnimationsEnabled(true)
-        }
-    }
-
-    @objc private func keyboardWillShow(_ sender: Any?) {
-        isAppearKeyboard = true
     }
 }
 
@@ -179,10 +132,6 @@ extension ProfileViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
-        guard !isAppearKeyboard else {
-            view.endEditing(true)
-            return
-        }
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel.getIndex(indexPath)
         guard let sectionType = ProfileViewModel.SectionType(rawValue: indexPath.section) else { return }
@@ -190,12 +139,13 @@ extension ProfileViewController: UITableViewDelegate {
         switch type {
         case .avatar, .name, .email, .identityCard:
             break
-        case .numberPhone, .birthday:
-//            selectedIndexPath = indexPath
+        case .numberPhone:
+            break
+        case .birthday:
             break
         case .gender:
             if let cell = tableView.cellForRow(at: indexPath) {
-                dropDown.dataSource = ["Male", "Female"]
+                dropDown.dataSource = ["male", "female"]
                 dropDown.anchorView = cell
                 dropDown.bottomOffset = CGPoint(x: 0, y: cell.frame.size.height)
                 dropDown.backgroundColor = .orange
@@ -222,9 +172,9 @@ extension ProfileViewController: UITableViewDelegate {
             vc.viewModel = ChangePasswordViewModel()
             navigationController?.pushViewController(vc, animated: true)
         case .logout:
-            UserDefaults.standard.reset()
-            let vc = LoginViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: nil)
+            }
         }
     }
 
@@ -275,10 +225,16 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension ProfileViewController: CommonTableCellDelegate {
     func cell(_ cell: CommonTableCell, needsPerformAction action: CommonTableCell.Action) {
         switch action {
-        case .valueChanged(valueString: let valueString):
-            viewModel?.setPhone(value: valueString)
+        case .valueChanged(let value, let type):
+            switch type {
+            case .numberPhone:
+                viewModel?.setPhone(value: value)
+            case .birthday:
+                viewModel?.setBirthday(value: value)
+            default:
+                break
+            }
         }
-        selectedIndexPath = nil
     }
 }
 

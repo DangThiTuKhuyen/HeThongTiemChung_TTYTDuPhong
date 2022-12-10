@@ -17,18 +17,18 @@ final class NotifyCell: UITableViewCell {
     enum Action {
         case goToDetail
     }
-    
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
 
-//    var viewModel: NotifyCellViewModel? {
-//        didSet {
-//            updateUI()
-//        }
-//    }
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+
+    var viewModel: NotifyCellViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
     weak var delegate: NotifyCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,11 +36,14 @@ final class NotifyCell: UITableViewCell {
         containerView.backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    private func updateUI() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        titleLabel.text = viewModel.notify.notifyTitle
+        timeLabel.text = viewModel.notify.time
     }
-    
+
     @IBAction func detailButton(_ sender: Any) {
         delegate?.cell(self, needPerform: .goToDetail)
     }

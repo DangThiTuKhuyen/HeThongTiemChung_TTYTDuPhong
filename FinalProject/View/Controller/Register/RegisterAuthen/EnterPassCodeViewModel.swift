@@ -37,21 +37,22 @@ final class EnterPassCodeViewModel {
 
 extension EnterPassCodeViewModel {
 
-    func createAccount(completion: @escaping APICompletion) {
+    func createAccount(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(email: email, passCode: passCode, newPassword: password)
-        AuthService.confirmAccount(params: params) { [weak self] result in
+        AuthService.confirmAccount(params: params) { [weak self] (data, error) in
+            
             guard let this = self else {
-                completion(.failure(Api.Error.json))
+                completion(.failure(Api.Error.json.localizedDescription))
                 return
             }
-            switch result {
-            case .success(let auth):
-                this.auth = auth
+            if let data = data, error == nil {
+                this.auth = data
                 this.addToken()
                 completion(.success)
-            case .failure(let error):
-                completion(.failure(error))
+            } else {
+                completion(.failure(error ?? Api.Error.json.localizedDescription))
             }
+            completion(.failure(Api.Error.json.localizedDescription))
         }
     }
 }

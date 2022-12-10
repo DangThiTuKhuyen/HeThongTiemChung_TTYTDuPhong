@@ -17,7 +17,6 @@ final class RegisterViewController: ViewController {
     // MARK: - Properties
     var viewModel = RegisterViewModel()
 
-
     private(set) var selectedIndexPath: IndexPath? {
         willSet {
             updateCellStatusForName(at: newValue, isSelected: true)
@@ -153,6 +152,8 @@ extension RegisterViewController: UITableViewDataSource {
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
             return cell
         }
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.clear
     }
 }
 // MARK: - UITableViewDelegate
@@ -165,9 +166,6 @@ extension RegisterViewController: UITableViewDelegate {
         }
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor.clear
-        cell?.selectedBackgroundView = bgColorView
         guard let type = RegisterProfileType(rawValue: indexPath.row) else { return }
         switch type {
         case .province:

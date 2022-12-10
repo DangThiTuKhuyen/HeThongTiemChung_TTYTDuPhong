@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnterPassCodeViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="T0B-ZD-3lK" id="wRK-bO-Ovw"/>
+                <outlet property="errorLabel" destination="uuh-SS-0rh" id="w95-7p-xXd"/>
                 <outlet property="newPasswordTextField" destination="JnR-o7-fhh" id="jTK-Np-pEx"/>
                 <outlet property="tempPasscodeTextField" destination="ApJ-iU-CSJ" id="ROa-P0-Cgt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,7 +31,7 @@
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Sign In" titleAlignment="center">
+                    <buttonConfiguration key="configuration" style="plain" title="Sign up" titleAlignment="center">
                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
                     </buttonConfiguration>
                     <userDefinedRuntimeAttributes>
@@ -81,6 +82,15 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-SS-0rh">
+                    <rect key="frame" x="20" y="356.5" width="37.5" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="IfM-ze-geY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" systemColor="systemRedColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,12 +100,14 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T0B-ZD-3lK" secondAttribute="trailing" constant="20" id="F6P-BE-rfT"/>
                 <constraint firstItem="T0B-ZD-3lK" firstAttribute="top" secondItem="cz8-nr-01z" secondAttribute="bottom" constant="20" id="KAy-ar-Pdb"/>
                 <constraint firstItem="CL5-ff-OrO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="N1C-VH-RYa"/>
+                <constraint firstItem="uuh-SS-0rh" firstAttribute="leading" secondItem="T0B-ZD-3lK" secondAttribute="leading" id="OhN-ry-UwO"/>
                 <constraint firstItem="aWL-Mr-Hbz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="bih-Od-dgd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cz8-nr-01z" secondAttribute="trailing" constant="10" id="c35-yi-XZX"/>
                 <constraint firstItem="JnR-o7-fhh" firstAttribute="trailing" secondItem="ApJ-iU-CSJ" secondAttribute="trailing" id="csX-ha-DB6"/>
                 <constraint firstItem="JnR-o7-fhh" firstAttribute="top" secondItem="ApJ-iU-CSJ" secondAttribute="bottom" constant="20" id="cyR-td-ybs"/>
                 <constraint firstItem="cz8-nr-01z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="faf-Ms-rTa"/>
                 <constraint firstItem="JnR-o7-fhh" firstAttribute="leading" secondItem="ApJ-iU-CSJ" secondAttribute="leading" id="g5I-Y3-h7o"/>
+                <constraint firstItem="uuh-SS-0rh" firstAttribute="top" secondItem="JnR-o7-fhh" secondAttribute="bottom" constant="15" id="h72-bO-LpN"/>
                 <constraint firstItem="ApJ-iU-CSJ" firstAttribute="trailing" secondItem="T0B-ZD-3lK" secondAttribute="trailing" id="hDY-96-WJP"/>
                 <constraint firstItem="ApJ-iU-CSJ" firstAttribute="top" secondItem="T0B-ZD-3lK" secondAttribute="bottom" constant="20" id="iIt-ee-fAi"/>
                 <constraint firstItem="T0B-ZD-3lK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lia-r5-Qin"/>
@@ -109,6 +121,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

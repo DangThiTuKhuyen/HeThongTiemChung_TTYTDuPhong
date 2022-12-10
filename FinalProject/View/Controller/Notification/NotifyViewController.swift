@@ -11,12 +11,20 @@ import UIKit
 final class NotifyViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
+
+    var viewModel = NotifyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         configUI()
+        getNotify()
+        self.tabBarController?.tabBar.items?[1].badgeValue = nil
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getNotify()
+    }
+
     private func configUI() {
         title = "Notifications"
     }
@@ -26,25 +34,34 @@ final class NotifyViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+
+    private func getNotify() {
+        HUD.show()
+        viewModel.getNotify { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.tableView.reloadData()
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+            }
+        }
+    }
 }
 
 extension NotifyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.numberOfRowInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NotifyCell.self)
+        cell.viewModel = viewModel.viewModelForItem(at: indexPath)
         cell.delegate = self
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-//        let loginVc = LoginViewController()
-//        let loginNaviC = UINavigationController(rootViewController: loginVc)
-//        loginNaviC.modalPresentationStyle = .fullScreen
-//        present(loginNaviC, animated: true)
     }
 }
 
@@ -56,9 +73,9 @@ extension NotifyViewController: NotifyCellDelegate {
         switch action {
         case .goToDetail:
             guard let indexPath = tableView.indexPath(for: cell) else { return }
-//            let viewModel = cell.viewM
+            let vc = DetailNotifyViewController()
+            vc.viewModel = DetailNotifyViewModel(notify: viewModel.notities[indexPath.row])
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
 }

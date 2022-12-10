@@ -134,19 +134,17 @@ final class ProfileViewModel {
         info?.gender = value
     }
 
-    func setBirthday(value: Date) {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        info?.birthday = dateFormatter.string(from: date)
+    func setBirthday(value: String) {
+        info?.birthday = value
     }
 
-    func stringBirthday() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: "2000-11-11")
-        print(date)
-        return "\(String(describing: date))"
-    }
+//    func stringBirthday() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let date = dateFormatter.date(from: "2000-11-11")
+//        print(date)
+//        return "\(String(describing: date))"
+//    }
     func setProvince(value: Address) {
         address = value
         info?.province = value.province
@@ -177,6 +175,22 @@ extension ProfileViewModel {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func updateProfile(completion: @escaping CompletionAPI) {
+        let params = AuthService.Account(birthday: info?.birthday, province: info?.province, district: info?.district, phone: info?.phone, gender: info?.gender)
+        AuthService.updateProfile(params: params) { [weak self] result in
+            guard let this = self else {
+                completion(.failure(Api.Error.json.localizedDescription))
+                return
+            }
+            if result {
+                completion(.success)
+            } else {
+                completion(.failure(Api.Error.json.localizedDescription))
+            }
+            
         }
     }
 }

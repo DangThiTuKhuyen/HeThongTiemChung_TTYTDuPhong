@@ -20,7 +20,7 @@ extension ApiManager {
 
         var header1 = api.authorizationAccessHTTPHeaders
         header1.updateValues(headers)
-        
+
         if urlString.urlString.contains("loginUsers") {
             header1.removeValue(forKey: "Authorization")
         }
@@ -48,12 +48,9 @@ extension ApiManager {
                         case true:
                             break
                         case false:
-//                            completion?(response.result)
-//                            DispatchQueue.main.async {
-//                                let navi = UINavigationController()
-//                                let vc = LoginViewController()
-//                                navi.pushViewController(vc, animated: true)
-//                            }
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: ["isExpire": true])
+                            }
                             break
                             completion?(response.result)
                         }
@@ -88,6 +85,4 @@ extension ApiManager {
         }
         return request
     }
-
-
 }

@@ -63,7 +63,7 @@ final class HomeViewController: ViewController {
         registerVaccineButton.layer.cornerRadius = 25
         guard let viewModel = viewModel else { return }
         realTime.text = viewModel.getCurrentDate()
-        guard let qrURLImage = URL(string: "http://3.92.194.85:3210/medical-center")?.qrImage(using: .black) else { return }
+        guard let qrURLImage = URL(string: "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/histories")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 

@@ -10,9 +10,10 @@ import UIKit
 
 final class EnterPassCodeViewController: ViewController {
 
-    @IBOutlet weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var tempPasscodeTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet private weak var newPasswordTextField: UITextField!
+    @IBOutlet private weak var tempPasscodeTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var errorLabel: UILabel!
     var viewModel: EnterPassCodeViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +34,28 @@ final class EnterPassCodeViewController: ViewController {
                 case .success:
                     this.changeRoot(type: .tabbar)
                 case .failure(let error):
-                    this.alert(msg: error.localizedDescription, handler: nil)
+                    this.alert(msg: error, handler: nil)
                 }
             }
         }
     }
+    
+    private func showHideError(error: String = "", isShow: Bool = false) {
+        errorLabel.text = error
+        errorLabel.isHidden = !isShow
+    }
 
     @IBAction func nextButton(_ sender: UIButton) {
-        viewModel?.setPassCode(value: tempPasscodeTextField.text ?? "")
-        viewModel?.setPassWord(value: newPasswordTextField.text ?? "")
-        createAccount()
+        guard let viewModel = viewModel, let newPass = newPasswordTextField.text, let tempPass = tempPasscodeTextField.text else { return }
+        if newPass.isEmpty || tempPass.isEmpty {
+            showHideError(error: "Please enter full information", isShow: true)
+        } else {
+            showHideError()
+            viewModel.setPassCode(value: tempPasscodeTextField.text ?? "")
+            viewModel.setPassWord(value: newPasswordTextField.text ?? "")
+            createAccount()
+        }
+        
     }
 
 }

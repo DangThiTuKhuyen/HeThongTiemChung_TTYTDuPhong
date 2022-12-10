@@ -9,5 +9,9 @@
 import Foundation
 
 final class DetailNotifyViewModel {
+    var notify: Notify
     
+    init(notify: Notify) {
+        self.notify = notify
+    }
 }
