@@ -85,23 +85,6 @@ final class HomeViewController: ViewController {
         }
     }
 
-    private func setupDataRecommend() {
-        guard let viewModel = viewModel else { return }
-        HUD.show()
-        viewModel.getRecommendVenues { [weak self] result in
-            HUD.dismiss()
-            guard let this = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let city):
-                    this.nameLabel.text = city
-//                    this.tableView.reloadRows(at: [IndexPath(row: TypeRow.recommend.rawValue, section: Config.section)], with: .fade)
-                case .failure(let error):
-                    this.alert(msg: error.localizedDescription, handler: nil)
-                }
-            }
-        }
-    }
 
     @IBAction func registerVaccineButton(_ sender: UIButton) {
         let registerDisaeseVC = RegisterDisaeseViewController()

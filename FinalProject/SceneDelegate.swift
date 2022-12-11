@@ -28,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         window.backgroundColor = .white
         checkTime()
-        LocationManager.shared().request()
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(logout(_:)),
@@ -105,7 +104,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tutorialVC.viewModel = tutorialViewModel
         window?.rootViewController = tutorialVC
     }
-
 
     private func setupController() {
         DispatchQueue.main.async {

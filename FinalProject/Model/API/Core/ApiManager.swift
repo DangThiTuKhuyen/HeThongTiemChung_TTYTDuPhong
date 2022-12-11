@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import RealmSwift
 
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]

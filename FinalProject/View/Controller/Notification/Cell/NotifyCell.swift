@@ -21,6 +21,7 @@ final class NotifyCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var titleType: UILabel!
 
     var viewModel: NotifyCellViewModel? {
         didSet {
@@ -40,6 +41,7 @@ final class NotifyCell: UITableViewCell {
         guard let viewModel = viewModel else {
             return
         }
+        titleType.text = viewModel.notify.titleType
         titleLabel.text = viewModel.notify.notifyTitle
         timeLabel.text = viewModel.notify.time
     }

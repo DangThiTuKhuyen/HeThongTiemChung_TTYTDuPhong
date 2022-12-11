@@ -8,11 +8,10 @@
 
 import Foundation
 final class AppointmentCellViewModel {
-    
+
     var appointment: Registration
-    
+
     init(appointment: Registration) {
         self.appointment = appointment
     }
-    
 }

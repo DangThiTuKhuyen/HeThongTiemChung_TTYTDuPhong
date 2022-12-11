@@ -12,11 +12,6 @@ PODS:
   - IQKeyboardManagerSwift (6.0.5)
   - MVVM-Swift (1.1.0)
   - ObjectMapper (4.2.0)
-  - Realm (3.17.3):
-    - Realm/Headers (= 3.17.3)
-  - Realm/Headers (3.17.3)
-  - RealmSwift (3.17.3):
-    - Realm (= 3.17.3)
   - SVProgressHUD (2.2.5)
   - SwifterSwift (5.1.0):
     - SwifterSwift/AppKit (= 5.1.0)
@@ -52,7 +47,6 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.0.4)
   - MVVM-Swift (= 1.1.0)
   - ObjectMapper
-  - RealmSwift (= 3.17.3)
   - SVProgressHUD (= 2.2.5)
   - SwifterSwift (~> 5.0)
   - SwiftLint (= 0.27.0)
@@ -69,8 +63,6 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - MVVM-Swift
     - ObjectMapper
-    - Realm
-    - RealmSwift
     - SVProgressHUD
     - SwifterSwift
     - SwiftLint
@@ -86,14 +78,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   MVVM-Swift: 54749cc12bb30af41632f30a2c576a18bf9e4bc8
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
-  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftUtils: de77bcd1df216c9be6ec7011777302c60a2018a6
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 197fed6f966a2e90674610cd6d6a5eb0b5ec3735
+PODFILE CHECKSUM: d34c0b867875dba58cd9a81b492070725b4dab51
 
 COCOAPODS: 1.11.3

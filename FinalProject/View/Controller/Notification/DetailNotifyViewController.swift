@@ -17,7 +17,6 @@ final class DetailNotifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-    
         guard let viewModel = viewModel else {
             return
         }

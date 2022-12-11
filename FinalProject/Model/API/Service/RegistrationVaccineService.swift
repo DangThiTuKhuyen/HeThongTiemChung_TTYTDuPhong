@@ -39,7 +39,7 @@ class RegistrationVaccineService {
     }
 
     static func getDisease(completion: @escaping Completion<[Disease]>) {
-        let urlString = "http://3.92.194.85:3210/users/212/diseases"
+        let urlString = Api.Path.userIdURL + "/diseases"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):
@@ -57,7 +57,7 @@ class RegistrationVaccineService {
     }
 
     static func getMedicalCenter(completion: @escaping Completion<[MedicalCenter]>) {
-        let urlString = "http://3.92.194.85:3210/medical-center"
+        let urlString = Api.Path.baseURL + "medical-center"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):
@@ -75,7 +75,7 @@ class RegistrationVaccineService {
     }
 
     static func registerVaccine(params: Params, completion: @escaping APICompletion) {
-        let url = "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations"
+        let url = Api.Path.userIdURL + "/registrations"
         api.request(method: .post, urlString: url, parameters: params.toJSON()) { result in
             switch result {
             case .success(let data):
@@ -91,7 +91,7 @@ class RegistrationVaccineService {
     }
 
     static func getRegistration(completion: @escaping Completion<[Registration]>) {
-        let urlString = "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations/getOne"
+        let urlString = Api.Path.userIdURL + "registrations/getOne"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):
@@ -108,7 +108,7 @@ class RegistrationVaccineService {
         }
     }
     static func deleteRegistration(id: Int, completion: @escaping APICompletion) {
-        let urlString = "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations/\(id)"
+        let urlString = Api.Path.userIdURL + "/registrations/\(id)"
         api.request(method: .delete, urlString: urlString) { result in
             switch result {
             case .success(let data):
@@ -124,7 +124,8 @@ class RegistrationVaccineService {
     }
     ///users/:userId/registrations/:id/update
     static func updateRegistration(id: Int, params: Params, completion: @escaping APICompletion) {
-        guard let url = URL(string: "http://3.92.194.85:3210/users/0879a9a2-5f65-4476-b107-fea78da2fd69/registrations/\(id)/update") else { return }
+        let urlString = Api.Path.userIdURL + "/registrations/\(id)/update"
+        guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -135,7 +136,6 @@ class RegistrationVaccineService {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 completion(.failure(Api.Error.json))
-//                print(error?.localizedDescription ?? "No data")
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])

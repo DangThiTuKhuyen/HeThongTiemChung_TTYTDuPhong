@@ -12,7 +12,7 @@ import ObjectMapper
 class AppointmentService {
 
     static func getAppointment(completion: @escaping Completion<[Registration]>) {
-        let urlString = "http://3.92.194.85:3210/users/3dae9fab-bd33-4705-8a1f-aac4029c615f/registrations/appointment"
+        let urlString = Api.Path.userIdURL + "/registrations/appointment"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):

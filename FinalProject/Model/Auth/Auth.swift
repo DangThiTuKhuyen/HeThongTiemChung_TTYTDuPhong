@@ -12,8 +12,10 @@ import ObjectMapper
 final class Auth: Mappable {
 
     var refreshToken: String?
-    var idToken: String?
     var accessToken: String?
+    var email: String?
+    var userName: String?
+    var userId: String?
 
     convenience required init?(map: Map) {
         self.init()
@@ -21,7 +23,9 @@ final class Auth: Mappable {
 
     func mapping(map: Map) {
         refreshToken <- map["refreshToken"]
-        idToken <- map["idToken"]
         accessToken <- map["accessToken"]
+        email <- map["email"]
+        userName <- map["userName"]
+        userId <- map["userId"]
     }
 }

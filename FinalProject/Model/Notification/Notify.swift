@@ -10,9 +10,11 @@ import Foundation
 import ObjectMapper
 
 final class Notify: Mappable {
+
     var notifyTitle: String?
     var notifyContent: String?
     var time: String?
+    var titleType: String?
 
     convenience required init?(map: Map) {
         self.init()
@@ -22,6 +24,6 @@ final class Notify: Mappable {
         notifyTitle <- map["notificationTitle"]
         notifyContent <- map["notificationContent"]
         time <- map["createdAt"]
+        titleType <- map["notificationType"]
     }
-    
 }

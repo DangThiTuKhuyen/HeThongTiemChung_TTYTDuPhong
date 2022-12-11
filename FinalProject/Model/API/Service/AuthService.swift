@@ -93,7 +93,7 @@ class AuthService {
     }
 
     static func registerAccount(params: Account, completion: @escaping CompletionAPI) {
-        let urlString = "http://3.92.194.85:3210/auth/registerAccount"
+        let urlString = Api.Path.authURL + "registerAccount"
 //        if let json = response.result.value as? JSObject
         guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
@@ -119,25 +119,10 @@ class AuthService {
             }
         }
         task.resume()
-//        api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
-//            switch result {
-//            case .success(let data):
-//                guard let data = data as? JSObject else { return }
-//                if let status = data["registerAccountStatus"] as? Bool, status == true {
-//                    completion(.success)
-//                    return
-//                } else {
-//
-//                }
-//            case .failure(let error):
-//                completion(.failure(error.localizedDescription))
-//                return
-//            }
-//        }
     }
 
     static func confirmAccount(params: Account, completion: @escaping (_ data: Auth?, _ error: String?) -> Void) {
-        let urlString = "http://3.92.194.85:3210/auth/confirmRegisterAccount"
+        let urlString = Api.Path.authURL + "confirmRegisterAccount"
         guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
         var request = URLRequest(url: url)
@@ -169,7 +154,7 @@ class AuthService {
     }
 
     static func refreshToken(completion: @escaping (Bool) -> Void) {
-        let urlString = "http://3.92.194.85:3210/auth/refreshToken"
+        let urlString = Api.Path.authURL + "refreshToken"
         api.request(method: .post, urlString: urlString, parameters: ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]) { result in
             switch result {
             case .success(let data):
@@ -189,7 +174,7 @@ class AuthService {
             }
         }
     }
-    
+
     static func updateProfile(params: Account, completion: @escaping (Bool) -> Void) {
         let urlString = Api.Path.userIdURL
         api.request(method: .put, urlString: urlString, parameters: params.toJSON()) { result in
@@ -208,7 +193,7 @@ class AuthService {
     }
 
     static func login(params: Account, completion: @escaping (_ data: Auth?, _ error: String?) -> Void) {
-        let urlString = "http://3.92.194.85:3210/auth/loginUsers"
+        let urlString = Api.Path.authURL + "loginUsers"
         guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
         var request = URLRequest(url: url)
@@ -240,7 +225,7 @@ class AuthService {
     }
 
     static func changePass(params: Account, completion: @escaping CompletionAPI) {
-        let urlString = "http://3.92.194.85:3210/auth/changePassword"
+        let urlString = Api.Path.authURL + "changePassword"
         api.request(method: .put, urlString: urlString, parameters: params.toJSON()) { result in
             switch result {
             case .success(let data):
@@ -261,7 +246,7 @@ class AuthService {
     }
 
     static func forgotPassword(params: Account, completion: @escaping CompletionAPI) {
-        let urlString = "http://3.92.194.85:3210/auth/forgotPassword"
+        let urlString = Api.Path.authURL + "forgotPassword"
 //        if let json = response.result.value as? JSObject
         guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
@@ -290,8 +275,7 @@ class AuthService {
     }
 
     static func resetPassword(params: Account, completion: @escaping CompletionAPI) {
-        let urlString = "http://3.92.194.85:3210/auth/resetPassword"
-//        if let json = response.result.value as? JSObject
+        let urlString = Api.Path.authURL + "resetPassword"
         guard let url = URL(string: urlString) else { return }
         let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
         var request = URLRequest(url: url)
@@ -317,9 +301,9 @@ class AuthService {
         }
         task.resume()
     }
-    
+
     static func logout(params: Account, completion: @escaping CompletionAPI) {
-        let urlString = "http://3.92.194.85:3210/auth/logoutUser"
+        let urlString = Api.Path.authURL + "logoutUser"
         api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
             switch result {
             case .success(let data):

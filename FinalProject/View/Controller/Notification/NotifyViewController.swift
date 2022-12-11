@@ -18,21 +18,25 @@ final class NotifyViewController: UIViewController {
         configTableView()
         configUI()
         getNotify()
-        self.tabBarController?.tabBar.items?[1].badgeValue = nil
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getNotify()
+        tabBarController?.tabBar.isHidden = false
     }
 
     private func configUI() {
         title = "Notifications"
+        
+//        navigationController?.isNavigationBarHidden = false
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        self.tabBarController?.tabBar.items?[1].badgeValue = nil
     }
 
     private func configTableView() {
         tableView.register(NotifyCell.self)
         tableView.dataSource = self
-        tableView.delegate = self
     }
 
     private func getNotify() {
@@ -63,9 +67,6 @@ extension NotifyViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-}
-
-extension NotifyViewController: UITableViewDelegate {
 }
 
 extension NotifyViewController: NotifyCellDelegate {

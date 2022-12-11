@@ -44,7 +44,7 @@ final class BirthdayCell: UITableViewCell {
     private func showDatePicker() {
         valueTextField.isUserInteractionEnabled = true
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = .inline
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))

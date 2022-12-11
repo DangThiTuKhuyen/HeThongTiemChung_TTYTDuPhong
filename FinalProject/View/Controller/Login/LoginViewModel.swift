@@ -26,6 +26,9 @@ final class LoginViewModel {
         guard let auth = auth else { return }
         UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
         UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
+        UserDefaults.standard.set(auth.userId, forKey: "userId")
+        UserDefaults.standard.set(auth.userName, forKey: "userName")
+        UserDefaults.standard.set(auth.email, forKey: "email")
     }
 }
 

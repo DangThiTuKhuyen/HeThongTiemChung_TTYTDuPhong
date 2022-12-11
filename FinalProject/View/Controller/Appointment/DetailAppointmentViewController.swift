@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DetailAppointmentViewController: UIViewController {
+final class DetailAppointmentViewController: ViewController {
 
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var placeLabel: UILabel!

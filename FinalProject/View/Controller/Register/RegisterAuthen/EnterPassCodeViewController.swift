@@ -20,7 +20,11 @@ final class EnterPassCodeViewController: ViewController {
         navigationController?.isNavigationBarHidden = false
         emailTextField.text = viewModel?.email
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     private func createAccount() {
         guard let viewModel = viewModel else {
             return

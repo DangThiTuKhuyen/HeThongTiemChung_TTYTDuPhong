@@ -282,7 +282,8 @@ extension UserDefaults {
         case accessToken
         case refreshToken
         case userId
-
+        case email
+        case userName
     }
 
     func reset() {

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RegisterDisaeseViewController: UIViewController {
+final class RegisterDisaeseViewController: UIViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet weak var noResultLabel: UILabel!
+    @IBOutlet private weak var noResultLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
 
     var viewModel = RegisterDisaeseViewModel()
@@ -42,7 +42,6 @@ class RegisterDisaeseViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-//                    this.configTableView()
                     this.tableView.reloadData()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
@@ -60,7 +59,6 @@ class RegisterDisaeseViewController: UIViewController {
     }
 
     private func configUI() {
-        ////////////////
         noResultLabel.isHidden = true
         searchBar.layer.borderWidth = 0
         searchBar.backgroundImage = UIImage()
@@ -76,7 +74,7 @@ class RegisterDisaeseViewController: UIViewController {
     }
 
     private func configSearchBar() {
-        searchBar.becomeFirstResponder()
+//        searchBar.becomeFirstResponder()
         searchBar.delegate = self
     }
 

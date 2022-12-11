@@ -177,7 +177,7 @@ extension ProfileViewModel {
             }
         }
     }
-    
+
     func updateProfile(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(birthday: info?.birthday, province: info?.province, district: info?.district, phone: info?.phone, gender: info?.gender)
         AuthService.updateProfile(params: params) { [weak self] result in
@@ -190,7 +190,6 @@ extension ProfileViewModel {
             } else {
                 completion(.failure(Api.Error.json.localizedDescription))
             }
-            
         }
     }
 }

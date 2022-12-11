@@ -12,7 +12,7 @@ import ObjectMapper
 class NotifycationService {
     
     static func getNotify(completion: @escaping Completion<[Notify]>) {
-        let urlString = "http://3.92.194.85:3210/user/0879a9a2-5f65-4476-b107-fea78da2fd69/notification"
+        let urlString = Api.Path.userIdURL + "/notification"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):
