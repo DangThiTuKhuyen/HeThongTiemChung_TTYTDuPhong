@@ -37,14 +37,26 @@ extension UIImageView {
         }
         task.resume()
     }
-    
+
     func setImage(with urlString: String, placeholder: String) {
         self.downloadImage(with: urlString) { image in
-                if image != nil {
-                    self.image = image
-                } else {
-                    self.image = UIImage(named: placeholder)
-                }
+            if image != nil {
+                self.image = image
+            } else {
+                self.image = UIImage(named: placeholder)
+            }
         }
+    }
+}
+
+extension UIImage {
+    func toPngString() -> String? {
+        let data = self.pngData()
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
+  
+    func toJpegString(compressionQuality cq: CGFloat) -> String? {
+        let data = self.jpegData(compressionQuality: cq)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

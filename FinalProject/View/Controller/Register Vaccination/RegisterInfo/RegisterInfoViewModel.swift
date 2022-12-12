@@ -58,7 +58,7 @@ final class RegisterInfoViewModel {
     func setupCell(kindOfCell: RegistrationType) -> RegistionCellItem? {
         switch kindOfCell {
         case .name:
-            return RegistionCellItem(title: "Name", value: Api.Profile.name)
+            return RegistionCellItem(title: "Name", value: UserDefaults.standard.string(forKey: "userName") ?? "")
         case .disaese:
             return RegistionCellItem(title: "Disaese", value: diseaseName)
         case .vaccine:
@@ -99,7 +99,7 @@ final class RegisterInfoViewModel {
     func setMedicalCenter(value: MedicalCenter) {
         registerInfo.medicalCenter = value
     }
-    
+
     func checkEmpty() -> Bool {
         return registerInfo.time.isEmpty || registerInfo.medicalCenter?.medicalCenterId == 0
     }

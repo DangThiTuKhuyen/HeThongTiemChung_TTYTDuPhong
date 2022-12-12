@@ -17,6 +17,10 @@ class HistoryService {
             switch result {
             case .success(let data):
                 if let data = data as? Array<Any> {
+                    guard !data.isEmpty else {
+                        completion(.success([]))
+                        return
+                    }
                     guard let history = Mapper<History>().mapArrayOfArrays(JSONObject: data) else {
                         completion(.failure(Api.Error.json))
                         return

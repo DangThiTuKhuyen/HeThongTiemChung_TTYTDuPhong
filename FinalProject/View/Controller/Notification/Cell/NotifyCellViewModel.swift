@@ -9,9 +9,9 @@
 import Foundation
 
 final class NotifyCellViewModel {
-    
+
     private(set) var notify: Notify
-    
+
     init(notify: Notify) {
         self.notify = notify
     }

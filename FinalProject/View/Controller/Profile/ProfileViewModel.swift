@@ -138,13 +138,6 @@ final class ProfileViewModel {
         info?.birthday = value
     }
 
-//    func stringBirthday() -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        let date = dateFormatter.date(from: "2000-11-11")
-//        print(date)
-//        return "\(String(describing: date))"
-//    }
     func setProvince(value: Address) {
         address = value
         info?.province = value.province
@@ -156,6 +149,10 @@ final class ProfileViewModel {
 
     func setDistrict(value: String) {
         info?.district = value
+    }
+    
+    func setImage(value: String) {
+        info?.image = value
     }
 }
 

@@ -130,7 +130,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func handleLogOut() {
-        let params = AuthService.Account(email: "khuyen.dang+38@monstar-lab.com", accessToken: "eyJraWQiOiJkZnE0QmpmbWcySmZFRDJhV1lTTUhqTHFyMEJYcjFtakQwcG1wakF5dTc4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYWY4OWJhZS0xOGRhLTQ3NGMtYjVkNy1iMTFiMTg0YzFhN2EiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81TDh2VTR6OVYiLCJjbGllbnRfaWQiOiI2MTY1NGwyaDZ2bjc2dXQ3MzkzNzhjb3E2aCIsIm9yaWdpbl9qdGkiOiJjOTdlYTExZS1mMThmLTQ5YTgtYjFjMi04MTE4NzU0NTNhNjciLCJldmVudF9pZCI6ImFlMGQ0Njg3LTM2MzgtNGRjNy05YThkLWJhMzFjZTUxNjEwYiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NzA2NDEyNDMsImV4cCI6MTY3MDY0NDg0MywiaWF0IjoxNjcwNjQxMjQzLCJqdGkiOiI5NWY5NjVkNS02OWM4LTQ0ZmQtODQ5ZC04MTM1MGVkMDVkNDciLCJ1c2VybmFtZSI6ImFhZjg5YmFlLTE4ZGEtNDc0Yy1iNWQ3LWIxMWIxODRjMWE3YSJ9.aSM2NiOmmSN1LTrtCRRnd3ezp1F8kp3Gy6lTT0nMKpBKqu5Rj-BVNIDTjnM5WbKgoPdJ8WMKmti8vKEwPnQFhLwAXrTHDHP1F4nb8MoqUBxcDT1BjNO7rw0_e_gH_gZkGpdCBuIQP2tM3uY1kzD0JIY6skpsiFzidktRoECoAxq9OmPtzvomBy7IcCKYcIXpvYBDUaFJVKCW7wL0LTvuD7-NSnyWsXn7gFFn_USk-0hyITG0dxFtKvIZT0NNSqslSYn7or3yO6V4oYHvlkS5N-OfKBcz7MG-YpNcOPvyKuQghnjl-vFjUWIXaA52P6Ty0-rZO1S6PoqCgo9fmRZ4-g")
+        let params = AuthService.Account(email: UserDefaults.standard.string(forKey: "email"), accessToken: UserDefaults.standard.string(forKey: "accessToken"))
         AuthService.logout(params: params) { [weak self] result in
             guard let this = self else {
                 return
@@ -138,6 +138,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             switch result {
             case .success:
                 this.setupController()
+                UserDefaults.standard.reset()
             case .failure(let error):
                 print(error)
             }

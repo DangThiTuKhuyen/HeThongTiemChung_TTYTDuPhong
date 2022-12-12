@@ -59,4 +59,3 @@ class NewAvatarTableCell: UITableViewCell {
     }
 
 }
-

@@ -10,19 +10,23 @@ import Foundation
 
 final class HistoryViewModel {
 
-    
+
     private(set) var histories: [[History]]?
     private(set) var keys: [String] = []
 
+    func isShowTableView() -> Bool {
+        return histories?.isNotEmpty ?? false
+    }
+
     func getHistorySelected(at indexPath: IndexPath) -> [History] {
         return histories?[indexPath.row] ?? []
-        
+
     }
 
     func numberOfRowInSection() -> Int {
         return histories?.count ?? 0
     }
-    
+
     func viewModelForItem(at indexPath: IndexPath) -> HistoryCellViewModel {
         return HistoryCellViewModel(histories: histories?[indexPath.row] ?? [])
     }

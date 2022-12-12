@@ -29,9 +29,10 @@ final class ProfileViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
 //        getProfile()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print(viewModel?.info)
@@ -73,6 +74,10 @@ final class ProfileViewController: UIViewController {
         }
         tableView.sectionFooterHeight = 0
     }
+    
+    func convertImageToBase64String (img: UIImage) -> String {
+        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -93,7 +98,7 @@ extension ProfileViewController: UITableViewDataSource {
         case .avatar:
             let cell = tableView.dequeue(NewAvatarTableCell.self)
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? NewAvatarCellViewModel
-//            cell.delegate = self
+            cell.delegate = self
             cell.dataSource = self
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.clear
@@ -212,10 +217,12 @@ extension ProfileViewController: NewAvatarTableCellDataSource {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+//            viewModel?.setImage(value: image.toPngString() ?? "")
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         picker.dismiss(animated: true, completion: nil)
     }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -238,17 +245,7 @@ extension ProfileViewController: CommonTableCellDelegate {
     }
 }
 
-extension RegisterViewController: CommonTableCellDataSource {
-    func updateCellProvince(_ cell: CommonTableCell) -> String {
-        return viewModel.userInfo.province
-    }
-
-    func updateCellDistrict(_ cell: CommonTableCell) -> String {
-        return viewModel.userInfo.district
-    }
-}
-
-// MARK: -
+// MARK: - ProvinceViewControllerDelegate
 
 extension ProfileViewController: ProvinceViewControllerDelegate {
     func controller(_ controller: ProvinceViewController, neesPerformAction action: ProvinceViewController.Action) {
@@ -264,6 +261,7 @@ extension ProfileViewController: ProvinceViewControllerDelegate {
     }
 }
 
+// MARK: - DistrictViewControllerDelegate
 extension ProfileViewController: DistrictViewControllerDelegate {
     func controller(_ controller: DistrictViewController, needPerformAction action: DistrictViewController.Action) {
         switch action {
@@ -275,6 +273,7 @@ extension ProfileViewController: DistrictViewControllerDelegate {
     }
 }
 
+// MARK: - Extension
 extension UserDefaults {
 
     enum Keys: String, CaseIterable {

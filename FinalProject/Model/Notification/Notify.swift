@@ -15,6 +15,7 @@ final class Notify: Mappable {
     var notifyContent: String?
     var time: String?
     var titleType: String?
+    var status: Bool = false
 
     convenience required init?(map: Map) {
         self.init()
@@ -25,5 +26,6 @@ final class Notify: Mappable {
         notifyContent <- map["notificationContent"]
         time <- map["createdAt"]
         titleType <- map["notificationType"]
+        status <- map["notificationStatus"]
     }
 }

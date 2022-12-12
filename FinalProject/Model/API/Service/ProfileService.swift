@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+
 class ProfileService {
 
     static func getProfile(completion: @escaping Completion<Profile>) {

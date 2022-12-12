@@ -34,7 +34,7 @@ final class NotifyCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         containerView.border(color: .black, width: 0.3)
-        containerView.backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
+//        containerView.backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
     }
 
     private func updateUI() {
@@ -44,6 +44,7 @@ final class NotifyCell: UITableViewCell {
         titleType.text = viewModel.notify.titleType
         titleLabel.text = viewModel.notify.notifyTitle
         timeLabel.text = viewModel.notify.time
+        containerView.backgroundColor = viewModel.notify.status ? .white : #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
     }
 
     @IBAction func detailButton(_ sender: Any) {

@@ -10,21 +10,27 @@ import UIKit
 
 final class EnterPassCodeViewController: ViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var newPasswordTextField: UITextField!
     @IBOutlet private weak var tempPasscodeTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
+
     var viewModel: EnterPassCodeViewModel?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         emailTextField.text = viewModel?.email
     }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-    
+
+    // MARK: - Private method
     private func createAccount() {
         guard let viewModel = viewModel else {
             return
@@ -43,13 +49,13 @@ final class EnterPassCodeViewController: ViewController {
             }
         }
     }
-    
+
     private func showHideError(error: String = "", isShow: Bool = false) {
         errorLabel.text = error
         errorLabel.isHidden = !isShow
     }
 
-    @IBAction func nextButton(_ sender: UIButton) {
+    @IBAction private func nextButton(_ sender: UIButton) {
         guard let viewModel = viewModel, let newPass = newPasswordTextField.text, let tempPass = tempPasscodeTextField.text else { return }
         if newPass.isEmpty || tempPass.isEmpty {
             showHideError(error: "Please enter full information", isShow: true)
@@ -59,7 +65,5 @@ final class EnterPassCodeViewController: ViewController {
             viewModel.setPassWord(value: newPasswordTextField.text ?? "")
             createAccount()
         }
-        
     }
-
 }

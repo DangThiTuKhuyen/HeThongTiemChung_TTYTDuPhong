@@ -8,14 +8,8 @@
 
 import UIKit
 
-// MARK: - CommonCellDataSource
-protocol CommonTableCellDataSource: AnyObject {
-    func updateCellProvince(_ cell: CommonTableCell) -> String
-    func updateCellDistrict(_ cell: CommonTableCell) -> String
-}
-
+// MARK: - CommonTableCellDelegate
 protocol CommonTableCellDelegate: AnyObject {
-
     func cell(_ cell: CommonTableCell, needsPerformAction action: CommonTableCell.Action)
 }
 
@@ -24,15 +18,20 @@ final class CommonTableCell: UITableViewCell {
     enum Action {
         case valueChanged(valueString: String, type: ProfileType)
     }
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var valueTextField: UITextField!
     @IBOutlet private weak var forwardImageView: UIImageView!
     @IBOutlet private weak var widthForwardImage: NSLayoutConstraint!
 
+    var viewModel: CommonTableCellViewModel? {
+        didSet {
+            updateView()
+        }
+    }
     private let datePicker = UIDatePicker()
     weak var delegate: CommonTableCellDelegate?
-    weak var dataSource: CommonTableCellDataSource?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         valueTextField.borderStyle = .none
@@ -47,12 +46,6 @@ final class CommonTableCell: UITableViewCell {
         valueTextField.inputView = .none
         valueTextField.inputAccessoryView = nil
         valueTextField.keyboardType = .asciiCapable
-    }
-
-    var viewModel: CommonTableCellViewModel? {
-        didSet {
-            updateView()
-        }
     }
 
     private func updateView() {
@@ -95,7 +88,6 @@ final class CommonTableCell: UITableViewCell {
         valueTextField.keyboardType = .numberPad
         valueTextField.autocorrectionType = .no
     }
-    
 
     private func showDatePicker() {
         datePicker.datePickerMode = .date
@@ -121,19 +113,14 @@ final class CommonTableCell: UITableViewCell {
         delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.text ?? "", type: .birthday))
         self.endEditing(true)
     }
-    
+
     @objc private func done() {
         delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.text ?? "", type: .numberPhone))
         self.endEditing(true)
     }
-
-    func updateValueTextField() {
-        valueTextField.resignFirstResponder()
-//        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: valueTextField.te÷xt ?? ""))
-    }
-
 }
 
+// MARK: - UITextFieldDelegate
 extension CommonTableCell: UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

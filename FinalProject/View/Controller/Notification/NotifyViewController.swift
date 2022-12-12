@@ -10,27 +10,29 @@ import UIKit
 
 final class NotifyViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
 
+    // MARK: - Properties
     var viewModel = NotifyViewModel()
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         configUI()
         getNotify()
-        
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getNotify()
         tabBarController?.tabBar.isHidden = false
     }
 
+    // MARK: - Private func
     private func configUI() {
         title = "Notifications"
-        
-//        navigationController?.isNavigationBarHidden = false
-//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         self.tabBarController?.tabBar.items?[1].badgeValue = nil
     }
 

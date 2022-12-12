@@ -34,11 +34,11 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" translatesAutoresizingMaskIntoConstraints="NO" id="tav-cr-zG9">
-                    <rect key="frame" x="85" y="74" width="289" height="110.5"/>
+                    <rect key="frame" x="85" y="74" width="289" height="85"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7x-vv-X4h">
-                    <rect key="frame" x="102" y="147" width="255" height="20.5"/>
+                    <rect key="frame" x="102" y="121.5" width="255" height="20.5"/>
                     <attributedString key="attributedText">
                         <fragment content="Label">
                             <attributes>
@@ -49,11 +49,8 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gk-E6-Jox">
-                    <rect key="frame" x="102" y="91" width="255" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="nZ9-2M-O0a"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gk-E6-Jox">
+                    <rect key="frame" x="102" y="91" width="255" height="20.5"/>
                     <attributedString key="attributedText">
                         <fragment content="Label">
                             <attributes>

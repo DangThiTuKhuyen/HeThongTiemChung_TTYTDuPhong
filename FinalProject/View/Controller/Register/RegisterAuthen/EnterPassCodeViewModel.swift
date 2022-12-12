@@ -42,7 +42,6 @@ extension EnterPassCodeViewModel {
     func createAccount(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(email: email, passCode: passCode, newPassword: password)
         AuthService.confirmAccount(params: params) { [weak self] (data, error) in
-            
             guard let this = self else {
                 completion(.failure(Api.Error.json.localizedDescription))
                 return

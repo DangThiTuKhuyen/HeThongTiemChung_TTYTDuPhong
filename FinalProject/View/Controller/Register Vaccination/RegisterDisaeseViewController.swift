@@ -50,7 +50,6 @@ final class RegisterDisaeseViewController: UIViewController {
         }
     }
 
-
     private func updateUI() {
         let isShowTable = viewModel.isShowTableView()
         tableView.isHidden = !isShowTable

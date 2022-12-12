@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="noResultLabel" destination="PEK-4O-wEV" id="wg7-fE-24b"/>
                 <outlet property="tableView" destination="lK4-6U-cfb" id="g7i-KH-ITV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,11 +25,19 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No record for your history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEK-4O-wEV">
+                    <rect key="frame" x="109.5" y="244" width="195.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="lK4-6U-cfb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4Hh-RG-o45"/>
+                <constraint firstItem="PEK-4O-wEV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="60A-HC-hal"/>
+                <constraint firstItem="PEK-4O-wEV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="200" id="Fbe-OV-qyH"/>
                 <constraint firstItem="lK4-6U-cfb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fup-dO-aFY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lK4-6U-cfb" secondAttribute="bottom" id="HkR-ec-ddI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lK4-6U-cfb" secondAttribute="trailing" id="Uxr-yP-Lj5"/>

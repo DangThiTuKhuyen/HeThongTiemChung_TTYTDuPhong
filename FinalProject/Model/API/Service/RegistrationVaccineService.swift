@@ -91,7 +91,7 @@ class RegistrationVaccineService {
     }
 
     static func getRegistration(completion: @escaping Completion<[Registration]>) {
-        let urlString = Api.Path.userIdURL + "registrations/getOne"
+        let urlString = Api.Path.userIdURL + "/registrations/getOne"
         api.request(method: .get, urlString: urlString) { result in
             switch result {
             case .success(let data):

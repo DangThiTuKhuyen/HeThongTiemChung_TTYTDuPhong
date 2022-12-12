@@ -11,12 +11,13 @@ import UIKit
 final class HistoryViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-
+    @IBOutlet private weak var noResultLabel: UILabel!
+    
     var viewModel: HistoryViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-//        test()
+        configUI()
         getHistory()
     }
 
@@ -34,7 +35,7 @@ final class HistoryViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    this.tableView.reloadData()
+                    this.updateUI()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
@@ -46,6 +47,13 @@ final class HistoryViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         title = "History"
+    }
+    
+    private func updateUI() {
+        guard let viewModel = viewModel else { return }
+        tableView.reloadData()
+        tableView.isHidden = !viewModel.isShowTableView()
+        noResultLabel.isHidden = viewModel.isShowTableView()
     }
 
     private func configTableView() {

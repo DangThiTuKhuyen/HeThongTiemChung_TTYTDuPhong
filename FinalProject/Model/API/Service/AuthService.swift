@@ -307,14 +307,14 @@ class AuthService {
         api.request(method: .post, urlString: urlString, parameters: params.toJSON()) { result in
             switch result {
             case .success(let data):
-//                guard let data = data as? JSObject else {
-//                    completion(.failure(Api.Error.json.localizedDescription))
-//                    return
-//                }
-//                guard let message = data["changePasswordMessage"] as? String, message == "Success" else {
-//                    completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
-//                    return
-//                }
+                guard let data = data as? JSObject else {
+                    completion(.failure(Api.Error.json.localizedDescription))
+                    return
+                }
+                guard let message = data["logoutMessage"] as? String, message == "success" else {
+                    completion(.failure(Api.Error.json.localizedDescription))
+                    return
+                }
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error.localizedDescription))

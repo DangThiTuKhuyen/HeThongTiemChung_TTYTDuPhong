@@ -10,8 +10,9 @@ import UIKit
 
 final class RegistrationViewController: UIViewController {
 
-    
+
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var noResultLabel: UILabel!
 
     var viewModel: RegistrationViewModel?
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ final class RegistrationViewController: UIViewController {
         configUI()
         getRegistrations()
     }
-    
+
     // MARK: - Private func
 
     private func getRegistrations() {
@@ -37,12 +38,11 @@ final class RegistrationViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    this.tableView.reloadData()
+                    this.updateUI()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
             }
-
         }
     }
 
@@ -56,6 +56,13 @@ final class RegistrationViewController: UIViewController {
     private func configTableView() {
         tableView.register(RegistrationCell.self)
         tableView.dataSource = self
+    }
+
+    private func updateUI() {
+        guard let viewModel = viewModel else { return }
+        tableView.reloadData()
+        tableView.isHidden = !viewModel.isShowTableView()
+        noResultLabel.isHidden = viewModel.isShowTableView()
     }
 }
 
