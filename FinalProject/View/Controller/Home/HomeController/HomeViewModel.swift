@@ -23,13 +23,12 @@ final class HomeViewModel {
 // MARK: - API
 extension HomeViewModel {
 
-    func getProfile(completion: @escaping Completion<Profile>) {
-        ProfileService.getProfile { [weak self] result in
-            guard let this = self else { return completion(.failure(Api.Error.json)) }
+    func getAvatarImage(completion: @escaping Completion<String>) {
+        ProfileService.getAvatarImage { [weak self] result in
+            guard self != nil else { return completion(.failure(Api.Error.json)) }
             switch result {
-            case .success(let profile):
-                Api.Profile.name = profile.name ?? ""
-                completion(.success(profile))
+            case .success(let image):
+                completion(.success(image))
             case .failure(let error):
                 completion(.failure(error))
             }

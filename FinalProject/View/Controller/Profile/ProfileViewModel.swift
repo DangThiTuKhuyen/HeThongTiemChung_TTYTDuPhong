@@ -150,7 +150,7 @@ final class ProfileViewModel {
     func setDistrict(value: String) {
         info?.district = value
     }
-    
+
     func setImage(value: String) {
         info?.image = value
     }

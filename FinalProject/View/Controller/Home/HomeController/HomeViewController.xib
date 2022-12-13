@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buedue" translatesAutoresizingMaskIntoConstraints="NO" id="yyW-Q0-pDj">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="yyW-Q0-pDj">
                     <rect key="frame" x="368" y="44" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="yyW-Q0-pDj" secondAttribute="height" multiplier="1:1" id="MBV-WK-a29"/>
@@ -259,10 +259,10 @@
         </view>
     </objects>
     <resources>
-        <image name="Buedue" width="199" height="223"/>
         <image name="QR" width="185" height="185"/>
         <image name="registration_list" width="25" height="25"/>
         <image name="schedule" width="25" height="25"/>
+        <image name="user" width="62" height="62"/>
         <image name="vaccination_history" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

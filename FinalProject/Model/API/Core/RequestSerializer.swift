@@ -51,7 +51,6 @@ extension ApiManager {
                             DispatchQueue.main.async {
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: ["isExpire": true])
                             }
-                            break
                             completion?(response.result)
                         }
                     }
@@ -69,19 +68,6 @@ extension ApiManager {
             } else {
                 completion?(response.result)
             }
-//            if let error = response.error,
-//                error.code == Api.Error.connectionAbort.code || error.code == Api.Error.connectionWasLost.code {
-//                Alamofire.request(urlString.urlString,
-//                    method: method,
-//                    parameters: parameters,
-//                    encoding: encoding,
-//                    headers: header2
-//                ).responseJSON { response in
-//                    completion?(response.result)
-//                }
-//            } else {
-//                completion?(response.result)
-//            }
         }
         return request
     }

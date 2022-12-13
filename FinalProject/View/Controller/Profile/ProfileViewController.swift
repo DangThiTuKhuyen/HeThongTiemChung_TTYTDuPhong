@@ -9,6 +9,8 @@
 import UIKit
 import DropDown
 import SwiftUtils
+import AWSS3
+import AWSCore
 
 final class ProfileViewController: UIViewController {
 
@@ -30,15 +32,34 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-//        getProfile()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(viewModel?.info)
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//    }
 
     // MARK: - Private func
+
+    private func configNavi() {
+        title = "My profile"
+        navigationController?.navigationBar.barTintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save change", style: .plain, target: self, action: #selector(updateProfile))
+    }
+
+    private func configTableView() {
+        tableView.register(NewAvatarTableCell.self)
+        tableView.register(CommonTableCell.self)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        tableView.sectionFooterHeight = 0
+    }
+
     private func getProfile() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -56,27 +77,49 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    private func configNavi() {
-        title = "My profile"
-        navigationController?.navigationBar.barTintColor = .white
-    }
-
-    private func configTableView() {
-        tableView.register(NewAvatarTableCell.self)
-        tableView.register(CommonTableCell.self)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.keyboardDismissMode = .onDrag
-        tableView.tableFooterView = UIView()
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
-        tableView.sectionFooterHeight = 0
-    }
-    
     func convertImageToBase64String (img: UIImage) -> String {
         return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
+
+    @objc private func updateProfile() {
+        guard let viewModel = viewModel else { return }
+        HUD.show()
+        viewModel.updateProfile { [weak self] result in
+            HUD.dismiss()
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.alert(msg: "Update profile succesfully", handler: nil)
+                case .failure(let error):
+                    this.alert(msg: error, handler: nil)
+                }
+            }
+        }
+    }
+
+    func uploadImage(image: UIImage) {
+        AuthService.uploadImage { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success(let urlUpload):
+                this.uploadAWSS3(image: image, url: urlUpload)
+            case .failure(let error):
+                this.alert(msg: error.localizedDescription, handler: nil)
+            }
+        }
+    }
+
+    func uploadAWSS3(image: UIImage, url: String) {
+        AuthService.uploadAWSS3(image: image, urlUpload: url) { [weak self] result in
+            DispatchQueue.main.async {
+                if result ?? false {
+                    print("succes")
+                } else {
+                    print("fail")
+                }
+            }
+        }
     }
 }
 
@@ -217,7 +260,10 @@ extension ProfileViewController: NewAvatarTableCellDataSource {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-//            viewModel?.setImage(value: image.toPngString() ?? "")
+            self.image = image
+            let imageResized = image.resized(withPercentage: 0.2) ?? image
+            uploadImage(image: imageResized)
+            
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         picker.dismiss(animated: true, completion: nil)

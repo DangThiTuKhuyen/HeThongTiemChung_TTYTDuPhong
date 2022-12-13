@@ -30,4 +30,20 @@ class ProfileService {
             }
         }
     }
+
+    static func getAvatarImage(completion: @escaping Completion<String>) {
+        let urlString = Api.Path.userIdURL + "/getImage"
+        api.request(method: .get, urlString: urlString) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject, let image = data["urlDownload"] as? String else {
+                    completion(.failure(Api.Error.json))
+                    return
+                }
+                completion(.success(image))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

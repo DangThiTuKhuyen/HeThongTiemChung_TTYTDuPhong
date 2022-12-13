@@ -57,6 +57,7 @@ final class HomeViewController: ViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToProfile))
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+        nameLabel.text = UserDefaults.standard.string(forKey: "userName")
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         containerView.layer.cornerRadius = 20
         subView.layer.cornerRadius = 20
@@ -70,21 +71,19 @@ final class HomeViewController: ViewController {
     private func getProfile() {
         guard let viewModel = viewModel else { return }
         HUD.show()
-        viewModel.getProfile { [weak self] result in
+        viewModel.getAvatarImage { [weak self] result in
             HUD.dismiss()
             guard let this = self else { return }
             DispatchQueue.main.async {
                 switch result {
-                case .success(let profile):
-                    this.nameLabel.text = profile.name
-                    this.avatarImageView.setImage(with: profile.image ?? "", placeholder: "user.pdf")
+                case .success(let image):
+                    this.avatarImageView.setImage(with: image, placeholder: "user.pdf")
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
             }
         }
     }
-
 
     @IBAction func registerVaccineButton(_ sender: UIButton) {
         let registerDisaeseVC = RegisterDisaeseViewController()
@@ -180,13 +179,11 @@ extension CIImage {
 
         filter.setValue(colorImage, forKey: kCIInputImageKey)
         filter.setValue(transparentQRImage, forKey: kCIInputBackgroundImageKey)
-
         return filter.outputImage ?? nil
     }
 }
 
 extension CIImage {
-
     /// Combines the current image with the given image centered.
     func combined(with image: CIImage) -> CIImage? {
         guard let combinedFilter = CIFilter(name: "CISourceOverCompositing") else { return nil }

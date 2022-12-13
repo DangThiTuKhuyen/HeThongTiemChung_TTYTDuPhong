@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import SwiftUtils
 
 class AuthService {
 
@@ -321,5 +322,64 @@ class AuthService {
                 return
             }
         }
+    }
+
+    static func uploadImage(completion: @escaping Completion<String>) {
+        let urlString = Api.Path.userIdURL + "/uploadImage"
+        api.request(method: .get, urlString: urlString) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject, let urlUpload = data["urlUpload"] as? String else {
+                    completion(.failure(Api.Error.json))
+                    return
+                }
+                completion(.success(urlUpload))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    static func uploadAWSS3(image: UIImage, urlUpload: String, completion: @escaping ((_ bool: Bool?) -> Void)) {
+//        let header = ["Content-Type": "application/octet-stream"]
+//
+//        Alamofire.upload(multipartFormData: { multipartFormData in
+//            multipartFormData.contentType = "image/png"
+//
+//            if let imageData = image.jpegData(compressionQuality: 1.0) {
+////                multipartFormData.append(imageData, withName: "image")
+//                multipartFormData.append(imageData, withName: "", fileName: ".jpg", mimeType: "image/jpg")
+//            }
+//        }, usingThreshold: UInt64.init(), to: urlUpload, method: .put, headers: header, encodingCompletion: { encodingResult in
+//
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        print(response.result)
+//                        completion(true)
+//                    }
+//                case .failure(let encodingError):
+//                    completion(false)
+//                }
+//            }
+//        )
+        guard let url = URL(string: urlUpload) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "PUT"
+        urlRequest.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        var data = image.jpegData(compressionQuality: 1.0)
+        URLSession.shared.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+               DispatchQueue.main.async {
+                        print(response)
+                        guard let responseCode = (response as? HTTPURLResponse)?.statusCode, responseCode == 200  else {
+                             if let error = error {
+                                    print(error)
+                              }
+                              return
+                          }
+                                  // do your work
+                   print("Success")
+                      }
+        }).resume()
     }
 }
