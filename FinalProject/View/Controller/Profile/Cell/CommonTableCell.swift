@@ -91,7 +91,7 @@ final class CommonTableCell: UITableViewCell {
 
     private func showDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = .inline
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))

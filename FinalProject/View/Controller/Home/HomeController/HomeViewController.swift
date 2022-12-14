@@ -42,7 +42,7 @@ final class HomeViewController: ViewController {
 //        self.tabBarController?.tabBar.items?[1].badgeValue = "1900"
 //        self.tabBar.items![1].badgealue = "7"
         configUI()
-        getProfile()
+        getAvatarImage()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,7 @@ final class HomeViewController: ViewController {
         QRImageView.image = qrURLImage
     }
 
-    private func getProfile() {
+    private func getAvatarImage() {
         guard let viewModel = viewModel else { return }
         HUD.show()
         viewModel.getAvatarImage { [weak self] result in

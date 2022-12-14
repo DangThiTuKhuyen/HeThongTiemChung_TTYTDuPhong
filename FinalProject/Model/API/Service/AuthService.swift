@@ -234,7 +234,7 @@ class AuthService {
                     completion(.failure(Api.Error.json.localizedDescription))
                     return
                 }
-                guard let message = data["changePasswordMessage"] as? String, message == "Success" else {
+                guard let message = data["message"] as? String, message == "success" else {
                     completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
                     return
                 }
@@ -342,13 +342,12 @@ class AuthService {
 
     static func uploadAWSS3(image: UIImage, urlUpload: String, completion: @escaping ((_ bool: Bool?) -> Void)) {
 //        let header = ["Content-Type": "application/octet-stream"]
-//
 //        Alamofire.upload(multipartFormData: { multipartFormData in
-//            multipartFormData.contentType = "image/png"
-//
-//            if let imageData = image.jpegData(compressionQuality: 1.0) {
+////            multipartFormData.contentType = "image/png"
+////            if let imageData = image.jpegData(compressionQuality: 1.0)
+//            if let imageData = image.pngData() {
 ////                multipartFormData.append(imageData, withName: "image")
-//                multipartFormData.append(imageData, withName: "", fileName: ".jpg", mimeType: "image/jpg")
+//                multipartFormData.append(imageData, withName: "", fileName: ".png", mimeType: "image/png")
 //            }
 //        }, usingThreshold: UInt64.init(), to: urlUpload, method: .put, headers: header, encodingCompletion: { encodingResult in
 //
@@ -366,20 +365,14 @@ class AuthService {
         guard let url = URL(string: urlUpload) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "PUT"
-        urlRequest.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-        var data = image.jpegData(compressionQuality: 1.0)
+        urlRequest.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        let data = image.jpegData(compressionQuality: 1.0)
         URLSession.shared.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
-               DispatchQueue.main.async {
-                        print(response)
-                        guard let responseCode = (response as? HTTPURLResponse)?.statusCode, responseCode == 200  else {
-                             if let error = error {
-                                    print(error)
-                              }
-                              return
-                          }
-                                  // do your work
-                   print("Success")
-                      }
+            guard let responseCode = (response as? HTTPURLResponse)?.statusCode, responseCode == 200 else {
+                completion(false)
+                return
+            }
+            completion(true)
         }).resume()
     }
 }

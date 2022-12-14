@@ -40,10 +40,18 @@ final class ChangePasswordViewController: ViewController {
     }
 
     @IBAction private func changePass(_ sender: Any) {
-        guard let viewModel = viewModel, let oldPass = oldPasswordTextField.text, let newPass = newPasswordTextField.text, oldPass.isNotEmpty, newPass.isNotEmpty else { return }
-        viewModel.setNewPass(value: newPass)
-        viewModel.setOldPass(value: oldPass)
-        changePass()
-
+        guard let viewModel = viewModel, let oldPass = oldPasswordTextField.text, let newPass = newPasswordTextField.text else { return }
+        if oldPass.isEmpty || newPass.isEmpty {
+            alert(msg: "Please enter full information", handler: nil)
+        } else {
+            if oldPass == newPass {
+                alert(msg: "Your new password must be different from your previous password", handler: nil)
+            } else {
+                viewModel.setNewPass(value: newPass)
+                viewModel.setOldPass(value: oldPass)
+                changePass()
+            }
+        }
+        
     }
 }

@@ -39,7 +39,7 @@ final class RegistrationViewModel {
     func viewModelForItem(at indexPath: IndexPath) -> RegistrationCellViewModel {
         return RegistrationCellViewModel(registration: registrations[indexPath.row])
     }
-    
+
     func isShowTableView() -> Bool {
         return registrations.isNotEmpty
     }

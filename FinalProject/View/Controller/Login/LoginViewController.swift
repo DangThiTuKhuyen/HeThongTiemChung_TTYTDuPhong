@@ -149,7 +149,7 @@ final class LoginViewController: ViewController {
         let registerVC = RegisterViewController()
         navigationController?.pushViewController(registerVC, animated: true)
     }
-    
+
     @IBAction private func forgotButtonTouchUpInside(_ sender: UIButton) {
         let vc = ForgotPasswordViewController()
         vc.viewModel = ForgotPasswordViewModel()

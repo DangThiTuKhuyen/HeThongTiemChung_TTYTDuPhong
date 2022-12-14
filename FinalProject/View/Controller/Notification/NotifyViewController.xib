@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uXp-6g-QnX">
-                    <rect key="frame" x="0.0" y="54" width="414" height="808"/>
+                    <rect key="frame" x="0.0" y="54" width="414" height="793"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="separatorColor" red="0.9291028912" green="0.63262837049999998" blue="0.35986335590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -31,7 +31,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="uXp-6g-QnX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="38D-dH-Psi"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uXp-6g-QnX" secondAttribute="bottom" id="Xdq-z9-P9y"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uXp-6g-QnX" secondAttribute="bottom" constant="15" id="Xdq-z9-P9y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uXp-6g-QnX" secondAttribute="trailing" id="fLr-Rr-X44"/>
                 <constraint firstItem="uXp-6g-QnX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="nP3-3C-Gk1"/>
             </constraints>

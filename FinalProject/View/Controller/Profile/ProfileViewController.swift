@@ -43,7 +43,7 @@ final class ProfileViewController: UIViewController {
     private func configNavi() {
         title = "My profile"
         navigationController?.navigationBar.barTintColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save change", style: .plain, target: self, action: #selector(updateProfile))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save change", style: .plain, target: self, action: #selector(updateMyProfile))
     }
 
     private func configTableView() {
@@ -77,11 +77,7 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    func convertImageToBase64String (img: UIImage) -> String {
-        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
-    }
-
-    @objc private func updateProfile() {
+    private func updateProfile() {
         guard let viewModel = viewModel else { return }
         HUD.show()
         viewModel.updateProfile { [weak self] result in
@@ -95,6 +91,18 @@ final class ProfileViewController: UIViewController {
                     this.alert(msg: error, handler: nil)
                 }
             }
+        }
+    }
+
+    private func isValidatePhone(value: String) -> Bool {
+        return value.length < 10
+    }
+
+    @objc private func updateMyProfile() {
+        if isValidatePhone(value: viewModel?.info?.phone?.toString() ?? "") {
+            updateProfile()
+        } else {
+            alert(msg: "Phone number is invalid", handler: nil)
         }
     }
 
@@ -263,7 +271,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.image = image
             let imageResized = image.resized(withPercentage: 0.2) ?? image
             uploadImage(image: imageResized)
-            
+
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         picker.dismiss(animated: true, completion: nil)

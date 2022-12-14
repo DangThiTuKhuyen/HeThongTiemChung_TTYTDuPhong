@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     enum TypeScreen {
         case tutorial
         case tabbar
+        case login
     }
 
     var window: UIWindow?
@@ -41,13 +42,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             createTutorial()
         case .tabbar:
             createTabbar()
+        case .login:
+            window?.rootViewController = LoginViewController()
         }
     }
 
     func checkTime() {
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore {
-            changeScreen(type: .tabbar)
+            if UserDefaults.standard.string(forKey: "userId")?.isNotEmpty ?? false {
+                changeScreen(type: .tabbar)
+            } else {
+                changeScreen(type: .login)
+            }
         } else {
             changeScreen(type: .tutorial)
             UserDefaults.standard.set(true, forKey: "launchedBefore")
