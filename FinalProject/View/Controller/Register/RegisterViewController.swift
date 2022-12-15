@@ -99,9 +99,36 @@ final class RegisterViewController: ViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    // MARK: IBActions
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 
+    private func isValid() -> Bool {
+        let data: UserInfo = viewModel.userInfo
+        if data.name.isEmpty || data.birthday.isEmpty || data.province.isEmpty || data.district.isEmpty || data.email.isEmpty || data.gender.isEmpty || data.identityCard == 0 || data.phoneNumber == 0 {
+            alert(msg: "Please enter full information", handler: nil)
+            return false
+        } else {
+            if !isValidEmail(data.email) {
+                alert(msg: "Please enter correct email format", handler: nil)
+                return false
+            }
+            if "\(data.phoneNumber ?? 0)".length < 9 || "\(data.phoneNumber ?? 0)".length > 10 {
+                alert(msg: "Please enter correct number phone format", handler: nil)
+                return false
+            }
+            if "\(data.identityCard ?? 0)".length < 9 || "\(data.identityCard ?? 0)".length > 12 {
+                alert(msg: "Please enter correct identity card format", handler: nil)
+                return false
+            }
+            return true
+        }
+    }
+    // MARK: IBActions
     @IBAction private func signUpButtonTouchUpInside(_ sender: UIButton) {
+        guard isValid() else { return }
         HUD.show()
         viewModel.registerAccount { [weak self] result in
             HUD.dismiss()
@@ -112,10 +139,21 @@ final class RegisterViewController: ViewController {
                 case .success:
                     this.pushToEnterPassCode()
                 case .failure(let error):
-                    this.alert(msg: error, handler: nil)
+                    if error.contains("confirmed") {
+                        let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { action in
+                            let vc = EnterPassCodeViewController()
+                            vc.viewModel = EnterPassCodeViewModel(email: this.viewModel.userInfo.email)
+                            this.navigationController?.pushViewController(vc, animated: true)
+                        }))
+                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                        this.present(alert, animated: true, completion: nil)
+
+                    } else {
+                        this.alert(msg: error, handler: nil)
+                    }
                 }
             }
-
         }
     }
 }
@@ -131,29 +169,35 @@ extension RegisterViewController: UITableViewDataSource {
         guard let type = RegisterProfileType(rawValue: indexPath.row) else {
             return UITableViewCell()
         }
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.clear
         switch type {
         case .gender:
             let cell = tableView.dequeue(GenderCell.self)
             cell.delegate = self
+            cell.selectedBackgroundView = bgColorView
             return cell
         case .province, .district:
             let cell = tableView.dequeue(CommonCell.self)
             cell.dataSource = self
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
+            cell.selectedBackgroundView = bgColorView
             return cell
         case .birthday:
             let cell = tableView.dequeue(BirthdayCell.self)
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? BirthdayCellViewModel
             cell.delegate = self
+            cell.selectedBackgroundView = bgColorView
             return cell
         default:
             let cell = tableView.dequeue(CommonCell.self)
             cell.delegate = self
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? CommonCellViewModel
+            cell.selectedBackgroundView = bgColorView
             return cell
         }
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.clear
+//        let cell = tableView.cellForRow(at: indexPath)
+//        cell?.contentView.ccccc = UIColor.clear
     }
 }
 // MARK: - UITableViewDelegate
@@ -183,11 +227,6 @@ extension RegisterViewController: UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case .gender:
             break
-//        case .birthday:
-//            guard let cell = cell as? BirthdayCell else {
-//                return
-//            }
-//            cell.chexckStatus = !cell.chexckStatus
         default:
             selectedIndexPath = indexPath
         }
@@ -240,15 +279,15 @@ extension RegisterViewController: CommonCellDelegate {
         case .done(let value, let type):
             switch type {
             case .name:
-                viewModel.setName(name: value)
+                viewModel.setName(name: value.trimmed())
             case .birthday:
                 viewModel.setBirthday(birthday: value)
             case .email:
-                viewModel.setEmail(email: value)
+                viewModel.setEmail(email: value.trimmed())
             case .phoneNumber:
-                viewModel.setPhoneNumber(phoneNumber: value)
+                viewModel.setPhoneNumber(phoneNumber: value.trimmed())
             case .identityCard:
-                viewModel.setIdentityCard(id: value)
+                viewModel.setIdentityCard(id: value.trimmed())
             default:
                 break
             }

@@ -27,7 +27,7 @@ struct RegisterCellItem {
 
 struct UserInfo {
     var name: String = ""
-    var birthday: String?
+    var birthday: String = ""
     var identityCard: Int?
     var province: String = ""
     var district: String = ""
@@ -74,9 +74,9 @@ final class RegisterViewModel {
         case .email:
             return RegisterCellItem(image: "email", value: userInfo.email, placeholder: "Email")
         case .phoneNumber:
-            return RegisterCellItem(image: "phone_number", value: userInfo.phoneNumber?.toString(), placeholder: "Phone Number")
+            return RegisterCellItem(image: "phone_number", value: userInfo.phoneNumber?.phoneString(), placeholder: "Phone Number")
         case .gender:
-            return RegisterCellItem(image: "gender", value: userInfo.gender, placeholder: "Phone Number")
+            return RegisterCellItem(image: "gender", value: userInfo.gender, placeholder: "Gender")
         case .identityCard:
             return RegisterCellItem(image: "identification", value: userInfo.identityCard?.toString(), placeholder: "identity card")
         }

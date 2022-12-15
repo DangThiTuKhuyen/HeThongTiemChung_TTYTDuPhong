@@ -45,6 +45,8 @@ final class BirthdayCell: UITableViewCell {
         valueTextField.isUserInteractionEnabled = true
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
+        datePicker.maximumDate = Date()
+//        Date.init(timeIntervalSinceNow: 86400) // 24*60*60
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))
@@ -77,7 +79,6 @@ extension BirthdayCell: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: nameTextField.string.trimmedAllWhitespacesAndNewlines))
         valueTextField.resignFirstResponder()
         return true
     }

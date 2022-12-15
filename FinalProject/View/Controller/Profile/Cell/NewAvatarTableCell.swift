@@ -33,6 +33,13 @@ class NewAvatarTableCell: UITableViewCell {
             updateView()
         }
     }
+    
+    var avatarImage: UIImage? {
+        didSet {
+            avatarButton.setImage(avatarImage, for: .normal)
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         iconPlus.layer.cornerRadius = 10.5
@@ -52,10 +59,10 @@ class NewAvatarTableCell: UITableViewCell {
 
     @IBAction func avatarButtonTouchUpInside(_ sender: Any) {
         delegate?.cell(self, needsPerformAction: .edit)
-        guard let dataSource = dataSource else {
-            return
-        }
-        avatarButton.setImage(dataSource.updateAvatar(self), for: .normal)
+//        guard let dataSource = dataSource else {
+//            return
+//        }
+//        avatarButton.setImage(dataSource.updateAvatar(self), for: .normal)
     }
 
 }

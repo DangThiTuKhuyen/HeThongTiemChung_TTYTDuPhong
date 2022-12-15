@@ -20,7 +20,6 @@ final class ProfileViewController: UIViewController {
     // MARK: - Properties
     let dropDown = DropDown()
     var viewModel: ProfileViewModel?
-    var image: UIImage = UIImage()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -33,10 +32,6 @@ final class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
-
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//    }
 
     // MARK: - Private func
 
@@ -94,19 +89,7 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    private func isValidatePhone(value: String) -> Bool {
-        return value.length < 10
-    }
-
-    @objc private func updateMyProfile() {
-        if isValidatePhone(value: viewModel?.info?.phone?.toString() ?? "") {
-            updateProfile()
-        } else {
-            alert(msg: "Phone number is invalid", handler: nil)
-        }
-    }
-
-    func uploadImage(image: UIImage) {
+    private func uploadImage(image: UIImage) {
         AuthService.uploadImage { [weak self] result in
             guard let this = self else { return }
             switch result {
@@ -118,15 +101,27 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    func uploadAWSS3(image: UIImage, url: String) {
+    private func uploadAWSS3(image: UIImage, url: String) {
         AuthService.uploadAWSS3(image: image, urlUpload: url) { [weak self] result in
             DispatchQueue.main.async {
                 if result ?? false {
-                    print("succes")
+                    print("success")
                 } else {
                     print("fail")
                 }
             }
+        }
+    }
+
+    private func isValidatePhone(value: String) -> Bool {
+        return value.length < 10
+    }
+
+    @objc private func updateMyProfile() {
+        if isValidatePhone(value: viewModel?.info?.phone?.toString() ?? "") {
+            updateProfile()
+        } else {
+            alert(msg: "Phone number is invalid", handler: nil)
         }
     }
 }
@@ -150,7 +145,6 @@ extension ProfileViewController: UITableViewDataSource {
             let cell = tableView.dequeue(NewAvatarTableCell.self)
             cell.viewModel = viewModel.viewModelForItem(at: indexPath) as? NewAvatarCellViewModel
             cell.delegate = self
-            cell.dataSource = self
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.clear
             cell.selectedBackgroundView = bgColorView
@@ -259,20 +253,13 @@ extension ProfileViewController: NewAvatarTableCellDelegate {
     }
 }
 
-extension ProfileViewController: NewAvatarTableCellDataSource {
-    func updateAvatar(_ cell: NewAvatarTableCell) -> UIImage {
-        return image
-    }
-}
-
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            self.image = image
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NewAvatarTableCell
+            cell?.avatarImage = image
             let imageResized = image.resized(withPercentage: 0.2) ?? image
             uploadImage(image: imageResized)
-
-            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -300,7 +287,6 @@ extension ProfileViewController: CommonTableCellDelegate {
 }
 
 // MARK: - ProvinceViewControllerDelegate
-
 extension ProfileViewController: ProvinceViewControllerDelegate {
     func controller(_ controller: ProvinceViewController, neesPerformAction action: ProvinceViewController.Action) {
         switch action {

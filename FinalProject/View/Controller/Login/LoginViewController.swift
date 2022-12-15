@@ -145,7 +145,6 @@ final class LoginViewController: ViewController {
     }
 
     @IBAction private func createAccountButtonTouchUpInside(_ sender: UIButton) {
-//        let registerVC = RegisterWithEmailViewController()
         let registerVC = RegisterViewController()
         navigationController?.pushViewController(registerVC, animated: true)
     }

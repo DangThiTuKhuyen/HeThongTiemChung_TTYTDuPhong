@@ -43,7 +43,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .tabbar:
             createTabbar()
         case .login:
-            window?.rootViewController = LoginViewController()
+            let vc = LoginViewController()
+            let viewModel = LoginViewModel()
+            vc.viewModel = viewModel
+            let vcNavi = UINavigationController(rootViewController: vc)
+            window?.rootViewController = vcNavi
         }
     }
 

@@ -91,7 +91,7 @@ final class ProfileViewModel {
         case .logout:
             return ProfileCellItem(title: "Log out", value: "")
         case .identityCard:
-            return ProfileCellItem(title: "Identity card", value: profile?.identityCard?.toString())
+            return ProfileCellItem(title: "Identity card", value: info?.identityCard?.toString())
         }
     }
 
@@ -178,7 +178,7 @@ extension ProfileViewModel {
     func updateProfile(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(birthday: info?.birthday, province: info?.province, district: info?.district, phone: info?.phone, gender: info?.gender)
         AuthService.updateProfile(params: params) { [weak self] result in
-            guard let this = self else {
+            guard self != nil else {
                 completion(.failure(Api.Error.json.localizedDescription))
                 return
             }
