@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MVVM
 
 final class RegisterDisaeseViewController: UIViewController {
 
@@ -101,7 +102,7 @@ extension RegisterDisaeseViewController: UITableViewDataSource {
 extension RegisterDisaeseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = RegisterVaccineViewController()
-        vc.viewModel = RegisterVaccineViewModel(treatments: viewModel.getDisaeseSelected(at: indexPath), diseaseName: viewModel.getNameSelected(at: indexPath))
+        vc.viewModel = RegisterVaccineViewModel(treatments: viewModel.getDisaeseSelected(at: indexPath), diseaseName: viewModel.getNameSelected(at: indexPath), diseaseDescribe: viewModel.getDescribeSelected(at: indexPath) )
         navigationController?.pushViewController(vc, animated: true)
     }
 }

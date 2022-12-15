@@ -13,10 +13,12 @@ final class RegisterVaccineViewModel {
     
     var treatments: [Treatment]
     var diseaseName: String
+    var diseaseDescribe: String
 
-    init(treatments: [Treatment], diseaseName: String) {
+    init(treatments: [Treatment], diseaseName: String, diseaseDescribe: String) {
         self.treatments = treatments
         self.diseaseName = diseaseName
+        self.diseaseDescribe = diseaseDescribe
     }
 
     var selectedIndexPath: IndexPath = IndexPath(row: -1, section: 0)

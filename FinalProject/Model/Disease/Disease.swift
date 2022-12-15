@@ -14,6 +14,7 @@ final class Disease: Mappable {
     var diseaseId: Int?
     var diseaseName: String?
     var treatments: [Treatment]?
+    var diseaseDescribe: String?
 
     required init?(map: Map) { }
 
@@ -21,6 +22,7 @@ final class Disease: Mappable {
         diseaseId <- map["diseaseId"]
         diseaseName <- map["diseaseName"]
         treatments <- map["treatments"]
+        diseaseDescribe <- map["diseaseDescribe"]
     }
 }
 
@@ -49,6 +51,7 @@ final class Vaccine: Mappable {
     var vaccineName: String?
     var vaccinePrice: Float?
     var country: String?
+    var firm: String?
 
     required init?(map: Map) { }
 
@@ -57,5 +60,6 @@ final class Vaccine: Mappable {
         vaccineName <- map["vaccineName"]
         vaccinePrice <- map["vaccinePrice"]
         country <- map["country"]
+        firm <- map["vaccineFirm"]
     }
 }

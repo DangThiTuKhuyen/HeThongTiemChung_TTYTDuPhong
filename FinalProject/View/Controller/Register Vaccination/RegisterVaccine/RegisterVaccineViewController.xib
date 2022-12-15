@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterVaccineViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="vGP-7T-JDL" id="aH9-gq-KRe"/>
+                <outlet property="describeLabel" destination="dTm-kZ-OHG" id="28g-Wf-1Bj"/>
                 <outlet property="nameDiseaseLabel" destination="7vR-OR-QTZ" id="RBR-TY-tbB"/>
                 <outlet property="nextButton" destination="TAz-tb-t8W" id="RoG-TS-429"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vGP-7T-JDL">
-                    <rect key="frame" x="0.0" y="105" width="414" height="657"/>
+                    <rect key="frame" x="0.0" y="145.5" width="414" height="616.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hrh-h3-G9l">
                         <size key="itemSize" width="128" height="128"/>
@@ -64,6 +65,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTm-kZ-OHG">
+                    <rect key="frame" x="20" y="105" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -71,12 +78,15 @@
                 <constraint firstItem="7vR-OR-QTZ" firstAttribute="leading" secondItem="Ppj-Om-RAG" secondAttribute="trailing" id="4XD-bD-AXR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vGP-7T-JDL" secondAttribute="trailing" id="5zb-C0-d6l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vGP-7T-JDL" secondAttribute="bottom" constant="100" id="9cH-zA-kWa"/>
+                <constraint firstItem="dTm-kZ-OHG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BFZ-Z8-boE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TAz-tb-t8W" secondAttribute="trailing" constant="20" id="Bqm-nu-mge"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dTm-kZ-OHG" secondAttribute="trailing" constant="20" id="Lap-yy-NWX"/>
                 <constraint firstItem="TAz-tb-t8W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="OTQ-1W-C3M"/>
                 <constraint firstItem="vGP-7T-JDL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tl9-ja-iZf"/>
                 <constraint firstItem="7vR-OR-QTZ" firstAttribute="centerY" secondItem="Ppj-Om-RAG" secondAttribute="centerY" id="UJ5-lJ-xc6"/>
+                <constraint firstItem="dTm-kZ-OHG" firstAttribute="top" secondItem="Ppj-Om-RAG" secondAttribute="bottom" constant="20" id="ZD5-iu-1o8"/>
                 <constraint firstItem="Ppj-Om-RAG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dA3-XA-uQa"/>
-                <constraint firstItem="vGP-7T-JDL" firstAttribute="top" secondItem="Ppj-Om-RAG" secondAttribute="bottom" constant="20" id="jSC-pS-zXd"/>
+                <constraint firstItem="vGP-7T-JDL" firstAttribute="top" secondItem="dTm-kZ-OHG" secondAttribute="bottom" constant="20" id="rh6-c7-Bnc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TAz-tb-t8W" secondAttribute="bottom" constant="30" id="xDU-Mj-dIK"/>
                 <constraint firstItem="Ppj-Om-RAG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="zVZ-6v-mUb"/>
             </constraints>

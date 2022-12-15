@@ -10,16 +10,16 @@ import UIKit
 
 final class RegisterVaccineCollectionCell: UICollectionViewCell {
 
-    @IBOutlet weak var checkedImage: UIImageView!
-    @IBOutlet weak var vaccine: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet private weak var checkedImage: UIImageView!
+    @IBOutlet private weak var vaccine: UILabel!
+    @IBOutlet private weak var countryLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var firmLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         configUI()
     }
 
@@ -44,5 +44,6 @@ final class RegisterVaccineCollectionCell: UICollectionViewCell {
         amountLabel.text = treatment.amount?.toString()
         timeLabel.text = treatment.effect?.toString()
         priceLabel.text = treatment.vaccine?.vaccinePrice?.toString()
+        firmLabel.text = treatment.vaccine?.firm
     }
 }

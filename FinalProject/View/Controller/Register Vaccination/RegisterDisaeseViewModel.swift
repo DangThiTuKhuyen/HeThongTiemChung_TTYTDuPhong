@@ -50,6 +50,10 @@ final class RegisterDisaeseViewModel {
     func getNameSelected(at indexPath: IndexPath) -> String {
         return currentDisaeses[indexPath.row].diseaseName ?? ""
     }
+    
+    func getDescribeSelected(at indexPath: IndexPath) -> String {
+        return currentDisaeses[indexPath.row].diseaseDescribe ?? ""
+    }
 }
 
 extension RegisterDisaeseViewModel {

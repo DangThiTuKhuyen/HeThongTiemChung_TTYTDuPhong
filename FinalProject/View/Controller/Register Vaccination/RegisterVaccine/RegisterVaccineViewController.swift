@@ -12,8 +12,9 @@ import SwiftUtils
 final class RegisterVaccineViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var nameDiseaseLabel: UILabel!
+    @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var nameDiseaseLabel: UILabel!
+    @IBOutlet private weak var describeLabel: UILabel!
     var viewModel: RegisterVaccineViewModel?
 
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ final class RegisterVaccineViewController: UIViewController {
         nextButton.alpha = 0.5
         guard let viewModel = viewModel else { return }
         nameDiseaseLabel.text = viewModel.diseaseName
+        describeLabel.text = viewModel.diseaseDescribe
     }
 
     private func configCollectionView() {
@@ -77,7 +79,7 @@ extension RegisterVaccineViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = ((kScreenSize.width - CGFloat(40)) / 2)
-        return CGSize(width: width, height: 149)
+        return CGSize(width: width, height: 165)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
