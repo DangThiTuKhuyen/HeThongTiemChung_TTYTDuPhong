@@ -34,9 +34,11 @@ final class DetailHistoryViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension DetailHistoryViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRowInSection() ?? 0
     }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let viewModel = viewModel else { return UITableViewCell() }
         let cell = tableView.dequeue(DetailHistoryCell.self)

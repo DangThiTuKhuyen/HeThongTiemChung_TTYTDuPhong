@@ -15,7 +15,7 @@ final class ChangePasswordViewController: ViewController {
     @IBOutlet private weak var oldPasswordTextField: UITextField!
 
     var viewModel: ChangePasswordViewModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -33,7 +33,7 @@ final class ChangePasswordViewController: ViewController {
                 case .success:
                     this.alert(msg: "Change your password succesfully", handler: nil)
                 case .failure(let error):
-                    this.alert(msg: "Change your password succesfully", handler: nil)
+                    this.alert(msg: error, handler: nil)
                 }
             }
         }

@@ -70,10 +70,4 @@ final class ApiManager {
         headers["Authorization"] = "Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? "")
         return headers
     }
-
-    var authorizationRefreshHTTPHeaders: [String: String] {
-        var headers: [String: String] = defaultHTTPHeaders
-        headers["Authorization"] = "Bearer " + (UserDefaults.standard.string(forKey: "refreshToken") ?? "")
-        return headers
-    }
 }

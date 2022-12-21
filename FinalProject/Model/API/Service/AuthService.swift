@@ -259,14 +259,21 @@ class AuthService {
                     completion(.failure(Api.Error.json.localizedDescription))
                     return
                 }
-                guard let message = data["changePasswordMessage"] as? String, message == "success" else {
+                guard let message = data["changePasswordMessage"] as? String, message == "Success" else {
                     completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
                     return
                 }
                 completion(.success)
             case .failure(let error):
-                completion(.failure(error.localizedDescription))
-                return
+                switch error.code {
+                case 400:
+                    completion(.failure("Invalid old password"))
+                case 500:
+                    completion(.failure("Attempt limit exceeded, please try again in 1 hour"))
+                default:
+                    completion(.failure(error.localizedDescription))
+                }
+//                return
             }
         }
     }
