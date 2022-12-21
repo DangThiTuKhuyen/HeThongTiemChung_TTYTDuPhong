@@ -47,6 +47,7 @@ final class AppointmentCell: UITableViewCell {
         diseaseLabel.text = viewModel.appointment.disease?.diseaseName
         dateLabel.text = "Time: " + (viewModel.appointment.registrationTime ?? "")
     }
+
     @IBAction private func goToDetailButton(_ sender: Any) {
         delegate?.cell(self, needPerform: .goToDetail)
     }

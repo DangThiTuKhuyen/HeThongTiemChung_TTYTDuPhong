@@ -18,11 +18,13 @@ final class NotifyCell: UITableViewCell {
         case goToDetail
     }
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var titleType: UILabel!
 
+    // MARK: - Properties
     var viewModel: NotifyCellViewModel? {
         didSet {
             updateUI()
@@ -32,22 +34,18 @@ final class NotifyCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         containerView.border(color: .black, width: 0.3)
-//        containerView.backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
     }
 
     private func updateUI() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         titleType.text = viewModel.notify.titleType
         titleLabel.text = viewModel.notify.notifyTitle
         timeLabel.text = viewModel.notify.time
         containerView.backgroundColor = viewModel.notify.status ? .white : #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00)
     }
 
-    @IBAction func detailButton(_ sender: Any) {
+    @IBAction private func detailButton(_ sender: Any) {
         delegate?.cell(self, needPerform: .goToDetail)
     }
 }

@@ -9,19 +9,19 @@
 import Foundation
 
 final class LoginViewModel {
-    
+
     private(set) var email: String = ""
     private(set) var password: String = ""
     private(set) var auth: Auth?
-    
+
     func setEmai(value: String) {
         email = value
     }
-    
+
     func setPassWord(value: String) {
         password = value
     }
-    
+
     func addToken() {
         guard let auth = auth else { return }
         UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
@@ -33,7 +33,7 @@ final class LoginViewModel {
 }
 
 extension LoginViewModel {
-    
+
     func login(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(email: email, password: password)
         AuthService.login(params: params) { [weak self] (data, error) in

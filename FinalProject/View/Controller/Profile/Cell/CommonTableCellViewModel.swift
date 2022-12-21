@@ -9,7 +9,7 @@
 import Foundation
 
 final class CommonTableCellViewModel {
-    
+
     // MARK: - Properties
     private(set) var item: ProfileCellItem?
     private(set) var type: ProfileType?

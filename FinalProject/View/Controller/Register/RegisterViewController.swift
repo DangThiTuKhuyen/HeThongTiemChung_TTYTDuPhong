@@ -16,6 +16,7 @@ final class RegisterViewController: ViewController {
 
     // MARK: - Properties
     var viewModel = RegisterViewModel()
+    private(set) var isAppearKeyboard: Bool = false
 
     private(set) var selectedIndexPath: IndexPath? {
         willSet {
@@ -38,8 +39,6 @@ final class RegisterViewController: ViewController {
             cell.updateUI()
         }
     }
-
-    private(set) var isAppearKeyboard: Bool = false
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -126,6 +125,7 @@ final class RegisterViewController: ViewController {
             return true
         }
     }
+
     // MARK: IBActions
     @IBAction private func signUpButtonTouchUpInside(_ sender: UIButton) {
         guard isValid() else { return }
@@ -141,7 +141,7 @@ final class RegisterViewController: ViewController {
                 case .failure(let error):
                     if error.contains("confirmed") {
                         let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { action in
+                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { _ in
                             let vc = EnterPassCodeViewController()
                             vc.viewModel = EnterPassCodeViewModel(email: this.viewModel.userInfo.email)
                             this.navigationController?.pushViewController(vc, animated: true)
@@ -196,8 +196,6 @@ extension RegisterViewController: UITableViewDataSource {
             cell.selectedBackgroundView = bgColorView
             return cell
         }
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.contentView.ccccc = UIColor.clear
     }
 }
 // MARK: - UITableViewDelegate

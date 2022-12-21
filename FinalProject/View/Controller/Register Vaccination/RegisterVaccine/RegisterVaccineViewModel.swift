@@ -11,9 +11,9 @@ import DropDown
 
 final class RegisterVaccineViewModel {
     
-    var treatments: [Treatment]
-    var diseaseName: String
-    var diseaseDescribe: String
+    private(set) var treatments: [Treatment]
+    private(set) var diseaseName: String
+    private(set) var diseaseDescribe: String
 
     init(treatments: [Treatment], diseaseName: String, diseaseDescribe: String) {
         self.treatments = treatments

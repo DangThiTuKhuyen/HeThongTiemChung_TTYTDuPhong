@@ -10,8 +10,13 @@ import UIKit
 
 final class AppointmentViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
+
+    // MARK: - Properties
     var viewModel: AppointmentViewModel?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -25,7 +30,6 @@ final class AppointmentViewController: UIViewController {
     }
 
     // MARK: - Private func
-
     private func getAppointment() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -78,10 +82,6 @@ extension AppointmentViewController: AppointmentCellDelegate {
         switch action {
         case .goToDetail:
             guard let viewModel = viewModel, let indexPath = tableView.indexPath(for: cell) else { return }
-            
-            //        let loginNaviC = UINavigationController(rootViewController: loginVc)
-            //        loginNaviC.modalPresentationStyle = .fullScreen
-            //        present(loginNaviC, animated: true)
             let vc = DetailAppointmentViewController()
             vc.viewModel = DetailAppointmentViewModel(appointment: viewModel.appointments[indexPath.row])
             let vcNavi = UINavigationController(rootViewController: vc)
@@ -89,5 +89,4 @@ extension AppointmentViewController: AppointmentCellDelegate {
             present(vcNavi, animated: true)
         }
     }
-
 }

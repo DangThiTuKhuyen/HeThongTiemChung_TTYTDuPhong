@@ -17,6 +17,7 @@ final class DetailAppointmentViewController: ViewController {
     @IBOutlet private weak var doseLabel: UILabel!
 
     var viewModel: DetailAppointmentViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()

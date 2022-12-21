@@ -13,7 +13,6 @@ class MedicalCenterCell: UITableViewCell {
     @IBOutlet private weak var iconSelectedImage: UIImageView!
     @IBOutlet private weak var label: UILabel!
 
-
     // MARK: - Properties
     var viewModel: MedicalCenterCellViewModel? {
         didSet {

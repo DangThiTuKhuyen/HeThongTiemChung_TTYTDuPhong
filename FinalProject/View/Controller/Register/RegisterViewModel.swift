@@ -105,9 +105,6 @@ final class RegisterViewModel {
     }
 
     func setBirthday(birthday: String) {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd/MM/yyyy"
-//        userInfo.birthday = formatter.date(from: birthday)
         userInfo.birthday = birthday
     }
 

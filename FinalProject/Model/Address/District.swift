@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class District: Mappable {
+final class District: Mappable {
 
     var name: String = ""
 

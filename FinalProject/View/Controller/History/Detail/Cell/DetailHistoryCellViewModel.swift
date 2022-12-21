@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetailHistoryCellViewModel {
+final class DetailHistoryCellViewModel {
 
     private(set) var history: History
     private(set) var isShow: Bool
@@ -17,8 +17,4 @@ class DetailHistoryCellViewModel {
         self.history = history
         self.isShow = isShow
     }
-
-//    func updateCellStatus(isShow: Bool) {
-//        self.isShow = isShow
-//    }
 }

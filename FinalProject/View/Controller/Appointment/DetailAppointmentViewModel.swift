@@ -7,10 +7,11 @@
 //
 
 import Foundation
+
 final class DetailAppointmentViewModel {
-    
+
     var appointment: Registration
-    
+
     init(appointment: Registration) {
         self.appointment = appointment
     }

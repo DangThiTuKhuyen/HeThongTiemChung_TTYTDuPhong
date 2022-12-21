@@ -25,12 +25,6 @@ extension ApiManager {
             header1.removeValue(forKey: "Authorization")
         }
 
-        var header2 = api.authorizationRefreshHTTPHeaders
-        header2.updateValues(headers)
-
-        var header = api.defaultHTTPHeaders
-        header.updateValues(headers)
-
         let request = Alamofire.request(urlString.urlString,
             method: method,
             parameters: parameters,
@@ -41,28 +35,35 @@ extension ApiManager {
             if let error = response.error {
                 switch error.code {
                 case Api.Error.connectionAbort.code, Api.Error.connectionWasLost.code:
-                    header = header1
-                case Api.Error.forbidden.code:
+                    Alamofire.request(urlString.urlString,
+                        method: method,
+                        parameters: parameters,
+                        encoding: encoding,
+                        headers: header1
+                    ).responseJSON { response in
+                        completion?(response.result)
+                    }
+                case Api.Error.authen.code:
                     AuthService.refreshToken { result in
                         switch result {
                         case true:
-                            break
+                            let header = api.authorizationAccessHTTPHeaders
+                            Alamofire.request(urlString.urlString,
+                                method: method,
+                                parameters: parameters,
+                                encoding: encoding,
+                                headers: header
+                            ).responseJSON { response in
+                                completion?(response.result)
+                            }
                         case false:
                             DispatchQueue.main.async {
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: ["isExpire": true])
                             }
-                            completion?(response.result)
+//                            completion?(response.result)
                         }
                     }
                 default:
-                    break
-                }
-                Alamofire.request(urlString.urlString,
-                    method: method,
-                    parameters: parameters,
-                    encoding: encoding,
-                    headers: header
-                ).responseJSON { response in
                     completion?(response.result)
                 }
             } else {

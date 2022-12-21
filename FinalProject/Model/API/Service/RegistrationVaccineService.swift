@@ -125,26 +125,38 @@ class RegistrationVaccineService {
     ///users/:userId/registrations/:id/update
     static func updateRegistration(id: Int, params: Params, completion: @escaping APICompletion) {
         let urlString = Api.Path.userIdURL + "/registrations/\(id)/update"
-        guard let url = URL(string: urlString) else { return }
-        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(.failure(Api.Error.json))
-                return
+        api.request(method: .put, urlString: urlString) {  result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? JSObject, let message = data["message"] as? String, message == "OK" else {
+                    completion(.failure(Api.Error.json))
+                    return
+                }
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String, message == "OK" else {
-                completion(.failure(Api.Error.json))
-                return
-            }
-            completion(.success)
         }
-        task.resume()
+//        guard let url = URL(string: urlString) else { return }
+//        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "PUT"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.httpBody = jsonData
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data, error == nil else {
+//                completion(.failure(Api.Error.json))
+//                return
+//            }
+//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+//            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String, message == "OK" else {
+//                completion(.failure(Api.Error.json))
+//                return
+//            }
+//            completion(.success)
+//        }
+//        task.resume()
     }
 }

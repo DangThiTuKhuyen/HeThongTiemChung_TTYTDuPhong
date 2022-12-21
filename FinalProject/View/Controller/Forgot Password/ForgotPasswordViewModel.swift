@@ -9,17 +9,16 @@
 import Foundation
 
 final class ForgotPasswordViewModel {
-    
+
     private(set) var email: String = ""
-    
+
     func setEmail(value: String) {
         email = value
     }
-    
+
     func forgotPassword(completion: @escaping CompletionAPI) {
         let params = AuthService.Account(email: email)
         AuthService.forgotPassword(params: params) { [weak self] result in
-            
             guard self != nil else {
                 completion(.failure(Api.Error.json.localizedDescription))
                 return
@@ -30,7 +29,6 @@ final class ForgotPasswordViewModel {
             case .failure(let error):
                 completion(.failure(error))
             }
-            
         }
     }
 }

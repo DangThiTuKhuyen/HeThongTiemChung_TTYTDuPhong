@@ -40,7 +40,7 @@ extension Api {
         static let upgradeRequired = NSError(domain: Api.Path.baseURL.host, code: 426, message: "ForceUpdate")
         static let invalid = NSError(domain: Api.Path.baseURL.host, code: 9_999, message: "Parameter has no value")
         static let timeout = NSError(domain: Api.Path.baseURL.host, code: -1_001, message: "The request timeout")
-        static let forbidden = NSError(domain: Api.Path.baseURL.host, code: 403, message: "The request was a legal request, but the server is refusing to respond to it.")
+        static let forbidden = NSError(domain: Api.Path.baseURL.host, code: 403, message: "You are not authorized to do this.")
         static let badRequest: NSError = NSError(domain: Api.Path.baseURL.host, code: 400, message: "The request cannot be fulfilled due to bad syntax.")
         static let connectionAbort: NSError = NSError(domain: NSPOSIXErrorDomain, code: 53, message: "Software caused connection abort.")
         static let connectionWasLost: NSError = NSError(domain: NSURLErrorDomain, code: -1_005, message: "The network connection was lost.")

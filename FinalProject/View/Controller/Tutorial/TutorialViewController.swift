@@ -32,7 +32,6 @@ final class TutorialViewController: ViewController {
         self.view.layoutIfNeeded()
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
-//        setGradientBackground()
         addItem()
     }
 
@@ -82,16 +81,6 @@ final class TutorialViewController: ViewController {
         pageControl.numberOfPages = viewModel.numberOfPage()
         pageControl.currentPage = 0
     }
-//
-//    func setGradientBackground() {
-//        guard let viewModel = viewModel else { return }
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenSize.width * CGFloat(viewModel.numberOfPage()), height: kScreenSize.height * CGFloat(viewModel.numberOfPage()))
-//        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
-//        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
-//        gradientLayer.colors = [colorTop, colorBottom]
-//        scrollView.layer.insertSublayer(gradientLayer, at: 0)
-//    }
 
     private func setIndiactorForCurrentPage() {
         guard let scrollView = scrollView else { return }
@@ -132,6 +121,7 @@ final class TutorialViewController: ViewController {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

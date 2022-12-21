@@ -64,7 +64,7 @@ final class HomeViewController: ViewController {
         guard let viewModel = viewModel else { return }
         realTime.text = viewModel.getCurrentDate()
         guard let id = UserDefaults.standard.string(forKey: "userId") else { return }
-        guard let qrURLImage = URL(string: "http://3.92.194.85:3210/users/" + id + "/histories")?.qrImage(using: .black) else { return }
+        guard let qrURLImage = URL(string: "http://3.92.194.85:3210/users/" + id + "/histories/scanQR")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 
@@ -85,24 +85,25 @@ final class HomeViewController: ViewController {
         }
     }
 
-    @IBAction func registerVaccineButton(_ sender: UIButton) {
+    // MARK: - Objc func
+    @IBAction private func registerVaccineButton(_ sender: UIButton) {
         let registerDisaeseVC = RegisterDisaeseViewController()
         navigationController?.pushViewController(registerDisaeseVC, animated: true)
     }
 
-    @IBAction func viewVaccineHistory(_ sender: UIButton) {
+    @IBAction private func viewVaccineHistory(_ sender: UIButton) {
         let historyVC = HistoryViewController()
         historyVC.viewModel = HistoryViewModel()
         navigationController?.pushViewController(historyVC, animated: true)
     }
 
-    @IBAction func viewApplicationRegister(_ sender: UIButton) {
+    @IBAction private func viewApplicationRegister(_ sender: UIButton) {
         let vc = RegistrationViewController()
         vc.viewModel = RegistrationViewModel()
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    @IBAction func viewApointment(_ sender: Any) {
+    @IBAction private func viewApointment(_ sender: Any) {
         let vc = AppointmentViewController()
         vc.viewModel = AppointmentViewModel()
         navigationController?.pushViewController(vc, animated: true)

@@ -13,7 +13,7 @@ protocol GenderCellDelegate: AnyObject {
 }
 
 final class GenderCell: UITableViewCell {
-    
+
     // MARK: - Enum
     enum Action {
         case done(value: String)
@@ -27,21 +27,21 @@ final class GenderCell: UITableViewCell {
             }
         }
     }
-    
+
     weak var delegate: GenderCellDelegate?
-    
+
+    private func uncheck() {
+        multiRadioButton.forEach { (button) in
+            button.isSelected = false
+        }
+    }
+
     @IBAction private func maleFemaleAction(_ sender: UIButton) {
         uncheck()
         sender.checkboxAnimation { [self] in
             print(sender.titleLabel?.text ?? "")
             print(sender.isSelected)
             self.delegate?.cell(self, needPerformAction: .done(value: sender.titleLabel?.text ?? ""))
-        }
-    }
-
-    func uncheck() {
-        multiRadioButton.forEach { (button) in
-            button.isSelected = false
         }
     }
 }

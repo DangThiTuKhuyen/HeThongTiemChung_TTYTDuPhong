@@ -156,24 +156,49 @@ class AuthService {
 
     static func refreshToken(completion: @escaping (Bool) -> Void) {
         let urlString = Api.Path.authURL + "refreshToken"
-        api.request(method: .post, urlString: urlString, parameters: ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]) { result in
-            switch result {
-            case .success(let data):
-                guard let data = data as? JSObject, let auth = Mapper<Auth>().map(JSON: data) else {
-                    completion(false)
-                    return
-                }
-                DispatchQueue.main.async {
-                    UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
-                    UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
-                }
-//                completion(.success(true))
-                completion(true)
-            case .failure(let error):
+        guard let url = URL(string: urlString) else { return }
+        let params = ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
                 completion(false)
                 return
             }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            guard let error = error, error.code == 500 else {
+                completion(false)
+                return
+            }
+            guard let responseJSON = responseJSON as? JSObject, let auth = Mapper<Auth>().map(JSON: responseJSON) else {
+                completion(false)
+                return
+            }
+            UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
+            UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
+            completion(true)
         }
+        task.resume()
+
+//        api.request(method: .post, urlString: urlString, parameters: ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]) { result in
+//            switch result {
+//            case .success(let data):
+//                guard let data = data as? JSObject, let auth = Mapper<Auth>().map(JSON: data) else {
+//                    completion(false)
+//                    return
+//                }
+//                    UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
+//                    UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
+//                completion(true)
+//            case .failure(let error):
+//                completion(false)
+//                return
+//            }
+//        }
     }
 
     static func updateProfile(params: Account, completion: @escaping (Bool) -> Void) {
@@ -186,7 +211,7 @@ class AuthService {
                     return
                 }
                 completion(true)
-            case .failure(let error):
+            case .failure(let _):
                 completion(false)
                 return
             }
@@ -234,7 +259,7 @@ class AuthService {
                     completion(.failure(Api.Error.json.localizedDescription))
                     return
                 }
-                guard let message = data["message"] as? String, message == "success" else {
+                guard let message = data["changePasswordMessage"] as? String, message == "success" else {
                     completion(.failure(data["message"] as? String ?? Api.Error.json.localizedDescription))
                     return
                 }

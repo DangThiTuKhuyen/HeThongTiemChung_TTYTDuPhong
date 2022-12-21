@@ -21,19 +21,17 @@ final class BirthdayCell: UITableViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var valueTextField: UITextField!
+
+    // MARK: - Properties
     private let datePicker = UIDatePicker()
     var viewModel: BirthdayCellViewModel? {
         didSet {
             updateCell()
         }
     }
-
     weak var delegate: BirthdayCellDelegate?
 
-    private func updateCell() {
-        valueTextField.text = viewModel?.item?.value
-    }
-
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         valueTextField.isUserInteractionEnabled = true
@@ -41,12 +39,15 @@ final class BirthdayCell: UITableViewCell {
         valueTextField.delegate = self
     }
 
+    private func updateCell() {
+        valueTextField.text = viewModel?.item?.value
+    }
+
     private func showDatePicker() {
         valueTextField.isUserInteractionEnabled = true
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
         datePicker.maximumDate = Date()
-//        Date.init(timeIntervalSinceNow: 86400) // 24*60*60
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))
@@ -71,6 +72,7 @@ final class BirthdayCell: UITableViewCell {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension BirthdayCell: UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

@@ -10,7 +10,7 @@ import Foundation
 
 final class EnterPassCodeViewModel {
 
-    var email: String
+    private(set) var email: String
     private(set) var passCode: String = ""
     private(set) var password: String = ""
     private(set) var auth: Auth?

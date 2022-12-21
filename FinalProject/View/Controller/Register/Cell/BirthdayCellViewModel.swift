@@ -8,13 +8,14 @@
 
 import Foundation
 final class BirthdayCellViewModel {
+
     // MARK: - Properties
     private(set) var item: RegisterCellItem?
     private(set) var type: RegisterProfileType?
     private(set) var isSelected: Bool = false
 
     // MARK: - Initial
-    init(item: RegisterCellItem?, type: RegisterProfileType? ) {
+    init(item: RegisterCellItem?, type: RegisterProfileType?) {
         self.item = item
         self.type = type
     }

@@ -25,6 +25,7 @@ final class CommonCell: UITableViewCell {
     enum Action {
         case done(value: String, type: RegisterProfileType)
     }
+
     // MARK: - IBOutlets
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var valueTextField: PaddingTextField!
@@ -46,9 +47,10 @@ final class CommonCell: UITableViewCell {
         super.awakeFromNib()
         valueTextField.delegate = self
     }
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = UIImage(named: "")
+        iconImageView.image = #imageLiteral(resourceName: "")  //UIImage(named: "") UIImage(named: "")
         iconImageView.isHidden = false
         valueTextField.isUserInteractionEnabled = false
     }
@@ -85,12 +87,11 @@ final class CommonCell: UITableViewCell {
 
     func updateValueTextField() {
         valueTextField.resignFirstResponder()
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         delegate?.cell(self, needPerformAction: .done(value: valueTextField.text ?? "", type: viewModel.type ?? .gender))
     }
 
+    // MARK: - Private func
     private func updateCell() {
         guard let viewModel = viewModel, let type = viewModel.type else { return }
         switch type {
@@ -129,7 +130,6 @@ final class CommonCell: UITableViewCell {
         valueTextField.inputAccessoryView = toolbar
         valueTextField.inputView = datePicker
     }
-
 
     private func showKeyBoard(typeKeyBoard: UIKeyboardType, typeCell: RegisterProfileType) {
         let toolbar = UIToolbar()
@@ -182,7 +182,7 @@ extension CommonCell: UITextFieldDelegate {
             break
         case .phoneNumber, .identityCard:
             showKeyBoard(typeKeyBoard: .asciiCapableNumberPad, typeCell: type)
-            
+
         case .gender:
             break
         }
@@ -190,9 +190,7 @@ extension CommonCell: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        delegate?.cell(self, needsPerformAction: .valueChanged(valueString: nameTextField.string.trimmedAllWhitespacesAndNewlines))
         textField.resignFirstResponder()
         return true
     }
 }
-

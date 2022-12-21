@@ -127,13 +127,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     @objc func logout(_ notification: Foundation.Notification) {
         if let info = notification.object as? JSObject,
-            let isExpire = info["isExprire"] as? Bool,
+            let isExpire = info["isExpire"] as? Bool,
             isExpire {
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "", message: "Your login session has expired", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Your login session has expired", message: "", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-                    self.handleLogOut()
+                    self.setupController()
+                    UserDefaults.standard.reset()
                 }))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         } else {
             self.handleLogOut()
@@ -146,14 +148,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard let this = self else {
                 return
             }
-            switch result {
-            case .success:
-                this.setupController()
-                UserDefaults.standard.reset()
-            case .failure(let error):
-                print(error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.setupController()
+                    UserDefaults.standard.reset()
+                case .failure(let error):
+                    print(error)
+                }
             }
-
         }
     }
 }

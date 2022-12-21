@@ -10,7 +10,7 @@ import Foundation
 
 final class ConfirmCodeViewModel {
 
-    var email: String
+    private(set) var email: String
     private(set) var confirmationCode: String = ""
     private(set) var newPassword: String = ""
 

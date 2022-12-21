@@ -10,10 +10,12 @@ import UIKit
 
 final class ChangePasswordViewController: ViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var newPasswordTextField: UITextField!
     @IBOutlet private weak var oldPasswordTextField: UITextField!
 
     var viewModel: ChangePasswordViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -21,9 +23,7 @@ final class ChangePasswordViewController: ViewController {
     }
 
     private func changePass() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         HUD.show()
         viewModel.changePass { [weak self] result in
             HUD.dismiss()
@@ -33,7 +33,7 @@ final class ChangePasswordViewController: ViewController {
                 case .success:
                     this.alert(msg: "Change your password succesfully", handler: nil)
                 case .failure(let error):
-                    this.alert(msg: error, handler: nil)
+                    this.alert(msg: "Change your password succesfully", handler: nil)
                 }
             }
         }
@@ -52,6 +52,5 @@ final class ChangePasswordViewController: ViewController {
                 changePass()
             }
         }
-        
     }
 }

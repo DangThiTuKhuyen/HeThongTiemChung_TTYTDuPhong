@@ -11,6 +11,7 @@ import ObjectMapper
 
 final class Notify: Mappable {
 
+    var id: Int = 0
     var notifyTitle: String?
     var notifyContent: String?
     var time: String?
@@ -22,6 +23,7 @@ final class Notify: Mappable {
     }
 
     func mapping(map: Map) {
+        id <- map["notificationId"]
         notifyTitle <- map["notificationTitle"]
         notifyContent <- map["notificationContent"]
         time <- map["createdAt"]

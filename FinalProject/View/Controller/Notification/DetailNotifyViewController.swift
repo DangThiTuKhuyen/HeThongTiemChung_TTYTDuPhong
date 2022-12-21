@@ -17,10 +17,28 @@ final class DetailNotifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-        guard let viewModel = viewModel else {
-            return
+        guard let viewModel = viewModel else { return }
+        if viewModel.notify.status {
+            contentLabel.text = viewModel.notify.notifyContent
+            titleLabel.text = viewModel.notify.notifyTitle
+        } else {
+            updateStatus()
         }
-        contentLabel.text = viewModel.notify.notifyContent
-        titleLabel.text = viewModel.notify.notifyTitle
+    }
+
+    func updateStatus() {
+        guard let viewModel = viewModel else { return }
+        viewModel.updateStatus { [weak self] result in
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    this.contentLabel.text = viewModel.notify.notifyContent
+                    this.titleLabel.text = viewModel.notify.notifyTitle
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+            }
+        }
     }
 }

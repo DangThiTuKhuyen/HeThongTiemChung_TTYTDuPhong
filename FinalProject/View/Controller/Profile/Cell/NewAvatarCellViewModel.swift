@@ -9,6 +9,7 @@
 import Foundation
 
 final class NewAvatarCellViewModel {
+
     // MARK: - Properties
     private(set) var urlString: String?
     private(set) var type: ProfileType?

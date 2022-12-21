@@ -10,7 +10,6 @@ import Foundation
 
 final class HistoryViewModel {
 
-
     private(set) var histories: [[History]]?
     private(set) var keys: [String] = []
 
@@ -43,7 +42,6 @@ extension HistoryViewModel {
             switch result {
             case .success(let histories):
                 this.histories = histories
-//                this.keys = histories.allKeys
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

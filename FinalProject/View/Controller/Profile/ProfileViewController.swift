@@ -9,8 +9,6 @@
 import UIKit
 import DropDown
 import SwiftUtils
-import AWSS3
-import AWSCore
 
 final class ProfileViewController: UIViewController {
 
@@ -34,7 +32,6 @@ final class ProfileViewController: UIViewController {
     }
 
     // MARK: - Private func
-
     private func configNavi() {
         title = "My profile"
         navigationController?.navigationBar.barTintColor = .white
@@ -102,12 +99,12 @@ final class ProfileViewController: UIViewController {
     }
 
     private func uploadAWSS3(image: UIImage, url: String) {
-        AuthService.uploadAWSS3(image: image, urlUpload: url) { [weak self] result in
+        AuthService.uploadAWSS3(image: image, urlUpload: url) { result in
             DispatchQueue.main.async {
                 if result ?? false {
-                    print("success")
+                    print("Update avatar success")
                 } else {
-                    print("fail")
+                    print("Update avatar fail")
                 }
             }
         }
@@ -128,6 +125,7 @@ final class ProfileViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel?.numberOfSection() ?? 0
     }
@@ -159,6 +157,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionType = ProfileViewModel.SectionType(rawValue: section) else { return nil }
         switch sectionType {

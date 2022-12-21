@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class Address: Mappable {
+final class Address: Mappable {
 
     var province: String = ""
     var districts: [District] = []

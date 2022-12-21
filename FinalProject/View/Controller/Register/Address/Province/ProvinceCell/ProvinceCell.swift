@@ -14,7 +14,6 @@ final class ProvinceCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var iconSelectedImage: UIImageView!
 
-
     // MARK: - Properties
     var viewModel: ProvinceCellViewModel? {
         didSet {

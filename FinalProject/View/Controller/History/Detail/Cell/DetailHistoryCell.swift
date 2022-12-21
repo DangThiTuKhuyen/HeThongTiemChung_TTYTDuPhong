@@ -23,11 +23,11 @@ final class DetailHistoryCell: UITableViewCell {
     @IBOutlet private weak var detailButon: UIButton!
     @IBOutlet private weak var heightDetailView: NSLayoutConstraint!
     @IBOutlet private weak var detailView: UIView!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
-    @IBOutlet weak var medicalCenterMedicalLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet private weak var medicalCenterMedicalLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var countryLabel: UILabel!
 
     weak var delegate: DetailHistoryCellDelegate?
 
@@ -46,7 +46,7 @@ final class DetailHistoryCell: UITableViewCell {
         path.addLines(between: [CGPoint(x: 25, y: 0),
             CGPoint(x: 25, y: 130)])
         lineLayer.path = path
-        
+
         containerView.layer.cornerRadius = 10
         detailView.layer.addSublayer(lineLayer)
         detailView.layer.masksToBounds = true
@@ -54,7 +54,7 @@ final class DetailHistoryCell: UITableViewCell {
         detailButon.setTitle("Hide", for: .selected)
         detailButon.setTitle("Show", for: .normal)
         iconImageView.layer.cornerRadius = 5
-        
+
         containerView.layer.borderWidth = 0.3
         containerView.layer.borderColor = UIColor.black.cgColor
 
@@ -71,7 +71,7 @@ final class DetailHistoryCell: UITableViewCell {
         }
     }
 
-    func updateCell() {
+    private func updateCell() {
         guard let viewModel = viewModel else { return }
         numberDoseLabel.text = (viewModel.history.dose?.toString() ?? "") + " Dose " + (viewModel.history.disease?.treatments?.first?.vaccine?.vaccineName ?? "")
         timeLabel.text = viewModel.history.time
@@ -81,17 +81,8 @@ final class DetailHistoryCell: UITableViewCell {
         detailButon.isSelected = viewModel.isShow
         heightDetailView.constant = detailButon.isSelected ? 130 : 0
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
-
-    func showHideDetail() {
-
-    }
-
-    @IBAction func showHideDetailButton(_ sender: Any) {
+    @IBAction private func showHideDetailButton(_ sender: Any) {
         delegate?.cell(self, needPerformAction: .updateCell)
     }
 }

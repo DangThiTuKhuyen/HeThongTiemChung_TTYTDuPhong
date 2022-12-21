@@ -10,10 +10,10 @@ import Foundation
 
 final class TutorialViewModel {
 
-    var titles = ["Wash Your Hands", "Wear Mask", "Use Nose Rag"]
-    var descs = ["Clean your hands often. Use soap and water, or an alcohol-based hand rub.", "Cover mouth and nose with mask & no gaps between your face and the mask.", "Cover your nose and mouth with your bent elbow or a tissue when you cough."]
-    var images = ["wash_hand", "wear_mask", "use_nose_rag"]
-    var titleButtons = ["Next step", "Next step", "Start now"]
+    private(set) var titles = ["Wash Your Hands", "Wear Mask", "Use Nose Rag"]
+    private(set) var descs = ["Clean your hands often. Use soap and water, or an alcohol-based hand rub.", "Cover mouth and nose with mask & no gaps between your face and the mask.", "Cover your nose and mouth with your bent elbow or a tissue when you cough."]
+    private(set) var images = ["wash_hand", "wear_mask", "use_nose_rag"]
+    private(set) var titleButtons = ["Next step", "Next step", "Start now"]
 
     func showTitle(at page: Int) -> String {
         return titles[page]

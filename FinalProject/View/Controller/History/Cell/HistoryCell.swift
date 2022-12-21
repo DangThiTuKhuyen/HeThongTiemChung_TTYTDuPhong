@@ -14,21 +14,26 @@ protocol HistoryCellDelegate: AnyObject {
 
 final class HistoryCell: UITableViewCell {
 
+    // MARK: - Enum
     enum Action {
         case goToDetail
     }
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var nameDisease: UILabel!
     @IBOutlet private weak var totalAmountLabel: UILabel!
 
+    // MARK: - Properties
     var viewModel: HistoryCellViewModel? {
         didSet {
             updateUI()
         }
     }
     weak var delegate: HistoryCellDelegate?
+
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         configUI()
@@ -44,6 +49,7 @@ final class HistoryCell: UITableViewCell {
         containerView.layer.shadowRadius = 4.0
     }
 
+    // MARK: - Private func
     private func configUI() {
         // line dash
         let lineLayer = CAShapeLayer()
@@ -56,8 +62,6 @@ final class HistoryCell: UITableViewCell {
         path.addLines(between: [CGPoint(x: 15, y: self.frame.height / 2),
             CGPoint(x: 30, y: self.frame.height / 2)])
         lineLayer.path = path
-//        self.layer.addSublayer(lineLayer)
-//        detailView.layer.addSublayer(lineLayer)
     }
 
     private func updateUI() {

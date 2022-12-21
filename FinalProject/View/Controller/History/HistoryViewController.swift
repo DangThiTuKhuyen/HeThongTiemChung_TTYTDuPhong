@@ -10,10 +10,14 @@ import UIKit
 
 final class HistoryViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noResultLabel: UILabel!
-    
+
+    // MARK: - Properties
     var viewModel: HistoryViewModel?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -24,6 +28,26 @@ final class HistoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configUI()
+    }
+
+    // MARK: - Private func
+    private func configTableView() {
+        tableView.register(HistoryCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    private func configUI() {
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = false
+        title = "History"
+    }
+
+    private func updateUI() {
+        guard let viewModel = viewModel else { return }
+        tableView.reloadData()
+        tableView.isHidden = !viewModel.isShowTableView()
+        noResultLabel.isHidden = viewModel.isShowTableView()
     }
 
     private func getHistory() {
@@ -41,25 +65,6 @@ final class HistoryViewController: UIViewController {
                 }
             }
         }
-    }
-
-    private func configUI() {
-        tabBarController?.tabBar.isHidden = true
-        navigationController?.isNavigationBarHidden = false
-        title = "History"
-    }
-    
-    private func updateUI() {
-        guard let viewModel = viewModel else { return }
-        tableView.reloadData()
-        tableView.isHidden = !viewModel.isShowTableView()
-        noResultLabel.isHidden = viewModel.isShowTableView()
-    }
-
-    private func configTableView() {
-        tableView.register(HistoryCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 }
 
@@ -90,6 +95,7 @@ extension HistoryViewController: UITableViewDelegate {
 }
 
 extension HistoryViewController: HistoryCellDelegate {
+
     func cell(_ cell: HistoryCell, needPerform action: HistoryCell.Action) {
         switch action {
         case .goToDetail:

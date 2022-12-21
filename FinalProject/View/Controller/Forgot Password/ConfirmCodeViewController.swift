@@ -10,11 +10,16 @@ import UIKit
 
 final class ConfirmCodeViewController: ViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var confirmCodeTextField: UITextField!
     @IBOutlet private weak var newPasswordTextField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
 
+    // MARK: - IB
+    var viewModel: ConfirmCodeViewModel?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -22,8 +27,7 @@ final class ConfirmCodeViewController: ViewController {
         emailTextField.text = viewModel.email
     }
 
-    var viewModel: ConfirmCodeViewModel?
-
+    // MARK: - Private func
     private func resetPassword() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -34,7 +38,7 @@ final class ConfirmCodeViewController: ViewController {
                 switch result {
                 case .success:
                     let alert = UIAlertController(title: "", message: "Reset password succesfully", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
                         this.pushToLogin()
                     }))
                     this.present(alert, animated: true, completion: nil)

@@ -13,18 +13,22 @@ final class ForgotPasswordViewController: ViewController {
     // MARK: - IBOulets
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
-    
+
+    // MARK: - Properties
     var viewModel: ForgotPasswordViewModel?
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
 
+    // MARK: - Private func
     private func forgotPassword() {
         guard let viewModel = viewModel else { return }
         HUD.show()
@@ -48,12 +52,12 @@ final class ForgotPasswordViewController: ViewController {
         vc.viewModel = ConfirmCodeViewModel(email: viewModel.email)
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     private func showHideError(error: String = "", isShow: Bool = false) {
         errorLabel.text = error
         errorLabel.isHidden = !isShow
     }
-    
+
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)

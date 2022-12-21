@@ -12,17 +12,16 @@ protocol MedicalCenterViewControllerDelegate: AnyObject {
     func controller(_ controller: MedicalCenterViewController, needPerformAction action: MedicalCenterViewController.Action)
 }
 
-
 final class MedicalCenterViewController: UIViewController {
 
     enum Action {
         case updateMedicalCenter(medicalCenter: MedicalCenter)
     }
-    
+
     @IBOutlet private weak var tableView: UITableView!
     var viewModel: MedicalCenterViewModel?
     weak var delegate: MedicalCenterViewControllerDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getMedicalCenter()
@@ -34,6 +33,17 @@ final class MedicalCenterViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
+    }
+
+    private func configUI() {
+        title = "Choose the medical center"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(chooseMedicalCenter))
+    }
+
+    private func configTableView() {
+        tableView.register(MedicalCenterCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     private func getMedicalCenter() {
@@ -54,17 +64,6 @@ final class MedicalCenterViewController: UIViewController {
         }
     }
 
-    private func configUI() {
-        title = "Choose the medical center"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(chooseMedicalCenter))
-    }
-
-    private func configTableView() {
-        tableView.register(MedicalCenterCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
     @objc private func chooseMedicalCenter() {
         guard let viewModel = viewModel else { return }
         delegate?.controller(self, needPerformAction: .updateMedicalCenter(medicalCenter: viewModel.getMedicalSelected()))
@@ -74,6 +73,7 @@ final class MedicalCenterViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension MedicalCenterViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRowInsection() ?? 0
     }

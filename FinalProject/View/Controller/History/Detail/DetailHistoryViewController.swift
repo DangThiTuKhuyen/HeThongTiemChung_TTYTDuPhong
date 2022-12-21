@@ -8,25 +8,23 @@
 
 import UIKit
 
-class DetailHistoryViewController: UIViewController {
+final class DetailHistoryViewController: UIViewController {
 
-//    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - IBOutlets
+    @IBOutlet private weak var tableView: UITableView!
     var viewModel: DetailHistoryViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
         configTableView()
     }
 
+    // MARK: - Private func
     private func configUI() {
         title = "History details"
-        
-//        containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//        containerView.layer.cornerRadius = 20
-//        containerView.layer.masksToBounds = true
     }
-    
+
     private func configTableView() {
         tableView.register(DetailHistoryCell.self)
         tableView.delegate = self
@@ -34,6 +32,7 @@ class DetailHistoryViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension DetailHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRowInSection() ?? 0
@@ -47,21 +46,20 @@ extension DetailHistoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension DetailHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 }
 
+// MARK: - DetailHistoryCellDelegate
 extension DetailHistoryViewController: DetailHistoryCellDelegate {
     func cell(_ cell: DetailHistoryCell, needPerformAction action: DetailHistoryCell.Action) {
         switch action {
         case .updateCell:
             guard let indexPath = tableView.indexPath(for: cell) else { return }
             viewModel?.updateStatus(at: indexPath)
-//            cell.viewModel?.updateCellStatus(isShow: isShow)
-//            cell.viewModel?.updateCellStatus()
-//            viewModel.isShows[indexPath.row] = !viewModel.isShows[indexPath.row]
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }

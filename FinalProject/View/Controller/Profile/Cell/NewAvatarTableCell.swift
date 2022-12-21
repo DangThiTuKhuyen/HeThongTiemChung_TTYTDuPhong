@@ -8,15 +8,11 @@
 
 import UIKit
 
-protocol NewAvatarTableCellDataSource: AnyObject {
-    func updateAvatar(_ cell: NewAvatarTableCell) -> UIImage
-}
 protocol NewAvatarTableCellDelegate: AnyObject {
-
     func cell(_ view: NewAvatarTableCell, needsPerformAction action: NewAvatarTableCell.Action)
 }
 
-class NewAvatarTableCell: UITableViewCell {
+final class NewAvatarTableCell: UITableViewCell {
 
     enum Action {
         case edit
@@ -26,14 +22,12 @@ class NewAvatarTableCell: UITableViewCell {
     @IBOutlet private weak var iconPlus: UIImageView!
 
     // MARK: - Properties
-    weak var dataSource: NewAvatarTableCellDataSource?
     weak var delegate: NewAvatarTableCellDelegate?
     var viewModel: NewAvatarCellViewModel? {
         didSet {
             updateView()
         }
     }
-    
     var avatarImage: UIImage? {
         didSet {
             avatarButton.setImage(avatarImage, for: .normal)
@@ -59,10 +53,5 @@ class NewAvatarTableCell: UITableViewCell {
 
     @IBAction func avatarButtonTouchUpInside(_ sender: Any) {
         delegate?.cell(self, needsPerformAction: .edit)
-//        guard let dataSource = dataSource else {
-//            return
-//        }
-//        avatarButton.setImage(dataSource.updateAvatar(self), for: .normal)
     }
-
 }

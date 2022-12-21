@@ -31,6 +31,15 @@ final class LoginViewController: ViewController {
     }
 
     // MARK: - Override func
+    override func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
+        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
+        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
+        gradientLayer.colors = [colorTop, colorBottom]
+        containerView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -66,15 +75,6 @@ final class LoginViewController: ViewController {
         showHideError()
     }
 
-    override func setGradientBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
-        let colorTop = #colorLiteral(red: 1.00, green: 0.98, blue: 0.96, alpha: 1.00).cgColor
-        let colorBottom = #colorLiteral(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor
-        gradientLayer.colors = [colorTop, colorBottom]
-        containerView.layer.insertSublayer(gradientLayer, at: 0)
-    }
-
     private func showHideError(error: String = "", isShow: Bool = false) {
         errorLabel.text = error
         heightErrorLabel.constant = isShow ? 18 : 0
@@ -92,7 +92,7 @@ final class LoginViewController: ViewController {
                 case .failure(let error):
                     if error.contains("confirmed") {
                         let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { action in
+                        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { _ in
                             let vc = EnterPassCodeViewController()
                             vc.viewModel = EnterPassCodeViewModel(email: this.emailTextField.text ?? "")
                             this.navigationController?.pushViewController(vc, animated: true)

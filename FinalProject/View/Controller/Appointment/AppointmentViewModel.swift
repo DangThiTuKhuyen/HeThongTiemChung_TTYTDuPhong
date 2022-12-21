@@ -8,22 +8,22 @@
 
 import Foundation
 final class AppointmentViewModel {
-    
+
     private(set) var appointments: [Registration] = []
-    
+
     func numberOfRowInSection() -> Int {
         return appointments.count
     }
-    
+
     func viewModelForItem(at indexPath: IndexPath) -> AppointmentCellViewModel {
         return AppointmentCellViewModel(appointment: appointments[indexPath.row])
     }
 }
 
 extension AppointmentViewModel {
-    
+
     func getAppointment(completion: @escaping APICompletion) {
-        AppointmentService.getAppointment() { [weak self] result in
+        AppointmentService.getAppointment { [weak self] result in
             guard let this = self else {
                 completion(.failure(Api.Error.json))
                 return }
