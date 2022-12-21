@@ -114,7 +114,7 @@ extension RegisterInfoViewModel {
         switch type {
         case .new:
             RegistrationVaccineService.registerVaccine(params: params) { [weak self] result in
-                guard let this = self else {
+                guard self != nil else {
                     completion(.failure(Api.Error.json))
                     return
                 }

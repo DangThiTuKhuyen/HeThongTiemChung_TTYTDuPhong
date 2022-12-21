@@ -125,7 +125,7 @@ class RegistrationVaccineService {
     ///users/:userId/registrations/:id/update
     static func updateRegistration(id: Int, params: Params, completion: @escaping APICompletion) {
         let urlString = Api.Path.userIdURL + "/registrations/\(id)/update"
-        api.request(method: .put, urlString: urlString) {  result in
+        api.request(method: .put, urlString: urlString, parameters: params.toJSON()) {  result in
             switch result {
             case .success(let data):
                 guard let data = data as? JSObject, let message = data["message"] as? String, message == "OK" else {
@@ -137,26 +137,5 @@ class RegistrationVaccineService {
                 completion(.failure(error))
             }
         }
-//        guard let url = URL(string: urlString) else { return }
-//        let jsonData = try? JSONSerialization.data(withJSONObject: params.toJSON())
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "PUT"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.httpBody = jsonData
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data, error == nil else {
-//                completion(.failure(Api.Error.json))
-//                return
-//            }
-//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-//            guard let responseJSON = responseJSON as? JSObject, let message = responseJSON["message"] as? String, message == "OK" else {
-//                completion(.failure(Api.Error.json))
-//                return
-//            }
-//            completion(.success)
-//        }
-//        task.resume()
     }
 }

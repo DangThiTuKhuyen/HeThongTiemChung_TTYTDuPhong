@@ -66,7 +66,7 @@ class RegisterInfoViewController: UIViewController {
                 case .success:
                     let alert = UIAlertController(title: viewModel.type == .new ? "Register succesfully" : "Update successfully", message: "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-                        this.popToHome()
+                        this.popToListRegistration()
                     }))
                     this.present(alert, animated: true, completion: nil)
                 case .failure(let error):
@@ -86,12 +86,19 @@ class RegisterInfoViewController: UIViewController {
                 switch result {
                 case .success:
                     this.alert(msg: "Detele successfully", handler: { _ in
-                        this.popViewController()
+                        this.popToListRegistration()
                     })
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
             }
+        }
+    }
+
+    private func popToListRegistration() {
+        guard let navigationController = navigationController else { return }
+        for controller in navigationController.viewControllers where controller is RegistrationViewController {
+            navigationController.popToViewController(controller, animated: true)
         }
     }
 
