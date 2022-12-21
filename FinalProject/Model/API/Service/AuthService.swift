@@ -170,35 +170,15 @@ class AuthService {
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            guard let error = error, error.code == 500 else {
+            guard let responseJSON = responseJSON as? JSObject, let accessToken = responseJSON["accessToken"] as? String else {
                 completion(false)
                 return
             }
-            guard let responseJSON = responseJSON as? JSObject, let auth = Mapper<Auth>().map(JSON: responseJSON) else {
-                completion(false)
-                return
-            }
-            UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
-            UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
+            UserDefaults.standard.set(accessToken, forKey: "accessToken")
             completion(true)
+            return
         }
         task.resume()
-
-//        api.request(method: .post, urlString: urlString, parameters: ["refreshToken": UserDefaults.standard.string(forKey: "refreshToken") ?? ""]) { result in
-//            switch result {
-//            case .success(let data):
-//                guard let data = data as? JSObject, let auth = Mapper<Auth>().map(JSON: data) else {
-//                    completion(false)
-//                    return
-//                }
-//                    UserDefaults.standard.set(auth.accessToken, forKey: "accessToken")
-//                    UserDefaults.standard.set(auth.refreshToken, forKey: "refreshToken")
-//                completion(true)
-//            case .failure(let error):
-//                completion(false)
-//                return
-//            }
-//        }
     }
 
     static func updateProfile(params: Account, completion: @escaping (Bool) -> Void) {
@@ -211,7 +191,7 @@ class AuthService {
                     return
                 }
                 completion(true)
-            case .failure(let _):
+            case .failure(_):
                 completion(false)
                 return
             }
