@@ -50,7 +50,7 @@ final class CommonCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = #imageLiteral(resourceName: "")  //UIImage(named: "") UIImage(named: "")
+        iconImageView.image = UIImage(named: "")
         iconImageView.isHidden = false
         valueTextField.isUserInteractionEnabled = false
     }

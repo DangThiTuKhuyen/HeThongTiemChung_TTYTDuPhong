@@ -221,9 +221,14 @@ extension ProfileViewController: UITableViewDelegate {
             vc.viewModel = ChangePasswordViewModel()
             navigationController?.pushViewController(vc, animated: true)
         case .logout:
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: nil)
-            }
+            let alert = UIAlertController(title: "This will logout your session", message: "", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logOut"), object: nil)
+                }
+            }))
+            present(alert, animated: true, completion: nil)
         }
     }
 

@@ -66,7 +66,12 @@ class RegisterInfoViewController: UIViewController {
                 case .success:
                     let alert = UIAlertController(title: viewModel.type == .new ? "Register succesfully" : "Update successfully", message: "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-                        this.popToListRegistration()
+                        switch viewModel.type {
+                        case .new:
+                            this.pushToListRegistration()
+                        case .update:
+                            break
+                        }
                     }))
                     this.present(alert, animated: true, completion: nil)
                 case .failure(let error):
@@ -100,6 +105,12 @@ class RegisterInfoViewController: UIViewController {
         for controller in navigationController.viewControllers where controller is RegistrationViewController {
             navigationController.popToViewController(controller, animated: true)
         }
+    }
+
+    private func pushToListRegistration() {
+        let vc = RegistrationViewController()
+        vc.viewModel = RegistrationViewModel()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     private func popViewController() {

@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnterPassCodeViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="T0B-ZD-3lK" id="wRK-bO-Ovw"/>
-                <outlet property="errorLabel" destination="uuh-SS-0rh" id="w95-7p-xXd"/>
+                <outlet property="errorLabel" destination="uuh-SS-0rh" id="5Il-Ix-gWI"/>
                 <outlet property="newPasswordTextField" destination="JnR-o7-fhh" id="jTK-Np-pEx"/>
                 <outlet property="tempPasscodeTextField" destination="ApJ-iU-CSJ" id="ROa-P0-Cgt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -51,8 +51,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CL5-ff-OrO">
-                    <rect key="frame" x="80" y="44" width="254" height="42"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CL5-ff-OrO">
+                    <rect key="frame" x="69" y="44" width="276" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="Bo5-Dk-GNO"/>
                     </constraints>
@@ -80,7 +80,7 @@
                         <constraint firstAttribute="height" constant="50" id="Ek7-wL-pbt"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-SS-0rh">
                     <rect key="frame" x="20" y="356.5" width="37.5" height="18"/>

@@ -10,7 +10,6 @@ import UIKit
 
 final class RegistrationViewController: UIViewController {
 
-
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noResultLabel: UILabel!
 
@@ -49,7 +48,8 @@ final class RegistrationViewController: UIViewController {
     private func configUI() {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "〈 Back", style: .plain, target: self, action: #selector(popToHome))
+        navigationItem.leftBarButtonItem = backButton
         title = "Registrations"
     }
 
@@ -63,6 +63,13 @@ final class RegistrationViewController: UIViewController {
         tableView.reloadData()
         tableView.isHidden = !viewModel.isShowTableView()
         noResultLabel.isHidden = viewModel.isShowTableView()
+    }
+
+    @objc private func popToHome() {
+        guard let navigationController = navigationController else { return }
+        for controller in navigationController.viewControllers where controller is HomeViewController {
+            navigationController.popToViewController(controller, animated: true)
+        }
     }
 }
 

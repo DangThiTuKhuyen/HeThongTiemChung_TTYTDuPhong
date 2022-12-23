@@ -8,28 +8,18 @@
 
 import UIKit
 
-class RegisterDiseaseCell: UITableViewCell {
+final class RegisterDiseaseCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet private weak var nameLabel: UILabel!
+
     var viewModel: RegisterDiseaseCellViewModel? {
         didSet {
             updateUI()
         }
     }
-    
+
     private func updateUI() {
         guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.disease?.diseaseName
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

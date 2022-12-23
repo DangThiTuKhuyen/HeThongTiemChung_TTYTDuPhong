@@ -91,7 +91,7 @@ final class LoginViewController: ViewController {
                     this.changeRoot(type: .tabbar)
                 case .failure(let error):
                     if error.contains("confirmed") {
-                        let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: error, message: "", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { _ in
                             let vc = EnterPassCodeViewController()
                             vc.viewModel = EnterPassCodeViewModel(email: this.emailTextField.text ?? "")
