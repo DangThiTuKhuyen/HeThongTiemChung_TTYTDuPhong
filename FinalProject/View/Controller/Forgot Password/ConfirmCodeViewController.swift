@@ -37,7 +37,7 @@ final class ConfirmCodeViewController: ViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    let alert = UIAlertController(title: "", message: "Reset password succesfully", preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Reset password succesfully", message: "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
                         this.pushToLogin()
                     }))

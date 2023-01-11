@@ -13,7 +13,7 @@ final class Api {
 
     struct Path {
         static let baseURL = "http://44.212.10.140:3210/"
-        static let userIdURL = baseURL + "users/" + (UserDefaults.standard.string(forKey: "userId") ?? "")
+        static var userIdURL = baseURL + "users/" + (UserDefaults.standard.string(forKey: "userId") ?? "")
         static let authURL = baseURL + "auth/"
     }
 }

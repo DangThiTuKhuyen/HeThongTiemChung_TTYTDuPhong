@@ -35,6 +35,10 @@ final class EnterPassCodeViewModel {
         UserDefaults.standard.set(auth.userName, forKey: "userName")
         UserDefaults.standard.set(auth.email, forKey: "email")
     }
+
+    func setApiPath() {
+        Api.Path.userIdURL = Api.Path.baseURL + "users/" + (UserDefaults.standard.string(forKey: "userId") ?? "")
+    }
 }
 
 extension EnterPassCodeViewModel {
@@ -49,6 +53,7 @@ extension EnterPassCodeViewModel {
             if let data = data, error == nil {
                 this.auth = data
                 this.addToken()
+                this.setApiPath()
                 completion(.success)
             } else {
                 completion(.failure(error ?? Api.Error.json.localizedDescription))

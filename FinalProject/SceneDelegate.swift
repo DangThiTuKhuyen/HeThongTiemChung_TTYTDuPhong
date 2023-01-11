@@ -132,8 +132,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Your login session has expired", message: "", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-                    self.setupController()
                     UserDefaults.standard.reset()
+                    self.setupController()
                 }))
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
@@ -151,8 +151,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    this.setupController()
                     UserDefaults.standard.reset()
+                    this.setupController()
                 case .failure(let error):
                     print(error)
                 }

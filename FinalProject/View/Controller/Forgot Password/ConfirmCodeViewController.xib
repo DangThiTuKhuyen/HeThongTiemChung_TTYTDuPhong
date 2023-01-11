@@ -43,7 +43,7 @@
                         <action selector="confirmResetPassButton:" destination="-1" eventType="touchUpInside" id="qf2-3E-a43"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-7Z-dR4">
+                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-7Z-dR4">
                     <rect key="frame" x="20" y="151.5" width="374" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="TSF-kR-AJz"/>
