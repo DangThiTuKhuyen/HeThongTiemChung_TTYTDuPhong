@@ -10,7 +10,7 @@ import Foundation
 import DropDown
 
 final class RegisterVaccineViewModel {
-    
+
     private(set) var treatments: [Treatment]
     private(set) var diseaseName: String
     private(set) var diseaseDescribe: String

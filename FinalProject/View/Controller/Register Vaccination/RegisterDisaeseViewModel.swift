@@ -44,13 +44,14 @@ final class RegisterDisaeseViewModel {
     }
 
     func getDisaeseSelected(at indexPath: IndexPath) -> [Treatment] {
-        return currentDisaeses[indexPath.row].treatments ?? []
+        let treatment = currentDisaeses[indexPath.row].treatments?.filter { $0.vaccine != nil }
+        return treatment ?? []
     }
-    
+
     func getNameSelected(at indexPath: IndexPath) -> String {
         return currentDisaeses[indexPath.row].diseaseName ?? ""
     }
-    
+
     func getDescribeSelected(at indexPath: IndexPath) -> String {
         return currentDisaeses[indexPath.row].diseaseDescribe ?? ""
     }
