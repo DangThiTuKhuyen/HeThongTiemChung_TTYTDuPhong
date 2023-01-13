@@ -12,7 +12,7 @@ import Alamofire
 final class Api {
 
     struct Path {
-        static let baseURL = "http://44.212.10.140:3210/"
+        static let baseURL = "http://18.233.8.165:3210/"
         static var userIdURL = baseURL + "users/" + (UserDefaults.standard.string(forKey: "userId") ?? "")
         static let authURL = baseURL + "auth/"
     }

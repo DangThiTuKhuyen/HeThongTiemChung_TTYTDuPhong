@@ -64,7 +64,7 @@ final class HomeViewController: ViewController {
         guard let viewModel = viewModel else { return }
         realTime.text = viewModel.getCurrentDate()
         guard let id = UserDefaults.standard.string(forKey: "userId") else { return }
-        guard let qrURLImage = URL(string: "http://44.212.10.140:3210/users/" + id + "/histories/scanQR")?.qrImage(using: .black) else { return }
+        guard let qrURLImage = URL(string: "http://18.233.8.165:3210/users/" + id + "/histories/scanQR")?.qrImage(using: .black) else { return }
         QRImageView.image = qrURLImage
     }
 

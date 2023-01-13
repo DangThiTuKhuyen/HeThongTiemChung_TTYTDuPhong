@@ -55,7 +55,7 @@ extension RegistrationViewModel {
             }
             switch result {
             case .success(let registrations):
-                this.registrations = registrations
+                this.registrations = registrations.reversed()
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
