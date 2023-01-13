@@ -41,7 +41,7 @@ extension HistoryViewModel {
             }
             switch result {
             case .success(let histories):
-                this.histories = histories
+                this.histories = histories.reversed()
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
