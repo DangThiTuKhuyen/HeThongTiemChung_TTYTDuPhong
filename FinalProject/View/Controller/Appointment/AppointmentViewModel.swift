@@ -29,7 +29,7 @@ extension AppointmentViewModel {
                 return }
             switch result {
             case .success(let appointments):
-                this.appointments = appointments
+                this.appointments = appointments.reversed()
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
